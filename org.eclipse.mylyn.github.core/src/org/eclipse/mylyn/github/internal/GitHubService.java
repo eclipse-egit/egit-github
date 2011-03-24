@@ -14,11 +14,15 @@ package org.eclipse.mylyn.github.internal;
 
 import java.io.IOException;
 
+import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.auth.AuthScope;
+import org.apache.commons.httpclient.auth.BasicScheme;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
@@ -32,6 +36,9 @@ import com.google.gson.Gson;
 public class GitHubService {
 
 	private static final Log LOG = LogFactory.getLog(GitHubService.class);
+
+	private static final AuthScope AUTH_SCOPE = new AuthScope("github.com",
+			AuthScope.ANY_PORT, AuthScope.ANY_REALM);
 
 	/**
 	 * GitHub Issues API Documentation: http://develop.github.com/p/issues.html
@@ -60,6 +67,7 @@ public class GitHubService {
 	// private final static String COMMENT = "comment/";
 	private final static String ADD_LABEL = "label/add/"; // Implemented
 	private final static String REMOVE_LABEL = "label/remove/"; // Implemented
+	private final static String TOKEN = "/token";
 
 	private static final String EMAILS = "emails";
 
@@ -73,23 +81,48 @@ public class GitHubService {
 	}
 
 	/**
+	 * Set credentials to use for authentication
+	 *
+	 * @param credentials
+	 * @return this service
+	 */
+	public GitHubService setCredentials(GitHubCredentials credentials) {
+		Credentials apiCredentials = new UsernamePasswordCredentials(
+				credentials.getUsername() + TOKEN, credentials.getApiToken());
+		this.httpClient.getState().setCredentials(AUTH_SCOPE, apiCredentials);
+		return this;
+	}
+
+	/**
+	 * Set method defaults
+	 *
+	 * @param method
+	 * @return method param
+	 */
+	protected HttpMethod setMethodDefaults(HttpMethod method) {
+		method.setDoAuthentication(true);
+		if (this.httpClient.getState().getCredentials(AUTH_SCOPE) != null) {
+			method.getHostAuthState().setPreemptive();
+			method.getHostAuthState().setAuthScheme(new BasicScheme());
+		}
+		return method;
+	}
+
+	/**
 	 * Verify that the provided credentials are correct
 	 * @param credentials
 	 *
 	 * @return true if and only if the credentials are correct
 	 */
 	public boolean verifyCredentials(GitHubCredentials credentials) throws GitHubServiceException {
-		PostMethod method = null;
+		GetMethod method = null;
 
 		boolean success = false;
 
 		try {
-			method = new PostMethod(gitURLBase + gitUserRoot + EMAILS);
-
-			// Set the users login and API token
-			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
-			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
-			method.setRequestBody(new NameValuePair[] { login, token });
+			method = new GetMethod(gitURLBase + gitUserRoot + EMAILS);
+			
+			setCredentials(credentials);
 
 			executeMethod(method);
 			
@@ -122,6 +155,8 @@ public class GitHubService {
 	 *            - The issue state you want to filter your search by
 	 * @param searchTerm
 	 *            - The text search term to find in the issues.
+	 * @param credentials
+	 *            GitHub credentials to use for authentication
 	 * 
 	 * @return A GitHubIssues object containing all issues from the search
 	 *         results
@@ -131,7 +166,7 @@ public class GitHubService {
 	 * @note API Doc: /issues/search/:user/:repo/:state/:search_term
 	 */
 	public GitHubIssues searchIssues(final String user, final String repo,
-			final String state, final String searchTerm)
+			final String state, final String searchTerm, GitHubCredentials credentials)
 			throws GitHubServiceException {
 		GitHubIssues issues = null;
 		GetMethod method = null;
@@ -144,6 +179,7 @@ public class GitHubService {
 				method = new GetMethod(gitURLBase + gitIssueRoot + SEARCH
 						+ user + "/" + repo + "/" + state + "/" + searchTerm);
 			}
+			setCredentials(credentials);
 			// execute HTTP GET method
 			executeMethod(method);
 			// transform JSON to Java object
@@ -181,7 +217,6 @@ public class GitHubService {
 	 * @throws GitHubServiceException
 	 * 
 	 * @note API Doc: issues/label/add/:user/:repo/:label/:number API POST
-	 *       Variables: login, api-token
 	 */
 	public boolean addLabel(final String user, final String repo,
 			final String label, final int issueNumber,final GitHubCredentials credentials)
@@ -196,10 +231,7 @@ public class GitHubService {
 					+ user + "/" + repo + "/" + label + "/"
 					+ Integer.toString(issueNumber));
 
-			// Set the users login and API token
-			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
-			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
-			method.setRequestBody(new NameValuePair[] { login, token });
+			setCredentials(credentials);
 
 			// execute HTTP GET method
 			executeMethod(method);
@@ -242,7 +274,6 @@ public class GitHubService {
 	 * @throws GitHubServiceException
 	 * 
 	 *             API Doc: issues/label/remove/:user/:repo/:label/:number API
-	 *             POST Variables: login, api-token
 	 */
 	public boolean removeLabel(final String user, final String repo,
 			final String label, final int issueNumber, final GitHubCredentials credentials)
@@ -298,8 +329,8 @@ public class GitHubService {
 	 * 
 	 * @throws GitHubServiceException
 	 * 
-	 *             API Doc: issues/open/:user/:repo API POST Variables: login,
-	 *             api-token, title, body
+	 *             API Doc: issues/open/:user/:repo
+	 *             API POST Variables: title, body
 	 */
 	public GitHubIssue openIssue(final String user, final String repo,
 			final GitHubIssue issue, final GitHubCredentials credentials)
@@ -312,16 +343,13 @@ public class GitHubService {
 			// Create the HTTP POST method
 			method = new PostMethod(gitURLBase + gitIssueRoot + OPEN + user
 					+ "/" + repo);
-			// Set the users login and API token
-			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
-			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
+			setCredentials(credentials);
 			final NameValuePair body = new NameValuePair("body", issue
 					.getBody());
 			final NameValuePair title = new NameValuePair("title", issue
 					.getTitle());
 
-			method.setRequestBody(new NameValuePair[] { login, token, body,
-					title });
+			method.setRequestBody(new NameValuePair[] { body, title });
 
 			executeMethod(method);
 			showIssue = gson.fromJson(new String(method.getResponseBody()),
@@ -367,7 +395,7 @@ public class GitHubService {
 	 * @throws GitHubServiceException
 	 * 
 	 *             API Doc: issues/edit/:user/:repo/:number API POST Variables:
-	 *             login, api-token, title, body
+	 *             title, body
 	 */
 	public GitHubIssue editIssue(final String user, final String repo,
 			final GitHubIssue issue,final GitHubCredentials credentials)
@@ -378,16 +406,14 @@ public class GitHubService {
 			// Create the HTTP POST method
 			method = new PostMethod(gitURLBase + gitIssueRoot + EDIT + user
 					+ "/" + repo + "/" + issue.getNumber());
-			// Set the users login and API token
-			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
-			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
+			
+			setCredentials(credentials);
 			final NameValuePair body = new NameValuePair("body", issue
 					.getBody());
 			final NameValuePair title = new NameValuePair("title", issue
 					.getTitle());
 
-			method.setRequestBody(new NameValuePair[] { login, token, body,
-					title });
+			method.setRequestBody(new NameValuePair[] { body, title });
 
 			executeMethod(method);
 			GitHubShowIssue showIssue = gson.fromJson(method.getResponseBodyAsString(),
@@ -448,6 +474,7 @@ public class GitHubService {
 	private void executeMethod(HttpMethod method) throws GitHubServiceException {
 		int status;
 		try {
+			setMethodDefaults(method);
 			status = httpClient.executeMethod(method);
 		} catch (HttpException e) { 
 			throw new GitHubServiceException(e);
@@ -480,7 +507,7 @@ public class GitHubService {
 	 * @throws GitHubServiceException
 	 * 
 	 *             API Doc: issues/reopen/:user/:repo/:number API POST Variables:
-	 *             login, api-token, title, body
+	 *             title, body
 	 */
 	public GitHubIssue reopenIssue(String user, String repo, GitHubIssue issue,
 			GitHubCredentials credentials) throws GitHubServiceException {
@@ -503,7 +530,7 @@ public class GitHubService {
 	 * @throws GitHubServiceException
 	 * 
 	 *             API Doc: issues/close/:user/:repo/:number API POST Variables:
-	 *             login, api-token, title, body
+	 *             title, body
 	 */
 	public GitHubIssue closeIssue(String user, String repo, GitHubIssue issue,
 			GitHubCredentials credentials) throws GitHubServiceException {
@@ -521,11 +548,8 @@ public class GitHubService {
 			// Create the HTTP POST method
 			method = new PostMethod(gitURLBase + gitIssueRoot + githubOperation + user
 					+ "/" + repo + "/" + issue.getNumber());
-			// Set the users login and API token
-			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
-			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
 			
-			method.setRequestBody(new NameValuePair[] { login, token });
+			setCredentials(credentials);
 
 			executeMethod(method);
 			GitHubShowIssue showIssue = gson.fromJson(method.getResponseBodyAsString(),
