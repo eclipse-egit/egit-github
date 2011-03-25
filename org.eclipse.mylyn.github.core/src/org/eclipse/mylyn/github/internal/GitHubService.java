@@ -19,6 +19,7 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
@@ -42,7 +43,7 @@ public class GitHubService {
 	private final String gitUserRoot = "user/";
 
 	private final HttpClient httpClient;
-
+	private final GetMethod httpGetMethod;
 	private final Gson gson;
 
 	/**
@@ -69,6 +70,7 @@ public class GitHubService {
 	 */
 	public GitHubService() {
 		httpClient = new HttpClient();
+		httpGetMethod = new GetMethod();
 		gson = new Gson();
 	}
 
@@ -134,20 +136,19 @@ public class GitHubService {
 			final String state, final String searchTerm)
 			throws GitHubServiceException {
 		GitHubIssues issues = null;
-		GetMethod method = null;
 		try {
 			// build HTTP GET method
 			if (searchTerm.trim().length() == 0) { // no search term: list all
-				method = new GetMethod(gitURLBase + gitIssueRoot + LIST + user
-						+ "/" + repo + "/" + state);
+				httpGetMethod.setURI(new URI(gitURLBase + gitIssueRoot + LIST + user
+						+ "/" + repo + "/" + state, false));
 			} else {
-				method = new GetMethod(gitURLBase + gitIssueRoot + SEARCH
-						+ user + "/" + repo + "/" + state + "/" + searchTerm);
+				httpGetMethod.setURI(new URI(gitURLBase + gitIssueRoot + SEARCH
+						+ user + "/" + repo + "/" + state + "/" + searchTerm, false));
 			}
 			// execute HTTP GET method
-			executeMethod(method);
+			executeMethod(httpGetMethod);
 			// transform JSON to Java object
-			issues = gson.fromJson(new String(method.getResponseBody()),
+			issues = gson.fromJson(new String(httpGetMethod.getResponseBody()),
 					GitHubIssues.class);
 		} catch (GitHubServiceException e) {
 			throw e;
@@ -156,8 +157,8 @@ public class GitHubService {
 		} catch (final Exception exception) {
 			throw new GitHubServiceException(exception);
 		} finally {
-			if (method != null)
-				method.releaseConnection();
+			if (httpGetMethod != null)
+				httpGetMethod.releaseConnection();
 		}
 		return issues;
 	}
