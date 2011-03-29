@@ -481,7 +481,7 @@ public class GitHubService {
 		if (status != HttpStatus.SC_OK) {
 			switch (status) {
 			case HttpStatus.SC_CREATED:
-				break;
+				break; 
 			case HttpStatus.SC_UNAUTHORIZED:
 			case HttpStatus.SC_FORBIDDEN:
 				throw new PermissionDeniedException(method.getStatusLine());
