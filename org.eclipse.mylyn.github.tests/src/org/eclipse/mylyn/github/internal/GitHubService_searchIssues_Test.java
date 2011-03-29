@@ -56,7 +56,7 @@ public class GitHubService_searchIssues_Test {
 		when(httpGetMethod.getResponseBody()).thenReturn(
 				"{\"issues\":[]}".getBytes());
 		GitHubIssues issues = gitHubService.searchIssues("testuser",
-				"testrepo", "open", "", null);
+				"testrepo", "open", "", new GitHubCredentials("testuser", "testpw"));
 		Assert.assertEquals(0, issues.getIssues().length);
 	}
 
