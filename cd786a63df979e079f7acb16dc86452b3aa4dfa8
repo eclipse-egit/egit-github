@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL3n//+iU\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-03-24T18:58:49Z",
+      "side": 1,
+      "message": "style nit: trailing whitespace, more of these below",
+      "revId": "cd786a63df979e079f7acb16dc86452b3aa4dfa8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}

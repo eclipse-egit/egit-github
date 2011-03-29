@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL3n//+iQ\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-03-24T18:58:49Z",
+      "side": 0,
+      "message": "you may want to add your copyright header ...",
+      "revId": "8758fb2dd13ed6031ead593e4fc092c9c2e7f1eb",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
