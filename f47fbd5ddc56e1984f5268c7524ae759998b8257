@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL33///0I\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-03-29T08:27:24Z",
+      "side": 1,
+      "message": "please add a target jre, see https://github.com/manandbytes/org.eclipse.mylyn.github/commit/75b942d9263a94ed55c3747a4acdd49e319c9882 for reference",
+      "revId": "f47fbd5ddc56e1984f5268c7524ae759998b8257",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
