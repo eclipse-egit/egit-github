@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL33///lU\u003d",
+        "filename": "org.eclipse.mylyn.github.core/build.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-03-30T16:07:47Z",
+      "side": 1,
+      "message": "Second instance of \u0027bin.includes\u0027 should be removed. With changes in lines 3-4 it works for me.",
+      "revId": "6ada86dc925951a31dc1bf07684b7b673ebdcd65",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL33///lI\u003d",
+        "filename": "org.eclipse.mylyn.github.core/build.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-03-30T16:21:36Z",
+      "side": 1,
+      "message": "Bug in Gerrit when displaying diff for this file. There is no line 5 in the new version, please ignore previous comment.",
+      "parentUuid": "AAAL33///lU\u003d",
+      "revId": "6ada86dc925951a31dc1bf07684b7b673ebdcd65",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
