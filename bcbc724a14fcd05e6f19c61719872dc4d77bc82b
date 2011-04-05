@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL33///G0\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubIssue.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-05T14:53:52Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "bcbc724a14fcd05e6f19c61719872dc4d77bc82b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL33///Gw\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubIssue.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-05T14:53:52Z",
+      "side": 1,
+      "message": "whitespcae",
+      "revId": "bcbc724a14fcd05e6f19c61719872dc4d77bc82b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL33///Gs\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-05T14:53:52Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "bcbc724a14fcd05e6f19c61719872dc4d77bc82b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL33///Go\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-05T14:53:52Z",
+      "side": 1,
+      "message": "whites space",
+      "revId": "bcbc724a14fcd05e6f19c61719872dc4d77bc82b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
