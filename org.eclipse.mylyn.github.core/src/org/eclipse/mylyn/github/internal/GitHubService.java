@@ -577,10 +577,10 @@ public class GitHubService {
 			}
 		}
 	}
-	
+
 	/**
 	 * Add comment on issues.
-	 * 
+	 *
 	 * @param user
 	 *            - The user the repository is owned by
 	 * @param repo

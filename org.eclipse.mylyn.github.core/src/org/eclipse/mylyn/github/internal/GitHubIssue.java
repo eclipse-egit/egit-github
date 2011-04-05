@@ -25,7 +25,7 @@ public class GitHubIssue {
 	private String title;
 
 	private String body;
-	
+
 	private String comment_new;
 
 	/**
@@ -173,7 +173,7 @@ public class GitHubIssue {
 	public void setClosed_at(String closed_at) {
 		this.closed_at = closed_at;
 	}	
-	
+
 	public String getComment_new() {
 		return comment_new;
 	}

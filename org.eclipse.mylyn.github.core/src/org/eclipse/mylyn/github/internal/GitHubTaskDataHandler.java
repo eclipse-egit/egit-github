@@ -231,16 +231,16 @@ public class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 			if (taskData.isNew()) {
 				issue = service.openIssue(user , repo, issue, credentials);
 			} else {
-				
+
 				// handle new comment
 				if(issue.getComment_new() != null) {
 					if(!"".equals(issue.getComment_new())) {
 						service.addComment(user, repo, issue, credentials);
 					}
 				}
-				
+
 				TaskAttribute operationAttribute = taskData.getRoot().getAttribute(TaskAttribute.OPERATION);
-				GitHubTaskOperation operation = null;			
+				GitHubTaskOperation operation = null;
 				if (operationAttribute != null) {
 					String opId = operationAttribute.getValue();
 					operation = GitHubTaskOperation.fromId(opId);
@@ -261,7 +261,7 @@ public class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 				} else {
 					service.editIssue(user , repo, issue, credentials);
 				}
-				
+
 			}
 			return new RepositoryResponse(taskData.isNew()?ResponseKind.TASK_CREATED:ResponseKind.TASK_UPDATED,issue.getNumber());
 		} catch (GitHubServiceException e) {
