@@ -32,6 +32,8 @@ import com.google.gson.Gson;
 
 /**
  * Facility to perform API operations on a GitHub issue tracker.
+ * 
+ * TODO: I hate this class, needs to be refactored
  */
 public class GitHubService {
 
@@ -41,9 +43,12 @@ public class GitHubService {
 	 * GitHub Issues API Documentation: http://develop.github.com/p/issues.html
 	 */
 	private final String gitURLBase = "https://github.com/api/v2/json/";
+	private final String gistURLbase = "http://gist.github.com/api/v1/json/";
+	private final String gistPostURL = "https://gist.github.com/gists";
 
 	private final String gitIssueRoot = "issues/";
 	private final String gitUserRoot = "user/";
+	private final String gistNewRoot = "new";
 
 	private final HttpClient httpClient;
 
@@ -377,6 +382,59 @@ public class GitHubService {
 			}
 		}
 	}
+	
+	/**
+	 * Create a new gist
+	 * 
+	 * @param user
+	 *            - The user the repository is owned by
+	 * @param repo
+	 *            - The git repository where the issue tracker is hosted
+	 * @param issue
+	 *            - The GitHub issue object to create on the issue tracker.
+	 * 
+	 * @return the issue that was created
+	 * 
+	 * @throws GitHubServiceException
+	 * 
+	 *             API Doc: issues/open/:user/:repo
+	 *             API POST Variables: title, body
+	 * @throws IOException 
+	 */
+	public String createGist(final String title, final String extension, final String gist, final GitHubCredentials credentials)
+			throws GitHubServiceException, IOException {
+
+		PostMethod method = null;
+		try {
+			// Create the HTTP POST method
+			method = new PostMethod(gistPostURL);
+			final NameValuePair name = new NameValuePair("file_name[gistfile1]", title);
+			final NameValuePair ext = new NameValuePair("file_ext[gistfile1]", extension);
+			final NameValuePair content = new NameValuePair("file_contents[gistfile1]", gist);
+			final NameValuePair login = new NameValuePair("login", credentials.getUsername());
+			final NameValuePair token = new NameValuePair("token", credentials.getApiToken());
+			
+			method.addParameters(new NameValuePair[] { name, ext, content, login, token });
+			
+			executeMethod(method);
+			
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("Response: " + method.getResponseBodyAsString());
+				LOG.debug("URL: " + method.getURI());
+			}
+			return method.getResponseHeader("Location").getValue();
+		} catch (GitHubServiceException e) {
+			throw e;
+		} catch (final RuntimeException runTimeException) {
+			throw runTimeException;
+		} catch (final Exception e) {
+			throw new GitHubServiceException(e);
+		} finally {
+			if (method != null) {
+				method.releaseConnection();
+			}
+		}
+	}
 
 	/**
 	 * Edit an existing issue using the GitHub Issues API.
@@ -481,6 +539,7 @@ public class GitHubService {
 		if (status != HttpStatus.SC_OK) {
 			switch (status) {
 			case HttpStatus.SC_CREATED:
+			case HttpStatus.SC_MOVED_TEMPORARILY:
 				break;
 			case HttpStatus.SC_UNAUTHORIZED:
 			case HttpStatus.SC_FORBIDDEN:
