@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAL4H///1Y\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "+1",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///1k\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "not used",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///1c\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "whitespaces ...",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///1g\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "is this documented API?\nhttp://develop.github.com/p/gist.html say nothing about creating gists (\"comming soon\" status)",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAL4H///1I\u003d",
         "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GitHubService.java",
         "patchSetId": 1
@@ -13,6 +81,40 @@
       "writtenOn": "2011-04-07T19:36:54Z",
       "side": 1,
       "message": "Use setCredentials and Basic auth",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///1U\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/github/ui/internal/CreateGistHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "-1\nbetter exception handling please ...",
+      "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///1Q\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/github/ui/internal/GistNotificationPopup.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-07T19:32:25Z",
+      "side": 1,
+      "message": "whitespaces",
       "revId": "ab9b2a3892aaf6e753d8fcde77917c8d7347e8d0",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
