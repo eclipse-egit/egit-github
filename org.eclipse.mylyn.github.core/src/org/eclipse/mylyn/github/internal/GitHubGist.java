@@ -1,0 +1,39 @@
+/*******************************************************************************
+ * Copyright (c) 2011 Red Hat and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christian Trutz <christian.trutz@gmail.com> - initial contribution
+ *******************************************************************************/
+package org.eclipse.mylyn.github.internal;
+
+public class GitHubGist {
+
+	private String repo = null;
+
+	private String[] files = null;
+
+	public String getRepo() {
+		return repo;
+	}
+
+	public void setRepo(String repo) {
+		this.repo = repo;
+	}
+
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
+	public String toString() {
+		return this.repo;
+	}
+
+}

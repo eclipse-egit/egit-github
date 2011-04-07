@@ -23,5 +23,14 @@
             id="org.eclipse.mylyn.github.ui.internal.GitHubTaskEditorPageFactory">
       </pageFactory>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="org.eclipse.mylyn.github.ui.internal.GistsView"
+            id="org.eclipse.mylyn.github.ui.internal.GistsView"
+            name="Gists"
+            restorable="true">
+      </view>
+   </extension>
 </plugin>

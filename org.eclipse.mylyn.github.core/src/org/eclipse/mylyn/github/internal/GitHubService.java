@@ -611,4 +611,29 @@ public class GitHubService {
 			}
 		}
 	}
+	
+	/**
+	 * Returns all public gists of {@code user}.
+	 * 
+	 * @param user
+	 * @return
+	 * @throws GitHubServiceException
+	 */
+	public GitHubGists getPublicGists(final GitHubCredentials credentials) throws GitHubServiceException {
+		GetMethod method = null;
+		try {
+			method = new GetMethod("https://gist.github.com/api/v1/json/gists/" + credentials.getUsername());
+			httpClient.executeMethod(method);
+			return gson.fromJson(new String(method.getResponseBody()),
+					GitHubGists.class);
+		} catch (final RuntimeException runTimeException) {
+			throw runTimeException;
+		} catch (final Exception e) {
+			throw new GitHubServiceException(e);
+		} finally {
+			if (method != null) {
+				method.releaseConnection();
+			}
+		}
+	}
 }
