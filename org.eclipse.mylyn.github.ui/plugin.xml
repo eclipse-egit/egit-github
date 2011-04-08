@@ -72,5 +72,14 @@
             commandId="org.eclipse.mylyn.github.ui.command.createGist">
       </handler>
    </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.mylyn.github.ui.command.createGist"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Ctrl+G">
+      </key>
+   </extension>
 
 </plugin>
