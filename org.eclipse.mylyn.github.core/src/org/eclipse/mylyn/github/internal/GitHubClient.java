@@ -37,7 +37,7 @@ import org.apache.commons.httpclient.protocol.Protocol;
 
 /**
  * Client class for interacting with GitHub HTTP/JSON API.
- *
+ * 
  * @author Kevin Sawicki (kevin@github.com)
  */
 public class GitHubClient {
@@ -160,6 +160,19 @@ public class GitHubClient {
 			i++;
 		}
 		return pairs;
+	}
+
+	/**
+	 * Get response from uri and bind to specified type
+	 *
+	 * @param <V>
+	 * @param uri
+	 * @param type
+	 * @return V
+	 * @throws IOException
+	 */
+	public <V> V get(String uri, Type type) throws IOException {
+		return get(uri, null, type);
 	}
 
 	/**
