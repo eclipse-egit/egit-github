@@ -61,6 +61,18 @@ public class Messages extends NLS {
 	/** */
 	public static String GitHubRepositoryQueryPage_TitleLabel;
 
+	/** */
+	public static String IssueLabelAttributeEditor_ActionNewLabel;
+
+	/** */
+	public static String IssueLabelAttributeEditor_DescriptionNewLabel;
+
+	/** */
+	public static String IssueLabelAttributeEditor_MessageEnterName;
+
+	/** */
+	public static String IssueLabelAttributeEditor_TitleNewLabel;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
