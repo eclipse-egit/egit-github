@@ -16,15 +16,18 @@ import org.eclipse.mylyn.github.internal.GitHubTaskAttributes;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
 import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPart;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * Editor part for viewing a issue's labels.
- *
+ * 
  * @author Kevin Sawicki (kevin@github.com)
  */
 public class GitHubIssueLabelPart extends AbstractTaskEditorPart {
@@ -41,8 +44,17 @@ public class GitHubIssueLabelPart extends AbstractTaskEditorPart {
 		TaskAttribute labels = getTaskData().getRoot().getAttribute(
 				GitHubTaskAttributes.LABELS.getId());
 		if (labels != null) {
-			Label labelControl = toolkit.createLabel(displayArea, labels
-					.getMetaData().getLabel());
+			CLabel labelControl = new CLabel(displayArea, SWT.NONE);
+			labelControl.setText(labels.getMetaData().getLabel());
+			final Image labelImage = UIIcons.OBJ_LABEL.createImage();
+			labelControl.addDisposeListener(new DisposeListener() {
+
+				public void widgetDisposed(DisposeEvent e) {
+					labelImage.dispose();
+				}
+			});
+			labelControl.setImage(labelImage);
+			toolkit.adapt(labelControl, false, false);
 			labelControl.setForeground(toolkit.getColors().getColor(
 					IFormColors.TITLE));
 
