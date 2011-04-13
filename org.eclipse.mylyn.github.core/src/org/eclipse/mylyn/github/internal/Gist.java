@@ -53,6 +53,15 @@ public class Gist {
 	}
 
 	/**
+	 * @param isPublic
+	 * @return this gist
+	 */
+	public Gist setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+		return this;
+	}
+
+	/**
 	 * @return createdAt
 	 */
 	public Date getCreatedAt() {
@@ -74,10 +83,28 @@ public class Gist {
 	}
 
 	/**
+	 * @param files
+	 * @return this gist
+	 */
+	public Gist setFiles(Map<String, GistFile> files) {
+		this.files = files;
+		return this;
+	}
+
+	/**
 	 * @return description
 	 */
 	public String getDescription() {
 		return this.description;
+	}
+
+	/**
+	 * @param description
+	 * @return this gist
+	 */
+	public Gist setDescription(String description) {
+		this.description = description;
+		return this;
 	}
 
 	/**
@@ -120,6 +147,15 @@ public class Gist {
 	 */
 	public User getAuthor() {
 		return this.author;
+	}
+
+	/**
+	 * @param author
+	 * @return this gist
+	 */
+	public Gist setAuthor(User author) {
+		this.author = author;
+		return this;
 	}
 
 }
