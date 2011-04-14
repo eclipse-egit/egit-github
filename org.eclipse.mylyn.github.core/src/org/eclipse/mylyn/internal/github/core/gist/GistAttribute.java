@@ -58,6 +58,18 @@ public enum GistAttribute {
 			TaskAttribute.TYPE_URL, true),
 
 	/**
+	 * RAW_FILE_URL
+	 */
+	RAW_FILE_URL("github.gist.file.url", "File url", TaskAttribute.TYPE_URL,
+			true),
+
+	/**
+	 * SUMMARY
+	 */
+	SUMMARY(TaskAttribute.SUMMARY, "Summary",
+			TaskAttribute.TYPE_SHORT_RICH_TEXT, true),
+
+	/**
 	 * Gist description
 	 */
 	DESCRIPTION(TaskAttribute.DESCRIPTION,
