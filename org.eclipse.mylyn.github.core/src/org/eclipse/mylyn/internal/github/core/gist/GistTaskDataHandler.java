@@ -11,6 +11,7 @@
 package org.eclipse.mylyn.internal.github.core.gist;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -108,8 +109,9 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		mapper.setValue(key, gist.getRepo());
 
 		TaskAttribute description = GistAttribute.DESCRIPTION.create(data);
-		if(description != null)
-			mapper.setValue(description, gist.getDescription());
+		String gistDescription = gist.getDescription();
+		if (gistDescription != null)
+			mapper.setValue(description, gistDescription);
 
 		TaskAttribute created = GistAttribute.CREATED.create(data);
 		mapper.setDateValue(created, gist.getCreatedAt());
@@ -130,9 +132,13 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		}
 
 		Map<String, GistFile> files = gist.getFiles();
+		int fileCount = 0;
+		int size = 0;
 		if (files != null && !files.isEmpty()) {
 			int count = 1;
 			for (GistFile file : files.values()) {
+				fileCount++;
+				size += file.getSize();
 				TaskAttachmentMapper attachmentMapper = new TaskAttachmentMapper();
 				attachmentMapper.setFileName(file.getFilename());
 				attachmentMapper.setReplaceExisting(true);
@@ -151,6 +157,14 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		}
 
 		GistAttribute.COMMENT_NEW.create(data);
+
+		TaskAttribute summary = GistAttribute.SUMMARY.create(data);
+		StringBuilder summaryMessage = new StringBuilder();
+		if (fileCount != 1) {
+			summaryMessage.append(MessageFormat.format("{0} files", fileCount));
+		} else {
+			summaryMessage.append("1 file");
+		}
 
 		return data;
 	}
