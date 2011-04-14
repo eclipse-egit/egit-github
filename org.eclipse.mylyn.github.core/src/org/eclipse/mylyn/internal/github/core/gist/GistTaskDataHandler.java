@@ -30,8 +30,8 @@ import org.eclipse.mylyn.github.internal.User;
 import org.eclipse.mylyn.tasks.core.IRepositoryPerson;
 import org.eclipse.mylyn.tasks.core.ITaskMapping;
 import org.eclipse.mylyn.tasks.core.RepositoryResponse;
-import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.RepositoryResponse.ResponseKind;
+import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.data.AbstractTaskDataHandler;
 import org.eclipse.mylyn.tasks.core.data.TaskAttachmentMapper;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
@@ -108,8 +108,9 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		mapper.setValue(key, gist.getRepo());
 
 		TaskAttribute description = GistAttribute.DESCRIPTION.create(data);
-		if(description != null)
-			mapper.setValue(description, gist.getDescription());
+		String gistDescription = gist.getDescription();
+		if (gistDescription != null)
+			mapper.setValue(description, gistDescription);
 
 		TaskAttribute created = GistAttribute.CREATED.create(data);
 		mapper.setDateValue(created, gist.getCreatedAt());
@@ -130,9 +131,13 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		}
 
 		Map<String, GistFile> files = gist.getFiles();
+		int fileCount = 0;
+		int size = 0;
 		if (files != null && !files.isEmpty()) {
 			int count = 1;
 			for (GistFile file : files.values()) {
+				fileCount++;
+				size += file.getSize();
 				TaskAttachmentMapper attachmentMapper = new TaskAttachmentMapper();
 				attachmentMapper.setFileName(file.getFilename());
 				attachmentMapper.setReplaceExisting(true);
