@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.mylyn.github.ui.internal;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.mylyn.github.internal.GitHub;
 import org.eclipse.mylyn.tasks.ui.ITasksUiConstants;
 import org.eclipse.mylyn.tasks.ui.TasksUiUtil;
@@ -20,9 +19,7 @@ import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPageFactory;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditor;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditorInput;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.forms.editor.IFormPage;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Editor page factory for GitHub.

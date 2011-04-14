@@ -109,7 +109,8 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 
 		TaskAttribute description = GistAttribute.DESCRIPTION.create(data);
 		if(description != null)
-			mapper.setValue(description, gist.getDescription());
+			if(gist.getDescription() != null)
+				mapper.setValue(description, gist.getDescription());
 
 		TaskAttribute created = GistAttribute.CREATED.create(data);
 		mapper.setDateValue(created, gist.getCreatedAt());

@@ -15,20 +15,17 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.mylyn.github.internal.Gist;
 import org.eclipse.mylyn.github.internal.GistFile;
 import org.eclipse.mylyn.github.internal.GistService;
 import org.eclipse.mylyn.github.internal.User;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
 public class CreateGistJob extends Job {
 
 	private String title;
-	private String extension;
 	private String content;
 	private GistService service;
 	private String user;
