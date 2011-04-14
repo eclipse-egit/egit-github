@@ -15,12 +15,20 @@ package org.eclipse.mylyn.github.ui.internal;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.mylyn.github.internal.GitHub;
 import org.eclipse.mylyn.github.internal.GitHubTaskAttributes;
+import org.eclipse.mylyn.internal.tasks.ui.editors.ToolBarButtonContribution;
 import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPage;
 import org.eclipse.mylyn.tasks.ui.editors.AbstractTaskEditorPart;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditor;
 import org.eclipse.mylyn.tasks.ui.editors.TaskEditorPartDescriptor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 /**
  * Editor page for GitHub.
@@ -66,6 +74,27 @@ public class GitHubTaskEditorPage extends AbstractTaskEditorPage {
 			}
 		}.setPath(PATH_ATTRIBUTES));
 		return partDescriptors;
+	}
+
+	@Override
+	public void fillToolBar(IToolBarManager toolBarManager) {
+		super.fillToolBar(toolBarManager);
+		ToolBarButtonContribution attachContextButtonContribution = new ToolBarButtonContribution(
+				"org.eclipse.mylyn.tasks.toolbars.attachContext") { //$NON-NLS-1$
+			@Override
+			protected Control createButton(Composite composite) {
+				Button attachContextButton = new Button(composite, SWT.FLAT);
+				attachContextButton.setText(Messages.GitHubTaskEditorPage_AttachContextButton);
+				attachContextButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event e) {
+						// TODO attach context as comment
+					}
+				});
+				return attachContextButton;
+			}
+		};
+		attachContextButtonContribution.marginLeft = 10;
+		toolBarManager.add(attachContextButtonContribution);
 	}
 
 }
