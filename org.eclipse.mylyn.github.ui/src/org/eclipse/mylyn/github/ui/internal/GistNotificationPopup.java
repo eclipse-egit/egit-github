@@ -10,7 +10,13 @@
  *******************************************************************************/
 package org.eclipse.mylyn.github.ui.internal;
 
+import java.util.Set;
+
+import org.eclipse.mylyn.internal.github.core.gist.GistConnector;
 import org.eclipse.mylyn.internal.provisional.commons.ui.AbstractNotificationPopup;
+import org.eclipse.mylyn.tasks.core.TaskRepository;
+import org.eclipse.mylyn.tasks.ui.TasksUi;
+import org.eclipse.mylyn.tasks.ui.TasksUiUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -49,7 +55,11 @@ public class GistNotificationPopup extends AbstractNotificationPopup {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("https://gist.github.com/" + id);
+				Set<TaskRepository> repositories = TasksUi
+						.getRepositoryManager().getRepositories(
+								GistConnector.KIND);
+				if (!repositories.isEmpty())
+					TasksUiUtil.openTask(repositories.iterator().next(), id);
 			}
 		});
 	}
