@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL4H///wY\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-04-09T08:00:13Z",
+      "side": 1,
+      "message": "don\u0027t remove sources for Mylyn SDK",
+      "revId": "4a3420f1e65a06be3ce1ef8685e0e5df6c3b931b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAL4H///wU\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-04-09T08:00:13Z",
+      "side": 1,
+      "message": "don\u0027t remove source for extra dependencies",
+      "revId": "4a3420f1e65a06be3ce1ef8685e0e5df6c3b931b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
