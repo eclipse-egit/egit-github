@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL4H///dQ\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/IssueService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-04-13T04:51:38Z",
+      "side": 1,
+      "message": "Put most common case in if block:\n\nissue !\u003dnull ? createIssueMap(issue) : null;",
+      "revId": "a116762c6180b39c2c398c9e18382b2b29953adc",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
