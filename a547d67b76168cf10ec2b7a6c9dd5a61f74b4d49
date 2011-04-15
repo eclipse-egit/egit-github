@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL4H///cI\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/IssueService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-04-13T14:59:02Z",
+      "side": 1,
+      "message": "Needs a space between !\u003d and null",
+      "revId": "a547d67b76168cf10ec2b7a6c9dd5a61f74b4d49",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
