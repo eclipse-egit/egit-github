@@ -88,14 +88,6 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 			AbstractTaskAttachmentSource source, String comment,
 			TaskAttribute attachmentAttribute, IProgressMonitor monitor)
 			throws CoreException {
-		TaskAttachmentMapper mapper = TaskAttachmentMapper
-				.createFrom(attachmentAttribute);
-		Gist gist = new Gist().setRepo(task.getTaskId());
-		gist.setDescription(attachmentAttribute.getParentAttribute()
-				.getAttribute(GistAttribute.DESCRIPTION.getId()).getValue());
-		GistFile file = new GistFile();
-		file.setFilename(mapper.getFileName());
-		gist.setFiles(Collections.singletonMap(file.getFilename(), file));
 
 		GitHubClient client = new GitHubClient();
 		AuthenticationCredentials credentials = repository
@@ -103,8 +95,22 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 		if (credentials != null)
 			client.setCredentials(credentials.getUserName(),
 					credentials.getPassword());
-
 		GistService service = new GistService(client);
+
+		Gist gist = new Gist().setRepo(task.getTaskId());
+		GistFile file = new GistFile();
+		if(attachmentAttribute != null) {
+			gist.setDescription(attachmentAttribute.getParentAttribute()
+					.getAttribute(GistAttribute.DESCRIPTION.getId()).getValue());
+			TaskAttachmentMapper mapper = TaskAttachmentMapper
+					.createFrom(attachmentAttribute);
+			file.setFilename(mapper.getFileName());
+		} else {
+			gist.setDescription(source.getDescription());
+			file.setFilename("mylyn.context.zip");
+		}
+
+		gist.setFiles(Collections.singletonMap(file.getFilename(), file));
 		InputStream input = source.createInputStream(monitor);
 		try {
 			byte[] buffer = new byte[8192];
