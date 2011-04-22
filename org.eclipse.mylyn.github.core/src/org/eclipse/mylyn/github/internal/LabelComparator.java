@@ -10,12 +10,20 @@
  *******************************************************************************/
 package org.eclipse.mylyn.github.internal;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Label comparator using case-insensitive name comparisons.
+ * 
+ * @author Kevin Sawicki (kevin@github.com)
  */
-public class LabelComparator implements Comparator<Label> {
+public class LabelComparator implements Comparator<Label>, Serializable {
+
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -3185701121586168554L;
 
 	/**
 	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
