@@ -12,6 +12,8 @@ package org.eclipse.mylyn.github.internal;
 
 /**
  * Gist file class.
+ * 
+ * @author Kevin Sawicki (kevin@github.com)
  */
 public class GistFile {
 
@@ -20,6 +22,8 @@ public class GistFile {
 	private String content;
 
 	private String filename;
+
+	private String htmlUrl;
 
 	private String rawUrl;
 
@@ -58,6 +62,13 @@ public class GistFile {
 	 */
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	/**
+	 * @return htmlUrl
+	 */
+	public String getHtmlUrl() {
+		return this.htmlUrl;
 	}
 
 	/**
