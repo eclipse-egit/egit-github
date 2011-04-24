@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAL4n///yk\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/LabelComparator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-24T16:13:12Z",
+      "side": 1,
+      "message": "As a future note, we don\u0027t include author tags.",
+      "revId": "7a0f6de0df3f57b7c19cc4feadf02c5a64daf595",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
