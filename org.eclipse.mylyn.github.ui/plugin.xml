@@ -91,5 +91,13 @@
             overlayIcon="icons/obj16/github_8x8.png">
       </connectorUi>
    </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="org.eclipse.mylyn.github.ui.internal.ImportRepositoriesWizard"
+            id="org.eclipse.mylyn.github.ui.importWizard"
+            name="GitHub Task Repositories">
+      </wizard>
+   </extension>
 
 </plugin>
