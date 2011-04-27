@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOIX///70\u003d",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/github/internal/GistService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-27T19:07:13Z",
+      "side": 1,
+      "message": "repo should be renamed to id",
+      "revId": "c6ac5e2ea5810c23a5bbda2483bf4aaf20e12b3b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIX///7w\u003d",
+        "filename": "org.eclipse.mylyn.github.tests/src/org/eclipse/mylyn/github/internal/GistServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-27T19:07:13Z",
+      "side": 1,
+      "message": "please rename test to updateGist_NullId",
+      "revId": "c6ac5e2ea5810c23a5bbda2483bf4aaf20e12b3b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIX///7s\u003d",
+        "filename": "org.eclipse.mylyn.github.tests/src/org/eclipse/mylyn/github/internal/GistServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-27T19:07:13Z",
+      "side": 1,
+      "message": "gist.setId(\"1\");",
+      "revId": "c6ac5e2ea5810c23a5bbda2483bf4aaf20e12b3b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIX///7o\u003d",
+        "filename": "org.eclipse.mylyn.github.tests/src/org/eclipse/mylyn/github/internal/GistServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-04-27T19:07:13Z",
+      "side": 1,
+      "message": "/gists/1.json",
+      "revId": "c6ac5e2ea5810c23a5bbda2483bf4aaf20e12b3b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
