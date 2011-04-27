@@ -99,7 +99,7 @@ public class GistService {
 	 */
 	public Gist updateGist(Gist gist) throws IOException {
 		Assert.isNotNull(gist, "Gist cannot be null");
-		String repo = gist.getRepo();
+		String repo = gist.getId();
 		Assert.isNotNull(repo, "Repository cannot be null");
 		StringBuilder uri = new StringBuilder(IGitHubConstants.SEGMENT_GISTS);
 		uri.append('/').append(repo).append(IGitHubConstants.SUFFIX_JSON);
