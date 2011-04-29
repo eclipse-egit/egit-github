@@ -9,6 +9,7 @@
 <unit id="org.mockito" version="1.8.4.v201102171835"/>
 <unit id="org.objenesis" version="1.0.0.v201006030720"/>
 <unit id="org.junit" version="4.8.1.v4_8_1_v20100427-1100"/>
+<unit id="org.apache.httpcomponents.httpclient" version="4.1.0.v201101240900"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20110304120314/repository"/>
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
