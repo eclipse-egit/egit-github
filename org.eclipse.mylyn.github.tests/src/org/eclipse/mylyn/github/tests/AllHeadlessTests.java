@@ -16,14 +16,15 @@ import org.eclipse.mylyn.github.internal.GistServiceTest;
 import org.eclipse.mylyn.github.internal.IssueServiceTest;
 import org.eclipse.mylyn.github.internal.LabelServiceTest;
 import org.eclipse.mylyn.github.internal.MilestoneServiceTest;
+import org.eclipse.mylyn.github.ui.internal.GitHubRepositoryConnectorUIHeadlessTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ //
-IssueServiceTest.class, LabelServiceTest.class, MilestoneServiceTest.class,
-		GistServiceTest.class })
+@SuiteClasses({ IssueServiceTest.class, LabelServiceTest.class,
+		MilestoneServiceTest.class, GistServiceTest.class,
+		GitHubRepositoryConnectorUIHeadlessTest.class })
 public class AllHeadlessTests {
 
 }
