@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOIn///9s\u003d",
+        "filename": "org.eclipse.mylyn.github.tests/src/org/eclipse/mylyn/github/internal/PullRequestServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2011-04-29T19:03:45Z",
+      "side": 1,
+      "message": "we don\u0027t use @author tags, can you please remove it\n\nAlso the trailing whitespace :)",
+      "revId": "4e9647802e2f71a8dbffc05c45e975dcc1e17ebf",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
