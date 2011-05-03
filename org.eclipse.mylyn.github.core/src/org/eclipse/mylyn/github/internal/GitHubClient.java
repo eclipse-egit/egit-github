@@ -167,11 +167,14 @@ public class GitHubClient {
 	 * Get name value pairs for data map.
 	 * 
 	 * @param data
+	 * @param page
 	 * @return name value pair array
 	 */
-	protected NameValuePair[] getPairs(Map<String, String> data) {
+	protected NameValuePair[] getPairs(Map<String, String> data, int page) {
 		if (data == null || data.isEmpty())
-			return new NameValuePair[] { PER_PAGE_PARAM };
+			return new NameValuePair[] {
+					new NameValuePair(IGitHubConstants.PARAM_PAGE,
+							Integer.toString(page)), PER_PAGE_PARAM };
 
 		int size = data.containsKey(IGitHubConstants.PARAM_PER_PAGE) ? data
 				.size() : data.size() + 1;
@@ -185,32 +188,18 @@ public class GitHubClient {
 	}
 
 	/**
-	 * Get response from uri and bind to specified type
-	 * 
-	 * @param <V>
-	 * @param uri
-	 * @param type
-	 * @return V
-	 * @throws IOException
-	 */
-	public <V> V get(String uri, Type type) throws IOException {
-		return get(uri, null, type);
-	}
-
-	/**
 	 * Get response stream from uri. It is the responsibility of the calling
 	 * method to close the returned stream.
 	 * 
-	 * @param uri
-	 * @param params
-	 * @return V
+	 * @param request
+	 * @return stream
 	 * @throws IOException
 	 */
-	public InputStream getStream(String uri, Map<String, String> params)
-			throws IOException {
-		GetMethod method = createGet(uri);
-		method.setQueryString(getPairs(params));
-
+	public InputStream getStream(GitHubRequest request) throws IOException {
+		GetMethod method = createGet(request.getUri());
+		if (method.getQueryString() == null)
+			method.setQueryString(getPairs(request.getParams(),
+					request.getPage()));
 		try {
 			int status = this.client.executeMethod(this.hostConfig, method);
 			switch (status) {
@@ -220,6 +209,7 @@ public class GitHubClient {
 			case 401:
 			case 403:
 			case 404:
+			case 422:
 			case 500:
 				RequestError error = parseJson(method, RequestError.class);
 				throw new RequestException(error, status);
@@ -234,27 +224,26 @@ public class GitHubClient {
 	/**
 	 * Get response from uri and bind to specified type
 	 * 
-	 * @param <V>
-	 * @param uri
-	 * @param params
-	 * @param type
-	 * @return V
+	 * @param request
+	 * @return response
 	 * @throws IOException
 	 */
-	public <V> V get(String uri, Map<String, String> params, Type type)
-			throws IOException {
-		GetMethod method = createGet(uri);
-		method.setQueryString(getPairs(params));
-
+	public GitHubResponse get(GitHubRequest request) throws IOException {
+		GetMethod method = createGet(request.getUri());
+		if (method.getQueryString() == null)
+			method.setQueryString(getPairs(request.getParams(),
+					request.getPage()));
 		try {
 			int status = this.client.executeMethod(this.hostConfig, method);
 			switch (status) {
 			case 200:
-				return parseJson(method, type);
+				return new GitHubResponse(method, parseJson(method,
+						request.getType()));
 			case 400:
 			case 401:
 			case 403:
 			case 404:
+			case 422:
 			case 500:
 				RequestError error = parseJson(method, RequestError.class);
 				throw new RequestException(error, status);
@@ -301,6 +290,7 @@ public class GitHubClient {
 			case 401:
 			case 403:
 			case 404:
+			case 422:
 			case 500:
 				RequestError error = parseJson(method, RequestError.class);
 				throw new RequestException(error, status);

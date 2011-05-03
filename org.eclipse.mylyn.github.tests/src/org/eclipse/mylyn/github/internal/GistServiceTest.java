@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.mylyn.github.internal;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 import java.io.IOException;
@@ -31,10 +33,14 @@ public class GistServiceTest {
 	@Mock
 	private GitHubClient gitHubClient;
 
+	@Mock
+	private GitHubResponse response;
+
 	private GistService gistService;
 
 	@Before
-	public void before() {
+	public void before() throws IOException {
+		doReturn(response).when(gitHubClient).get(any(GitHubRequest.class));
 		gistService = new GistService(gitHubClient);
 	}
 
@@ -51,7 +57,6 @@ public class GistServiceTest {
 	@Test
 	public void getGist_OK() throws IOException {
 		gistService.getGist("1");
-		verify(gitHubClient).get("/gists/1.json", Gist.class);
+		verify(gitHubClient).get(any(GitHubRequest.class));
 	}
-
 }

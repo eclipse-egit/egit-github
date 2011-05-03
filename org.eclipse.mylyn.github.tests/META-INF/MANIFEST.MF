@@ -18,4 +18,5 @@ Bundle-Vendor: Eclipse EGit
 Import-Package: com.google.gson;version="1.6.0",
  com.google.gson.reflect;version="1.6.0",
  org.mockito;version="1.8.4",
- org.mockito.runners;version="1.8.4"
+ org.mockito.runners;version="1.8.4",
+ org.mockito.stubbing;version="1.8.4"
