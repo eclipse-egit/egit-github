@@ -88,6 +88,10 @@
       <id>codehaus.snapshots</id>
       <url>http://snapshots.repository.codehaus.org/</url>
     </pluginRepository>
+    <pluginRepository>
+      <id>tycho-snapshot</id>
+      <url>https://repository.sonatype.org/content/repositories/tycho-014/</url>
+    </pluginRepository>
   </pluginRepositories>
 
     <build>
