@@ -7,10 +7,9 @@
  *
  *  Contributors:
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
+ *    Christian Trutz
  *******************************************************************************/
 package org.eclipse.mylyn.github.internal;
-
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.Assert;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Issue service class for listing, searching, and fetching {@link Issue}
@@ -169,16 +170,17 @@ public class IssueService {
 			params.put(FIELD_BODY, issue.getBody());
 			params.put(FIELD_TITLE, issue.getTitle());
 			User assignee = issue.getAssignee();
-			if (assignee != null)
-				params.put(FILTER_ASSIGNEE, assignee.getName());
+			if (assignee != null) {
+				String assigneName = assignee.getName();
+				if (!"".equals(assigneName))
+					params.put(FILTER_ASSIGNEE, assignee.getName());
+			}
 
 			Milestone milestone = issue.getMilestone();
 			if (milestone != null) {
 				int number = milestone.getNumber();
 				if (number > 0)
 					params.put(FILTER_MILESTONE, Integer.toString(number));
-				else
-					params.put(FILTER_MILESTONE, ""); //$NON-NLS-1$
 			}
 		}
 		return params;
