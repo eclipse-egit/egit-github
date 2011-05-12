@@ -16,6 +16,24 @@
       "revId": "dd921805a75720215d3abcf844d139b671e5894f",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIn///H8\u003d",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-10T06:40:54Z",
+      "side": 1,
+      "message": "Yes, i think so, we have httpclient 3.1.0 now as transitive dependency via org.eclipse.mylyn.commons.net, but I think for httpclient 4.1.0 we need a new CQ ...",
+      "parentUuid": "AABOIn///IY\u003d",
+      "revId": "dd921805a75720215d3abcf844d139b671e5894f",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
