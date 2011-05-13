@@ -52,6 +52,24 @@
       "revId": "4242c850bb99f212b4846e2839ab1b467e7f8d75",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIn//+30\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-12T15:30:27Z",
+      "side": 1,
+      "message": "Only when running GitHubClientTest or AllHeadlessTests ... CL is required within HttpClient class initialization ... Ah i could be that you have only HttpClient 4.1 installed and not HttpClient 3.1. and HttpClient 4.1. dont use CL ...",
+      "parentUuid": "AABOIn//+38\u003d",
+      "revId": "4242c850bb99f212b4846e2839ab1b467e7f8d75",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
