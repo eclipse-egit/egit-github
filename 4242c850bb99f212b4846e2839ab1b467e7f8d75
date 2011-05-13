@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AABOIn//+4I\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-12T15:09:17Z",
+      "side": 1,
+      "message": "Hi KEvin without commons logging I get following stacktrace:\n\nCaused by: java.lang.NoClassDefFoundError: org/apache/commons/logging/LogFactory\n\tat org.apache.commons.httpclient.HttpClient.\u003cclinit\u003e(HttpClient.java:66)\n\tat org.eclipse.egit.github.core.client.GitHubClient.\u003cinit\u003e(GitHubClient.java:57)\n\n when I want to start unit tests from Eclipse (Junit view) ... :-(",
+      "parentUuid": "AABOIn//+4Q\u003d",
+      "revId": "4242c850bb99f212b4846e2839ab1b467e7f8d75",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOIn//+38\u003d",
         "filename": "org.eclipse.egit.github.core.tests/META-INF/MANIFEST.MF",
         "patchSetId": 1
