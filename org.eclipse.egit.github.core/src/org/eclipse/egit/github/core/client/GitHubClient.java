@@ -7,13 +7,9 @@
  *
  *  Contributors:
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
+ *    Christian Trutz             - HttpClient 4.1
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
-
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,53 +19,56 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.httpclient.Credentials;
-import org.apache.commons.httpclient.HostConfiguration;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpMethodBase;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-import org.apache.commons.httpclient.auth.AuthScope;
-import org.apache.commons.httpclient.auth.BasicScheme;
-import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.httpclient.protocol.Protocol;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.AuthCache;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.client.BasicAuthCache;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.eclipse.egit.github.core.Assert;
 import org.eclipse.egit.github.core.RequestError;
+
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
 
 /**
  * Client class for interacting with GitHub HTTP/JSON API.
  */
 public class GitHubClient {
 
-	private static final NameValuePair PER_PAGE_PARAM = new NameValuePair(
-			IGitHubConstants.PARAM_PER_PAGE, Integer.toString(100));
+	private static final int PER_PAGE = 100;
 
-	private static final AuthScope ANY_SCOPE = new AuthScope(
-			AuthScope.ANY_HOST, AuthScope.ANY_PORT);
+	private final HttpHost httpHost;
 
-	private HostConfiguration hostConfig;
+	private final HttpContext httpContext;
 
-	private HttpClient client = new HttpClient();
+	private final DefaultHttpClient client = new DefaultHttpClient();
 
-	private Gson gson = new GsonBuilder()
+	private final Gson gson = new GsonBuilder()
 			.registerTypeAdapter(Date.class, new DateFormatter())
 			.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 			.serializeNulls().create();
-
-	private boolean sendCredentials = false;
 
 	/**
 	 * Create default client
 	 */
 	public GitHubClient() {
-		this.hostConfig = new HostConfiguration();
-		this.hostConfig.setHost(IGitHubConstants.HOST_API, -1,
-				Protocol.getProtocol(IGitHubConstants.PROTOCOL_HTTPS));
+		this(new HttpHost(IGitHubConstants.HOST_API, -1,
+				IGitHubConstants.PROTOCOL_HTTPS));
 	}
 
 	/**
@@ -77,9 +76,15 @@ public class GitHubClient {
 	 * 
 	 * @param configuration
 	 */
-	public GitHubClient(HostConfiguration configuration) {
+	public GitHubClient(HttpHost configuration) {
 		Assert.notNull("Configuration cannot be null", configuration); //$NON-NLS-1$
-		this.hostConfig = configuration;
+		this.httpHost = configuration;
+
+		// Preemptive authentication
+		httpContext = new BasicHttpContext();
+		AuthCache authCache = new BasicAuthCache();
+		authCache.put(httpHost, new BasicScheme());
+		httpContext.setAttribute(ClientContext.AUTH_CACHE, authCache);
 	}
 
 	/**
@@ -88,9 +93,8 @@ public class GitHubClient {
 	 * @param uri
 	 * @return post
 	 */
-	protected PostMethod createPost(String uri) {
-		PostMethod method = new PostMethod(uri);
-		setMethodDefaults(method);
+	protected HttpPost createPost(String uri) {
+		HttpPost method = new HttpPost(uri);
 		return method;
 	}
 
@@ -100,24 +104,8 @@ public class GitHubClient {
 	 * @param uri
 	 * @return post
 	 */
-	protected PutMethod createPut(String uri) {
-		PutMethod method = new PutMethod(uri);
-		setMethodDefaults(method);
-		return method;
-	}
-
-	/**
-	 * Set method defaults
-	 * 
-	 * @param method
-	 * @return method
-	 */
-	protected HttpMethod setMethodDefaults(HttpMethod method) {
-		if (this.sendCredentials) {
-			method.setDoAuthentication(true);
-			method.getHostAuthState().setPreemptive();
-			method.getHostAuthState().setAuthScheme(new BasicScheme());
-		}
+	protected HttpPut createPut(String uri) {
+		HttpPut method = new HttpPut(uri);
 		return method;
 	}
 
@@ -127,10 +115,8 @@ public class GitHubClient {
 	 * @param uri
 	 * @return get method
 	 */
-	protected GetMethod createGet(String uri) {
-		GetMethod method = new GetMethod(uri);
-		method.setFollowRedirects(true);
-		setMethodDefaults(method);
+	protected HttpGet createGet(String uri) {
+		HttpGet method = new HttpGet(uri);
 		return method;
 	}
 
@@ -141,11 +127,13 @@ public class GitHubClient {
 	 * @param password
 	 */
 	public void setCredentials(String user, String password) {
-		this.sendCredentials = user != null && password != null;
-		Credentials credentials = null;
-		if (this.sendCredentials)
-			credentials = new UsernamePasswordCredentials(user, password);
-		this.client.getState().setCredentials(ANY_SCOPE, credentials);
+		if (user != null && password != null) {
+			Credentials credentials = new UsernamePasswordCredentials(user,
+					password);
+			this.client.getCredentialsProvider().setCredentials(
+					new AuthScope(httpHost.getHostName(), httpHost.getPort()),
+					credentials);
+		}
 	}
 
 	/**
@@ -157,9 +145,9 @@ public class GitHubClient {
 	 * @return type
 	 * @throws IOException
 	 */
-	protected <V> V parseJson(HttpMethodBase method, Type type)
+	protected <V> V parseJson(HttpResponse response, Type type)
 			throws IOException {
-		InputStream stream = method.getResponseBodyAsStream();
+		InputStream stream = response.getEntity().getContent();
 		if (stream == null)
 			throw new JsonParseException("Empty body"); //$NON-NLS-1$
 		InputStreamReader reader = new InputStreamReader(stream);
@@ -178,21 +166,26 @@ public class GitHubClient {
 	 * @param page
 	 * @return name value pair array
 	 */
-	protected NameValuePair[] getPairs(Map<String, String> data, int page) {
-		if (data == null || data.isEmpty())
-			return new NameValuePair[] {
-					new NameValuePair(IGitHubConstants.PARAM_PAGE,
-							Integer.toString(page)), PER_PAGE_PARAM };
-
-		int size = data.containsKey(IGitHubConstants.PARAM_PER_PAGE) ? data
-				.size() : data.size() + 1;
-		NameValuePair[] pairs = new NameValuePair[size];
-		int i = 0;
-		for (Entry<String, String> entry : data.entrySet())
-			pairs[i++] = new NameValuePair(entry.getKey(), entry.getValue());
-		if (i < size)
-			pairs[i] = PER_PAGE_PARAM;
-		return pairs;
+	protected String getPairs(Map<String, String> data, int page) {
+		StringBuilder pairs = new StringBuilder();
+		if (data == null || data.isEmpty()) {
+			pairs.append(IGitHubConstants.PARAM_PAGE).append("=").append(page);
+			pairs.append("&");
+			pairs.append(IGitHubConstants.PARAM_PER_PAGE).append("=")
+					.append(PER_PAGE);
+		} else {
+			int i = 1;
+			for (Entry<String, String> entry : data.entrySet()) {
+				String key = entry.getKey();
+				String value = entry.getValue();
+				pairs.append(key).append("=").append(value);
+				if (i < data.size()) {
+					pairs.append("&");
+				}
+				i++;
+			}
+		}
+		return pairs.toString();
 	}
 
 	/**
@@ -204,25 +197,35 @@ public class GitHubClient {
 	 * @throws IOException
 	 */
 	public InputStream getStream(GitHubRequest request) throws IOException {
-		GetMethod method = createGet(request.getUri());
-		if (method.getQueryString() == null)
-			method.setQueryString(getPairs(request.getParams(),
-					request.getPage()));
+
+		String uri = request.getUri();
+		if (!uri.contains("?")) {
+			uri = uri + "?" + getPairs(request.getParams(), request.getPage());
+		}
+		HttpGet method = createGet(uri);
+
 		try {
-			int status = this.client.executeMethod(this.hostConfig, method);
+			HttpResponse response = this.client.execute(this.httpHost, method,
+					this.httpContext);
+			StatusLine statusLine = response.getStatusLine();
+			if (statusLine == null) {
+				throw new IllegalStateException(
+						"HTTP response status line should not be null."); //$NON-NLS-1$
+			}
+			int status = statusLine.getStatusCode();
 			switch (status) {
 			case 200:
-				return method.getResponseBodyAsStream();
+				return response.getEntity().getContent();
 			case 400:
 			case 401:
 			case 403:
 			case 404:
 			case 422:
 			case 500:
-				RequestError error = parseJson(method, RequestError.class);
+				RequestError error = parseJson(response, RequestError.class);
 				throw new RequestException(error, status);
 			default:
-				throw new IOException(method.getStatusText());
+				throw new IOException(statusLine.getReasonPhrase());
 			}
 		} catch (JsonParseException jpe) {
 			throw new IOException(jpe.getMessage());
@@ -237,15 +240,23 @@ public class GitHubClient {
 	 * @throws IOException
 	 */
 	public GitHubResponse get(GitHubRequest request) throws IOException {
-		GetMethod method = createGet(request.getUri());
-		if (method.getQueryString() == null)
-			method.setQueryString(getPairs(request.getParams(),
-					request.getPage()));
+		String uri = request.getUri();
+		if (!uri.contains("?")) {
+			uri = uri + "?" + getPairs(request.getParams(), request.getPage());
+		}
+		HttpGet method = createGet(uri);
 		try {
-			int status = this.client.executeMethod(this.hostConfig, method);
+			HttpResponse response = this.client.execute(this.httpHost, method,
+					this.httpContext);
+			StatusLine statusLine = response.getStatusLine();
+			if (statusLine == null) {
+				throw new IllegalStateException(
+						"HTTP response status line should not be null."); //$NON-NLS-1$
+			}
+			int status = statusLine.getStatusCode();
 			switch (status) {
 			case 200:
-				return new GitHubResponse(method, parseJson(method,
+				return new GitHubResponse(response, parseJson(response,
 						request.getType()));
 			case 400:
 			case 401:
@@ -253,15 +264,13 @@ public class GitHubClient {
 			case 404:
 			case 422:
 			case 500:
-				RequestError error = parseJson(method, RequestError.class);
+				RequestError error = parseJson(response, RequestError.class);
 				throw new RequestException(error, status);
 			default:
-				throw new IOException(method.getStatusText());
+				throw new IOException(statusLine.getReasonPhrase());
 			}
 		} catch (JsonParseException jpe) {
 			throw new IOException(jpe.getMessage());
-		} finally {
-			method.releaseConnection();
 		}
 	}
 
@@ -275,38 +284,40 @@ public class GitHubClient {
 	 * @return resource
 	 * @throws IOException
 	 */
-	protected <V> V sendJson(EntityEnclosingMethod method, Object params,
-			Type type) throws IOException {
+	protected <V> V sendJson(HttpEntityEnclosingRequestBase method,
+			Object params, Type type) throws IOException {
 		if (params != null) {
 			StringBuilder payload = new StringBuilder();
 			this.gson.toJson(params, payload);
-			method.setRequestEntity(new StringRequestEntity(payload.toString(),
+			method.setEntity(new StringEntity(payload.toString(),
 					IGitHubConstants.CONTENT_TYPE_JSON,
 					IGitHubConstants.CHARSET_UTF8));
 		}
-
-		try {
-			int status = this.client.executeMethod(this.hostConfig, method);
-			switch (status) {
-			case 200:
-			case 201:
-				if (type != null)
-					return parseJson(method, type);
-			case 204:
-				break;
-			case 400:
-			case 401:
-			case 403:
-			case 404:
-			case 422:
-			case 500:
-				RequestError error = parseJson(method, RequestError.class);
-				throw new RequestException(error, status);
-			default:
-				throw new IOException(method.getStatusText());
-			}
-		} finally {
-			method.releaseConnection();
+		HttpResponse response = this.client.execute(this.httpHost, method,
+				this.httpContext);
+		StatusLine statusLine = response.getStatusLine();
+		if (statusLine == null) {
+			throw new IllegalStateException(
+					"HTTP response status line should not be null."); //$NON-NLS-1$
+		}
+		int status = statusLine.getStatusCode();
+		switch (status) {
+		case 200:
+		case 201:
+			if (type != null)
+				return parseJson(response, type);
+		case 204:
+			break;
+		case 400:
+		case 401:
+		case 403:
+		case 404:
+		case 422:
+		case 500:
+			RequestError error = parseJson(response, RequestError.class);
+			throw new RequestException(error, status);
+		default:
+			throw new IOException(statusLine.getReasonPhrase());
 		}
 		return null;
 	}
@@ -322,7 +333,7 @@ public class GitHubClient {
 	 * @throws IOException
 	 */
 	public <V> V post(String uri, Object params, Type type) throws IOException {
-		PostMethod method = createPost(uri);
+		HttpPost method = createPost(uri);
 		return sendJson(method, params, type);
 	}
 
@@ -337,7 +348,7 @@ public class GitHubClient {
 	 * @throws IOException
 	 */
 	public <V> V put(String uri, Object params, Type type) throws IOException {
-		PutMethod method = createPut(uri);
+		HttpPut method = createPut(uri);
 		return sendJson(method, params, type);
 	}
 
