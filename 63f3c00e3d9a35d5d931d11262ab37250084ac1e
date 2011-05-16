@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOI3///c4\u003d",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-16T19:42:10Z",
+      "side": 1,
+      "message": "please add x-friend:\u003d\"org.eclipse.mylyn.github.ui\"",
+      "revId": "63f3c00e3d9a35d5d931d11262ab37250084ac1e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///c0\u003d",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-16T19:42:10Z",
+      "side": 1,
+      "message": "please add x-friend:\u003d\"org.eclipse.mylyn.github.ui\"",
+      "revId": "63f3c00e3d9a35d5d931d11262ab37250084ac1e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
