@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOI3///lM\u003d",
+        "filename": "org.eclipse.egit.github.core/.classpath",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-15T02:59:41Z",
+      "side": 1,
+      "message": "Please revert this file for this patch.",
+      "revId": "fd23601f356e891aacd9edd7c819eed5098c6cd1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///lU\u003d",
+        "filename": "org.eclipse.egit.github.core/.settings/org.eclipse.jdt.core.prefs",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-15T02:59:41Z",
+      "side": 1,
+      "message": "Please revert this file.",
+      "revId": "fd23601f356e891aacd9edd7c819eed5098c6cd1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///lQ\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/.settings/egit-github.launch",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-15T02:59:41Z",
+      "side": 1,
+      "message": "Is this file changing required for 4.1 support?",
+      "revId": "fd23601f356e891aacd9edd7c819eed5098c6cd1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
