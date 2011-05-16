@@ -104,6 +104,24 @@
     },
     {
       "key": {
+        "uuid": "AABOI3///pU\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-05-14T21:01:28Z",
+      "side": 1,
+      "message": "The NameValuePair class exists also in 4.1. but i don\u0027t see any possibility to set query parameters as NameValuePairs. It exists only URLEncodedUtils#parse(URI,String) to parse query parameters from an existing URI ...",
+      "parentUuid": "AABOI3///v4\u003d",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOI3///v0\u003d",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
         "patchSetId": 1
