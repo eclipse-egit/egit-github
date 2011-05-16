@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOI3///vo\u003d",
+        "filename": "org.eclipse.egit.github.core/.classpath",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Please submit in a separate changeset with changes to jdt prefs file.",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///vs\u003d",
+        "filename": "org.eclipse.egit.github.core/.settings/org.eclipse.jdt.core.prefs",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Please submit this in another change directly about migrating JDT prefs to be 1.5 compliant.",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///wE\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Can you keep the imports in the original order?",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///wA\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Please change parameter name and comment to reference host instead of configuration.",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///v8\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Please retain the ability to clear the credentials by calling with null username and password",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///v4\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Use characters (\u0027\u0026\u0027) instead of single character string (\"\u0026)\n\nDoes 4.1 no longer have the NameValuePair class?",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///v0\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Don\u0027t use curly braces for single line if blocks.",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOI3///vw\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-05-14T00:43:34Z",
+      "side": 1,
+      "message": "Don\u0027t use curly braces for single line blocks.",
+      "revId": "4b3ff65c834bcf0ada3e25fd48a068b2930e923d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
