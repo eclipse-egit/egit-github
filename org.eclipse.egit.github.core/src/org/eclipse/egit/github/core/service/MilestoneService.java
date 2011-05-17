@@ -65,4 +65,28 @@ public class MilestoneService extends GitHubService {
 		getAll(request);
 		return collector.getResources();
 	}
+	
+	/**
+	 * Create a milestone
+	 * 
+	 * @param user
+	 *            must be non-null
+	 * @param repository
+	 *            must be non-null
+	 * @param milestone
+	 *            must be non-null
+	 * @return created milestone
+	 * @throws IOException
+	 */
+	public Milestone createMilestone(String user, String repository,
+			Milestone milestone) throws IOException {
+		Assert.notNull("User cannot be null", user); //$NON-NLS-1$
+		Assert.notNull("Repository cannot be null", repository); //$NON-NLS-1$
+		Assert.notNull("Milestone cannot be null", milestone); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder(IGitHubConstants.SEGMENT_REPOS);
+		uri.append('/').append(user).append('/').append(repository);
+		uri.append(IGitHubConstants.SEGMENT_MILESTONES);
+		return client.post(uri.toString(), milestone, Milestone.class);
+	}
+	
 }
