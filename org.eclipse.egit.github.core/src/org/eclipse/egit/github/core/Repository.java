@@ -169,6 +169,13 @@ public class Repository {
 	}
 
 	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
 	 * @return fork
 	 */
 	public boolean isFork() {
@@ -201,6 +208,13 @@ public class Repository {
 	 */
 	public boolean isPrivate() {
 		return this.isPrivate;
+	}
+
+	/**
+	 * @param isPrivate
+	 */
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
 	}
 
 	/**
