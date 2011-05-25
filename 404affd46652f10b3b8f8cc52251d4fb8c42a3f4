@@ -1,0 +1,10 @@
+Change-Id: I404affd46652f10b3b8f8cc52251d4fb8c42a3f4
+Code-Review+2: Chris Aniszczyk <caniszczyk@gmail.com>
+IP-Clean+1: Chris Aniszczyk <caniszczyk@gmail.com>
+Verified+1: Chris Aniszczyk <caniszczyk@gmail.com>
+Verified+1: Hudson CI
+Submitted-by: Chris Aniszczyk <caniszczyk@gmail.com>
+Submitted-at: Wed, 25 May 2011 12:32:16 -0400
+Reviewed-on: http://egit.eclipse.org/r/3531
+Project: egit-github
+Branch: refs/heads/master
