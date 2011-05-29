@@ -171,4 +171,13 @@
             icon="platform:/plugin/org.eclipse.egit.ui/icons/obj16/cloneGit.gif">
       </image>
    </extension>
+   <extension
+         point="org.eclipse.search.searchPages">
+      <page
+            class="org.eclipse.mylyn.internal.github.ui.RepositorySearchPage"
+            icon="icons/obj16/github.png"
+            id="org.eclipse.mylyn.internal.github.ui.RepositorySearchPage"
+            label="%repositorySearchPage">
+      </page>
+   </extension>
 </plugin>
