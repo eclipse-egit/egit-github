@@ -24,10 +24,12 @@ import org.eclipse.egit.github.core.Gist;
 import org.eclipse.egit.github.core.GistFile;
 import org.eclipse.egit.github.core.User;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.RequestException;
 import org.eclipse.egit.github.core.service.GistService;
 import org.eclipse.mylyn.commons.net.AuthenticationCredentials;
 import org.eclipse.mylyn.commons.net.AuthenticationType;
 import org.eclipse.mylyn.internal.github.core.GitHub;
+import org.eclipse.mylyn.internal.github.core.GitHubException;
 import org.eclipse.mylyn.internal.github.core.issue.IssueAttributeMapper;
 import org.eclipse.mylyn.tasks.core.IRepositoryPerson;
 import org.eclipse.mylyn.tasks.core.ITaskMapping;
@@ -230,6 +232,9 @@ public class GistTaskDataHandler extends AbstractTaskDataHandler {
 		if (taskData.isNew()) {
 			try {
 				gist = service.createGist(gist);
+			} catch (RequestException e) {
+				throw new CoreException(
+						GitHub.createErrorStatus(new GitHubException(e)));
 			} catch (IOException e) {
 				throw new CoreException(GitHub.createErrorStatus(e));
 			}

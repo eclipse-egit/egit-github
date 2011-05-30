@@ -19,10 +19,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.egit.github.core.Gist;
 import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.RequestException;
 import org.eclipse.egit.github.core.service.GistService;
 import org.eclipse.mylyn.commons.net.AuthenticationCredentials;
 import org.eclipse.mylyn.commons.net.AuthenticationType;
 import org.eclipse.mylyn.internal.github.core.GitHub;
+import org.eclipse.mylyn.internal.github.core.GitHubException;
 import org.eclipse.mylyn.tasks.core.AbstractRepositoryConnector;
 import org.eclipse.mylyn.tasks.core.IRepositoryQuery;
 import org.eclipse.mylyn.tasks.core.ITask;
@@ -137,6 +139,9 @@ public class GistConnector extends AbstractRepositoryConnector {
 						service.getComments(gist.getId()));
 
 			return data;
+		} catch (RequestException e) {
+			throw new CoreException(
+					GitHub.createErrorStatus(new GitHubException(e)));
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createErrorStatus(e));
 		}
@@ -205,6 +210,8 @@ public class GistConnector extends AbstractRepositoryConnector {
 				this.dataHandler.fillTaskData(repository, data, gist);
 				collector.accept(data);
 			}
+		} catch (RequestException e) {
+			status = GitHub.createErrorStatus(new GitHubException(e));
 		} catch (IOException e) {
 			status = GitHub.createErrorStatus(e);
 		}

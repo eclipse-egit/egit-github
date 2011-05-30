@@ -119,6 +119,9 @@ public class IssueConnector extends AbstractRepositoryConnector {
 			Collections.sort(labels, new LabelComparator());
 			this.repositoryLabels.put(repository, labels);
 			return labels;
+		} catch (RequestException e) {
+			throw new CoreException(
+					GitHub.createErrorStatus(new GitHubException(e)));
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createErrorStatus(e));
 		}
@@ -172,6 +175,9 @@ public class IssueConnector extends AbstractRepositoryConnector {
 			Collections.sort(milestones, new MilestoneComparator());
 			this.repositoryMilestones.put(repository, milestones);
 			return milestones;
+		} catch (RequestException e) {
+			throw new CoreException(
+					GitHub.createErrorStatus(new GitHubException(e)));
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createErrorStatus(e));
 		}
@@ -334,6 +340,9 @@ public class IssueConnector extends AbstractRepositoryConnector {
 			}
 			return taskDataHandler.createTaskData(repository, monitor,
 					repo.getOwner(), repo.getName(), issue, comments);
+		} catch (RequestException e) {
+			throw new CoreException(
+					GitHub.createErrorStatus(new GitHubException(e)));
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createErrorStatus(e));
 		}
