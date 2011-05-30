@@ -25,6 +25,7 @@ import org.eclipse.egit.github.core.service.GistService;
 import org.eclipse.mylyn.commons.net.AuthenticationCredentials;
 import org.eclipse.mylyn.commons.net.AuthenticationType;
 import org.eclipse.mylyn.internal.github.core.GitHub;
+import org.eclipse.mylyn.internal.github.core.GitHubException;
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.data.AbstractTaskAttachmentHandler;
@@ -69,7 +70,8 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 				throw new IOException("Unable to obtain raw file URL from Gist"); //$NON-NLS-1$
 			return new URL(urlAttribute.getValue()).openStream();
 		} catch (IOException e) {
-			throw new CoreException(GitHub.createErrorStatus(e));
+			throw new CoreException(GitHub.createErrorStatus(GitHubException
+					.wrap(e)));
 		}
 	}
 
@@ -111,7 +113,7 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 			file.setContent(output.toString());
 			service.updateGist(gist);
 		} catch (IOException e) {
-			throw new CoreException(GitHub.createErrorStatus(e));
+			throw new CoreException(GitHub.createWrappedStatus(e));
 		} finally {
 			try {
 				input.close();
