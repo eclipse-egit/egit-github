@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.mylyn.internal.github.core;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.ILog;
@@ -95,6 +96,16 @@ public class GitHub {
 	public static IStatus createErrorStatus(Throwable e) {
 		return createStatus(IStatus.ERROR,
 				"Unexpected error: " + e.getLocalizedMessage(), e);
+	}
+	
+	/**
+	 * Create error status from {@link IOException}
+	 * 
+	 * @param e
+	 * @return status
+	 */
+	public static IStatus createWrappedStatus(IOException e) {
+		return createErrorStatus(GitHubException.wrap(e));
 	}
 
 	/**
