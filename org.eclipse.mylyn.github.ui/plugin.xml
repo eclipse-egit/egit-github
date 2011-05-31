@@ -171,4 +171,14 @@
             icon="platform:/plugin/org.eclipse.egit.ui/icons/obj16/cloneGit.gif">
       </image>
    </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="org.eclipse.egit.ui.internal.clone.gitclonecategory"
+            class="org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard"
+            icon="icons/obj16/github.png"
+            id="org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard"
+            name="%cloneGitHubRepository">
+      </wizard>
+   </extension>
 </plugin>
