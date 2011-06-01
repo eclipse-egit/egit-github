@@ -33,6 +33,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.mylyn.internal.github.core.GitHub;
+import org.eclipse.mylyn.internal.github.core.GitHubException;
 import org.eclipse.mylyn.internal.github.core.gist.GistConnector;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
@@ -231,15 +232,17 @@ public class RepositorySelectionWizardPage extends WizardPage {
 						repoCount = repos.size();
 						updateInput(repos);
 					} catch (IOException e) {
-						throw new InvocationTargetException(e);
+						throw new InvocationTargetException(GitHubException
+								.wrap(e));
 					}
 				}
 			});
+			setErrorMessage(null);
 		} catch (InvocationTargetException e) {
 			updateInput(Collections.<Repository> emptyList());
 			setErrorMessage(MessageFormat.format(
 					Messages.RepositorySelectionWizardPage_ErrorLoading, e
-							.getTargetException().getLocalizedMessage()));
+							.getCause().getLocalizedMessage()));
 		} catch (InterruptedException ignored) {
 			// Ignored
 		}
