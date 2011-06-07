@@ -146,6 +146,44 @@ public class GistService extends GitHubService {
 	}
 
 	/**
+	 * Create page iterator for all public gists
+	 * 
+	 * @return gist page iterator
+	 */
+	public PageIterator<Gist> pagePublicGists() {
+		return pagePublicGists(PagedRequest.PAGE_SIZE);
+	}
+
+	/**
+	 * Create page iterator for all public gists
+	 * 
+	 * @param size
+	 *            size of page
+	 * @return gist page iterator
+	 */
+	public PageIterator<Gist> pagePublicGists(int size) {
+		return pagePublicGists(size, PagedRequest.PAGE_FIRST);
+	}
+
+	/**
+	 * Create page iterator for all public gists
+	 * 
+	 * @param size
+	 *            size of page
+	 * @param startPage
+	 *            starting page
+	 * @return gist page iterator
+	 */
+	public PageIterator<Gist> pagePublicGists(int size, int startPage) {
+		PagedRequest<Gist> request = createPagedRequest(startPage, size);
+		request.setUri(IGitHubConstants.SEGMENT_GISTS
+				+ IGitHubConstants.SEGMENT_PUBLIC);
+		request.setType(new TypeToken<List<Gist>>() {
+		}.getType());
+		return createPageIterator(request);
+	}
+
+	/**
 	 * Create a gist
 	 * 
 	 * @param gist
