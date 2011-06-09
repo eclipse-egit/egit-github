@@ -21,8 +21,8 @@
 <repository location="http://download.eclipse.org/mylyn/releases/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.egit.feature.group" version="0.12.1"/>
-<unit id="org.eclipse.jgit.feature.group" version="0.12.1"/>
+<unit id="org.eclipse.egit.feature.group" version="1.0.0"/>
+<unit id="org.eclipse.jgit.feature.group" version="1.0.0"/>
 <repository location="http://download.eclipse.org/egit/updates"/>
 </location>
 </locations>
