@@ -23,14 +23,20 @@ import java.lang.reflect.Type;
 import java.util.Date;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
+import org.apache.http.auth.AuthScheme;
 import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.AuthState;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.AuthCache;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
@@ -42,6 +48,7 @@ import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 import org.eclipse.egit.github.core.Assert;
 import org.eclipse.egit.github.core.RequestError;
@@ -94,6 +101,36 @@ public class GitHubClient {
 		AuthCache authCache = new BasicAuthCache();
 		authCache.put(this.httpHost, new BasicScheme());
 		httpContext.setAttribute(ClientContext.AUTH_CACHE, authCache);
+		HttpRequestInterceptor authInterceptor = new HttpRequestInterceptor() {
+			public void process(final HttpRequest request,
+					final HttpContext context) throws HttpException,
+					IOException {
+				AuthState authState = (AuthState) context
+						.getAttribute(ClientContext.TARGET_AUTH_STATE);
+				if (authState == null || authState.getAuthScheme() != null)
+					return;
+				HttpHost targetHost = (HttpHost) context
+						.getAttribute(ExecutionContext.HTTP_TARGET_HOST);
+				if (targetHost == null)
+					return;
+				AuthCache cache = (AuthCache) context
+						.getAttribute(ClientContext.AUTH_CACHE);
+				AuthScheme authScheme = cache.get(targetHost);
+				if (authScheme == null)
+					return;
+				CredentialsProvider provider = (CredentialsProvider) context
+						.getAttribute(ClientContext.CREDS_PROVIDER);
+				if (provider == null)
+					return;
+				Credentials creds = provider.getCredentials(new AuthScope(
+						targetHost.getHostName(), targetHost.getPort()));
+				if (creds == null)
+					return;
+				authState.setAuthScheme(authScheme);
+				authState.setCredentials(creds);
+			}
+		};
+		client.addRequestInterceptor(authInterceptor, 0);
 	}
 
 	/**
