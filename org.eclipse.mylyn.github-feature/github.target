@@ -10,7 +10,7 @@
 <unit id="org.objenesis" version="1.0.0.v201006030720"/>
 <unit id="org.junit" version="4.8.1.v4_8_1_v20100427-1100"/>
 <unit id="org.apache.httpcomponents.httpclient" version="4.1.0.v201101240900"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20110304120314/repository"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository"/>
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.sdk" version="3.6.2.M20110210-1200"/>
@@ -21,8 +21,8 @@
 <repository location="http://download.eclipse.org/mylyn/releases/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.egit.feature.group" version="0.12.1"/>
-<unit id="org.eclipse.jgit.feature.group" version="0.12.1"/>
+<unit id="org.eclipse.egit.feature.group" version="1.0.0"/>
+<unit id="org.eclipse.jgit.feature.group" version="1.0.0"/>
 <repository location="http://download.eclipse.org/egit/updates"/>
 </location>
 </locations>
