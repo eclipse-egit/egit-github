@@ -134,8 +134,28 @@ public class OrganizationService extends GitHubService {
 		uri.append('/').append(organization);
 		uri.append(IGitHubConstants.SEGMENT_MEMBERS);
 		PagedRequest<User> request = createPagedRequest();
+		request.setUri(uri);
 		request.setType(new TypeToken<List<User>>() {
 		}.getType());
 		return getAll(request);
+	}
+
+	/**
+	 * Check if the given user is a member of the given organization
+	 * 
+	 * @param organization
+	 * @param user
+	 * @return true if member, false if not member
+	 * @throws IOException
+	 */
+	public boolean isMember(String organization, String user)
+			throws IOException {
+		Assert.notNull("Organization cannot be null", organization); //$NON-NLS-1$
+		Assert.notNull("User cannot be null", user); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder(IGitHubConstants.SEGMENT_ORGS);
+		uri.append('/').append(organization);
+		uri.append(IGitHubConstants.SEGMENT_MEMBERS);
+		uri.append('/').append(user);
+		return check(uri.toString());
 	}
 }
