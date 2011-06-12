@@ -120,4 +120,22 @@ public class OrganizationService extends GitHubService {
 		uri.append('/').append(name);
 		return client.post(uri.toString(), organization, User.class);
 	}
+
+	/**
+	 * Get members of organization
+	 * 
+	 * @param organization
+	 * @return list of all organization members
+	 * @throws IOException
+	 */
+	public List<User> getMembers(String organization) throws IOException {
+		Assert.notNull("Organization cannot be null", organization); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder(IGitHubConstants.SEGMENT_ORGS);
+		uri.append('/').append(organization);
+		uri.append(IGitHubConstants.SEGMENT_MEMBERS);
+		PagedRequest<User> request = createPagedRequest();
+		request.setType(new TypeToken<List<User>>() {
+		}.getType());
+		return getAll(request);
+	}
 }
