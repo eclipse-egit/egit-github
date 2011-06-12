@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///rg\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/.settings/egit-github.launch",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-12T21:58:05Z",
+      "side": 0,
+      "message": "Can you remove this file from the patch?",
+      "revId": "3e6a2d2054611b7766f4e21c02a738c0d549f988",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}

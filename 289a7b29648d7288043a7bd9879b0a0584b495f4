@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///rc\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/RepositoryService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-12T21:58:05Z",
+      "side": 1,
+      "message": "This service code needs to change based on changes I\u0027ve made since you originally posted this patch, I will update to the new service call format.",
+      "revId": "289a7b29648d7288043a7bd9879b0a0584b495f4",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOKH///rY\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/plugin.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-12T21:58:05Z",
+      "side": 1,
+      "message": "I would prefer we don\u0027t register the wizard until it is fully functional so users on the nightly aren\u0027t confused.",
+      "revId": "289a7b29648d7288043a7bd9879b0a0584b495f4",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
