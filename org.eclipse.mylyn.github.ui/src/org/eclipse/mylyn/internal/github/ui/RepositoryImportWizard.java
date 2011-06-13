@@ -10,8 +10,25 @@
  *******************************************************************************/
 package org.eclipse.mylyn.internal.github.ui;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
+import java.util.Collection;
+import java.util.Collections;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.egit.core.Activator;
+import org.eclipse.egit.core.RepositoryUtil;
+import org.eclipse.egit.core.op.CloneOperation;
+import org.eclipse.egit.github.core.Repository;
+import org.eclipse.egit.ui.UIPreferences;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jgit.lib.Constants;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.transport.URIish;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
 
@@ -19,6 +36,11 @@ import org.eclipse.ui.IWorkbench;
  * {@link IImportWizard} for cloning GitHub repositories.
  */
 public class RepositoryImportWizard extends Wizard implements IImportWizard {
+
+	/**
+	 * 
+	 */
+	private RepositorySearchWizardPage repositorySearchWizardPage = new RepositorySearchWizardPage();
 
 	/**
 	 * {@inheritDoc}
@@ -31,7 +53,7 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 	 */
 	@Override
 	public void addPages() {
-		addPage(new RepositorySearchWizardPage());
+		addPage(repositorySearchWizardPage);
 	}
 
 	/**
@@ -39,7 +61,44 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		// TODO clone GitHub repositotry via egit
+		try {
+			Repository repository = repositorySearchWizardPage.getRepository();
+			String repoName = repository.toString();
+			URIish uri = new URIish("git://github.com/" + repoName
+					+ Constants.DOT_GIT);
+			boolean allSelected = true;
+			Collection<Ref> selectedBranches = Collections.emptyList();
+			IPreferenceStore preferenceStore = org.eclipse.egit.ui.Activator
+					.getDefault().getPreferenceStore();
+			int timeout = preferenceStore
+					.getInt(UIPreferences.REMOTE_CONNECTION_TIMEOUT);
+			String defaultRepoDir = preferenceStore
+					.getString(UIPreferences.DEFAULT_REPO_DIR);
+			final CloneOperation cloneOperation = new CloneOperation(uri,
+					allSelected, selectedBranches, new File(defaultRepoDir
+							+ File.separator + repoName), Constants.R_HEADS
+							+ Constants.MASTER, Constants.DEFAULT_REMOTE_NAME,
+					timeout);
+			getContainer().run(false, false, new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor)
+						throws InvocationTargetException, InterruptedException {
+					cloneOperation.run(monitor);
+					RepositoryUtil repositoryUtil = Activator.getDefault()
+							.getRepositoryUtil();
+					repositoryUtil.addConfiguredRepository(cloneOperation
+							.getGitDir());
+				}
+			});
+		} catch (URISyntaxException uriSyntaxException) {
+			GitHubUi.logError(uriSyntaxException);
+			return false;
+		} catch (InvocationTargetException invocationTargetException) {
+			GitHubUi.logError(invocationTargetException);
+			return false;
+		} catch (InterruptedException interruptedException) {
+			GitHubUi.logError(interruptedException);
+			return false;
+		}
 		return true;
 	}
 
