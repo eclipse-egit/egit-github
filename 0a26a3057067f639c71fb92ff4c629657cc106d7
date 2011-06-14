@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///3c\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-06-09T22:28:54Z",
+      "side": 1,
+      "message": "in jgit and egit we use version ranges like [1.0.0,1.1.0) for all package dependencies inside jgit/egit projects instead",
+      "revId": "0a26a3057067f639c71fb92ff4c629657cc106d7",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}

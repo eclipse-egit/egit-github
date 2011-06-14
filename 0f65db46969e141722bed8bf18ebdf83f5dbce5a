@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///3Y\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-06-09T22:28:54Z",
+      "side": 0,
+      "message": "this drop doesn\u0027t exist anymore, replace it with the same one used in the maven build",
+      "revId": "0f65db46969e141722bed8bf18ebdf83f5dbce5a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
