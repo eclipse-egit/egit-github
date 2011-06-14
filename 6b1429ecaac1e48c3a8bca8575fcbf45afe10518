@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///wk\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-06-10T18:43:22Z",
+      "side": 1,
+      "message": "jgit/egit 1.0 are not yet available from http://download.eclipse.org/egit/updates",
+      "revId": "6b1429ecaac1e48c3a8bca8575fcbf45afe10518",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOKH///wg\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-06-10T18:43:22Z",
+      "side": 1,
+      "message": "I think egit and jgit dependencies should also allow range [1.0,1.1) assuming we follow API rules all versions in this range should be compatible",
+      "revId": "6b1429ecaac1e48c3a8bca8575fcbf45afe10518",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
