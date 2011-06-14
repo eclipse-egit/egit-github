@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///jI\u003d",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2011-06-14T15:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOKH///jc\u003d",
+      "revId": "1e558ff86addeaae3601e35d6c5ca2f03129aa18",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
