@@ -232,22 +232,4 @@ public class OrganizationService extends GitHubService {
 		uri.append('/').append(user);
 		client.delete(uri.toString());
 	}
-
-	/**
-	 * Remove the given member from the given organization
-	 * 
-	 * @param organization
-	 * @param user
-	 * @throws IOException
-	 */
-	public void removeMember(String organization, String user)
-			throws IOException {
-		Assert.notNull("Organization cannot be null", organization); //$NON-NLS-1$
-		Assert.notNull("User cannot be null", user); //$NON-NLS-1$
-		StringBuilder uri = new StringBuilder(IGitHubConstants.SEGMENT_ORGS);
-		uri.append('/').append(organization);
-		uri.append(IGitHubConstants.SEGMENT_MEMBERS);
-		uri.append('/').append(user);
-		client.delete(uri.toString());
-	}
 }
