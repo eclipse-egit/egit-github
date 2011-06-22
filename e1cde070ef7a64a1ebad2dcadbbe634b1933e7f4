@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOAH////w\u003d",
+        "filename": "org.eclipse.egit.github.core/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-20T16:12:58Z",
+      "side": 1,
+      "message": "I think this can be removed and just have the parent version specified.",
+      "revId": "e1cde070ef7a64a1ebad2dcadbbe634b1933e7f4",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOAH////s\u003d",
+        "filename": "org.eclipse.mylyn.github.core/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-20T16:12:58Z",
+      "side": 1,
+      "message": "I think this can be removed and just have the parent version specified.",
+      "revId": "e1cde070ef7a64a1ebad2dcadbbe634b1933e7f4",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
