@@ -16,6 +16,24 @@
       "revId": "e74b42b63f67f5dd6aee3997a22ec6a40d16a2bf",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOKH///b4\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositoryImportWizard.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 210
+      },
+      "writtenOn": "2011-06-16T07:27:22Z",
+      "side": 1,
+      "message": "OK, a good idea ...",
+      "parentUuid": "AABOKH///hE\u003d",
+      "revId": "e74b42b63f67f5dd6aee3997a22ec6a40d16a2bf",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
