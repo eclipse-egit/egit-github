@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOKH///oc\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositoryImportWizard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-06-13T20:05:08Z",
+      "side": 1,
+      "message": "Please use constants from JGit Constants class.",
+      "revId": "0e49c446d1ccde1e56f4c00e9bde87e28244a854",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
