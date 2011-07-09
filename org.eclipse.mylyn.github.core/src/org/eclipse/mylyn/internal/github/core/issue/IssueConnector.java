@@ -87,7 +87,7 @@ public class IssueConnector extends AbstractRepositoryConnector {
 		if (credentials != null)
 			client.setCredentials(credentials.getUserName(),
 					credentials.getPassword());
-		return client;
+		return GitHub.configureClient(client);
 	}
 
 	/**
