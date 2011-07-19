@@ -265,4 +265,8 @@ public interface IGitHubConstants {
 	 */
 	String SUFFIX_GIT = ".git"; //$NON-NLS-1$
 
+	/**
+	 * AUTH_TOKEN
+	 */
+	String AUTH_TOKEN = "token"; //$NON-NLS-1$
 }
