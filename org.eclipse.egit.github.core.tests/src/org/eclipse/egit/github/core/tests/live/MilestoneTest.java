@@ -41,7 +41,8 @@ public class MilestoneTest extends LiveTest {
 		Milestone m = new Milestone();
 		m.setDescription("desc " + System.currentTimeMillis());
 		m.setTitle("Title " + System.currentTimeMillis());
-		m.setDueOn(new Date((System.currentTimeMillis() / 1000) * 1000));
+		m.setDueOn(new Date(((System.currentTimeMillis() / 1000) * 1000)
+				+ (60 * 60 * 1000 * 48)));
 		MilestoneService service = new MilestoneService(client);
 		Milestone created = service.createMilestone(client.getUser(),
 				writableRepo, m);
