@@ -23,7 +23,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.TimeZone;
 
@@ -33,7 +32,7 @@ import java.util.TimeZone;
 public class DateFormatter implements JsonDeserializer<Date>,
 		JsonSerializer<Date> {
 
-	private final Deque<DateFormat> formats;
+	private final LinkedList<DateFormat> formats;
 
 	/**
 	 * Create date formatter
