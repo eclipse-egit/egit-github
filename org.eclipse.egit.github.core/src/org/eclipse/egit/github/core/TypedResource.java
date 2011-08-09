@@ -10,48 +10,28 @@
  *****************************************************************************/
 package org.eclipse.egit.github.core;
 
-import java.util.List;
-
 /**
- * Tree model class
+ * Resource that has type and URL fields
  */
-public class Tree {
+public class TypedResource extends ShaResource {
 
-	private List<TreeEntry> tree;
-
-	private String sha;
+	private String type;
 
 	private String url;
 
 	/**
-	 * @return tree
+	 * @return type
 	 */
-	public List<TreeEntry> getTree() {
-		return tree;
+	public String getType() {
+		return type;
 	}
 
 	/**
-	 * @param tree
-	 * @return this tree
+	 * @param type
+	 * @return this resource
 	 */
-	public Tree setTree(List<TreeEntry> tree) {
-		this.tree = tree;
-		return this;
-	}
-
-	/**
-	 * @return sha
-	 */
-	public String getSha() {
-		return sha;
-	}
-
-	/**
-	 * @param sha
-	 * @return this tree
-	 */
-	public Tree setSha(String sha) {
-		this.sha = sha;
+	public TypedResource setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -64,9 +44,9 @@ public class Tree {
 
 	/**
 	 * @param url
-	 * @return this tree
+	 * @return this resource
 	 */
-	public Tree setUrl(String url) {
+	public TypedResource setUrl(String url) {
 		this.url = url;
 		return this;
 	}
