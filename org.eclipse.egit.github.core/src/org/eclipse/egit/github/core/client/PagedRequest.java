@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 /**
  * Paged request class that contains the initial page size and page number of
@@ -63,20 +61,6 @@ public class PagedRequest<V> extends GitHubRequest {
 		return pageSize;
 	}
 
-	@Override
-	protected List<NameValuePair> getPairs(Map<String, String> data) {
-		List<NameValuePair> pairs = super.getPairs(data);
-		int size = getPageSize();
-		if (size > 0)
-			pairs.add(new BasicNameValuePair(IGitHubConstants.PARAM_PER_PAGE,
-					Integer.toString(size)));
-		int number = getPage();
-		if (number > 0)
-			pairs.add(new BasicNameValuePair(IGitHubConstants.PARAM_PAGE,
-					Integer.toBinaryString(number)));
-		return pairs;
-	}
-
 	/**
 	 * @return page
 	 */
@@ -84,4 +68,21 @@ public class PagedRequest<V> extends GitHubRequest {
 		return page;
 	}
 
+	@Override
+	public Map<String, String> getParams() {
+		return (super.getParams() == null) ? new HashMap<String, String>() : super.getParams();
+	}
+
+	@Override
+	public String generateUri() {
+		final HashMap<String, String> newParams = new HashMap<String, String>();
+		newParams.putAll(getParams());
+		if (!newParams.containsKey(IGitHubConstants.PARAM_PAGE)
+				|| !newParams.containsKey(IGitHubConstants.PARAM_PER_PAGE)) {
+			newParams.put(IGitHubConstants.PARAM_PAGE, Integer.toString(page));
+			newParams.put(IGitHubConstants.PARAM_PER_PAGE, Integer.toString(pageSize));
+		}
+		setParams(newParams);
+		return super.generateUri();
+	}
 }

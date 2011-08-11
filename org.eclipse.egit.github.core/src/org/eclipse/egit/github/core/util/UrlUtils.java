@@ -13,8 +13,6 @@ package org.eclipse.egit.github.core.util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import org.apache.http.protocol.HTTP;
-
 /**
  * URL utilities
  */
@@ -28,7 +26,7 @@ public abstract class UrlUtils {
 	 */
 	public static String encode(String url) {
 		try {
-			return URLEncoder.encode(url, HTTP.DEFAULT_CONTENT_CHARSET);
+			return URLEncoder.encode(url, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			throw new IllegalArgumentException(e);
 		}

@@ -18,8 +18,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.eclipse.egit.github.core.IResourceProvider;
 
 /**
@@ -83,9 +81,18 @@ public class PageIterator<V> implements Iterator<Collection<V>>,
 		if (uri == null || uri.length() == 0)
 			return -1;
 		try {
-			for (NameValuePair pair : URLEncodedUtils.parse(new URI(uri), null))
-				if (IGitHubConstants.PARAM_PAGE.equals(pair.getName()))
-					return Integer.parseInt(pair.getValue());
+			final URI indicator = new URI(uri);
+			if (indicator != null && indicator.getQuery() != null) {
+				String query[] = indicator.getQuery().split("&");
+				for (int i = 0; i < query.length; i++) {
+					String pair[] = query[i].split("=");
+					if (pair.length == 2) {
+						if (IGitHubConstants.PARAM_PAGE.equals(pair[0])) {
+							return Integer.parseInt(pair[1]);
+						}
+					}
+				}
+			}
 		} catch (URISyntaxException e) {
 			return -1;
 		} catch (NumberFormatException nfe) {
