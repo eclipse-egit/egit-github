@@ -10,13 +10,13 @@
  *****************************************************************************/
 package org.eclipse.egit.github.core.client;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.Date;
+
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Gson utilities.

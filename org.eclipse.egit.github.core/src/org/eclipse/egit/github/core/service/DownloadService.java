@@ -10,33 +10,33 @@
  *****************************************************************************/
 package org.eclipse.egit.github.core.service;
 
-import com.google.gson.reflect.TypeToken;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.ProxySelector;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.util.List;
 
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.InputStreamBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+
 import org.eclipse.egit.github.core.Assert;
 import org.eclipse.egit.github.core.Download;
 import org.eclipse.egit.github.core.DownloadResource;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpResponse;
 import org.eclipse.egit.github.core.client.IGitHubConstants;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
+import org.eclipse.egit.github.core.service.GitHubService;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Service for accessing, creating, and deleting repositories downloads.
@@ -82,24 +82,6 @@ public class DownloadService extends GitHubService {
 	 * UPLOAD_FILE
 	 */
 	public static final String UPLOAD_FILE = "file"; //$NON-NLS-1$
-
-	private static class SizedInputStreamBody extends InputStreamBody {
-
-		private final long size;
-
-		/**
-		 * @param in
-		 * @param size
-		 */
-		public SizedInputStreamBody(InputStream in, long size) {
-			super(in, null);
-			this.size = size;
-		}
-
-		public long getContentLength() {
-			return size;
-		}
-	}
 
 	/**
 	 * @param client
@@ -249,32 +231,52 @@ public class DownloadService extends GitHubService {
 	public void uploadResource(DownloadResource resource, InputStream content,
 			long size) throws IOException {
 		Assert.notNull("Download resource cannot be null", resource);
-		DefaultHttpClient client = new DefaultHttpClient();
-		client.setRoutePlanner(new ProxySelectorRoutePlanner(client
-				.getConnectionManager().getSchemeRegistry(), ProxySelector
-				.getDefault()));
 
-		HttpPost post = new HttpPost(resource.getS3Url());
-		MultipartEntity entity = new MultipartEntity();
-		entity.addPart(UPLOAD_KEY, new StringBody(resource.getPath()));
-		entity.addPart(UPLOAD_ACL, new StringBody(resource.getAcl()));
-		entity.addPart(UPLOAD_SUCCESS_ACTION_STATUS,
-				new StringBody(Integer.toString(HttpStatus.SC_CREATED)));
-		entity.addPart(UPLOAD_FILENAME, new StringBody(resource.getName()));
-		entity.addPart(UPLOAD_AWS_ACCESS_KEY_ID,
-				new StringBody(resource.getAccesskeyid()));
-		entity.addPart(UPLOAD_POLICY, new StringBody(resource.getPolicy()));
-		entity.addPart(UPLOAD_SIGNATURE,
-				new StringBody(resource.getSignature()));
-		entity.addPart(HttpHeaders.CONTENT_TYPE,
-				new StringBody(resource.getMimeType()));
-		entity.addPart(UPLOAD_FILE, new SizedInputStreamBody(content, size));
-		post.setEntity(entity);
+		HttpsURLConnection conn = (HttpsURLConnection)new URL(resource.getS3Url()).openConnection();
 
-		HttpResponse response = client.execute(post);
-		int status = response.getStatusLine().getStatusCode();
-		if (status != HttpStatus.SC_CREATED)
-			throw new IOException("Unexpected response status of " + status); //$NON-NLS-1$
+		conn.setHostnameVerifier(new HostnameVerifier() {
+			public boolean verify(String hostname, SSLSession session) {
+				// "Liberal" Hostname Verifier
+				return true;
+			}
+		});
+
+		conn.setRequestMethod("POST");
+		conn.setDoOutput(true);
+
+		String params = UPLOAD_KEY + "=" + resource.getPath()
+				+ "&" + UPLOAD_ACL + "=" + resource.getAcl()
+				+ "&" + UPLOAD_SUCCESS_ACTION_STATUS + "=" + HttpsURLConnection.HTTP_CREATED
+				+ "&" + UPLOAD_FILENAME + "=" + resource.getName()
+				+ "&" + UPLOAD_AWS_ACCESS_KEY_ID + "=" + resource.getAccesskeyid()
+				+ "&" + UPLOAD_POLICY + "=" + resource.getPolicy()
+				+ "&" + UPLOAD_SIGNATURE + "=" + resource.getSignature()
+				+ "&" + "Content-Type" + "=" + resource.getMimeType()
+				+ "&" + UPLOAD_FILE + "=";
+
+		final BufferedReader fileReader = new BufferedReader(new InputStreamReader(content));
+		char c;
+		while ((c = (char)fileReader.read()) != -1) {
+			params += c;
+		}
+
+		conn.connect();
+
+		OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+		out.write(params);
+		out.flush();
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		StringBuilder sb = new StringBuilder();
+		for (String line = in.readLine(); line != null; line = in.readLine()) {
+			sb.append(line + '\n');
+		}
+		final HttpResponse response = new HttpResponse(sb.toString(), conn.getResponseCode(),
+				conn.getResponseMessage(), conn.getHeaderFields());
+		conn.disconnect();
+		if (response.getStatusCode() != HttpsURLConnection.HTTP_CREATED)
+			throw new IOException("Unexpected response status of "
+					+ response.getStatusCode()); //$NON-NLS-1$
 	}
 
 	/**

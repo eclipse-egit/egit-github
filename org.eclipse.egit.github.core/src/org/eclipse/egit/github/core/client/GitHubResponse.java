@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
-import org.apache.http.HttpResponse;
 
 /**
  * GitHub API response class.

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.service;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,6 +27,8 @@ import org.eclipse.egit.github.core.client.GitHubRequest;
 import org.eclipse.egit.github.core.client.IGitHubConstants;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Service class for creating, updating, getting, and listing pull requests as
