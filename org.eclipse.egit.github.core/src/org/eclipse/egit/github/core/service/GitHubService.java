@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpStatus;
+import javax.net.ssl.HttpsURLConnection;
+
 import org.eclipse.egit.github.core.Assert;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.client.GitHubClient;
@@ -121,7 +122,7 @@ public abstract class GitHubService {
 			client.get(new GitHubRequest().setUri(uri));
 			return true;
 		} catch (RequestException e) {
-			if (e.getStatus() == HttpStatus.SC_NOT_FOUND)
+			if (e.getStatus() == HttpsURLConnection.HTTP_NOT_FOUND)
 				return false;
 			throw e;
 		}

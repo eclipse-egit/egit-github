@@ -10,12 +10,12 @@
  *****************************************************************************/
 package org.eclipse.egit.github.core;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.Date;
 
 import org.eclipse.egit.github.core.client.IGitHubConstants;
 import org.eclipse.egit.github.core.util.DateUtils;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Repository model class

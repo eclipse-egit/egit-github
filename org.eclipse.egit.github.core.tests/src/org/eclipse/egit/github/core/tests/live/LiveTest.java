@@ -13,6 +13,7 @@ package org.eclipse.egit.github.core.tests.live;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.apache.http.HttpHost;
@@ -54,14 +55,13 @@ public abstract class LiveTest {
 	 * @param url
 	 * @return client
 	 * @throws IOException
+	 * @throws URISyntaxException
 	 */
-	protected GitHubClient createClient(String url) throws IOException {
+	protected GitHubClient createClient(String url) throws IOException, URISyntaxException {
 		GitHubClient client = null;
 		if (url != null) {
 			URL parsed = new URL(url);
-			HttpHost httpHost = new HttpHost(parsed.getHost(),
-					parsed.getPort(), parsed.getProtocol());
-			client = new GitHubClient(httpHost);
+			client = new GitHubClient(parsed.toURI());
 		} else
 			client = new GitHubClient();
 		return configure(client);

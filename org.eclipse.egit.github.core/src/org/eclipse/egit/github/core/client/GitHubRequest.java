@@ -11,14 +11,7 @@
 package org.eclipse.egit.github.core.client;
 
 import java.lang.reflect.Type;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.message.BasicNameValuePair;
 
 /**
  * GitHub API request class.
@@ -39,21 +32,6 @@ public class GitHubRequest {
 	}
 
 	/**
-	 * Get name value pairs for data map.
-	 * 
-	 * @param data
-	 * @return name value pair array
-	 */
-	protected List<NameValuePair> getPairs(Map<String, String> data) {
-		List<NameValuePair> pairs = new LinkedList<NameValuePair>();
-		if (data != null && !data.isEmpty())
-			for (Entry<String, String> entry : data.entrySet())
-				pairs.add(new BasicNameValuePair(entry.getKey(), entry
-						.getValue()));
-		return pairs;
-	}
-
-	/**
 	 * Generate full uri
 	 * 
 	 * @return uri
@@ -61,8 +39,19 @@ public class GitHubRequest {
 	public String generateUri() {
 		if (uri.indexOf('?') != -1)
 			return uri;
-		String params = URLEncodedUtils.format(getPairs(getParams()), null);
-		return uri + '?' + params;
+		String query = "";
+		if (params != null) {
+			int keyCount = params.keySet().size();
+			for (int i = 0; i < keyCount; i++) {
+				if (i != 0)
+					query += "&";
+				query += params.keySet().toArray()[i] + "=" + params.values().toArray()[i];
+			}
+		}
+		if (query.length() > 0)
+			return uri + '?' + query;
+		else
+			return uri;
 	}
 
 	/**
