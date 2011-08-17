@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.eclipse.mylyn.github</groupId>
+	<artifactId>org.eclipse.egit.github.core</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+	<name>Eclipse EGit GitHub API Core</name>
+
+	<build>
+		<sourceDirectory>src/</sourceDirectory>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>translate-source-qualifier</id>
+						<phase>generate-resources</phase>
+						<configuration>
+							<tasks>
+								<copy file="META-INF/MANIFEST.MF" tofile="${source-bundle-manifest}"
+									overwrite="true" />
+								<replace file="${source-bundle-manifest}">
+									<replacefilter token=".qualifier" value=".${maven.build.timestamp}" />
+								</replace>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>[4.1,5.0)</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>[4.1,5.0)</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>[4.1,5.0)</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>[1.6,2.0)</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+</project>
