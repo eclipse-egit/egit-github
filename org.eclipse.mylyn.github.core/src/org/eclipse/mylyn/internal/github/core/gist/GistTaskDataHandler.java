@@ -224,10 +224,11 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 		GitHubClient client = new GitHubClient();
 		AuthenticationCredentials credentials = repository
 				.getCredentials(AuthenticationType.REPOSITORY);
+		String clientUser = null;
 		if (credentials != null) {
-			client.setCredentials(credentials.getUserName(),
-					credentials.getPassword());
-			gist.setUser(new User().setLogin(credentials.getUserName()));
+			clientUser = credentials.getUserName();
+			client.setCredentials(clientUser, credentials.getPassword());
+			gist.setUser(new User().setLogin(clientUser));
 		}
 
 		GistService service = new GistService(client);
@@ -251,8 +252,10 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 						.getValue();
 				if (newComment.length() > 0)
 					service.createComment(taskData.getTaskId(), newComment);
-
-				service.updateGist(gist);
+				String author = GistAttribute.AUTHOR.getMetadata().getValue(
+						taskData);
+				if (author.length() > 0 && author.equals(clientUser))
+					service.updateGist(gist);
 			} catch (IOException e) {
 				throw new CoreException(GitHub.createWrappedStatus(e));
 			}
