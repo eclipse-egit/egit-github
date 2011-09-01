@@ -84,6 +84,7 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 	 */
 	public TaskData fillTaskData(TaskRepository repository, TaskData data,
 			Gist gist) {
+		boolean isOwner = isOwner(repository, gist.getUser());
 		TaskAttributeMapper mapper = data.getAttributeMapper();
 
 		TaskAttribute key = GistAttribute.KEY.getMetadata().create(data);
@@ -91,8 +92,7 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 
 		TaskAttribute description = GistAttribute.DESCRIPTION.getMetadata()
 				.create(data);
-		description.getMetaData().setReadOnly(
-				!isOwner(repository, gist.getUser()));
+		description.getMetaData().setReadOnly(!isOwner);
 		String gistDescription = gist.getDescription();
 		if (gistDescription != null)
 			mapper.setValue(description, gistDescription);
@@ -110,7 +110,10 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 
 		TaskAttribute pullUrl = GistAttribute.CLONE_URL.getMetadata().create(
 				data);
-		pullUrl.setValue(gist.getGitPushUrl());
+		if (isOwner)
+			pullUrl.setValue(gist.getGitPushUrl());
+		else
+			pullUrl.setValue(gist.getGitPullUrl());
 
 		IRepositoryPerson reporterPerson = null;
 		User user = gist.getUser();
