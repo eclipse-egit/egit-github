@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
+import static org.eclipse.egit.github.core.FieldError.CODE_INVALID;
+import static org.eclipse.egit.github.core.FieldError.CODE_MISSING_FIELD;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.List;
@@ -18,9 +21,7 @@ import org.eclipse.egit.github.core.FieldError;
 import org.eclipse.egit.github.core.RequestError;
 
 /**
- * Request exception class that wraps an {@link RequestError} object.
- *
- * @author Kevin Sawicki (kevin@github.com)
+ * Request exception class that wraps a {@link RequestError} object.
  */
 public class RequestException extends IOException {
 
@@ -37,8 +38,8 @@ public class RequestException extends IOException {
 	 */
 	private static final long serialVersionUID = 1197051396535284852L;
 
-	private RequestError error;
-	private int status;
+	private final RequestError error;
+	private final int status;
 
 	/**
 	 * Create request exception
@@ -50,6 +51,10 @@ public class RequestException extends IOException {
 		super();
 		this.error = error;
 		this.status = status;
+	}
+
+	public String getMessage() {
+		return error != null ? formatErrors() : super.getMessage();
 	}
 
 	/**
@@ -80,13 +85,13 @@ public class RequestException extends IOException {
 		String code = error.getCode();
 		String value = error.getValue();
 		String field = error.getField();
-		if (FieldError.CODE_INVALID.equals(code))
+		if (CODE_INVALID.equals(code))
 			if (value != null)
 				return MessageFormat.format(FIELD_INVALID_WITH_VALUE, value,
 						field);
 			else
 				return MessageFormat.format(FIELD_INVALID, field);
-		else if (FieldError.CODE_MISSING_FIELD.equals(code))
+		if (CODE_MISSING_FIELD.equals(code))
 			return MessageFormat.format(FIELD_MISSING, field);
 		else
 			return MessageFormat
@@ -94,7 +99,7 @@ public class RequestException extends IOException {
 	}
 
 	/**
-	 * Format all fields error into single human-readable message.
+	 * Format all field errors into single human-readable message.
 	 *
 	 * @return formatted message
 	 */
