@@ -11,7 +11,8 @@
 package org.eclipse.egit.github.core.client;
 
 import java.lang.reflect.Type;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -47,29 +48,34 @@ public class GitHubRequest {
 
 	/**
 	 * Get name value pairs for data map.
-	 * 
+	 *
 	 * @param data
 	 * @return name value pair array
 	 */
 	protected List<NameValuePair> getPairs(Map<String, String> data) {
-		List<NameValuePair> pairs = new LinkedList<NameValuePair>();
-		if (data != null && !data.isEmpty())
-			for (Entry<String, String> entry : data.entrySet())
-				pairs.add(new BasicNameValuePair(entry.getKey(), entry
-						.getValue()));
+		if (data == null || data.isEmpty())
+			return Collections.emptyList();
+		List<NameValuePair> pairs = new ArrayList<NameValuePair>(data.size());
+		for (Entry<String, String> entry : data.entrySet())
+			pairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
 		return pairs;
 	}
 
 	/**
 	 * Generate full uri
-	 * 
+	 *
 	 * @return uri
 	 */
 	public String generateUri() {
+		if (uri == null)
+			return null;
 		if (uri.indexOf('?') != -1)
 			return uri;
 		String params = URLEncodedUtils.format(getPairs(getParams()), null);
-		return uri + '?' + params;
+		if (params != null && params.length() > 0)
+			return uri + '?' + params;
+		else
+			return uri;
 	}
 
 	/**
@@ -119,5 +125,25 @@ public class GitHubRequest {
 	public GitHubRequest setType(Type type) {
 		this.type = type;
 		return this;
+	}
+
+	public int hashCode() {
+		final String fullUri = generateUri();
+		return fullUri != null ? fullUri.hashCode() : super.hashCode();
+	}
+
+	public boolean equals(final Object obj) {
+		if (obj == this)
+			return true;
+		if (!(obj instanceof GitHubRequest))
+			return false;
+		final String fullUri = generateUri();
+		final String objUri = ((GitHubRequest) obj).generateUri();
+		return fullUri != null && objUri != null && fullUri.equals(objUri);
+	}
+
+	public String toString() {
+		final String fullUri = generateUri();
+		return fullUri != null ? fullUri : super.toString();
 	}
 }
