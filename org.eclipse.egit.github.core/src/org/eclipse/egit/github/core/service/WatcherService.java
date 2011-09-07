@@ -121,10 +121,9 @@ public class WatcherService extends GitHubService {
 	 * @param start
 	 * @param size
 	 * @return page iterator
-	 * @throws IOException
 	 */
 	public PageIterator<User> pageWatchers(IRepositoryIdProvider repository,
-			int start, int size) throws IOException {
+			int start, int size) {
 		PagedRequest<User> request = createWatcherRequest(repository, start,
 				size);
 		return createPageIterator(request);
@@ -297,7 +296,7 @@ public class WatcherService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_USER);
 		uri.append(SEGMENT_WATCHED);
 		uri.append('/').append(id);
-		client.put(uri.toString(), null, null);
+		client.put(uri.toString());
 	}
 
 	/**
