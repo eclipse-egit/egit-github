@@ -52,7 +52,7 @@ public class GistServiceTest {
 
 	/**
 	 * Test case set up
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Before
@@ -79,7 +79,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -89,7 +89,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get gist with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -99,18 +99,20 @@ public class GistServiceTest {
 
 	/**
 	 * Get gist with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
 	public void getGist() throws IOException {
 		gistService.getGist("1");
-		verify(gitHubClient).get(any(GitHubRequest.class));
+		GitHubRequest request = new GitHubRequest();
+		request.setUri("/gists/1");
+		verify(gitHubClient).get(request);
 	}
 
 	/**
 	 * Delete gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -120,7 +122,7 @@ public class GistServiceTest {
 
 	/**
 	 * Delete gist with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -130,7 +132,7 @@ public class GistServiceTest {
 
 	/**
 	 * Delete gist with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -141,7 +143,7 @@ public class GistServiceTest {
 
 	/**
 	 * Star gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -151,7 +153,7 @@ public class GistServiceTest {
 
 	/**
 	 * Star gist with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -161,7 +163,7 @@ public class GistServiceTest {
 
 	/**
 	 * Star gist with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -172,7 +174,7 @@ public class GistServiceTest {
 
 	/**
 	 * Unstar gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -182,7 +184,7 @@ public class GistServiceTest {
 
 	/**
 	 * Unstar gist with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -192,7 +194,7 @@ public class GistServiceTest {
 
 	/**
 	 * Unstar gist with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -203,7 +205,7 @@ public class GistServiceTest {
 
 	/**
 	 * Is gist starred with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -213,7 +215,7 @@ public class GistServiceTest {
 
 	/**
 	 * Is gist starred with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -223,18 +225,20 @@ public class GistServiceTest {
 
 	/**
 	 * Is gist starred with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
 	public void isStarredGist() throws IOException {
 		gistService.isStarred("1");
-		verify(gitHubClient).get(any(GitHubRequest.class));
+		GitHubRequest request = new GitHubRequest();
+		request.setUri("/gists/1/star");
+		verify(gitHubClient).get(request);
 	}
 
 	/**
 	 * Fork gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -244,7 +248,7 @@ public class GistServiceTest {
 
 	/**
 	 * Fork gist with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -254,7 +258,7 @@ public class GistServiceTest {
 
 	/**
 	 * Fork gist with valid id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -265,7 +269,7 @@ public class GistServiceTest {
 
 	/**
 	 * Delete gist comment
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -276,7 +280,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get starred gists
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -288,7 +292,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get gists for null login name
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -298,7 +302,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get gists for empty login name
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -308,18 +312,20 @@ public class GistServiceTest {
 
 	/**
 	 * Get gists for valid login name
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
 	public void getGistsOK() throws IOException {
 		gistService.getGists("test_user");
-		verify(gitHubClient).get(any(GitHubRequest.class));
+		GitHubRequest request = new GitHubRequest();
+		request.setUri(Utils.page("/users/test_user/gists"));
+		verify(gitHubClient).get(request);
 	}
 
 	/**
 	 * Create gist with null model
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -329,7 +335,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get gist with null user
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -342,7 +348,7 @@ public class GistServiceTest {
 
 	/**
 	 * Update null gist
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -352,7 +358,7 @@ public class GistServiceTest {
 
 	/**
 	 * Update gist with null id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -364,7 +370,7 @@ public class GistServiceTest {
 
 	/**
 	 * Update valid gist
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -377,7 +383,7 @@ public class GistServiceTest {
 
 	/**
 	 * Create comment for with null gist id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -387,7 +393,7 @@ public class GistServiceTest {
 
 	/**
 	 * Create null comment
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -397,7 +403,7 @@ public class GistServiceTest {
 
 	/**
 	 * Create valid comment
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -411,7 +417,7 @@ public class GistServiceTest {
 
 	/**
 	 * Get comments for null gist id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -421,18 +427,20 @@ public class GistServiceTest {
 
 	/**
 	 * Get comment with valid gist id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
 	public void getCommentsOK() throws IOException {
 		gistService.getComments("1");
-		verify(gitHubClient).get(any(GitHubRequest.class));
+		GitHubRequest request = new GitHubRequest();
+		request.setUri(Utils.page("/gists/1/comments"));
+		verify(gitHubClient).get(request);
 	}
 
 	/**
 	 * Page gists with null user
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -442,7 +450,7 @@ public class GistServiceTest {
 
 	/**
 	 * Page gists with empty id
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -452,7 +460,7 @@ public class GistServiceTest {
 
 	/**
 	 * Page gists with valid user
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
@@ -464,7 +472,7 @@ public class GistServiceTest {
 
 	/**
 	 * Page public gists
-	 *
+	 * 
 	 * @throws IOException
 	 */
 	@Test
