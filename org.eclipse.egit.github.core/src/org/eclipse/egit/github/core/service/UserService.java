@@ -374,7 +374,7 @@ public class UserService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_USER);
 		uri.append(SEGMENT_FOLLOWING);
 		uri.append('/').append(user);
-		client.put(uri.toString(), null, null);
+		client.put(uri.toString());
 	}
 
 	/**
