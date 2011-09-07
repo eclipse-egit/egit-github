@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOBH///kU\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/UrlUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2011-09-07T06:25:16Z",
+      "side": 1,
+      "message": "You might want to add HTTP here",
+      "revId": "570777f9b9c5f53f1a5741f7ab9fad9887d564de",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOBH///kY\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/UrlUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2011-09-07T06:25:16Z",
+      "side": 1,
+      "message": "You might want to add SSH here",
+      "revId": "570777f9b9c5f53f1a5741f7ab9fad9887d564de",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOBH///kc\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/util/UrlUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2011-09-07T06:25:16Z",
+      "side": 1,
+      "message": "Avoid static import, especially from many different classes. \nIt makes it harder to see where the constants come from in the\ncode since they local local local constant.\n\nThat is my personal opinion....\n\nIt also has nothing to do with the subject in the commit.",
+      "revId": "570777f9b9c5f53f1a5741f7ab9fad9887d564de",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
