@@ -32,7 +32,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service class for dealing with users watching GitHub repositories.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/watching">GitHub watcher
  *      API documentation</a>
  */
@@ -47,7 +47,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Create watcher service
-	 *
+	 * 
 	 * @param client
 	 */
 	public WatcherService(GitHubClient client) {
@@ -56,7 +56,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Create page watcher request
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
@@ -77,7 +77,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Get user watching given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of users
 	 * @throws IOException
@@ -91,7 +91,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page watches of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return page iterator
 	 * @throws IOException
@@ -103,7 +103,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page watches of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param size
 	 * @return page iterator
@@ -116,15 +116,14 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page watches of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
 	 * @return page iterator
-	 * @throws IOException
 	 */
 	public PageIterator<User> pageWatchers(IRepositoryIdProvider repository,
-			int start, int size) throws IOException {
+			int start, int size) {
 		PagedRequest<User> request = createWatcherRequest(repository, start,
 				size);
 		return createPageIterator(request);
@@ -132,7 +131,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Create page watched request
-	 *
+	 * 
 	 * @param user
 	 * @param start
 	 * @param size
@@ -157,7 +156,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Create page watched request
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @return request
@@ -172,7 +171,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Get repositories watched by the given user
-	 *
+	 * 
 	 * @param user
 	 * @return non-null but possibly empty list of repositories
 	 * @throws IOException
@@ -185,7 +184,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by given user
-	 *
+	 * 
 	 * @param user
 	 * @return page iterator
 	 * @throws IOException
@@ -196,7 +195,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by given user
-	 *
+	 * 
 	 * @param user
 	 * @param size
 	 * @return page iterator
@@ -209,7 +208,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by given user
-	 *
+	 * 
 	 * @param user
 	 * @param start
 	 * @param size
@@ -225,7 +224,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Get repositories watched by the currently authenticated user
-	 *
+	 * 
 	 * @return non-null but possibly empty list of repositories
 	 * @throws IOException
 	 */
@@ -237,7 +236,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by the currently authenticated user
-	 *
+	 * 
 	 * @return page iterator
 	 * @throws IOException
 	 */
@@ -247,7 +246,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by the currently authenticated user
-	 *
+	 * 
 	 * @param size
 	 * @return page iterator
 	 * @throws IOException
@@ -258,7 +257,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Page repositories being watched by the currently authenticated user
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @return page iterator
@@ -272,7 +271,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Is currently authenticated user watching given repository?
-	 *
+	 * 
 	 * @param repository
 	 * @return true if watch, false otherwise
 	 * @throws IOException
@@ -288,7 +287,7 @@ public class WatcherService extends GitHubService {
 
 	/**
 	 * Add currently authenticated user as a watcher of the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @throws IOException
 	 */
@@ -297,12 +296,12 @@ public class WatcherService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_USER);
 		uri.append(SEGMENT_WATCHED);
 		uri.append('/').append(id);
-		client.put(uri.toString(), null, null);
+		client.put(uri.toString());
 	}
 
 	/**
 	 * Remove currently authenticated user as a watcher of the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @throws IOException
 	 */
