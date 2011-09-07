@@ -41,7 +41,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Set repository person as value of given attribute
-	 *
+	 * 
 	 * @param data
 	 * @param attribute
 	 * @param user
@@ -58,7 +58,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create repository person from user
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @return repository person
@@ -72,7 +72,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Set date value of given task attribute
-	 *
+	 * 
 	 * @param data
 	 * @param attribute
 	 * @param date
@@ -87,7 +87,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Add task attributes for given comments under given parent
-	 *
+	 * 
 	 * @param parent
 	 * @param comments
 	 * @param repository
@@ -116,7 +116,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Get attribute value
-	 *
+	 * 
 	 * @param taskData
 	 * @param attr
 	 * @return value
@@ -129,7 +129,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create task attribute from metadata
-	 *
+	 * 
 	 * @param data
 	 * @param attribute
 	 * @return created task attribute
@@ -146,7 +146,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create task attribute and set value
-	 *
+	 * 
 	 * @param data
 	 * @param metadata
 	 * @param value
@@ -162,7 +162,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create attribute and set value
-	 *
+	 * 
 	 * @param data
 	 * @param metadata
 	 * @param date
@@ -175,7 +175,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create attribute and set value
-	 *
+	 * 
 	 * @param data
 	 * @param metadata
 	 * @param user
@@ -191,7 +191,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Create standard operation task attribute
-	 *
+	 * 
 	 * @param data
 	 * @return created attribute
 	 */
@@ -204,7 +204,7 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	/**
 	 * Add operation with label and id
-	 *
+	 * 
 	 * @param data
 	 * @param id
 	 * @param label
@@ -225,8 +225,27 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 	}
 
 	/**
+	 * Does the attribute's value in the given task data match the authenticated
+	 * client user?
+	 * 
+	 * @param client
+	 * @param metadata
+	 * @param data
+	 * @return true if match, false otherwise
+	 */
+	protected boolean attributeMatchesUser(GitHubClient client,
+			GitHubAttributeMetadata metadata, TaskData data) {
+		if (client == null || metadata == null || data == null)
+			return false;
+		String user = client.getUser();
+		if (user == null || user.length() == 0)
+			return false;
+		return metadata.getValue(data).equals(user);
+	}
+
+	/**
 	 * Is configured client user a collaborator on the given repository?
-	 *
+	 * 
 	 * @param client
 	 * @param repo
 	 * @return true if collaborator, false otherwise

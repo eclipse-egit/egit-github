@@ -49,7 +49,7 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 
 	/**
 	 * Create GitHub issue task data handler for connector
-	 *
+	 * 
 	 * @param connector
 	 */
 	public IssueTaskDataHandler(IssueConnector connector) {
@@ -58,7 +58,7 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 
 	/**
 	 * Create task data
-	 *
+	 * 
 	 * @param repository
 	 * @param monitor
 	 * @param user
@@ -185,7 +185,7 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 
 	/**
 	 * Create task data for issue
-	 *
+	 * 
 	 * @param repository
 	 * @param monitor
 	 * @param user
@@ -265,7 +265,7 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 	/**
 	 * Create any new labels that have been added to the issue and set the
 	 * issues labels to the current value of labels attribute.
-	 *
+	 * 
 	 * @param user
 	 * @param repo
 	 * @param client
@@ -341,7 +341,9 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 					service.createComment(repo.getOwner(), repo.getName(),
 							taskId, comment);
 
-				if (collaborator) {
+				boolean reporter = attributeMatchesUser(client,
+						IssueAttribute.REPORTER.getMetadata(), taskData);
+				if (collaborator || reporter) {
 					// Handle state change
 					TaskAttribute operationAttribute = taskData.getRoot()
 							.getAttribute(TaskAttribute.OPERATION);
