@@ -18,6 +18,7 @@ import org.eclipse.egit.core.Activator;
 import org.eclipse.egit.core.RepositoryCache;
 import org.eclipse.egit.github.core.PullRequest;
 import org.eclipse.egit.github.core.PullRequestMarker;
+import org.eclipse.egit.github.core.User;
 import org.eclipse.egit.github.core.util.UrlUtils;
 import org.eclipse.jgit.lib.ConfigConstants;
 import org.eclipse.jgit.lib.Constants;
@@ -116,8 +117,28 @@ public abstract class PullRequestUtils {
 	 * @return true if same, false otherwise
 	 */
 	public static boolean isFromSameRepository(PullRequest request) {
-		return request.getHead().getRepo().getOwner()
-				.equals(request.getBase().getRepo().getOwner());
+		if (request == null)
+			return false;
+		PullRequestMarker head = request.getHead();
+		if (head == null)
+			return false;
+		PullRequestMarker base = request.getBase();
+		if (base == null)
+			return false;
+		org.eclipse.egit.github.core.Repository headRepo = head.getRepo();
+		if (headRepo == null)
+			return false;
+		org.eclipse.egit.github.core.Repository baseRepo = base.getRepo();
+		if (baseRepo == null)
+			return false;
+		User headOwner = headRepo.getOwner();
+		if (headOwner == null)
+			return false;
+		User baseOwner = baseRepo.getOwner();
+		if (baseOwner == null)
+			return false;
+		String headLogin = headOwner.getLogin();
+		return headLogin != null && headLogin.equals(baseOwner.getLogin());
 	}
 
 	/**
@@ -130,8 +151,11 @@ public abstract class PullRequestUtils {
 	 */
 	public static RemoteConfig getRemote(Repository repo, PullRequest request)
 			throws URISyntaxException {
-		return getRemoteConfig(repo, request.getHead().getRepo().getOwner()
-				.getLogin());
+		if (isFromSameRepository(request))
+			return getRemoteConfig(repo, Constants.DEFAULT_REMOTE_NAME);
+		else
+			return getRemoteConfig(repo, request.getHead().getRepo().getOwner()
+					.getLogin());
 	}
 
 	/**
