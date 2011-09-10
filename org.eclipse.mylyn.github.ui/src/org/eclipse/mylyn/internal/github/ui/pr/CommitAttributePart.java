@@ -134,8 +134,12 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 			public void open(final OpenEvent event) {
 				Repository repo = PullRequestUtils.getRepository(request
 						.getRequest());
-				openCommits(repo,
-						((IStructuredSelection) event.getSelection()).toArray());
+				if (repo == null)
+					PullRequestConnectorUi.showNoRepositoryDialog(request
+							.getRequest());
+				else
+					openCommits(repo, ((IStructuredSelection) event
+							.getSelection()).toArray());
 			}
 		});
 
