@@ -31,6 +31,8 @@ public class Messages extends NLS {
 	/** */
 	public static String FieldError_ResourceError;
 
+	public static String GitHubException_FieldError_AlreadyExists;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
