@@ -29,7 +29,7 @@ public class EntityDeleteMethod extends HttpEntityEnclosingRequestBase {
 
 	/**
 	 * Create DELETE
-	 *
+	 * 
 	 * @param uri
 	 */
 	public EntityDeleteMethod(final URI uri) {
@@ -39,7 +39,7 @@ public class EntityDeleteMethod extends HttpEntityEnclosingRequestBase {
 
 	/**
 	 * Create DELETE
-	 *
+	 * 
 	 * @param uri
 	 */
 	public EntityDeleteMethod(final String uri) {

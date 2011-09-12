@@ -24,7 +24,7 @@ public class GitHubResponse {
 
 	/**
 	 * Create response
-	 *
+	 * 
 	 * @param response
 	 * @param body
 	 */
@@ -35,7 +35,7 @@ public class GitHubResponse {
 
 	/**
 	 * Get link uri to first page
-	 *
+	 * 
 	 * @return possibly null uri
 	 */
 	public String getFirst() {
@@ -44,7 +44,7 @@ public class GitHubResponse {
 
 	/**
 	 * Get link uri to previous page
-	 *
+	 * 
 	 * @return possibly null uri
 	 */
 	public String getPrevious() {
@@ -53,7 +53,7 @@ public class GitHubResponse {
 
 	/**
 	 * Get link uri to next page
-	 *
+	 * 
 	 * @return possibly null uri
 	 */
 	public String getNext() {
@@ -62,7 +62,7 @@ public class GitHubResponse {
 
 	/**
 	 * Get link uri to last page
-	 *
+	 * 
 	 * @return possibly null uri
 	 */
 	public String getLast() {
@@ -71,7 +71,7 @@ public class GitHubResponse {
 
 	/**
 	 * Parsed response body
-	 *
+	 * 
 	 * @return body
 	 */
 	public Object getBody() {

@@ -37,7 +37,7 @@ public class RequestError implements Serializable {
 
 	/**
 	 * Get errors
-	 *
+	 * 
 	 * @return list of errors
 	 */
 	public List<FieldError> getErrors() {

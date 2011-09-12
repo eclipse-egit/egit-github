@@ -37,7 +37,7 @@ public abstract class GitHubService {
 	protected final GitHubClient client;
 
 	/**
-	 * Create service using default {@link GitHubClient}
+	 * Create service using a default {@link GitHubClient}
 	 */
 	public GitHubService() {
 		this(new GitHubClient());
@@ -45,8 +45,9 @@ public abstract class GitHubService {
 
 	/**
 	 * Create service for client
-	 *
+	 * 
 	 * @param client
+	 *            must be non-null
 	 */
 	public GitHubService(GitHubClient client) {
 		if (client == null)
@@ -56,7 +57,7 @@ public abstract class GitHubService {
 
 	/**
 	 * Get configured client
-	 *
+	 * 
 	 * @return non-null client
 	 */
 	public GitHubClient getClient() {
@@ -66,7 +67,7 @@ public abstract class GitHubService {
 	/**
 	 * Unified request creation method that all sub-classes should use so
 	 * overriding classes can extend and configure the default request.
-	 *
+	 * 
 	 * @return request
 	 */
 	protected GitHubRequest createRequest() {
@@ -76,7 +77,7 @@ public abstract class GitHubService {
 	/**
 	 * Unified paged request creation method that all sub-classes should use so
 	 * overriding classes can extend and configure the default request.
-	 *
+	 * 
 	 * @return request
 	 */
 	protected <V> PagedRequest<V> createPagedRequest() {
@@ -86,7 +87,7 @@ public abstract class GitHubService {
 	/**
 	 * Unified paged request creation method that all sub-classes should use so
 	 * overriding classes can extend and configure the default request.
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @return request
@@ -98,7 +99,7 @@ public abstract class GitHubService {
 	/**
 	 * Unified page iterator creation method that all sub-classes should use so
 	 * overriding classes can extend and configure the default iterator.
-	 *
+	 * 
 	 * @param request
 	 * @return iterator
 	 */
@@ -109,7 +110,7 @@ public abstract class GitHubService {
 	/**
 	 * Get paged request by performing multiple requests until no more pages are
 	 * available or an exception occurs.
-	 *
+	 * 
 	 * @param <V>
 	 * @param request
 	 * @return list of all elements
@@ -122,7 +123,7 @@ public abstract class GitHubService {
 	/**
 	 * Get paged request by performing multiple requests until no more pages are
 	 * available or an exception occurs.
-	 *
+	 * 
 	 * @param <V>
 	 * @param iterator
 	 * @return list of all elements
@@ -141,7 +142,7 @@ public abstract class GitHubService {
 
 	/**
 	 * Check if the uri returns a non-404
-	 *
+	 * 
 	 * @param uri
 	 * @return true if no exception, false if 404
 	 * @throws IOException
@@ -159,7 +160,7 @@ public abstract class GitHubService {
 
 	/**
 	 * Get id for repository
-	 *
+	 * 
 	 * @param provider
 	 * @return non-null id
 	 */
@@ -177,7 +178,7 @@ public abstract class GitHubService {
 
 	/**
 	 * Verify user and repository name
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @return this service

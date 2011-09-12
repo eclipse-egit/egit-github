@@ -40,7 +40,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Repository service class.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos">GitHub repository API
  *      documentation</a>
  * @see <a href="http://developer.github.com/v3/repos/forks">GitHub forks API
@@ -90,7 +90,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Create repository service
-	 *
+	 * 
 	 * @param client
 	 *            cannot be null
 	 */
@@ -100,7 +100,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get repositories for the currently authenticated user
-	 *
+	 * 
 	 * @return list of repositories
 	 * @throws IOException
 	 */
@@ -114,7 +114,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get repositories for the given user
-	 *
+	 * 
 	 * @param user
 	 * @return list of repositories
 	 * @throws IOException
@@ -137,7 +137,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get organization repositories for the given organization
-	 *
+	 * 
 	 * @param organization
 	 * @return list of repositories
 	 * @throws IOException
@@ -161,7 +161,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Search repositories
-	 *
+	 * 
 	 * @param query
 	 * @return list of repositories
 	 * @throws IOException
@@ -173,7 +173,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Search for repositories matching language and query
-	 *
+	 * 
 	 * @param query
 	 * @param language
 	 * @return list of repositories
@@ -198,7 +198,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Create a new repository
-	 *
+	 * 
 	 * @param repository
 	 * @return created repository
 	 * @throws IOException
@@ -214,7 +214,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Create a new repository
-	 *
+	 * 
 	 * @param organization
 	 * @param repository
 	 * @return created repository
@@ -235,7 +235,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get repository
-	 *
+	 * 
 	 * @param owner
 	 * @param name
 	 * @return repository
@@ -248,7 +248,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get repository
-	 *
+	 * 
 	 * @param provider
 	 * @return repository
 	 * @throws IOException
@@ -264,7 +264,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Create paged request for iterating over repositories forks
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
@@ -285,7 +285,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Get all the forks of the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of repository
 	 * @throws IOException
@@ -299,7 +299,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Page forks of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return iterator over repositories
 	 */
@@ -309,7 +309,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Page forks of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param size
 	 * @return iterator over repositories
@@ -321,7 +321,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Page forks of given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
@@ -337,7 +337,7 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Fork given repository into new repository under the currently
 	 * authenticated user.
-	 *
+	 * 
 	 * @param repository
 	 * @return forked repository
 	 * @throws IOException
@@ -349,10 +349,10 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Fork given repository into new repository.
-	 *
+	 * 
 	 * The new repository will be under the given organization if non-null, else
 	 * it will be under the currently authenticated user.
-	 *
+	 * 
 	 * @param repository
 	 * @param organization
 	 * @return forked repository

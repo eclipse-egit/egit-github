@@ -24,7 +24,7 @@ public class Id implements Serializable {
 
 	/**
 	 * Get id
-	 *
+	 * 
 	 * @return id
 	 */
 	public String getId() {

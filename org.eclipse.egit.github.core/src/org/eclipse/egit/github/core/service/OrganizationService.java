@@ -30,7 +30,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Organization service class
- *
+ * 
  * @see <a href="http://developer.github.com/v3/orgs">GitHub organization API
  *      documentation</a>
  * @see <a href="http://developer.github.com/v3/orgs/members">GitHub
@@ -47,7 +47,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Create organization service
-	 *
+	 * 
 	 * @param client
 	 */
 	public OrganizationService(GitHubClient client) {
@@ -56,7 +56,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Create org request
-	 *
+	 * 
 	 * @param user
 	 * @param start
 	 * @param size
@@ -80,7 +80,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Get organizations that the currently authenticated user is a member of
-	 *
+	 * 
 	 * @return list of organizations
 	 * @throws IOException
 	 */
@@ -92,7 +92,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Get organizations that the given user is a member of
-	 *
+	 * 
 	 * @param user
 	 * @return list of organizations
 	 * @throws IOException
@@ -110,7 +110,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Get organization with the given name
-	 *
+	 * 
 	 * @param name
 	 * @return organization
 	 * @throws IOException
@@ -131,7 +131,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Edit given organization
-	 *
+	 * 
 	 * @param organization
 	 * @return edited organization
 	 * @throws IOException
@@ -154,7 +154,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Get members of organization
-	 *
+	 * 
 	 * @param organization
 	 * @return list of all organization members
 	 * @throws IOException
@@ -177,7 +177,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Get public members of organization
-	 *
+	 * 
 	 * @param organization
 	 * @return list of public organization members
 	 * @throws IOException
@@ -200,7 +200,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Check if the given user is a member of the given organization
-	 *
+	 * 
 	 * @param organization
 	 * @param user
 	 * @return true if member, false if not member
@@ -226,7 +226,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Check if the given user is a public member of the given organization
-	 *
+	 * 
 	 * @param organization
 	 * @param user
 	 * @return true if public member, false if not public member
@@ -252,7 +252,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Publicize membership of given user in given organization
-	 *
+	 * 
 	 * @param organization
 	 * @param user
 	 * @throws IOException
@@ -277,7 +277,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Conceal membership of given user in given organization
-	 *
+	 * 
 	 * @param organization
 	 * @param user
 	 * @throws IOException
@@ -302,7 +302,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Remove the given member from the given organization
-	 *
+	 * 
 	 * @param organization
 	 * @param user
 	 * @throws IOException

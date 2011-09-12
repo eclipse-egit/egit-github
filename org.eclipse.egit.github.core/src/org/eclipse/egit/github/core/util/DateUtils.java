@@ -19,7 +19,7 @@ public abstract class DateUtils {
 
 	/**
 	 * Clone date if non-null
-	 *
+	 * 
 	 * @param date
 	 * @return copied date
 	 */

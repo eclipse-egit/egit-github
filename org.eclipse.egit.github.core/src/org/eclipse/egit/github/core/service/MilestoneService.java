@@ -27,7 +27,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 /**
  * Milestone service class for listing the {@link Milestone} objects in use by a
  * repository and user accessed via a {@link GitHubClient}.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/issues/milestones">GitHub
  *      milestones API documentation</a>
  */
@@ -42,7 +42,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Create milestone service
-	 *
+	 * 
 	 * @param client
 	 *            cannot be null
 	 */
@@ -52,7 +52,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Get milestones
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param state
@@ -77,7 +77,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Create a milestone
-	 *
+	 * 
 	 * @param user
 	 *            must be non-null
 	 * @param repository
@@ -101,7 +101,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Get a milestone
-	 *
+	 * 
 	 * @param user
 	 *            must be non-null
 	 * @param repository
@@ -117,7 +117,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Get a milestone
-	 *
+	 * 
 	 * @param user
 	 *            must be non-null
 	 * @param repository
@@ -147,7 +147,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Delete a milestone with the given id from the given repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param milestone
@@ -160,7 +160,7 @@ public class MilestoneService extends GitHubService {
 
 	/**
 	 * Delete a milestone with the given id from the given repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param milestone

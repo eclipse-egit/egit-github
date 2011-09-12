@@ -32,7 +32,7 @@ public class NoSuchPageException extends NoSuchElementException {
 
 	/**
 	 * Create no such page exception
-	 *
+	 * 
 	 * @param cause
 	 */
 	public NoSuchPageException(IOException cause) {

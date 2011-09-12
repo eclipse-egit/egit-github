@@ -43,7 +43,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
  * Service class for creating, updating, getting, and listing pull requests as
  * well as getting the commits associated with a pull request and the files
  * modified by a pull request.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/pulls">GitHub Pull Requests API
  *      documentation</a>
  * @see <a href="http://developer.github.com/v3/pulls/comments">GitHub Pull
@@ -85,7 +85,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create pull request service
-	 *
+	 * 
 	 * @param client
 	 */
 	public PullRequestService(GitHubClient client) {
@@ -94,7 +94,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create request for single pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return request
@@ -115,7 +115,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create paged request for fetching pull requests
-	 *
+	 * 
 	 * @param provider
 	 * @param state
 	 * @param start
@@ -141,7 +141,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Get pull requests from repository matching state
-	 *
+	 * 
 	 * @param repository
 	 * @param state
 	 * @return list of pull requests
@@ -154,7 +154,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull requests with given state
-	 *
+	 * 
 	 * @param repository
 	 * @param state
 	 * @return iterator over pages of pull requests
@@ -166,7 +166,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull requests with given state
-	 *
+	 * 
 	 * @param repository
 	 * @param state
 	 * @param size
@@ -179,7 +179,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull requests with given state
-	 *
+	 * 
 	 * @param repository
 	 * @param state
 	 * @param start
@@ -234,7 +234,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param request
 	 * @return created pull request
@@ -253,7 +253,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create pull request by attaching branch information to an existing issue
-	 *
+	 * 
 	 * @param repository
 	 * @param issueId
 	 * @param head
@@ -276,7 +276,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Edit pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param request
 	 * @return edited pull request
@@ -298,7 +298,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Get all commits associated with given pull request id
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return list of commits
@@ -321,7 +321,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Get all changed files associated with given pull request id
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return list of commit files
@@ -344,7 +344,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Is the given pull request id merged?
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return true if merge, false otherwise
@@ -363,7 +363,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Merge given pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @param commitMessage
@@ -385,7 +385,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Get all comments on commits in given pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return non-null list of comments
@@ -398,7 +398,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull request commit comments
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return iterator over pages of commit comments
@@ -410,7 +410,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull request commit comments
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @param size
@@ -423,7 +423,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Page pull request commit comments
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @param start
@@ -447,7 +447,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Get commit comment with given id
-	 *
+	 * 
 	 * @param repository
 	 * @param commentId
 	 * @return commit comment
@@ -469,7 +469,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Create comment on given pull request
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @param comment
@@ -490,7 +490,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Reply to given comment
-	 *
+	 * 
 	 * @param repository
 	 * @param pullRequestId
 	 * @param commentId
@@ -514,7 +514,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Edit pull request comment
-	 *
+	 * 
 	 * @param repository
 	 * @param comment
 	 * @return edited comment
@@ -536,7 +536,7 @@ public class PullRequestService extends GitHubService {
 
 	/**
 	 * Delete commit comment with given id
-	 *
+	 * 
 	 * @param repository
 	 * @param commentId
 	 * @throws IOException

@@ -34,7 +34,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service class for interacting with Gists and Gist comments.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/gists">GitHub Gist API
  *      documentation</a>
  * @see <a href="http://developer.github.com/v3/gists/comments">GitHub Gist
@@ -51,7 +51,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create gist service
-	 *
+	 * 
 	 * @param client
 	 */
 	public GistService(GitHubClient client) {
@@ -60,7 +60,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Check that gist id is non-null and non-empty
-	 *
+	 * 
 	 * @param gistId
 	 * @return gist id
 	 */
@@ -74,7 +74,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Get gist
-	 *
+	 * 
 	 * @param id
 	 * @return gist
 	 * @throws IOException
@@ -91,7 +91,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Get starred gists for currently authenticated user
-	 *
+	 * 
 	 * @return list of gists
 	 * @throws IOException
 	 */
@@ -105,7 +105,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create user gist paged request
-	 *
+	 * 
 	 * @param user
 	 * @param start
 	 * @param size
@@ -129,7 +129,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Get gists for specified user
-	 *
+	 * 
 	 * @param user
 	 * @return list of gists
 	 * @throws IOException
@@ -142,7 +142,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for given user's gists
-	 *
+	 * 
 	 * @param user
 	 * @return gist page iterator
 	 */
@@ -152,7 +152,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for given user's gists
-	 *
+	 * 
 	 * @param user
 	 * @param size
 	 *            size of page
@@ -164,7 +164,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for given user's gists
-	 *
+	 * 
 	 * @param user
 	 * @param size
 	 *            size of page
@@ -180,7 +180,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for all public gists
-	 *
+	 * 
 	 * @return gist page iterator
 	 */
 	public PageIterator<Gist> pagePublicGists() {
@@ -189,7 +189,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for all public gists
-	 *
+	 * 
 	 * @param size
 	 *            size of page
 	 * @return gist page iterator
@@ -200,7 +200,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create page iterator for all public gists
-	 *
+	 * 
 	 * @param start
 	 *            starting page number
 	 * @param size
@@ -217,7 +217,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create a gist
-	 *
+	 * 
 	 * @param gist
 	 * @return created gist
 	 * @throws IOException
@@ -231,7 +231,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Update a gist
-	 *
+	 * 
 	 * @param gist
 	 * @return updated gist
 	 * @throws IOException
@@ -249,7 +249,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Create comment on specified gist id
-	 *
+	 * 
 	 * @param gistId
 	 * @param comment
 	 * @return created issue
@@ -272,7 +272,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Get comments for specified gist id
-	 *
+	 * 
 	 * @param gistId
 	 * @return list of comments
 	 * @throws IOException
@@ -291,7 +291,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Delete the Gist with the given id
-	 *
+	 * 
 	 * @param gistId
 	 * @throws IOException
 	 */
@@ -304,7 +304,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Get gist comment with id
-	 *
+	 * 
 	 * @param commentId
 	 * @return comment
 	 * @throws IOException
@@ -320,7 +320,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Edit gist comment
-	 *
+	 * 
 	 * @param comment
 	 * @return edited comment
 	 * @throws IOException
@@ -336,7 +336,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Delete the Gist comment with the given id
-	 *
+	 * 
 	 * @param commentId
 	 * @throws IOException
 	 */
@@ -348,7 +348,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Star the gist with the given id
-	 *
+	 * 
 	 * @param gistId
 	 * @throws IOException
 	 */
@@ -362,7 +362,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Unstar the gist with the given id
-	 *
+	 * 
 	 * @param gistId
 	 * @throws IOException
 	 */
@@ -376,7 +376,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Check if a gist is starred
-	 *
+	 * 
 	 * @param gistId
 	 * @return true if starred, false if not starred
 	 * @throws IOException
@@ -391,7 +391,7 @@ public class GistService extends GitHubService {
 
 	/**
 	 * Fork gist with given id
-	 *
+	 * 
 	 * @param gistId
 	 * @return forked gist
 	 * @throws IOException

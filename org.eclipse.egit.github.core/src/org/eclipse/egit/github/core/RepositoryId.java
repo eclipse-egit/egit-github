@@ -24,7 +24,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 
 	/**
 	 * Create repository from url.
-	 *
+	 * 
 	 * @see #createFromId(String)
 	 * @param url
 	 * @return repository or null if parsing fails
@@ -37,7 +37,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 	 * Create repository from id. The id is split on the '/' character and the
 	 * first two non-empty segments are interpreted to be the repository owner
 	 * and name.
-	 *
+	 * 
 	 * @param id
 	 * @return repository
 	 */
@@ -61,7 +61,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 
 	/**
 	 * Create from string URL
-	 *
+	 * 
 	 * @see #createFromUrl(URL)
 	 * @param url
 	 * @return repository or null if it could not be parsed from URL path
@@ -78,7 +78,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 
 	/**
 	 * Create repository id from given owner and name.
-	 *
+	 * 
 	 * @param owner
 	 * @param name
 	 * @return repository id
@@ -95,7 +95,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 	 * Create repository id with given owner and name. This constructor
 	 * validates the parameters and throws an {@link IllegalArgumentException}
 	 * if either is null or empty.
-	 *
+	 * 
 	 * @param owner
 	 *            must be non-null and non-empty
 	 * @param name
@@ -103,13 +103,13 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 	 */
 	public RepositoryId(final String owner, final String name) {
 		if (owner == null)
-			throw new IllegalArgumentException("Owner cannot be null");
+			throw new IllegalArgumentException("Owner cannot be null"); //$NON-NLS-1$
 		if (owner.length() == 0)
-			throw new IllegalArgumentException("Owner cannot be empty");
+			throw new IllegalArgumentException("Owner cannot be empty"); //$NON-NLS-1$
 		if (name == null)
-			throw new IllegalArgumentException("Name cannot be null");
+			throw new IllegalArgumentException("Name cannot be null"); //$NON-NLS-1$
 		if (name.length() == 0)
-			throw new IllegalArgumentException("Name cannot be empty");
+			throw new IllegalArgumentException("Name cannot be empty"); //$NON-NLS-1$
 
 		this.owner = owner;
 		this.name = name;
@@ -130,7 +130,7 @@ public class RepositoryId implements IRepositoryIdProvider, Serializable {
 	}
 
 	public String generateId() {
-		return owner + "/" + name;
+		return owner + "/" + name; //$NON-NLS-1$
 	}
 
 	@Override

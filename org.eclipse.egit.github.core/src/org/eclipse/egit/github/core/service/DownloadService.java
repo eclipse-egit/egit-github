@@ -44,7 +44,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service for accessing, creating, and deleting repositories downloads.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/downloads">GitHub
  *      downloads API documentation</a>
  */
@@ -117,7 +117,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Create download service
-	 *
+	 * 
 	 * @param client
 	 */
 	public DownloadService(GitHubClient client) {
@@ -126,7 +126,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Get download metadata for given repository and id
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return download
@@ -147,7 +147,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Create paged downloads request
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
@@ -168,7 +168,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Get metadata for all downloads for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of download metadata
 	 * @throws IOException
@@ -180,7 +180,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Page metadata for downloads for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return iterator over pages of downloads
 	 */
@@ -190,7 +190,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Page downloads for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param size
 	 * @return iterator over pages of downloads
@@ -202,7 +202,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Page downloads for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param start
 	 * @param size
@@ -217,7 +217,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Delete download with given id from given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @throws IOException
@@ -234,7 +234,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Create a new resource for download associated with the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param download
 	 * @return download resource
@@ -252,7 +252,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Create client to use to upload a resource to
-	 *
+	 * 
 	 * @return non-null http client
 	 */
 	protected HttpClient createDownloadClient() {
@@ -266,7 +266,7 @@ public class DownloadService extends GitHubService {
 	/**
 	 * Upload a resource to be available as the download described by the given
 	 * resource.
-	 *
+	 * 
 	 * @param resource
 	 * @param content
 	 * @param size
@@ -277,9 +277,9 @@ public class DownloadService extends GitHubService {
 		if (resource == null)
 			throw new IllegalArgumentException(
 					"Download resource cannot be null"); //$NON-NLS-1$
-		if( content == null)
+		if (content == null)
 			throw new IllegalArgumentException(
-					"Content input stream cannot be null"); //$NON-NLS-N$
+					"Content input stream cannot be null"); //$NON-NLS-1$
 
 		HttpClient client = createDownloadClient();
 
@@ -312,7 +312,7 @@ public class DownloadService extends GitHubService {
 	 * {@link #createResource(IRepositoryIdProvider, Download)} followed by a
 	 * {@link #uploadResource(DownloadResource, InputStream, long)} with the
 	 * results.
-	 *
+	 * 
 	 * @param repository
 	 * @param download
 	 *            metadata about the download
@@ -331,7 +331,7 @@ public class DownloadService extends GitHubService {
 
 	/**
 	 * Create download from content of given file.
-	 *
+	 * 
 	 * @see #createDownload(IRepositoryIdProvider, Download, InputStream, long)
 	 * @param repository
 	 * @param download

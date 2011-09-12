@@ -27,7 +27,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 /**
  * Label service class for listing {@link Label} objects in use for a given
  * repository.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/issues/labels">GitHub labels API
  *      documentation</a>
  */
@@ -42,7 +42,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Create label service for client
-	 *
+	 * 
 	 * @param client
 	 */
 	public LabelService(GitHubClient client) {
@@ -51,7 +51,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Get labels
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @return list of labels
@@ -73,7 +73,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Set the labels for an issue
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -101,7 +101,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Create label
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param label
@@ -122,7 +122,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Get label with given name
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param label
@@ -149,7 +149,7 @@ public class LabelService extends GitHubService {
 
 	/**
 	 * Delete a label with the given id from the given repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param label

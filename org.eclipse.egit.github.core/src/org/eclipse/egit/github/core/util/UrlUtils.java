@@ -26,7 +26,7 @@ public abstract class UrlUtils {
 
 	/**
 	 * Encode given url
-	 *
+	 * 
 	 * @param url
 	 * @return encoded url
 	 */
@@ -40,7 +40,7 @@ public abstract class UrlUtils {
 
 	/**
 	 * Create SSH URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @return URL
 	 */
@@ -50,19 +50,19 @@ public abstract class UrlUtils {
 
 	/**
 	 * Create SSH URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @param host
 	 * @return URL
 	 */
 	public static String createRemoteSshUrl(IRepositoryIdProvider repository,
 			String host) {
-		return "git@" + host + ":" + repository.generateId() + SUFFIX_GIT;
+		return "git@" + host + ":" + repository.generateId() + SUFFIX_GIT; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
 	 * Create HTTPS URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @param user
 	 * @return URL
@@ -74,7 +74,7 @@ public abstract class UrlUtils {
 
 	/**
 	 * Create HTTPS URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @param host
 	 * @param user
@@ -82,13 +82,13 @@ public abstract class UrlUtils {
 	 */
 	public static String createRemoteHttpsUrl(IRepositoryIdProvider repository,
 			String host, String user) {
-		return "https://" + user + "@" + host + "/" + repository.generateId()
+		return "https://" + user + "@" + host + "/" + repository.generateId() //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				+ SUFFIX_GIT;
 	}
 
 	/**
 	 * Create read-only URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @return URL
 	 */
@@ -99,13 +99,13 @@ public abstract class UrlUtils {
 
 	/**
 	 * Create read-only URL used for repository remote configs
-	 *
+	 * 
 	 * @param repository
 	 * @param host
 	 * @return URL
 	 */
 	public static String createRemoteReadOnlyUrl(
 			IRepositoryIdProvider repository, String host) {
-		return "git://" + host + "/" + repository.generateId() + SUFFIX_GIT;
+		return "git://" + host + "/" + repository.generateId() + SUFFIX_GIT; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 }

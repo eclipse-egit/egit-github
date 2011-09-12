@@ -32,7 +32,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service class for working with organization teams
- *
+ * 
  * @see <a href="http://developer.github.com/v3/orgs/teams">GitHub team API
  *      documentation</a>
  */
@@ -47,7 +47,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Create team service
-	 *
+	 * 
 	 * @param client
 	 */
 	public TeamService(GitHubClient client) {
@@ -56,7 +56,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Get team with given id
-	 *
+	 * 
 	 * @param id
 	 * @return team
 	 * @throws IOException
@@ -72,7 +72,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Get all teams in the given organization
-	 *
+	 * 
 	 * @param organization
 	 * @return list of teams
 	 * @throws IOException
@@ -95,7 +95,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Create the given team
-	 *
+	 * 
 	 * @param organization
 	 * @param team
 	 * @return created team
@@ -107,7 +107,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Create the given team
-	 *
+	 * 
 	 * @param organization
 	 * @param team
 	 * @param repoNames
@@ -137,7 +137,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Edit the given team
-	 *
+	 * 
 	 * @param team
 	 * @return edited team
 	 * @throws IOException
@@ -153,7 +153,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Delete the team with the given id
-	 *
+	 * 
 	 * @param id
 	 * @throws IOException
 	 */
@@ -165,7 +165,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Get members of team with given id
-	 *
+	 * 
 	 * @param id
 	 * @return team members
 	 * @throws IOException
@@ -183,7 +183,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Is the given user a member of the team with the given id
-	 *
+	 * 
 	 * @param id
 	 * @param user
 	 * @return true if member, false if not member
@@ -204,7 +204,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Add given user to team with given id
-	 *
+	 * 
 	 * @param id
 	 * @param user
 	 * @throws IOException
@@ -224,7 +224,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Remove given user from team with given id
-	 *
+	 * 
 	 * @param id
 	 * @param user
 	 * @throws IOException
@@ -244,7 +244,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Get all repositories for given team
-	 *
+	 * 
 	 * @param id
 	 * @return non-null list of repositories
 	 * @throws IOException
@@ -262,7 +262,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Is given repository managed by given team
-	 *
+	 * 
 	 * @param id
 	 * @param repository
 	 * @return true if managed by team, false otherwise
@@ -280,7 +280,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Add repository to team
-	 *
+	 * 
 	 * @param id
 	 * @param repository
 	 * @throws IOException
@@ -297,7 +297,7 @@ public class TeamService extends GitHubService {
 
 	/**
 	 * Remove repository from team
-	 *
+	 * 
 	 * @param id
 	 * @param repository
 	 * @throws IOException

@@ -23,7 +23,7 @@ import org.apache.http.message.BasicNameValuePair;
 /**
  * GitHub API request class that contains the URI and parameters of the request
  * as well as the expected {@link Type} of the response.
- *
+ * 
  * The {@link #generateUri()} method should be used to build a full URI that
  * contains both the base uri and the parameters set.
  */
@@ -51,7 +51,7 @@ public class GitHubRequest {
 
 	/**
 	 * Get name value pairs for data map.
-	 *
+	 * 
 	 * @param data
 	 * @return name value pair array
 	 */
@@ -66,7 +66,7 @@ public class GitHubRequest {
 
 	/**
 	 * Generate full uri
-	 *
+	 * 
 	 * @return uri
 	 */
 	public String generateUri() {

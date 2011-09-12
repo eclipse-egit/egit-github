@@ -43,7 +43,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Date service class for low-level access to Git repository data.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/git">GitHub data API
  *      documentation</a>
  */
@@ -58,7 +58,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create data service
-	 *
+	 * 
 	 * @param client
 	 */
 	public DataService(GitHubClient client) {
@@ -67,7 +67,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get blob for given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return blob
@@ -95,7 +95,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create blob with given content
-	 *
+	 * 
 	 * @param repository
 	 * @param blob
 	 * @return SHA-1 of created blob
@@ -119,7 +119,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get tree with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return tree
@@ -132,7 +132,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get tree with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param recursive
@@ -163,7 +163,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create tree
-	 *
+	 * 
 	 * @param repository
 	 * @param entries
 	 * @return created tree
@@ -176,7 +176,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create tree
-	 *
+	 * 
 	 * @param repository
 	 * @param entries
 	 * @param baseTree
@@ -205,7 +205,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get reference with given name
-	 *
+	 * 
 	 * @param repository
 	 * @param name
 	 * @return reference
@@ -234,7 +234,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get references for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of references
 	 * @throws IOException
@@ -256,7 +256,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create reference
-	 *
+	 * 
 	 * @param repository
 	 * @param reference
 	 * @return created reference
@@ -285,7 +285,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Edit reference
-	 *
+	 * 
 	 * @param repository
 	 * @param reference
 	 * @return updated reference
@@ -298,7 +298,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Edit reference
-	 *
+	 * 
 	 * @param repository
 	 * @param reference
 	 * @param force
@@ -335,7 +335,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get commit for given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return commit
@@ -363,7 +363,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create commit in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param commit
 	 * @return created commit
@@ -399,7 +399,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Get tag for given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return tag
@@ -427,7 +427,7 @@ public class DataService extends GitHubService {
 
 	/**
 	 * Create tag object in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param tag
 	 * @return created tag

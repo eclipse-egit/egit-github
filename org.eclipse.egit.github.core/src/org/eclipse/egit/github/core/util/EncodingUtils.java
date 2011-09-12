@@ -23,7 +23,7 @@ public abstract class EncodingUtils {
 
 	/**
 	 * Decode base64 encoded string
-	 *
+	 * 
 	 * @param content
 	 * @return byte array
 	 */
@@ -37,7 +37,7 @@ public abstract class EncodingUtils {
 
 	/**
 	 * Base64 encode given byte array
-	 *
+	 * 
 	 * @param content
 	 * @return byte array
 	 */

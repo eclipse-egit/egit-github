@@ -26,7 +26,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service for interacting with a repository's deploy keys
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/keys">GitHub deploy key
  *      API documentation</a>
  */
@@ -41,7 +41,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Create deploy key service
-	 *
+	 * 
 	 * @param client
 	 */
 	public DeployKeyService(GitHubClient client) {
@@ -50,7 +50,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Get all deploys keys associated with the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of deploy keys
 	 * @throws IOException
@@ -70,7 +70,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Get deploy key with given id from given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @return deploy key
@@ -91,7 +91,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Create deploy key to be associated with given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param key
 	 * @return created deploy key
@@ -108,7 +108,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Edit given deploy key
-	 *
+	 * 
 	 * @param repository
 	 * @param key
 	 * @return edited deploy key
@@ -128,7 +128,7 @@ public class DeployKeyService extends GitHubService {
 
 	/**
 	 * Deploy deploy key with given id from given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param id
 	 * @throws IOException

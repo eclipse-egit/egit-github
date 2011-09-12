@@ -33,7 +33,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * User service class.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/users">GitHub users API
  *      documentation</a>
  * @see <a href="http://developer.github.com/v3/users/followers">GitHub
@@ -54,7 +54,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Create user service
-	 *
+	 * 
 	 * @param client
 	 */
 	public UserService(GitHubClient client) {
@@ -63,7 +63,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get user with given login name
-	 *
+	 * 
 	 * @param login
 	 * @return user
 	 * @throws IOException
@@ -84,7 +84,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get currently authenticate user
-	 *
+	 * 
 	 * @return user
 	 * @throws IOException
 	 */
@@ -97,7 +97,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Edit given user
-	 *
+	 * 
 	 * @param user
 	 * @return edited user
 	 * @throws IOException
@@ -111,7 +111,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Create follower request
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @param user
@@ -135,7 +135,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Create following request
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @param user
@@ -159,7 +159,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all followers of the currently authenticated user
-	 *
+	 * 
 	 * @return list of followers
 	 * @throws IOException
 	 */
@@ -169,7 +169,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the currently authenticated user
-	 *
+	 * 
 	 * @return page iterator
 	 */
 	public PageIterator<User> pageFollowers() {
@@ -178,7 +178,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the currently authenticated user
-	 *
+	 * 
 	 * @param size
 	 * @return page iterator
 	 */
@@ -188,7 +188,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the currently authenticated user
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @return page iterator
@@ -200,7 +200,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all followers of the given user
-	 *
+	 * 
 	 * @param user
 	 * @return list of followers
 	 * @throws IOException
@@ -211,7 +211,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the given user
-	 *
+	 * 
 	 * @param user
 	 * @return page iterator
 	 */
@@ -221,7 +221,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the given user
-	 *
+	 * 
 	 * @param size
 	 * @param user
 	 * @return page iterator
@@ -232,7 +232,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page followers of the given user
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @param user
@@ -251,7 +251,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all users being followed by the currently authenticated user
-	 *
+	 * 
 	 * @return list of users being followed
 	 * @throws IOException
 	 */
@@ -261,7 +261,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the currently authenticated user
-	 *
+	 * 
 	 * @return page iterator
 	 */
 	public PageIterator<User> pageFollowing() {
@@ -270,7 +270,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the currently authenticated user
-	 *
+	 * 
 	 * @param size
 	 * @return page iterator
 	 */
@@ -280,7 +280,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the currently authenticated user
-	 *
+	 * 
 	 * @param start
 	 * @param size
 	 * @return page iterator
@@ -292,7 +292,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all users being followed by the given user
-	 *
+	 * 
 	 * @param user
 	 * @return list of users being followed
 	 * @throws IOException
@@ -303,7 +303,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the given user
-	 *
+	 * 
 	 * @param user
 	 * @return page iterator
 	 */
@@ -313,7 +313,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the given user
-	 *
+	 * 
 	 * @param user
 	 * @param size
 	 * @return page iterator
@@ -324,7 +324,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Page users being followed by the given user
-	 *
+	 * 
 	 * @param user
 	 * @param start
 	 * @param size
@@ -343,7 +343,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Check if the currently authenticated user is following the given user
-	 *
+	 * 
 	 * @param user
 	 * @return true if following, false if not following
 	 * @throws IOException
@@ -361,7 +361,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Follow the given user
-	 *
+	 * 
 	 * @param user
 	 * @throws IOException
 	 */
@@ -378,7 +378,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Unfollow the given user
-	 *
+	 * 
 	 * @param user
 	 * @throws IOException
 	 */
@@ -395,7 +395,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all e-mail addresses for the currently authenticated user
-	 *
+	 * 
 	 * @return list of e-mail address
 	 * @throws IOException
 	 */
@@ -410,7 +410,7 @@ public class UserService extends GitHubService {
 	/**
 	 * Add one or more e-mail addresses to the currently authenticated user's
 	 * account
-	 *
+	 * 
 	 * @param emails
 	 * @throws IOException
 	 */
@@ -426,7 +426,7 @@ public class UserService extends GitHubService {
 	/**
 	 * Remove one or more e-mail addresses from the currently authenticated
 	 * user's account
-	 *
+	 * 
 	 * @param emails
 	 * @throws IOException
 	 */
@@ -441,7 +441,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get all public keys for currently authenticated user
-	 *
+	 * 
 	 * @return non-null list of public keys
 	 * @throws IOException
 	 */
@@ -455,7 +455,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Get key with given id
-	 *
+	 * 
 	 * @param id
 	 * @return key
 	 * @throws IOException
@@ -471,7 +471,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Create key for currently authenticated user
-	 *
+	 * 
 	 * @param key
 	 * @return created key
 	 * @throws IOException
@@ -482,7 +482,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Edit key for currently authenticated user
-	 *
+	 * 
 	 * @param key
 	 * @return edited key
 	 * @throws IOException
@@ -498,7 +498,7 @@ public class UserService extends GitHubService {
 
 	/**
 	 * Delete key with given id
-	 *
+	 * 
 	 * @param id
 	 * @throws IOException
 	 */

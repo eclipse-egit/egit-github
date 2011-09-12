@@ -39,7 +39,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 /**
  * Issue service class for listing, searching, and fetching {@link Issue}
  * objects using a {@link GitHubClient}.
- *
+ * 
  * @see <a href="http://developer.github.com/v3/issues">GitHub Issues API
  *      documentation</a>
  */
@@ -124,7 +124,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Create issue service
-	 *
+	 * 
 	 * @param client
 	 *            cannot be null
 	 */
@@ -134,7 +134,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issues for currently authenticated user
-	 *
+	 * 
 	 * @return non-null but possibly empty list of issues
 	 * @throws IOException
 	 */
@@ -144,7 +144,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issues for currently authenticated user
-	 *
+	 * 
 	 * @param filterData
 	 * @return non-null but possibly empty list of issues
 	 * @throws IOException
@@ -156,7 +156,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issues for currently authenticated user
-	 *
+	 * 
 	 * @return iterator over pages of issues
 	 */
 	public PageIterator<Issue> pageIssues() {
@@ -165,7 +165,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issues for currently authenticated user
-	 *
+	 * 
 	 * @param filterData
 	 * @return iterator over pages of issues
 	 */
@@ -175,7 +175,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issues for currently authenticated user
-	 *
+	 * 
 	 * @param filterData
 	 * @param size
 	 * @return iterator over pages of issues
@@ -187,7 +187,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issues for currently authenticated user
-	 *
+	 * 
 	 * @param filterData
 	 * @param start
 	 * @param size
@@ -205,7 +205,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issue
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param id
@@ -219,7 +219,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issue
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param id
@@ -246,7 +246,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get an issue's comments
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param id
@@ -260,7 +260,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get an issue's comments
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param id
@@ -289,7 +289,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get bulk issues request
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param filterData
@@ -314,7 +314,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get a list of {@link Issue} objects that match the specified filter data
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param filterData
@@ -330,7 +330,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get page iterator over issues query
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @return iterator over issue pages
@@ -341,7 +341,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get page iterator over issues query
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param filterData
@@ -354,7 +354,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get page iterator over issues query
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param filterData
@@ -368,7 +368,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get page iterator over issues query
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param filterData
@@ -387,7 +387,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Create issue map for issue
-	 *
+	 * 
 	 * @param issue
 	 * @param newIssue
 	 * @return map
@@ -424,7 +424,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Create issue
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issue
@@ -445,7 +445,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Edit issue
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issue
@@ -472,7 +472,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Create comment on specified issue id
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -488,7 +488,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Create comment on specified issue id
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -518,7 +518,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issue comment
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param commentId
@@ -541,7 +541,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Edit issue comment
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param comment
@@ -552,7 +552,7 @@ public class IssueService extends GitHubService {
 			throws IOException {
 		verifyRepository(user, repository);
 		if (comment == null)
-			throw new IllegalArgumentException("Comment cannot be null");
+			throw new IllegalArgumentException("Comment cannot be null"); //$NON-NLS-1$
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(user).append('/').append(repository);
@@ -563,7 +563,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Delete the issue comment with the given id
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param commentId
@@ -576,7 +576,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Delete the issue comment with the given id
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param commentId
@@ -599,7 +599,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issue events for repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @return iterator over issue event pages
@@ -612,7 +612,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issue events for repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param size
@@ -626,7 +626,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page events for issue in repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param start
@@ -651,7 +651,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page events for issue in repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -665,7 +665,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page events for issue in repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -680,7 +680,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Page issue events for repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param issueId
@@ -708,7 +708,7 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Get issue event for repository
-	 *
+	 * 
 	 * @param user
 	 * @param repository
 	 * @param eventId

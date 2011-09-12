@@ -46,7 +46,7 @@ public class RequestException extends IOException {
 
 	/**
 	 * Create request exception
-	 *
+	 * 
 	 * @param error
 	 * @param status
 	 */
@@ -62,7 +62,7 @@ public class RequestException extends IOException {
 
 	/**
 	 * Get error
-	 *
+	 * 
 	 * @return error
 	 */
 	public RequestError getError() {
@@ -71,7 +71,7 @@ public class RequestException extends IOException {
 
 	/**
 	 * Get status
-	 *
+	 * 
 	 * @return status
 	 */
 	public int getStatus() {
@@ -80,7 +80,7 @@ public class RequestException extends IOException {
 
 	/**
 	 * Format field error into human-readable message
-	 *
+	 * 
 	 * @param error
 	 * @return formatted field error
 	 */
@@ -108,13 +108,13 @@ public class RequestException extends IOException {
 
 	/**
 	 * Format all field errors into single human-readable message.
-	 *
+	 * 
 	 * @return formatted message
 	 */
 	public String formatErrors() {
 		String errorMessage = error.getMessage();
 		if (errorMessage == null)
-			errorMessage = "";
+			errorMessage = ""; //$NON-NLS-1$
 		StringBuilder message = new StringBuilder(errorMessage);
 		if (message.length() > 0)
 			message.append(' ').append('(').append(status).append(')');

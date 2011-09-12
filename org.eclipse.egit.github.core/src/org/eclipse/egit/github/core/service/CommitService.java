@@ -33,7 +33,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service for interacting with repository commits
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/commits">GitHub commit API
  *      documentation</a>
  */
@@ -48,7 +48,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Create commit service
-	 *
+	 * 
 	 * @param client
 	 */
 	public CommitService(GitHubClient client) {
@@ -57,7 +57,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Get all commits in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null but possibly empty list of repository commits
 	 * @throws IOException
@@ -68,8 +68,9 @@ public class CommitService extends GitHubService {
 	}
 
 	/**
-	 * Get all commits in given repository
-	 *
+	 * Get all commits in given repository beginning that start at an optional
+	 * commit SHA-1 and modify an optional path.
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param path
@@ -83,7 +84,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page commits in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return page iterator
 	 */
@@ -94,7 +95,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page commits in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param size
 	 * @return page iterator
@@ -106,7 +107,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page commits in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param path
@@ -119,7 +120,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page commits in given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param path
@@ -152,7 +153,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Get commit with given SHA-1 from given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return repository commit
@@ -178,7 +179,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Get all comments on commit with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return non-null but possibly empty list of commits
@@ -191,7 +192,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page comments on commit with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @return page iterator over comments
@@ -203,7 +204,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page comments on commit with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param size
@@ -216,7 +217,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Page comments on commit with given SHA-1
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param start
@@ -245,7 +246,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Get commit comment with given id
-	 *
+	 * 
 	 * @param repository
 	 * @param commentId
 	 * @return commit comment
@@ -266,7 +267,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Add comment to given commit
-	 *
+	 * 
 	 * @param repository
 	 * @param sha
 	 * @param comment
@@ -291,7 +292,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Edit given comment
-	 *
+	 * 
 	 * @param repository
 	 * @param comment
 	 * @return edited comment
@@ -312,7 +313,7 @@ public class CommitService extends GitHubService {
 
 	/**
 	 * Delete commit comment with given id from given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param commentId
 	 * @throws IOException

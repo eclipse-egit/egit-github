@@ -25,7 +25,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Service for interacting with the collaborators on a GitHub repository
- *
+ * 
  * @see <a href="http://developer.github.com/v3/repos/collaborators/">GitHub
  *      collaborator API documentation</a>
  */
@@ -40,7 +40,7 @@ public class CollaboratorService extends GitHubService {
 
 	/**
 	 * Create collaborator service
-	 *
+	 * 
 	 * @param client
 	 */
 	public CollaboratorService(GitHubClient client) {
@@ -49,7 +49,7 @@ public class CollaboratorService extends GitHubService {
 
 	/**
 	 * Get collaborators for given repository
-	 *
+	 * 
 	 * @param repository
 	 * @return non-null list of collaborators
 	 * @throws IOException
@@ -69,7 +69,7 @@ public class CollaboratorService extends GitHubService {
 
 	/**
 	 * Create URI for updating collaborators
-	 *
+	 * 
 	 * @param repository
 	 * @param user
 	 * @return URI
@@ -90,8 +90,8 @@ public class CollaboratorService extends GitHubService {
 	}
 
 	/**
-	 * Is given user a collaborator on the given repository
-	 *
+	 * Is given user a collaborator on the given repository?
+	 * 
 	 * @param repository
 	 * @param user
 	 * @return true if collaborator, false otherwise
@@ -104,7 +104,7 @@ public class CollaboratorService extends GitHubService {
 
 	/**
 	 * Add given user as a collaborator on the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param user
 	 * @throws IOException
@@ -116,7 +116,7 @@ public class CollaboratorService extends GitHubService {
 
 	/**
 	 * Remove given user as a collaborator on the given repository
-	 *
+	 * 
 	 * @param repository
 	 * @param user
 	 * @throws IOException
