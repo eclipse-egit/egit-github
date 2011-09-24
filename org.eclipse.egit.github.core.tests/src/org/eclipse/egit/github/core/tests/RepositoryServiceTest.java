@@ -92,6 +92,16 @@ public class RepositoryServiceTest {
 	}
 
 	/**
+	 * Create repository with null repository
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void editRepositoryNullRepository() throws IOException {
+		service.editRepository(null);
+	}
+
+	/**
 	 * Create repository with null organization name
 	 *
 	 * @throws IOException
