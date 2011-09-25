@@ -21,8 +21,6 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_V2_AP
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_FIRST;
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_SIZE;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -37,6 +35,8 @@ import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Repository service class.
@@ -452,6 +452,23 @@ public class RepositoryService extends GitHubService {
 		PagedRequest<Repository> request = createPagedForkRequest(repository,
 				start, size);
 		return createPageIterator(request);
+	}
+
+	/**
+	 * Edit given repository
+	 *
+	 * @param repository
+	 * @return edited repository
+	 * @throws IOException
+	 */
+	public Repository editRepository(Repository repository) throws IOException {
+		if (repository == null)
+			throw new IllegalArgumentException("Repository cannot be null"); //$NON-NLS-1$
+
+		final String repoId = getId(repository);
+		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
+		uri.append('/').append(repoId);
+		return client.post(uri.toString(), repository, Repository.class);
 	}
 
 	/**
