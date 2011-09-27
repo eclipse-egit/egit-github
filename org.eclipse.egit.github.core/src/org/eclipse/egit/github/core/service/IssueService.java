@@ -46,6 +46,11 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 public class IssueService extends GitHubService {
 
 	/**
+	 * Filter key
+	 */
+	public static final String FILTER = "filter"; //$NON-NLS-1$
+
+	/**
 	 * Filter by issue assignee
 	 */
 	public static final String FILTER_ASSIGNEE = "assignee"; //$NON-NLS-1$
@@ -64,6 +69,16 @@ public class IssueService extends GitHubService {
 	 * Filter by subscribed issues for user
 	 */
 	public static final String FILTER_SUBSCRIBED = "subscribed"; //$NON-NLS-1$
+
+	/**
+	 * Filter by created issues by user
+	 */
+	public static final String FILTER_CREATED = "created"; //$NON-NLS-1$
+
+	/**
+	 * Filter by assigned issues for user
+	 */
+	public static final String FILTER_ASSIGNED = "assigned"; //$NON-NLS-1$
 
 	/**
 	 * Filter by issue's labels
