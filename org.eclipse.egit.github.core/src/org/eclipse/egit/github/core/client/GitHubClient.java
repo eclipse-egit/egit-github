@@ -382,7 +382,8 @@ public class GitHubClient {
 			}
 			return new RequestException(error, code);
 		default:
-			return new IOException(status.getReasonPhrase());
+			return new IOException(status.getStatusCode() + " "
+					+ status.getReasonPhrase());
 		}
 	}
 
@@ -482,9 +483,11 @@ public class GitHubClient {
 	 */
 	protected <V> V sendJson(HttpEntityEnclosingRequestBase method,
 			Object params, Type type) throws IOException {
-		if (params != null)
-			method.setEntity(new StringEntity(toJson(params),
-					CONTENT_TYPE_JSON, CHARSET_UTF8));
+		if (params != null) {
+			StringEntity entity = new StringEntity(toJson(params),
+					CONTENT_TYPE_JSON, CHARSET_UTF8);
+			method.setEntity(entity);
+		}
 		HttpResponse response = client.execute(httpHost, method, httpContext);
 		StatusLine status = getStatus(response);
 		if (isOk(response, status)) {
