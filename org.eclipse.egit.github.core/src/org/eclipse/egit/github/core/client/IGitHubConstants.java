@@ -160,6 +160,8 @@ public interface IGitHubConstants {
 	String SEGMENT_WATCHERS = "/watchers"; //$NON-NLS-1$
 	/** */
 	String SEGMENT_V2_API = "/api/v2/json"; //$NON-NLS-1$
+	/** */
+	String SEGMENT_V3_API = "/api/v3"; //$NON-NLS-1$
 
 	/** */
 	String SUBDOMAIN_API = "api"; //$NON-NLS-1$
