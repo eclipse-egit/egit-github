@@ -413,7 +413,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Search for repositories matching query.
-	 *
+	 * <p>
 	 * This method requires an API v2 configured {@link GitHubClient} as it is
 	 * not yet supported in API v3 clients.
 	 *
@@ -428,7 +428,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Search for repositories matching query.
-	 *
+	 * <p>
 	 * This method requires an API v2 configured {@link GitHubClient} as it is
 	 * not yet supported in API v3 clients.
 	 *
@@ -439,12 +439,12 @@ public class RepositoryService extends GitHubService {
 	 */
 	public List<SearchRepository> searchRepositories(final String query,
 			final int startPage) throws IOException {
-		return searchRepositories(query, null, startPage);
+		return searchRepositories(query, (String) null, startPage);
 	}
 
 	/**
 	 * Search for repositories matching language and query.
-	 *
+	 * <p>
 	 * This method requires an API v2 configured {@link GitHubClient} as it is
 	 * not yet supported in API v3 clients.
 	 *
@@ -460,7 +460,7 @@ public class RepositoryService extends GitHubService {
 
 	/**
 	 * Search for repositories matching language and query.
-	 *
+	 * <p>
 	 * This method requires an API v2 configured {@link GitHubClient} as it is
 	 * not yet supported in API v3 clients.
 	 *
@@ -472,6 +472,45 @@ public class RepositoryService extends GitHubService {
 	 */
 	public List<SearchRepository> searchRepositories(final String query,
 			final String language, final int startPage) throws IOException {
+		final Map<String, String> params;
+		if (language != null && language.length() > 0)
+			params = Collections.singletonMap(PARAM_LANGUAGE, language);
+		else
+			params = null;
+		return searchRepositories(query, params, startPage);
+	}
+
+	/**
+	 * Search for repositories matching query and search parameters.
+	 * <p>
+	 * This method requires an API v2 configured {@link GitHubClient} as it is
+	 * not yet supported in API v3 clients.
+	 *
+	 * @param query
+	 * @param params
+	 * @return list of repositories
+	 * @throws IOException
+	 */
+	public List<SearchRepository> searchRepositories(final String query,
+			final Map<String, String> params) throws IOException {
+		return searchRepositories(query, params, -1);
+	}
+
+	/**
+	 * Search for repositories matching query and search parameters.
+	 * <p>
+	 * This method requires an API v2 configured {@link GitHubClient} as it is
+	 * not yet supported in API v3 clients.
+	 *
+	 * @param query
+	 * @param params
+	 * @param startPage
+	 * @return list of repositories
+	 * @throws IOException
+	 */
+	public List<SearchRepository> searchRepositories(final String query,
+			final Map<String, String> params, final int startPage)
+			throws IOException {
 		if (query == null)
 			throw new IllegalArgumentException("Query cannot be null"); //$NON-NLS-1$
 		if (query.length() == 0)
@@ -483,13 +522,17 @@ public class RepositoryService extends GitHubService {
 		uri.append('/').append(query);
 		PagedRequest<SearchRepository> request = createPagedRequest();
 
-		Map<String, String> params = new HashMap<String, String>();
-		if (language != null && language.length() > 0)
-			params.put(PARAM_LANGUAGE, language);
+		Map<String, String> allParams = null;
+		if (params != null && !params.isEmpty())
+			allParams = new HashMap<String, String>(params);
 		if (startPage > 0)
-			params.put(PARAM_START_PAGE, Integer.toString(startPage));
-		if (!params.isEmpty())
-			request.setParams(params);
+			if (allParams == null)
+				allParams = Collections.singletonMap(PARAM_START_PAGE,
+						Integer.toString(startPage));
+			else
+				allParams.put(PARAM_START_PAGE, Integer.toString(startPage));
+		if (allParams != null && !allParams.isEmpty())
+			request.setParams(allParams);
 
 		request.setUri(uri);
 		request.setType(RepositoryContainer.class);
