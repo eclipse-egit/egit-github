@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AABOB3///7M\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-10-28T20:17:07Z",
+      "side": 1,
+      "message": "I was under a different impression after reading this issue: http://jira.codehaus.org/browse/MNG-3092",
+      "parentUuid": "AABOB3///7U\u003d",
+      "revId": "35975c5f1f55a39f8fcde456c856eb0125711c5a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOB3///zI\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
