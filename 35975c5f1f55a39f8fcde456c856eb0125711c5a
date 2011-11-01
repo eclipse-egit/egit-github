@@ -16,6 +16,24 @@
       "revId": "35975c5f1f55a39f8fcde456c856eb0125711c5a",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOB3///zI\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 11
+      },
+      "writtenOn": "2011-10-30T16:19:20Z",
+      "side": 1,
+      "message": "Yes, Maven will not download snapshots if you have no snapshots/enabled\u003dtrue. But in Maven we have local repository that\u0027s shared between many different projects. If it has any -SNAPSHOTs that satisfy a given version range - Maven may pick such version up and voila, you have unreproducibe build.",
+      "parentUuid": "AABOB3///7U\u003d",
+      "revId": "35975c5f1f55a39f8fcde456c856eb0125711c5a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
