@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AABOB3///68\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-10-28T20:23:26Z",
+      "side": 1,
+      "message": "Also, this POM is for the plain Java jar build only which should be more specific about dependencies since we currently only test against the specific release of Gson and Apache HttpComponents available in Orbit.",
+      "parentUuid": "AABOB3///7M\u003d",
+      "revId": "35975c5f1f55a39f8fcde456c856eb0125711c5a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOB3///zI\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
