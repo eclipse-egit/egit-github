@@ -26,8 +26,8 @@ import java.util.Map;
 import org.eclipse.egit.github.core.CommitComment;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.RepositoryCommit;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -51,7 +51,7 @@ public class CommitService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public CommitService(GitHubClient client) {
+	public CommitService(HttpClient<?> client) {
 		super(client);
 	}
 

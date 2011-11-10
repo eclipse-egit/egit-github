@@ -48,8 +48,8 @@ import org.eclipse.egit.github.core.RepositoryHook;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.RepositoryTag;
 import org.eclipse.egit.github.core.SearchRepository;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -134,7 +134,7 @@ public class RepositoryService extends GitHubService {
 	 * @param client
 	 *            cannot be null
 	 */
-	public RepositoryService(GitHubClient client) {
+	public RepositoryService(HttpClient<?> client) {
 		super(client);
 	}
 
@@ -417,8 +417,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching query.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param query
 	 * @return list of repositories
@@ -432,8 +432,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching query.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param query
 	 * @param startPage
@@ -448,8 +448,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching language and query.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param query
 	 * @param language
@@ -464,8 +464,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching language and query.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param query
 	 * @param language
@@ -506,8 +506,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching search parameters.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param params
 	 * @return list of repositories
@@ -521,8 +521,8 @@ public class RepositoryService extends GitHubService {
 	/**
 	 * Search for repositories matching search parameters.
 	 * <p>
-	 * This method requires an API v2 configured {@link GitHubClient} as it is
-	 * not yet supported in API v3 clients.
+	 * This method requires an API v2 configured {@link HttpClient} as it is not
+	 * yet supported in API v3 clients.
 	 *
 	 * @param queryParams
 	 * @param startPage

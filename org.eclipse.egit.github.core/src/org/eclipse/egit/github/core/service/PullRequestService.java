@@ -34,8 +34,8 @@ import org.eclipse.egit.github.core.MergeStatus;
 import org.eclipse.egit.github.core.PullRequest;
 import org.eclipse.egit.github.core.PullRequestMarker;
 import org.eclipse.egit.github.core.RepositoryCommit;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -88,7 +88,7 @@ public class PullRequestService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public PullRequestService(GitHubClient client) {
+	public PullRequestService(HttpClient<?> client) {
 		super(client);
 	}
 

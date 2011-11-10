@@ -21,6 +21,7 @@ import java.util.List;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.NoSuchPageException;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
@@ -34,7 +35,7 @@ public abstract class GitHubService {
 	/**
 	 * Client field
 	 */
-	protected final GitHubClient client;
+	protected final HttpClient<?> client;
 
 	/**
 	 * Create service using a default {@link GitHubClient}
@@ -49,7 +50,7 @@ public abstract class GitHubService {
 	 * @param client
 	 *            must be non-null
 	 */
-	public GitHubService(GitHubClient client) {
+	public GitHubService(HttpClient<?> client) {
 		if (client == null)
 			throw new IllegalArgumentException("Client cannot be null"); //$NON-NLS-1$
 		this.client = client;
@@ -60,7 +61,7 @@ public abstract class GitHubService {
 	 *
 	 * @return non-null client
 	 */
-	public GitHubClient getClient() {
+	public HttpClient<?> getClient() {
 		return client;
 	}
 

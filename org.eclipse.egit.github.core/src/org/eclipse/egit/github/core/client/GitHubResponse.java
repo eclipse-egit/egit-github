@@ -10,17 +10,19 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
 /**
  * GitHub API response class that provides the parsed response body as well as
  * any links to the first, previous, next, and last responses.
  */
-public class GitHubResponse {
+public class GitHubResponse extends LinkedResponse {
 
-	private PageLinks links;
-
-	private Object body;
+	/**
+	 * HTTP response
+	 */
+	protected final HttpResponse response;
 
 	/**
 	 * Create response
@@ -29,52 +31,13 @@ public class GitHubResponse {
 	 * @param body
 	 */
 	public GitHubResponse(HttpResponse response, Object body) {
-		links = new PageLinks(response);
-		this.body = body;
+		super(body);
+		this.response = response;
 	}
 
-	/**
-	 * Get link uri to first page
-	 *
-	 * @return possibly null uri
-	 */
-	public String getFirst() {
-		return links.getFirst();
-	}
-
-	/**
-	 * Get link uri to previous page
-	 *
-	 * @return possibly null uri
-	 */
-	public String getPrevious() {
-		return links.getPrev();
-	}
-
-	/**
-	 * Get link uri to next page
-	 *
-	 * @return possibly null uri
-	 */
-	public String getNext() {
-		return links.getNext();
-	}
-
-	/**
-	 * Get link uri to last page
-	 *
-	 * @return possibly null uri
-	 */
-	public String getLast() {
-		return links.getLast();
-	}
-
-	/**
-	 * Parsed response body
-	 *
-	 * @return body
-	 */
-	public Object getBody() {
-		return body;
+	@Override
+	public String getHeader(String name) {
+		Header header = response.getFirstHeader(name);
+		return header != null ? header.getValue() : null;
 	}
 }

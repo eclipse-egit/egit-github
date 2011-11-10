@@ -26,8 +26,8 @@ import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.Team;
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -50,7 +50,7 @@ public class TeamService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public TeamService(GitHubClient client) {
+	public TeamService(HttpClient<?> client) {
 		super(client);
 	}
 

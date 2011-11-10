@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -43,7 +43,7 @@ public class CollaboratorService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public CollaboratorService(GitHubClient client) {
+	public CollaboratorService(HttpClient<?> client) {
 		super(client);
 	}
 
