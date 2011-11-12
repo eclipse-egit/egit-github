@@ -12,12 +12,15 @@ package org.eclipse.egit.github.core.client;
 
 import static com.google.gson.FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.Date;
+
+import org.eclipse.egit.github.core.Event;
+import org.eclipse.egit.github.core.event.EventPayload;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Gson utilities.
@@ -48,6 +51,11 @@ public abstract class GsonUtils {
 	public static final Gson createGson(final boolean serializeNulls) {
 		final GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(Date.class, new DateFormatter());
+		EventFormatter eventFormatter = new EventFormatter();
+		builder.registerTypeAdapter(Event.class,
+				eventFormatter.getEventCreator());
+		builder.registerTypeAdapter(EventPayload.class,
+				eventFormatter.getPayloadDeserializer());
 		builder.setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES);
 		if (serializeNulls)
 			builder.serializeNulls();
