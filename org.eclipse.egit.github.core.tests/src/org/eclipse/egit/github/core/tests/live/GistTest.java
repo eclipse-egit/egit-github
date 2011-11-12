@@ -4,7 +4,7 @@
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  *  Contributors:
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
  *******************************************************************************/
@@ -35,7 +35,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test list a user's gists
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -68,7 +68,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test creating and deleting a Gist
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -88,7 +88,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test creating and deleting a Gist comment
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -115,7 +115,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test starring, unstarring, and checking if a gist if starred
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -157,7 +157,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test paging through public gists
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	@Test
@@ -190,7 +190,7 @@ public class GistTest extends LiveTest {
 
 	/**
 	 * Test forking a gist
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	@Test
