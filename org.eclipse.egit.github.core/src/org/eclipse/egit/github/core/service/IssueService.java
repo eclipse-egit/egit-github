@@ -31,14 +31,14 @@ import org.eclipse.egit.github.core.IssueEvent;
 import org.eclipse.egit.github.core.Label;
 import org.eclipse.egit.github.core.Milestone;
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Issue service class for listing, searching, and fetching {@link Issue}
- * objects using a {@link GitHubClient}.
+ * objects using an {@link HttpClient}.
  *
  * @see <a href="http://developer.github.com/v3/issues">GitHub Issues API
  *      documentation</a>
@@ -163,7 +163,7 @@ public class IssueService extends GitHubService {
 	 * @param client
 	 *            cannot be null
 	 */
-	public IssueService(GitHubClient client) {
+	public IssueService(HttpClient<?> client) {
 		super(client);
 	}
 

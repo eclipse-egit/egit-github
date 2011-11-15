@@ -26,8 +26,8 @@ import java.util.List;
 
 import org.eclipse.egit.github.core.Key;
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -57,7 +57,7 @@ public class UserService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public UserService(GitHubClient client) {
+	public UserService(HttpClient<?> client) {
 		super(client);
 	}
 

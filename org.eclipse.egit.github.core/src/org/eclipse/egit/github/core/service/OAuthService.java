@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.egit.github.core.Authorization;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -45,7 +45,7 @@ public class OAuthService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public OAuthService(GitHubClient client) {
+	public OAuthService(HttpClient<?> client) {
 		super(client);
 	}
 

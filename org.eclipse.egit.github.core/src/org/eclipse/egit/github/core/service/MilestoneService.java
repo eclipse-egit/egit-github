@@ -20,13 +20,13 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.egit.github.core.Milestone;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Milestone service class for listing the {@link Milestone} objects in use by a
- * repository and user accessed via a {@link GitHubClient}.
+ * repository and user accessed via an {@link HttpClient}.
  *
  * @see <a href="http://developer.github.com/v3/issues/milestones">GitHub
  *      milestones API documentation</a>
@@ -46,7 +46,7 @@ public class MilestoneService extends GitHubService {
 	 * @param client
 	 *            cannot be null
 	 */
-	public MilestoneService(GitHubClient client) {
+	public MilestoneService(HttpClient<?> client) {
 		super(client);
 	}
 

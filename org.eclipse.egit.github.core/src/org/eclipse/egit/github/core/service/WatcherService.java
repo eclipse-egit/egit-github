@@ -26,7 +26,7 @@ import java.util.List;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -50,7 +50,7 @@ public class WatcherService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public WatcherService(GitHubClient client) {
+	public WatcherService(HttpClient<?> client) {
 		super(client);
 	}
 

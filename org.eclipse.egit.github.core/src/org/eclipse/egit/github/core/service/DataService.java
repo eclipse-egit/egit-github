@@ -37,8 +37,8 @@ import org.eclipse.egit.github.core.Tag;
 import org.eclipse.egit.github.core.Tree;
 import org.eclipse.egit.github.core.TreeEntry;
 import org.eclipse.egit.github.core.TypedResource;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -61,7 +61,7 @@ public class DataService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public DataService(GitHubClient client) {
+	public DataService(HttpClient<?> client) {
 		super(client);
 	}
 

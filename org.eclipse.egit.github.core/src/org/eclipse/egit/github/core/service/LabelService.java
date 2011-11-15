@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.egit.github.core.Label;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -45,7 +45,7 @@ public class LabelService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public LabelService(GitHubClient client) {
+	public LabelService(HttpClient<?> client) {
 		super(client);
 	}
 

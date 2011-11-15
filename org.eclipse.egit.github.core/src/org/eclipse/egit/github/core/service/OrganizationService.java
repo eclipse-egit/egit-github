@@ -24,8 +24,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -50,7 +50,7 @@ public class OrganizationService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public OrganizationService(GitHubClient client) {
+	public OrganizationService(HttpClient<?> client) {
 		super(client);
 	}
 

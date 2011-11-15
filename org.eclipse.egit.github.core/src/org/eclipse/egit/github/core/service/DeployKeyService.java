@@ -20,8 +20,8 @@ import java.util.List;
 
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.Key;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
@@ -44,7 +44,7 @@ public class DeployKeyService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public DeployKeyService(GitHubClient client) {
+	public DeployKeyService(HttpClient<?> client) {
 		super(client);
 	}
 

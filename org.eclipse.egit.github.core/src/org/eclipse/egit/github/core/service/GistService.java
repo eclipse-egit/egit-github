@@ -27,8 +27,8 @@ import java.util.Map;
 
 import org.eclipse.egit.github.core.Comment;
 import org.eclipse.egit.github.core.Gist;
-import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
+import org.eclipse.egit.github.core.client.HttpClient;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
@@ -54,7 +54,7 @@ public class GistService extends GitHubService {
 	 *
 	 * @param client
 	 */
-	public GistService(GitHubClient client) {
+	public GistService(HttpClient<?> client) {
 		super(client);
 	}
 
