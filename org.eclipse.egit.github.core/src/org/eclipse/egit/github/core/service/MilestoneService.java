@@ -26,7 +26,7 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
  * Milestone service class for listing the {@link Milestone} objects in use by a
- * repository and user accessed via a {@link GitHubClient}.
+ * repository.
  *
  * @see <a href="http://developer.github.com/v3/issues/milestones">GitHub
  *      milestones API documentation</a>
