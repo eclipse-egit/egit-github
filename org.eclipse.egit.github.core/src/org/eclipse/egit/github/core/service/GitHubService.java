@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.egit.github.core.service;
 
-import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_FIRST;
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_SIZE;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +152,7 @@ public abstract class GitHubService {
 			client.get(createRequest().setUri(uri));
 			return true;
 		} catch (RequestException e) {
-			if (e.getStatus() == SC_NOT_FOUND)
+			if (e.getStatus() == HttpURLConnection.HTTP_NOT_FOUND)
 				return false;
 			throw e;
 		}
