@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOCX///V8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-21T22:43:40Z",
+      "side": 1,
+      "message": "I created bug 364424 to track this enhancement.\n\nPlease add:\n\nBug: 364424\n\nabove the Change-Id line",
+      "revId": "d5adcc025f0885479795f65394973dfe6c25fc4e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///WA\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/Page.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-21T22:43:40Z",
+      "side": 1,
+      "message": "I think it makes sense to name this class GollumPage.\n\nWhat do you think?",
+      "revId": "d5adcc025f0885479795f65394973dfe6c25fc4e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///WM\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/EventService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-21T22:43:40Z",
+      "side": 1,
+      "message": "This tag isn\u0027t needed",
+      "revId": "d5adcc025f0885479795f65394973dfe6c25fc4e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///WI\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/EventService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-21T22:43:40Z",
+      "side": 1,
+      "message": "This tag isn\u0027t needed",
+      "revId": "d5adcc025f0885479795f65394973dfe6c25fc4e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///WE\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/EventService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-21T22:43:40Z",
+      "side": 1,
+      "message": "org parameter needs an @param tag",
+      "revId": "d5adcc025f0885479795f65394973dfe6c25fc4e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
