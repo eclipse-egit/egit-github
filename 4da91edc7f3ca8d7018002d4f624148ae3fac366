@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOCX///y0\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/live/GistTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-17T17:24:06Z",
+      "side": 1,
+      "message": "Please revert the changes to this file, it looks like only whitespace changes were made, these can be done in a separate commit.",
+      "revId": "4da91edc7f3ca8d7018002d4f624148ae3fac366",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
