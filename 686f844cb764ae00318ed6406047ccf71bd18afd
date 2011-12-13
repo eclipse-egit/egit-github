@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOC3///48\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/EventTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "Add class header comment",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///40\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/GollumPageTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "This test does not appear to be referenced by any suites",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///44\u003d",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/live/EventTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "Missing @throws tag in this comment",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///4w\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/Event.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "I think this class should go in the new event package",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///5E\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/EventFormatter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "Add class header comment",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///5A\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/EventFormatter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "This should be Class\u003c? extends EventPayload\u003e clazz to remove a compiler warning",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///5M\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/EventFormatter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "Small style issue, no curlies needed for single line if/else statements, here and below",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOC3///5I\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GsonUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-29T22:11:36Z",
+      "side": 1,
+      "message": "Please revert the changed order of the gson.* imports",
+      "revId": "686f844cb764ae00318ed6406047ccf71bd18afd",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
