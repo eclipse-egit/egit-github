@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOCX///qw\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/EventPayload.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-18T16:43:29Z",
+      "side": 1,
+      "message": "Looks like a missing space between Serializable and {",
+      "revId": "2fb67ed2ff80f1b1b09979583808dce11a8fa422",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///qs\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/EventService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-18T16:43:29Z",
+      "side": 1,
+      "message": "Should be \"all public events\" instead of \"all public gists\"",
+      "revId": "2fb67ed2ff80f1b1b09979583808dce11a8fa422",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOCX///qo\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/EventService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2011-11-18T16:43:29Z",
+      "side": 1,
+      "message": "Could you use an IRepositoryProvider here instead of taking a user and repository?",
+      "revId": "2fb67ed2ff80f1b1b09979583808dce11a8fa422",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
