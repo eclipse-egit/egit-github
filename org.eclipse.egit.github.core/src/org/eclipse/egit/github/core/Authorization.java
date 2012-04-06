@@ -10,11 +10,11 @@
  *****************************************************************************/
 package org.eclipse.egit.github.core;
 
+import org.eclipse.egit.github.core.util.DateUtils;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import org.eclipse.egit.github.core.util.DateUtils;
 
 /**
  * Authorization model class
@@ -31,6 +31,10 @@ public class Authorization implements Serializable {
 	private Date updatedAt;
 
 	private int id;
+
+	private String note;
+
+	private String noteUrl;
 
 	private List<String> scopes;
 
@@ -100,6 +104,38 @@ public class Authorization implements Serializable {
 	public Authorization setId(int id) {
 		this.id = id;
 		return this;
+	}
+
+	/**
+	 * @return note
+	 */
+	public String getNote() {
+	    return note;
+	}
+
+	/**
+	 * @param note
+	 * @return this authorization
+	 */
+	public Authorization setNote(String note) {
+	    this.note = note;
+	    return this;
+	}
+
+	/**
+	 * @return noteUrl
+	 */
+	public String getNoteUrl() {
+	    return noteUrl;
+	}
+
+	/**
+	 * @param noteUrl
+	 * @return this authorization
+	 */
+	public Authorization setNoteUrl(String noteUrl) {
+	    this.noteUrl = noteUrl;
+	    return this;
 	}
 
 	/**
