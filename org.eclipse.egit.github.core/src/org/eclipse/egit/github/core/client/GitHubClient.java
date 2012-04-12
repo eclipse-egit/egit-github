@@ -570,7 +570,11 @@ public class GitHubClient {
 			try {
 				output.write(data);
 			} finally {
-				output.close();
+				try {
+					output.close();
+				} catch (IOException ignored) {
+					// Ignored
+				}
 			}
 		} else
 			request.setFixedLengthStreamingMode(0);
