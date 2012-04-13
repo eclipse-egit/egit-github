@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOG3//9YY\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2012-04-13T15:33:18Z",
+      "side": 1,
+      "message": "What\u0027s really missing is NOT swallowing exceptions during flush. \nI.e. this change is ok, but you should have a flush before finally to capture errors that may occuring while writing the final output.",
+      "revId": "f6d052c646c3e4e6396f2600544f98fd10ca2951",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
