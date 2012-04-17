@@ -16,6 +16,24 @@
       "revId": "f6d052c646c3e4e6396f2600544f98fd10ca2951",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOG3//9DQ\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 208
+      },
+      "writtenOn": "2012-04-17T21:09:35Z",
+      "side": 1,
+      "message": "Thanks, updated.",
+      "parentUuid": "AABOG3//9YY\u003d",
+      "revId": "f6d052c646c3e4e6396f2600544f98fd10ca2951",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
