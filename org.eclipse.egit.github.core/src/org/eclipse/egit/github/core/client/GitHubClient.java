@@ -18,6 +18,7 @@ import static java.net.HttpURLConnection.HTTP_CREATED;
 import static java.net.HttpURLConnection.HTTP_FORBIDDEN;
 import static java.net.HttpURLConnection.HTTP_GONE;
 import static java.net.HttpURLConnection.HTTP_INTERNAL_ERROR;
+import static java.net.HttpURLConnection.HTTP_LENGTH_REQUIRED;
 import static java.net.HttpURLConnection.HTTP_NOT_FOUND;
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -78,6 +79,11 @@ public class GitHubClient {
 	 * Content-Type header
 	 */
 	protected static final String HEADER_CONTENT_TYPE = "Content-Type"; //$NON-NLS-1$
+
+	/**
+	 * Content-Length header
+	 */
+	protected static final String HEADER_CONTENT_LENGTH = "Content-Length"; //$NON-NLS-1$
 
 	/**
 	 * Accept header
@@ -229,6 +235,8 @@ public class GitHubClient {
 		request.setRequestProperty(HEADER_USER_AGENT, userAgent);
 		request.setRequestProperty(HEADER_ACCEPT,
 				"application/vnd.github.beta+json"); //$NON-NLS-1$
+		if(request.getRequestMethod().equals(METHOD_PUT))
+			request.setRequestProperty(HEADER_CONTENT_LENGTH, "0");
 		return request;
 	}
 
@@ -434,6 +442,7 @@ public class GitHubClient {
 		case HTTP_GONE:
 		case HTTP_UNPROCESSABLE_ENTITY:
 		case HTTP_INTERNAL_ERROR:
+		case HTTP_LENGTH_REQUIRED:
 			return true;
 		default:
 			return false;
