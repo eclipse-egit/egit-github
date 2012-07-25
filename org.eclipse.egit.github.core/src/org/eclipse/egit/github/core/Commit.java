@@ -25,6 +25,8 @@ public class Commit implements Serializable {
 
 	private CommitUser committer;
 
+	private int commitCount;
+
 	private List<Commit> parents;
 
 	private String message;
@@ -64,6 +66,22 @@ public class Commit implements Serializable {
 	 */
 	public Commit setCommitter(CommitUser committer) {
 		this.committer = committer;
+		return this;
+	}
+
+	/**
+	 * @return commitCount
+	 */
+	public int getCommitCount() {
+		return commitCount;
+	}
+
+	/**
+	 * @param commitCount
+	 * @return this commit
+	 */
+	public Commit setCommitCount(int commitCount) {
+		this.commitCount = commitCount;
 		return this;
 	}
 
