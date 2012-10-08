@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AABOIn//1FA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 621
+      },
+      "writtenOn": "2012-10-08T09:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOIn//1Ho\u003d",
+      "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOIn//1Hg\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-07T22:17:08Z",
       "side": 1,
       "message": "typo: s/credential/credentials/",
+      "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIn//1E8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 621
+      },
+      "writtenOn": "2012-10-08T09:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOIn//1Hg\u003d",
       "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AABOIn//1E4\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 621
+      },
+      "writtenOn": "2012-10-08T09:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOIn//1Hk\u003d",
+      "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOIn//1Hc\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AABOIn//1E0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 621
+      },
+      "writtenOn": "2012-10-08T09:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOIn//1Hc\u003d",
+      "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AABOIn//1HY\u003d",
         "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/issue/IssueTaskEditorPage.java",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-10-07T22:17:08Z",
       "side": 1,
       "message": "style nit: we don\u0027t use braces around single line blocks",
+      "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AABOIn//1Ew\u003d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/issue/IssueTaskEditorPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 621
+      },
+      "writtenOn": "2012-10-08T09:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AABOIn//1HY\u003d",
       "revId": "a6cba8522fa731b220acf4c2407ac1da37728c0a",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
