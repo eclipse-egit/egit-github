@@ -67,7 +67,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Get repository label for id provider
-	 * 
+	 *
 	 * @param repo
 	 * @return label
 	 */
@@ -77,7 +77,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Create issue task repository
-	 * 
+	 *
 	 * @param repo
 	 * @param username
 	 * @param password
@@ -100,7 +100,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Create client for repository
-	 * 
+	 *
 	 * @param repository
 	 * @return client
 	 */
@@ -131,7 +131,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Refresh labels for repository
-	 * 
+	 *
 	 * @param repository
 	 * @return labels
 	 * @throws CoreException
@@ -155,7 +155,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Get labels for task repository.
-	 * 
+	 *
 	 * @param repository
 	 * @return non-null but possibly empty list of labels
 	 */
@@ -170,7 +170,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Are there cached labels for the specified task repository?
-	 * 
+	 *
 	 * @param repository
 	 * @return true if contains labels, false otherwise
 	 */
@@ -180,7 +180,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Refresh milestones for repository
-	 * 
+	 *
 	 * @param repository
 	 * @return milestones
 	 * @throws CoreException
@@ -207,7 +207,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Get milestones for task repository.
-	 * 
+	 *
 	 * @param repository
 	 * @return non-null but possibly empty list of milestones
 	 */
@@ -222,7 +222,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * Are there cached milestones for the specified task repository?
-	 * 
+	 *
 	 * @param repository
 	 * @return true if contains milestones, false otherwise
 	 */
@@ -232,7 +232,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return always {@code true}
 	 */
 	@Override
@@ -242,7 +242,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return always {@code true}
 	 */
 	@Override
@@ -252,7 +252,7 @@ public class IssueConnector extends RepositoryConnector {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see #KIND
 	 */
 	@Override
@@ -284,7 +284,15 @@ public class IssueConnector extends RepositoryConnector {
 		List<String> statuses = QueryUtils.getAttributes(
 				IssueService.FILTER_STATE, query);
 
-		monitor.beginTask(Messages.IssueConector_TaskQuerying, statuses.size());
+		String requiredLabels = query.getAttribute(IssueService.FILTER_LABELS_REQUIRED);
+
+		List<String> labels = QueryUtils.getAttributes(
+					IssueService.FILTER_LABELS, query);
+
+		int workRequired = requiredLabels.equals(IssueService.LABELS_ALL) ? statuses.size() :
+																			labels.size() * statuses.size();
+
+		monitor.beginTask(Messages.IssueConector_TaskQuerying, workRequired);
 		try {
 			RepositoryId repo = GitHub.getRepository(repository
 					.getRepositoryUrl());
@@ -306,36 +314,16 @@ public class IssueConnector extends RepositoryConnector {
 			if (milestone != null)
 				filterData.put(IssueService.FILTER_MILESTONE, milestone);
 
-			List<String> labels = QueryUtils.getAttributes(
-					IssueService.FILTER_LABELS, query);
-			if (!labels.isEmpty()) {
-				StringBuilder labelsQuery = new StringBuilder();
-				for (String label : labels)
-					labelsQuery.append(label).append(',');
-				filterData.put(IssueService.FILTER_LABELS,
-						labelsQuery.toString());
-			}
 
-			String owner = repo.getOwner();
-			String name = repo.getName();
-			for (String status : statuses) {
-				filterData.put(IssueService.FILTER_STATE, status);
-				List<Issue> issues = service.getIssues(repo.getOwner(),
-						repo.getName(), filterData);
+			if(requiredLabels.equals(IssueService.LABELS_ALL) || labels.isEmpty()){
+				performQueryWithLabels(repository, collector, monitor, statuses, service, repo, filterData, labels);
+			}else{
+				for(String issueLabel : labels){
+					List<String> queryLabels = new LinkedList<String>();
+					queryLabels.add(issueLabel);
 
-				// collect task data
-				for (Issue issue : issues) {
-					if (isPullRequest(issue))
-						continue;
-					List<Comment> comments = null;
-					if (issue.getComments() > 0)
-						comments = service.getComments(owner, name,
-								Integer.toString(issue.getNumber()));
-					TaskData taskData = taskDataHandler.createTaskData(
-							repository, monitor, owner, name, issue, comments);
-					collector.accept(taskData);
+					performQueryWithLabels(repository, collector, monitor, statuses, service, repo, filterData, queryLabels);
 				}
-				monitor.worked(1);
 			}
 		} catch (IOException e) {
 			result = GitHub.createWrappedStatus(e);
@@ -343,6 +331,41 @@ public class IssueConnector extends RepositoryConnector {
 
 		monitor.done();
 		return result;
+	}
+
+	private void performQueryWithLabels(TaskRepository repository,
+							TaskDataCollector collector, IProgressMonitor monitor,
+							List<String> statuses, IssueService service, RepositoryId repo,
+							Map<String, String> filterData, List<String> labels) throws IOException{
+		if (!labels.isEmpty()) {
+			StringBuilder labelsQuery = new StringBuilder();
+			for (String label : labels)
+				labelsQuery.append(label).append(',');
+			filterData.put(IssueService.FILTER_LABELS,
+					labelsQuery.toString());
+		}
+		String owner = repo.getOwner();
+		String name = repo.getName();
+
+		for (String status : statuses) {
+			filterData.put(IssueService.FILTER_STATE, status);
+			List<Issue> issues = service.getIssues(repo.getOwner(),
+					repo.getName(), filterData);
+
+			// collect task data
+			for (Issue issue : issues) {
+				if (isPullRequest(issue))
+					continue;
+				List<Comment> comments = null;
+				if (issue.getComments() > 0)
+					comments = service.getComments(owner, name,
+							Integer.toString(issue.getNumber()));
+				TaskData taskData = taskDataHandler.createTaskData(
+						repository, monitor, owner, name, issue, comments);
+				collector.accept(taskData);
+			}
+			monitor.worked(1);
+		}
 	}
 
 	private boolean isPullRequest(Issue issue) {

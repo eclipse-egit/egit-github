@@ -69,6 +69,12 @@ public class Messages extends NLS {
 	public static String IssueRepositoryQueryPage_TitleLabel;
 
 	/** */
+	public static String IssueRepositoryQueryPage_RequireAllLabels;
+
+	/** */
+	public static String IssueRepositoryQueryPage_RequireOneLabel;
+
+	/** */
 	public static String IssueRepositoryQueryPage_TooltipUpdateRepository;
 
 	/** */

@@ -74,6 +74,8 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 	private Text mentionText;
 	private Combo milestoneCombo;
 	private CheckboxTableViewer labelsViewer;
+	private Button oneLabelButton;
+	private Button allLabelsButton;
 	private List<Milestone> milestones;
 
 	private SelectionListener completeListener = new SelectionAdapter() {
@@ -130,6 +132,17 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 						setPageComplete(isPageComplete());
 					}
 				});
+
+		Composite requiredLabelsArea = new Composite(labelsArea, SWT.NONE);
+		GridLayoutFactory.fillDefaults().applyTo(requiredLabelsArea);
+
+		oneLabelButton = new Button(requiredLabelsArea, SWT.RADIO);
+		oneLabelButton.setText(Messages.IssueRepositoryQueryPage_RequireOneLabel);
+
+		allLabelsButton = new Button(requiredLabelsArea, SWT.RADIO);
+		allLabelsButton.setText(Messages.IssueRepositoryQueryPage_RequireAllLabels);
+		allLabelsButton.setSelection(true);
+
 	}
 
 	private void createOptionsArea(Composite parent) {
@@ -260,6 +273,12 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		titleText.setText(query.getSummary());
 		labelsViewer.setCheckedElements(QueryUtils.getAttributes(
 				IssueService.FILTER_LABELS, query).toArray());
+		String requiredLabels = query.getAttribute(IssueService.FILTER_LABELS_REQUIRED);
+		if(requiredLabels.equals(IssueService.LABELS_ALL)){
+			allLabelsButton.setSelection(true);
+		}else{
+			oneLabelButton.setSelection(true);
+		}
 		List<String> status = QueryUtils.getAttributes(
 				IssueService.FILTER_STATE, query);
 		closedButton.setSelection(status.contains(IssueService.STATE_CLOSED));
@@ -429,5 +448,10 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		for (Object label : labelsViewer.getCheckedElements())
 			labels.add(label.toString());
 		QueryUtils.setAttribute(IssueService.FILTER_LABELS, labels, query);
+
+		if(oneLabelButton.getSelection()){
+			query.setAttribute(IssueService.FILTER_LABELS_REQUIRED, IssueService.LABELS_ONE);
+		}else
+			query.setAttribute(IssueService.FILTER_LABELS_REQUIRED, IssueService.LABELS_ALL);
 	}
 }
