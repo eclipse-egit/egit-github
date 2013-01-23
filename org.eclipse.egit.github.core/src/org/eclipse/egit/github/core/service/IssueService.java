@@ -20,8 +20,6 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_SEARC
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_FIRST;
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_SIZE;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -43,6 +41,8 @@ import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Issue service class for listing, searching, and fetching {@link Issue}
@@ -94,9 +94,15 @@ public class IssueService extends GitHubService {
 	public static final String FILTER_LABELS = "labels"; //$NON-NLS-1$
 
 	/**
+	 * Filter by requiring all or only one label
+	 */
+	public static final String FILTER_LABELS_REQUIRED = "labels-required"; //$NON-NLS-1$
+
+	/**
 	 * Filter by issue's state
 	 */
 	public static final String FILTER_STATE = "state"; //$NON-NLS-1$
+
 
 	/**
 	 * Issue open state filter value
@@ -107,6 +113,16 @@ public class IssueService extends GitHubService {
 	 * Issue closed state filter value
 	 */
 	public static final String STATE_CLOSED = "closed"; //$NON-NLS-1$
+
+	/**
+	 * Require all labels filter value
+	 */
+	public static final String LABELS_ALL = "all";
+
+	/**
+	 * Require one label filter value
+	 */
+	public static final String LABELS_ONE = "one";
 
 	/**
 	 * Issue body field name
