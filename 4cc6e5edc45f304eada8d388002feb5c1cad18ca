@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AABOPH////Q\u003d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/IssueService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1029
+      },
+      "writtenOn": "2013-01-23T07:43:44Z",
+      "side": 1,
+      "message": "Not entirely sure this is the right place for the attribute name/value fields, since they\u0027re not actually sent in the query for the issues.",
+      "revId": "4cc6e5edc45f304eada8d388002feb5c1cad18ca",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
