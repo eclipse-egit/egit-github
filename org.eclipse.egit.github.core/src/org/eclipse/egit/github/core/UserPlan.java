@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2011 GitHub Inc and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -18,11 +18,11 @@ import java.io.Serializable;
 public class UserPlan implements Serializable {
 
 	/** serialVersionUID */
-	private static final long serialVersionUID = 4759542049129654659L;
+	private static final long serialVersionUID = 4156456691464584659L;
 
-	private int collaborators;
+	private long collaborators;
 
-	private int privateRepos;
+	private long privateRepos;
 
 	private int space;
 
@@ -31,7 +31,7 @@ public class UserPlan implements Serializable {
 	/**
 	 * @return collaborators
 	 */
-	public int getCollaborators() {
+	public long getCollaborators() {
 		return collaborators;
 	}
 
@@ -39,7 +39,7 @@ public class UserPlan implements Serializable {
 	 * @param collaborators
 	 * @return this user plan
 	 */
-	public UserPlan setCollaborators(int collaborators) {
+	public UserPlan setCollaborators(long collaborators) {
 		this.collaborators = collaborators;
 		return this;
 	}
@@ -47,7 +47,7 @@ public class UserPlan implements Serializable {
 	/**
 	 * @return privateRepos
 	 */
-	public int getPrivateRepos() {
+	public long getPrivateRepos() {
 		return privateRepos;
 	}
 
@@ -55,7 +55,7 @@ public class UserPlan implements Serializable {
 	 * @param privateRepos
 	 * @return this user plan
 	 */
-	public UserPlan setPrivateRepos(int privateRepos) {
+	public UserPlan setPrivateRepos(long privateRepos) {
 		this.privateRepos = privateRepos;
 		return this;
 	}
