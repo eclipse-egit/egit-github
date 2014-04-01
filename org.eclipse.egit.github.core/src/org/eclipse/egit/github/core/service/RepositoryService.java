@@ -14,6 +14,7 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.CHARSET_UTF8;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.PARAM_LANGUAGE;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.PARAM_START_PAGE;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_BRANCHES;
+import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_CONTENTS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_CONTRIBUTORS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_FORKS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_HOOKS;
@@ -40,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.egit.github.core.Blob;
 import org.eclipse.egit.github.core.Contributor;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.IResourceProvider;
@@ -968,5 +970,25 @@ public class RepositoryService extends GitHubService {
 		uri.append('/').append(hookId);
 		uri.append(SEGMENT_TEST);
 		client.post(uri.toString());
+	}
+
+	/**
+	 * Get the contents of a given file
+	 *
+	 * @param repository
+	 * @param path
+	 * @return
+	 * @throws IOException because of connectivity issues or if the file doesn't exist
+	 */
+	public Blob getContents(IRepositoryIdProvider repository, String path) throws IOException {
+		String id = getId(repository);
+		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_CONTENTS);
+		uri.append("/").append(path);
+		GitHubRequest request = createRequest();
+		request.setUri(uri);
+		request.setType(Blob.class);
+		return (Blob) client.get(request).getBody();
 	}
 }
