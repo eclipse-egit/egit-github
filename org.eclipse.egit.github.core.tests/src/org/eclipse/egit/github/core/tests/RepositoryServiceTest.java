@@ -623,4 +623,17 @@ public class RepositoryServiceTest {
 		service.testHook(repo, 5609);
 		verify(client).post("/repos/o/n/hooks/5609/test");
 	}
+
+	/**
+	 * Get file contents
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void getContents() throws IOException {
+		service.getContents(repo, "some/path");
+		GitHubRequest request = new GitHubRequest();
+		request.setUri("/repos/o/n/contents/some/path");
+		verify(client).get(request);
+	}
 }
