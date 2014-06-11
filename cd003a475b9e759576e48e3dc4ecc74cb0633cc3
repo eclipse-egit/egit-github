@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e76c2f17_70d75034",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-06-11T15:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76c2f17_70c0f074",
+      "revId": "cd003a475b9e759576e48e3dc4ecc74cb0633cc3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e76c2f17_d0c4648a",
         "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-11T15:12:43Z",
       "side": 1,
       "message": "should allow 3.2..4..0",
+      "revId": "cd003a475b9e759576e48e3dc4ecc74cb0633cc3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_d0ebc4eb",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-06-11T15:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76c2f17_d0c4648a",
       "revId": "cd003a475b9e759576e48e3dc4ecc74cb0633cc3",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
