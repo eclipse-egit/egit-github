@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e76c2f17_9d98154c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "Please provide a commit message following the guidelines given in the contributor guide [1]. In short, the first line should give a concise description of the change, the body should explain why this change is done and provide more details if they help understanding the change.\n\n[1] https://wiki.eclipse.org/EGit/Contributor_Guide#Commit_message_guidelines",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_7d953910",
+        "filename": "org.eclipse.egit.github.pr/.classpath",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "we use unix line endings",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_dd928d27",
+        "filename": "org.eclipse.egit.github.pr/.classpath",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "do you really need Java 6 ? So far EGit is still supporting Java 5",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_5d7afd61",
+        "filename": "org.eclipse.egit.github.pr/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "why do we need a new plugin for introducing pull request support ? I\u0027d say the UI should go into the org.eclipse.mylyn.github.ui plugin, if you introduce new non-ui functionality this should go into the org.eclipse.mylyn.github.core plugin",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_7d6099ae",
+        "filename": "org.eclipse.egit.github.pr/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "s/1.0.0.qualifier/3.5.0.qualifier/",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_9d63f5bb",
+        "filename": "org.eclipse.egit.github.pr/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "we avoid require-bundle and prefer package dependencies\n\nwe use versioned package dependencies, usually we use version range from minimum required version up to next major version, dependencies to jgit/egit packages use a range from current minor version up to next minor version, at the moment we are on 3.5.0.qualifier -\u003e range for internal dependencies is [3.5.0,3.6.0)",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_fd5b0900",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "we want javadoc for public classes / methods",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_5d515dde",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "style nit: remove all trailing whitespace",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_1dc24500",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "remove unnecessary duplicate blank line",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_5dccbd32",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "why this strange camel case ? s/urIs/uris/",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_3d5621d8",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "style nit: we don\u0027t use braces around single line blocks",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_dd444d20",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "this is not acceptable and should be replaced by proper logging, where necessary an error dialog should be shown to the user",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_7dd259ca",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "please fix formatting following https://wiki.eclipse.org/EGit/Contributor_Guide#Coding_standards",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_dddf2dd0",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/actions/RaisePullRequestAction.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "what\u0027s this ? why do you override this method without providing an implementation ?",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_1de9a578",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/dialog/AuthenticationDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "style nit: trailing whitespace, more below",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_3de8e170",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/dialog/AuthenticationDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "fix TODOs",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_7df9b940",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/dialog/AuthenticationDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "remove unnecessary blank lines",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_9d0775d4",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/preferences/GitHubPRPreferencesInitializer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "why is this class needed if it doesn\u0027t provide an implementation ?",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_7d0419cf",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/wizards/PullRequestWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "why is this overridden if it\u0027s returing null ?",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_dd11ed0c",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/wizards/PullRequestWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "we avoid obvious comments and prefer readable code instead",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_bd0eb1ec",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/wizards/PullRequestWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "remove dead code",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_1d3b6588",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/wizards/PullRequestWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "externalize all texts which should be translatable, i.e. all texts shown in UI or log files",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76c2f17_fd3f8970",
+        "filename": "org.eclipse.egit.github.pr/src/org/eclipse/egit/github/pr/wizards/PullRequestWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-07-02T23:14:12Z",
+      "side": 1,
+      "message": "replace this by proper error handling",
+      "revId": "569e7c3e052b637e3405f32737361e3ddae271f0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
