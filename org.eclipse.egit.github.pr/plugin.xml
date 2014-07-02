@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.egit.github.pr.pullrequestcontribution"
+            objectClass="org.eclipse.egit.ui.internal.repository.tree.RefNode">
+         <action
+               class="org.eclipse.egit.github.pr.actions.RaisePullRequestAction"
+               enablesFor="1"
+               icon="icons/pr.png"
+               id="org.eclipse.egit.github.pr.actions.RaisePullRequestAction"
+               label="Create Pull Request"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.egit.github.pr.preferences.GitHubPRPreferencesInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

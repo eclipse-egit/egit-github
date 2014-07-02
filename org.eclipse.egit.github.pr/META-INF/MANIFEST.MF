@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Pull Request Plugin
+Bundle-SymbolicName: org.eclipse.egit.github.pr;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.egit.github.pr.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jgit,
+ org.eclipse.egit.ui,
+ org.eclipse.egit.github.core,
+ org.eclipse.equinox.security
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
