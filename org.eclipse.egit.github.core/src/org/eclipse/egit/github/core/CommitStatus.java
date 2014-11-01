@@ -58,6 +58,8 @@ public class CommitStatus implements Serializable {
 
 	private User creator;
 
+	private String context;
+
 	/**
 	 * @return createdAt
 	 */
@@ -183,6 +185,20 @@ public class CommitStatus implements Serializable {
 	 */
 	public CommitStatus setCreator(final User creator) {
 		this.creator = creator;
+		return this;
+	}
+
+	/**
+	 * @return context
+	 */
+	public String getContext() { return context; }
+
+	/**
+	 * @param context
+	 * @return this status
+	 */
+	public CommitStatus setContext(final String context) {
+		this.context = context;
 		return this;
 	}
 }
