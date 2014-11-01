@@ -38,6 +38,7 @@ public class CommitStatusTest {
 		assertNull(status.getTargetUrl());
 		assertNull(status.getUpdatedAt());
 		assertNull(status.getUrl());
+		assertNull(status.getContext());
 	}
 
 	/**
@@ -58,5 +59,6 @@ public class CommitStatusTest {
 		assertEquals(new Date(5678), status.setUpdatedAt(new Date(5678))
 				.getUpdatedAt());
 		assertEquals("url", status.setUrl("url").getUrl());
+		assertEquals("context", status.getContext("context").getContext());
 	}
 }
