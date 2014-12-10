@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a766b734_fbe40e9e",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2014-12-10T08:09:34Z",
+      "side": 1,
+      "message": "I think we should always use the same version for both so s/0.22.0/${tycho-version}/\nthat\u0027s what we do also in egit",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "d89a73ec9e199bffc16e9d3571c178d540569946",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
