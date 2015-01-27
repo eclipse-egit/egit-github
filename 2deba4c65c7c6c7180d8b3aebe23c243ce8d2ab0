@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67fe7f71_421a3efb",
+        "filename": "org.eclipse.egit.github.core.tests/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-01-27T10:21:04Z",
+      "side": 1,
+      "message": "s/[3.7.0,3.8.0)/[4.0.0,4.1.0)",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "2deba4c65c7c6c7180d8b3aebe23c243ce8d2ab0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67fe7f71_621dc2f2",
+        "filename": "org.eclipse.egit.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-01-27T10:21:04Z",
+      "side": 1,
+      "message": "s/3.7.0/4.0.0/",
+      "range": {
+        "startLine": 13,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "2deba4c65c7c6c7180d8b3aebe23c243ce8d2ab0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67fe7f71_02195607",
+        "filename": "org.eclipse.egit.github.core/META-INF/SOURCE-MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-01-27T10:21:04Z",
+      "side": 1,
+      "message": "s/3.7.0/4.0.0/",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "2deba4c65c7c6c7180d8b3aebe23c243ce8d2ab0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67fe7f71_22145acf",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-01-27T10:21:04Z",
+      "side": 1,
+      "message": "s/[3.7.0,3.8.0)/[4.0.0,4.1.0)",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "2deba4c65c7c6c7180d8b3aebe23c243ce8d2ab0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67fe7f71_c20e2ec4",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-01-27T10:21:04Z",
+      "side": 1,
+      "message": "s/[3.7.0,3.8.0)/[4.0.0,4.1.0)",
+      "range": {
+        "startLine": 32,
+        "startChar": 39,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "2deba4c65c7c6c7180d8b3aebe23c243ce8d2ab0",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
