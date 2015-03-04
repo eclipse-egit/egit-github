@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_01603100",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-04T13:43:05Z",
+      "side": 1,
+      "message": "this test fails since no IllegalArgumentException is thrown",
+      "revId": "c99cbae825685682ce45c08448312d70019900fc",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
