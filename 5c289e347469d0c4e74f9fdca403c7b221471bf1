@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_62993400",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/CommitStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 13156
+      },
+      "writtenOn": "2015-03-04T23:44:55Z",
+      "side": 1,
+      "message": "Does this need an @throws directive?",
+      "revId": "5c289e347469d0c4e74f9fdca403c7b221471bf1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
