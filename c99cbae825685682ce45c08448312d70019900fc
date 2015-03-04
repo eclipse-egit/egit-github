@@ -51,6 +51,24 @@
       "revId": "c99cbae825685682ce45c08448312d70019900fc",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_8276e047",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-04T23:13:39Z",
+      "side": 1,
+      "message": "moved this and the corresponding status validation to a new change https://git.eclipse.org/r/#/c/43204/",
+      "parentUuid": "a7fb1785_81a541b8",
+      "revId": "c99cbae825685682ce45c08448312d70019900fc",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
