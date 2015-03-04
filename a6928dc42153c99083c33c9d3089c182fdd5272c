@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7fb1785_21f44dc0",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-04T13:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7fb1785_06b8472f",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 19
+      },
+      "revId": "a6928dc42153c99083c33c9d3089c182fdd5272c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7fb1785_86cb97b6",
         "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitStatusTest.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-04T13:13:39Z",
       "side": 1,
       "message": "should be setContext",
+      "range": {
+        "startLine": 62,
+        "startChar": 33,
+        "endLine": 62,
+        "endChar": 43
+      },
+      "revId": "a6928dc42153c99083c33c9d3089c182fdd5272c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_0125d1e1",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-04T13:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7fb1785_86cb97b6",
       "range": {
         "startLine": 62,
         "startChar": 33,
