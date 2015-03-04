@@ -33,6 +33,24 @@
       "revId": "c99cbae825685682ce45c08448312d70019900fc",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_81a541b8",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/CommitServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 13080
+      },
+      "writtenOn": "2015-03-04T14:11:20Z",
+      "side": 1,
+      "message": "This test is not related to the addition of the context-field. However, I thought this would be the expected behavior of the creation of a status, as the state can only be 1 of 4 cases. I did forget to actually fix/check the original implementation of createStatus.\n\nSo this test can either be removed, or there needs to be a check added to createStatus to check if the state is equal to one of the cases. (should be added after the null-check on the state)",
+      "parentUuid": "a7fb1785_01603100",
+      "revId": "c99cbae825685682ce45c08448312d70019900fc",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
