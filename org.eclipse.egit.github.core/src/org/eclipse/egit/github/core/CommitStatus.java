@@ -11,6 +11,7 @@
 package org.eclipse.egit.github.core;
 
 import java.io.Serializable;
+import java.text.MessageFormat;
 import java.util.Date;
 
 import org.eclipse.egit.github.core.util.DateUtils;
@@ -150,10 +151,15 @@ public class CommitStatus implements Serializable {
 	/**
 	 * @param state
 	 * @return this status
+	 * throws {@link IllegalArgumentException} if state is invalid
 	 */
 	public CommitStatus setState(final String state) {
-		this.state = state;
-		return this;
+		if (state.equals(STATE_ERROR) || state.equals(STATE_FAILURE) || state.equals(STATE_PENDING)
+				|| state.equals(STATE_SUCCESS)) {
+			this.state = state;
+			return this;
+		}
+		throw new IllegalArgumentException(MessageFormat.format("Invalid state {0}", state));
 	}
 
 	/**
