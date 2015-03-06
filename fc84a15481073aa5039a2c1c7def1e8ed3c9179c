@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_37192408",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-06T21:22:25Z",
+      "side": 1,
+      "message": "s/implmentation/implementation/",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "fc84a15481073aa5039a2c1c7def1e8ed3c9179c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_d78c20c1",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/TeamMembership.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-06T21:22:25Z",
+      "side": 1,
+      "message": "missing license header",
+      "revId": "fc84a15481073aa5039a2c1c7def1e8ed3c9179c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_b78994af",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/TeamMembershipState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-06T21:22:25Z",
+      "side": 1,
+      "message": "missing license header",
+      "revId": "fc84a15481073aa5039a2c1c7def1e8ed3c9179c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_170a28b1",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/TeamMembershipState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-06T21:22:25Z",
+      "side": 1,
+      "message": "I would nest this in class TeamMembership",
+      "revId": "fc84a15481073aa5039a2c1c7def1e8ed3c9179c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
