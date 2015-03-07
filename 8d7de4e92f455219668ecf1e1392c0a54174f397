@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_e9ace4a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-07T05:18:46Z",
+      "side": 1,
+      "message": "this should rather go in a review comment, the commit message should explain what you changed and why.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "8d7de4e92f455219668ecf1e1392c0a54174f397",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_694d9493",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/TeamServiceTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-07T05:18:46Z",
+      "side": 1,
+      "message": "did you implement this in 2014 ? Otherwise this should read 2015, if you don\u0027t work for Github you should append \"and others\"",
+      "range": {
+        "startLine": 2,
+        "startChar": 23,
+        "endLine": 2,
+        "endChar": 27
+      },
+      "revId": "8d7de4e92f455219668ecf1e1392c0a54174f397",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_c94ac87a",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/TeamMembership.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-07T05:18:46Z",
+      "side": 1,
+      "message": "is this correct and Github owns the copyright for this code ? Your email address doesn\u0027t look like you are working for Github ...",
+      "range": {
+        "startLine": 2,
+        "startChar": 23,
+        "endLine": 2,
+        "endChar": 34
+      },
+      "revId": "8d7de4e92f455219668ecf1e1392c0a54174f397",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_a9477c70",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/TeamMembership.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-07T05:18:46Z",
+      "side": 1,
+      "message": "style nit: we put inner classes to the top of the enclosing class",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "8d7de4e92f455219668ecf1e1392c0a54174f397",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_09a85093",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-07T05:18:46Z",
+      "side": 1,
+      "message": "looks like you did that in 2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 23,
+        "endLine": 2,
+        "endChar": 27
+      },
+      "revId": "8d7de4e92f455219668ecf1e1392c0a54174f397",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
