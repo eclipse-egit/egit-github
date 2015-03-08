@@ -23,6 +23,91 @@ public class IssueEvent implements Serializable {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -842754108817725707L;
 
+	/**
+	 * Issue closed event
+	 */
+	public static final String EVENT_CLOSED = "closed"; //$NON-NLS-1$
+
+	/**
+	 * Issue reopened event
+	 */
+	public static final String EVENT_REOPENED = "reopened"; //$NON-NLS-1$
+
+	/**
+	 * User subscribed to issue event
+	 */
+	public static final String EVENT_SUBSCRIBED = "subscribed"; //$NON-NLS-1$
+
+	/**
+	 * Issue merged event
+	 */
+	public static final String EVENT_MERGED = "merged"; //$NON-NLS-1$
+
+	/**
+	 * Issue referenced event
+	 */
+	public static final String EVENT_REFERENCED = "referenced"; //$NON-NLS-1$
+
+	/**
+	 * User mentioned in issue event
+	 */
+	public static final String EVENT_MENTIONED = "mentioned"; //$NON-NLS-1$
+
+	/**
+	 * Issue assigned event
+	 */
+	public static final String EVENT_ASSIGNED = "assigned"; //$NON-NLS-1$
+
+	/**
+	 * Issue unassigned event
+	 */
+	public static final String EVENT_UNASSIGNED = "unassigned"; //$NON-NLS-1$
+
+	/**
+	 * Issue labeled event
+	 */
+	public static final String EVENT_LABELED = "labeled"; //$NON-NLS-1$
+
+	/**
+	 * Issue unlabeled event
+	 */
+	public static final String EVENT_UNLABELED = "unlabeled"; //$NON-NLS-1$
+
+	/**
+	 * Issue added to milestone event
+	 */
+	public static final String EVENT_MILESTONED = "milestoned"; //$NON-NLS-1$
+
+	/**
+	 * Issue removed from milestone event
+	 */
+	public static final String EVENT_DEMILESTONED = "demilestoned"; //$NON-NLS-1$
+
+	/**
+	 * Issue renamed event
+	 */
+	public static final String EVENT_RENAMED = "renamed"; //$NON-NLS-1$
+
+	/**
+	 * Issue locked event
+	 */
+	public static final String EVENT_LOCKED = "locked"; //$NON-NLS-1$
+
+	/**
+	 * Issue unlocked event
+	 */
+	public static final String EVENT_UNLOCKED = "unlocked"; //$NON-NLS-1$
+
+	/**
+	 * Pull request branch deleted event
+	 */
+	public static final String EVENT_HEAD_REF_DELETED = "head_ref_deleted"; //$NON-NLS-1$
+
+	/**
+	 * Pull request branch restored event
+	 */
+	public static final String EVENT_HEAD_REF_RESTORED = "head_ref_restored"; //$NON-NLS-1$
+
 	private Date createdAt;
 
 	private Issue issue;
