@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_29754c3f",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/IssueEvent.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 13156
+      },
+      "writtenOn": "2015-03-08T07:14:03Z",
+      "side": 1,
+      "message": "You might need to add \"//$NON-NLS-1$\" comments and minimal JavaDoc descriptions similar to https://github.com/eclipse/egit-github/blob/0857b455f61a38cd8ec96de9eef6c82c04f8a9a1/org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/CommitStatus.java#L29\n\nNot absolutely certain though, since I\u0027m not am EGit committer.",
+      "revId": "c358bc39c0a183f888b4abba825cd3609a8ca8fe",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
