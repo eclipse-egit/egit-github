@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_38e6305f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-09T23:11:21Z",
+      "side": 1,
+      "message": "The commit message shouldn\u0027t describe what you changed between revisions of this change under review but it should describe what this change adds to the project and why. \n\nThe first line of the commit message should give a short summary of the change\n\nE.g.\n\n Add support for team membership API\n\nthe body of the commit message can give more details and explain why this change was done if this isn\u0027t obvious. (What has been changed often is obvious from the code changes done, but the why might be hard to find out when looking at the history later).\n\nDetails are given in the contributor guide:\nhttps://wiki.eclipse.org/EGit/Contributor_Guide#Commit_message_guidelines",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "e7a748ddbef8eb5455969aefbe924b71244430e2",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
