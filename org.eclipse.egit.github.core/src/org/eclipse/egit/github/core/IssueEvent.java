@@ -20,23 +20,90 @@ import org.eclipse.egit.github.core.util.DateUtils;
  */
 public class IssueEvent implements Serializable {
 
-    public static final String TYPE_CLOSED = "closed";
-    public static final String TYPE_REOPENED = "reopened";
-    public static final String TYPE_SUBSCRIBED = "subscribed";
-    public static final String TYPE_MERGED = "merged";
-    public static final String TYPE_REFERENCED = "referenced";
-    public static final String TYPE_MENTIONED = "mentioned";
-    public static final String TYPE_ASSIGNED = "assigned";
-    public static final String TYPE_UNASSIGNED = "unassigned";
-    public static final String TYPE_LABELED = "labeled";
-    public static final String TYPE_UNLABELED = "unlabeled";
-    public static final String TYPE_MILESTONED = "milestoned";
-    public static final String TYPE_DEMILESTONED = "demilestoned";
-    public static final String TYPE_RENAMED = "renamed";
-    public static final String TYPE_LOCKED = "locked";
-    public static final String TYPE_UNLOCKED = "unlocked";
-    public static final String TYPE_HEAD_REF_DELETED = "head_ref_deleted";
-    public static final String TYPE_HEAD_REF_RESTORED = "head_ref_restored";
+    /**
+    * Closed event
+    */
+    public static final String TYPE_CLOSED = "closed"; //$NON-NLS-1$
+
+    /**
+    * Reopened event
+    */
+    public static final String TYPE_REOPENED = "reopened"; //$NON-NLS-1$
+
+    /**
+    * Subscribed event
+    */
+    public static final String TYPE_SUBSCRIBED = "subscribed"; //$NON-NLS-1$
+
+    /**
+    * Merged event
+    */
+    public static final String TYPE_MERGED = "merged"; //$NON-NLS-1$
+
+    /**
+    * Referenced event
+    */
+    public static final String TYPE_REFERENCED = "referenced"; //$NON-NLS-1$
+
+    /**
+    * Mentioned event
+    */
+    public static final String TYPE_MENTIONED = "mentioned"; //$NON-NLS-1$
+
+    /**
+    * Assigned event
+    */
+    public static final String TYPE_ASSIGNED = "assigned"; //$NON-NLS-1$
+
+    /**
+    * Unassigned event
+    */
+    public static final String TYPE_UNASSIGNED = "unassigned"; //$NON-NLS-1$
+
+    /**
+    * Labeled event
+    */
+    public static final String TYPE_LABELED = "labeled"; //$NON-NLS-1$
+
+    /**
+    * Unlabeled event
+    */
+    public static final String TYPE_UNLABELED = "unlabeled"; //$NON-NLS-1$
+
+    /**
+    * Milestoned event
+    */
+    public static final String TYPE_MILESTONED = "milestoned"; //$NON-NLS-1$
+
+    /**
+    * Demilestoned event
+    */
+    public static final String TYPE_DEMILESTONED = "demilestoned"; //$NON-NLS-1$
+
+    /**
+    * Renamed event
+    */
+    public static final String TYPE_RENAMED = "renamed"; //$NON-NLS-1$
+
+    /**
+    * Locked event
+    */
+    public static final String TYPE_LOCKED = "locked"; //$NON-NLS-1$
+
+    /**
+    * Unlocked event
+    */
+    public static final String TYPE_UNLOCKED = "unlocked"; //$NON-NLS-1$
+
+    /**
+    * HEAD ref deleted event
+    */
+    public static final String TYPE_HEAD_REF_DELETED = "head_ref_deleted"; //$NON-NLS-1$
+
+    /**
+    * HEAD ref restored event
+    */
+    public static final String TYPE_HEAD_REF_RESTORED = "head_ref_restored"; //$NON-NLS-1$
 
     /** serialVersionUID */
     private static final long serialVersionUID = -842754108817725707L;
