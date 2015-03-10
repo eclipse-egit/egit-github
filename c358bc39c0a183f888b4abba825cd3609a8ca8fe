@@ -16,6 +16,24 @@
       "revId": "c358bc39c0a183f888b4abba825cd3609a8ca8fe",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_531b1da6",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/IssueEvent.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-10T01:30:24Z",
+      "side": 1,
+      "message": "yes, please do this",
+      "parentUuid": "a7fb1785_29754c3f",
+      "revId": "c358bc39c0a183f888b4abba825cd3609a8ca8fe",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
