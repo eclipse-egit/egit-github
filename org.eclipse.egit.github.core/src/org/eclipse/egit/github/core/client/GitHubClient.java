@@ -31,6 +31,7 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.HOST_DEFAULT;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.HOST_GISTS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.PROTOCOL_HTTPS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_V3_API;
+import static org.eclipse.egit.github.core.service.GitHubService.ACCEPT_DEFAULT_DEPRECATED;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -145,6 +146,8 @@ public class GitHubClient {
 
 	private String userAgent = USER_AGENT;
 
+	private String headerAccept = ACCEPT_DEFAULT_DEPRECATED;
+
 	private int bufferSize = 8192;
 
 	private int requestLimit = -1;
@@ -218,6 +221,22 @@ public class GitHubClient {
 	}
 
 	/**
+	 * Set the value to set as the accept header on every request created.
+	 * Specifying a null or empty header parameter will reset this client to use
+	 * the default accept header value.
+	 *
+	 * @param header
+	 * @return this client
+	 */
+	public GitHubClient setHeaderAccept(final String header) {
+		if (header != null && header.length() > 0)
+			headerAccept = header;
+		else
+			headerAccept = ACCEPT_DEFAULT_DEPRECATED;
+		return this;
+	}
+
+	/**
 	 * Configure request with standard headers
 	 *
 	 * @param request
@@ -227,8 +246,7 @@ public class GitHubClient {
 		if (credentials != null)
 			request.setRequestProperty(HEADER_AUTHORIZATION, credentials);
 		request.setRequestProperty(HEADER_USER_AGENT, userAgent);
-		request.setRequestProperty(HEADER_ACCEPT,
-				"application/vnd.github.beta+json"); //$NON-NLS-1$
+		request.setRequestProperty(HEADER_ACCEPT, headerAccept);
 		return request;
 	}
 

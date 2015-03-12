@@ -176,6 +176,7 @@ public class Issue implements Serializable {
 	/**
 	 * @return pullRequest
 	 */
+	@Deprecated
 	public PullRequest getPullRequest() {
 		return pullRequest;
 	}
@@ -184,6 +185,7 @@ public class Issue implements Serializable {
 	 * @param pullRequest
 	 * @return this issue
 	 */
+	@Deprecated
 	public Issue setPullRequest(PullRequest pullRequest) {
 		this.pullRequest = pullRequest;
 		return this;
