@@ -52,7 +52,7 @@ public class Gist implements Serializable {
 
 	private String url;
 
-	private User user;
+	private User owner;
 
 	/**
 	 * @return isPublic
@@ -249,16 +249,16 @@ public class Gist implements Serializable {
 	/**
 	 * @return user
 	 */
-	public User getUser() {
-		return user;
+	public User getOwner() {
+		return owner;
 	}
 
 	/**
-	 * @param user
+	 * @param owner
 	 * @return this gist
 	 */
-	public Gist setUser(User user) {
-		this.user = user;
+	public Gist setOwner(User owner) {
+		this.owner = owner;
 		return this;
 	}
 }

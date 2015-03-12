@@ -41,8 +41,6 @@ public class Issue implements Serializable {
 
 	private Milestone milestone;
 
-	private PullRequest pullRequest;
-
 	private String body;
 
 	private String bodyHtml;
@@ -170,22 +168,6 @@ public class Issue implements Serializable {
 	 */
 	public Issue setMilestone(Milestone milestone) {
 		this.milestone = milestone;
-		return this;
-	}
-
-	/**
-	 * @return pullRequest
-	 */
-	public PullRequest getPullRequest() {
-		return pullRequest;
-	}
-
-	/**
-	 * @param pullRequest
-	 * @return this issue
-	 */
-	public Issue setPullRequest(PullRequest pullRequest) {
-		this.pullRequest = pullRequest;
 		return this;
 	}
 
