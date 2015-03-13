@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fb1785_7fdff086",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2015-03-13T18:59:38Z",
+      "side": 1,
+      "message": "what\u0027s the reason to switch the default from ACCEPT_DEFAULT to ACCEPT_FULL ?",
+      "revId": "f131288973836f2ff3baa8c48d414c92f824d76c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
