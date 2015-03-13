@@ -16,6 +16,24 @@
       "revId": "f131288973836f2ff3baa8c48d414c92f824d76c",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fb1785_1ff7ccff",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 15912
+      },
+      "writtenOn": "2015-03-13T19:16:44Z",
+      "side": 1,
+      "message": "It was the default before migrating to the v3 API. I changed it by mistake.\n\nAnd it should be the default, or else some values to always be null. So the user should know what he\u0027s doing before changing it.",
+      "parentUuid": "a7fb1785_7fdff086",
+      "revId": "f131288973836f2ff3baa8c48d414c92f824d76c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
