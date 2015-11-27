@@ -39,6 +39,13 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 public class OrganizationService extends GitHubService {
 
 	/**
+	 * Filter for roles a member can have
+	 */
+	public static enum RoleFilter {
+		all, admin, member
+	}
+
+	/**
 	 * Create organization service
 	 */
 	public OrganizationService() {
@@ -156,18 +163,41 @@ public class OrganizationService extends GitHubService {
 	 * Get members of organization
 	 *
 	 * @param organization
+	 *          the name of the organization
 	 * @return list of all organization members
 	 * @throws IOException
 	 */
 	public List<User> getMembers(String organization) throws IOException {
+		return getMembers(organization, RoleFilter.all);
+	}
+
+	/**
+	 * Get members of organization
+	 *
+	 * @param organization
+	 *          the name of the organization
+	 * @param roleFilter
+	 *          only return members matching the {@link RoleFilter}<br>
+	 *          To use this feature it is currently required to set the
+	 *          {@link org.eclipse.egit.github.core.service.GitHubService#ACCEPT_PREVIEW_IRONMAN
+	 *          application/vnd.github.ironman-preview+json} Accept header in the
+	 *          {@link GitHubClient#setHeaderAccept GitHubClient}
+	 * @return list of all organization members whose role matches the {@code roleFilter}
+	 * @throws IOException
+	 */
+	public List<User> getMembers(String organization, RoleFilter roleFilter) throws IOException
+	{
 		if (organization == null)
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
 		if (organization.length() == 0)
 			throw new IllegalArgumentException("Organization cannot be empty"); //$NON-NLS-1$
+		if (roleFilter == null)
+			throw new IllegalArgumentException("Role cannot be null"); //$NON-NLS-1$
 
 		StringBuilder uri = new StringBuilder(SEGMENT_ORGS);
 		uri.append('/').append(organization);
 		uri.append(SEGMENT_MEMBERS);
+		uri.append("?role=").append(roleFilter.toString());
 		PagedRequest<User> request = createPagedRequest();
 		request.setUri(uri);
 		request.setType(new TypeToken<List<User>>() {
