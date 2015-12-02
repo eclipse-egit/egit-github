@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47cfbb72_db974b50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_68837e5b",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ccbf7d_289ed6b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-01T17:04:29Z",
       "side": 1,
       "message": "this is a pretty cryptic commit message header, can you describe this in some words and move such details to the body of the commit message ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47cfbb72_bb9a8779",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_289ed6b4",
       "range": {
         "startLine": 7,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "47cfbb72_9bb6a3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_48807a4f",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ccbf7d_a892e6a8",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2015-12-01T17:04:29Z",
       "side": 1,
       "message": "missing @since 4.2 tag for new API",
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47cfbb72_5b417b61",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_a892e6a8",
       "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "47cfbb72_7b363f0e",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/GitHubService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_c8a80adb",
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ccbf7d_e8a30ef9",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/OrganizationService.java",
         "patchSetId": 3
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "47cfbb72_9b3b03f4",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/OrganizationService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_e8a30ef9",
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ccbf7d_08a3d2fa",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/OrganizationService.java",
         "patchSetId": 3
@@ -133,6 +259,24 @@
       "writtenOn": "2015-12-01T17:04:29Z",
       "side": 1,
       "message": "missing @since 4.2 tag",
+      "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47cfbb72_bb4fe78c",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/OrganizationService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 66262
+      },
+      "writtenOn": "2015-12-02T08:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ccbf7d_08a3d2fa",
       "revId": "bd9036e1cb5cdc89b4e5432a765e70862afdc73c",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
