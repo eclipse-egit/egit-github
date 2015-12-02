@@ -33,10 +33,6 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.PROTOCOL_HTTP
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_V3_API;
 import static org.eclipse.egit.github.core.service.GitHubService.ACCEPT_FULL;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
-import com.google.gson.stream.JsonReader;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,6 +44,10 @@ import java.net.URL;
 
 import org.eclipse.egit.github.core.RequestError;
 import org.eclipse.egit.github.core.util.EncodingUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+import com.google.gson.stream.JsonReader;
 
 /**
  * Client class for interacting with GitHub HTTP/JSON API.
@@ -234,7 +234,20 @@ public class GitHubClient {
 		else
 			headerAccept = ACCEPT_FULL;
 		return this;
-    }
+	}
+
+	/**
+	 * Returns the accept header currently used for all requests.
+	 *
+	 * @return header
+	 * @since 4.2
+	 */
+	public String getHeaderAccept() {
+		if (headerAccept != null && headerAccept.length() > 0)
+			return headerAccept;
+		else
+			return ACCEPT_FULL;
+	}
 
 	/**
 	 * Configure request with standard headers
@@ -246,7 +259,7 @@ public class GitHubClient {
 		if (credentials != null)
 			request.setRequestProperty(HEADER_AUTHORIZATION, credentials);
 		request.setRequestProperty(HEADER_USER_AGENT, userAgent);
-		request.setRequestProperty(HEADER_ACCEPT, headerAccept);
+		request.setRequestProperty(HEADER_ACCEPT, getHeaderAccept());
 		return request;
 	}
 
