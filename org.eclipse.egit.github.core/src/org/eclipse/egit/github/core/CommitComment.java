@@ -22,7 +22,7 @@ public class CommitComment extends Comment {
 
 	private int position;
 
-	private String commitId;
+	private String commit_id;
 
 	private String path;
 
@@ -62,7 +62,7 @@ public class CommitComment extends Comment {
 	 * @return commitId
 	 */
 	public String getCommitId() {
-		return commitId;
+		return commit_id;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class CommitComment extends Comment {
 	 * @return this commit comment
 	 */
 	public CommitComment setCommitId(String commitId) {
-		this.commitId = commitId;
+		this.commit_id = commitId;
 		return this;
 	}
 

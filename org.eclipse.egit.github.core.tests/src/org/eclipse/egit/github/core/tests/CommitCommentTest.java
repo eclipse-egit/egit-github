@@ -19,6 +19,8 @@ import org.eclipse.egit.github.core.CommitComment;
 import org.eclipse.egit.github.core.User;
 import org.junit.Test;
 
+import com.google.gson.GsonBuilder;
+
 /**
  * Unit tests of {@link CommitComment}
  */
@@ -61,5 +63,17 @@ public class CommitCommentTest {
 		assertEquals("http://url", comment.setUrl("http://url").getUrl());
 		User user = new User().setLogin("theuser");
 		assertEquals(user, comment.setUser(user).getUser());
+	}
+
+	/**
+	 * Verify that commit id is serialized correctly in request.
+	 */
+	@Test
+	public void serializeCommitId() {
+		CommitComment commitComment = new CommitComment();
+		commitComment.setCommitId("thesha");
+		String serializedCommitComment = new GsonBuilder().create().toJson(commitComment);
+		assertEquals("The commit id should be sent as commit_id",
+				"{\"line\":0,\"position\":0,\"commit_id\":\"thesha\",\"id\":0}",serializedCommitComment);
 	}
 }
