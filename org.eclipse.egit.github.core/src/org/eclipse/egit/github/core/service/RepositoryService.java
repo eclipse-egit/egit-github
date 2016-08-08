@@ -935,6 +935,28 @@ public class RepositoryService extends GitHubService {
 	}
 
 	/**
+	 * Edit hook in repository
+	 * <p>
+	 * Only values in the given fields map will be updated on the repository hook
+	 * @param repository
+	 * @param hookId
+	 * @return edited hook
+	 * @throws IOException
+	 */
+	public RepositoryHook editHook(IRepositoryIdProvider repository,
+		int hookId, Map<String, Object> fields) throws IOException {
+		String id = getId(repository);
+		if (fields == null)
+			throw new IllegalArgumentException("Fields cannot be null"); //$NON-NLS-1$
+
+		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_HOOKS);
+		uri.append('/').append(hookId);
+		return client.patch(uri.toString(), fields, RepositoryHook.class);
+	}
+
+	/**
 	 * Delete hook from repository
 	 *
 	 * @param repository
