@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2011, 2016 GitHub Inc. and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  *  Contributors:
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
  *    Christian Trutz             - HttpClient 4.1
+ *    Vladislav Rassokhin         - PATCH method
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
@@ -109,6 +110,11 @@ public class GitHubClient {
 	 * METHOD_POST
 	 */
 	protected static final String METHOD_POST = "POST"; //$NON-NLS-1$
+
+	/**
+	 * METHOD_PATCH
+	 */
+	protected static final String METHOD_PATCH = "PATCH"; //$NON-NLS-1$
 
 	/**
 	 * METHOD_DELETE
@@ -334,6 +340,17 @@ public class GitHubClient {
 	 */
 	protected HttpURLConnection createPut(String uri) throws IOException {
 		return createConnection(uri, METHOD_PUT);
+	}
+
+	/**
+	 * Create a PATCH request connection to the URI
+	 *
+	 * @param uri
+	 * @return connection
+	 * @throws IOException
+	 */
+	protected HttpURLConnection createPatch(String uri) throws IOException {
+		return createConnection(uri, METHOD_PATCH);
 	}
 
 	/**
@@ -616,6 +633,16 @@ public class GitHubClient {
 	}
 
 	/**
+	 * Patch data to URI
+	 *
+	 * @param uri
+	 * @throws IOException
+	 */
+	public void patch(final String uri) throws IOException {
+		patch(uri, null, null);
+	}
+
+	/**
 	 * Delete resource at URI. This method will throw an {@link IOException}
 	 * when the response status is not a 204 (No Content).
 	 *
@@ -801,6 +828,22 @@ public class GitHubClient {
 	public <V> V put(final String uri, final Object params, final Type type)
 			throws IOException {
 		HttpURLConnection request = createPut(uri);
+		return sendJson(request, params, type);
+	}
+
+	/**
+	 * Patch data to URI
+	 *
+	 * @param <V>
+	 * @param uri
+	 * @param params
+	 * @param type
+	 * @return response
+	 * @throws IOException
+	 */
+	public <V> V patch(final String uri, final Object params, final Type type)
+			throws IOException {
+		HttpURLConnection request = createPatch(uri);
 		return sendJson(request, params, type);
 	}
 
