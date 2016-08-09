@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2011, 2016 GitHub Inc. and others
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -14,6 +14,10 @@ import static org.eclipse.egit.github.core.event.Event.TYPE_FOLLOW;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import org.eclipse.egit.github.core.client.EventFormatter;
 import org.eclipse.egit.github.core.client.GsonUtils;
@@ -70,5 +74,28 @@ public class EventFormatterTest {
 		Event event = GsonUtils.fromJson("{}", Event.class);
 		assertNotNull(event);
 		assertNull(event.getPayload());
+	}
+
+	/**
+	 * {@link EventFormatter#getPayloadClass(String)} should support all event types from {@link Event}
+	 */
+	@Test
+	public void allEventTypesSupported() throws Exception {
+		ArrayList<String> missing = new ArrayList<String>();
+		Field[] fields = Event.class.getDeclaredFields();
+		for (Field field : fields) {
+			if (field.getType() != String.class)
+				continue;
+			String name = field.getName();
+			if (!name.startsWith("TYPE_"))
+				continue;
+			Class<? extends EventPayload> payloadClass = EventFormatter.getPayloadClass((String) field.get(null));
+			if (payloadClass == null) {
+				missing.add(name);
+			}
+		}
+		if (!missing.isEmpty()) {
+			fail("EventFormatter#getPayloadClass does not support event types: " + missing);
+		}
 	}
 }

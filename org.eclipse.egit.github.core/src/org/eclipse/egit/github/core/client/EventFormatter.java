@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2011, 2016 GitHub Inc. and others
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -85,46 +85,9 @@ public class EventFormatter implements JsonDeserializer<Event> {
 		if (type == null || type.length() == 0)
 			return event;
 
-		Class<? extends EventPayload> payloadClass;
-		if (TYPE_COMMIT_COMMENT.equals(type))
-			payloadClass = CommitCommentPayload.class;
-		else if (TYPE_CREATE.equals(type))
-			payloadClass = CreatePayload.class;
-		else if (TYPE_DELETE.equals(type))
-			payloadClass = DeletePayload.class;
-		else if (TYPE_DOWNLOAD.equals(type))
-			payloadClass = DownloadPayload.class;
-		else if (TYPE_FOLLOW.equals(type))
-			payloadClass = FollowPayload.class;
-		else if (TYPE_FORK.equals(type))
-			payloadClass = ForkPayload.class;
-		else if (TYPE_FORK_APPLY.equals(type))
-			payloadClass = ForkApplyPayload.class;
-		else if (TYPE_GIST.equals(type))
-			payloadClass = GistPayload.class;
-		else if (TYPE_GOLLUM.equals(type))
-			payloadClass = GollumPayload.class;
-		else if (TYPE_ISSUE_COMMENT.equals(type))
-			payloadClass = IssueCommentPayload.class;
-		else if (TYPE_ISSUES.equals(type))
-			payloadClass = IssuesPayload.class;
-		else if (TYPE_MEMBER.equals(type))
-			payloadClass = MemberPayload.class;
-		else if (TYPE_PUBLIC.equals(type))
-			payloadClass = PublicPayload.class;
-		else if (TYPE_PULL_REQUEST.equals(type))
-			payloadClass = PullRequestPayload.class;
-		else if (TYPE_PULL_REQUEST_REVIEW_COMMENT.equals(type))
-			payloadClass = PullRequestReviewCommentPayload.class;
-		else if (TYPE_PUSH.equals(type))
-			payloadClass = PushPayload.class;
-		else if (TYPE_RELEASE.equals(type))
-			payloadClass = ReleasePayload.class;
-		else if (TYPE_TEAM_ADD.equals(type))
-			payloadClass = TeamAddPayload.class;
-		else if (TYPE_WATCH.equals(type))
-			payloadClass = WatchPayload.class;
-		else
+		Class<? extends EventPayload> payloadClass = getPayloadClass(type);
+
+		if (payloadClass == null)
 			return event;
 
 		try {
@@ -136,5 +99,50 @@ public class EventFormatter implements JsonDeserializer<Event> {
 			// fields than built-in payload classes provide
 			return event;
 		}
+	}
+
+	public static Class<? extends EventPayload> getPayloadClass(String type) {
+		if (type == null)
+			return null;
+		if (TYPE_COMMIT_COMMENT.equals(type))
+			return CommitCommentPayload.class;
+		else if (TYPE_CREATE.equals(type))
+			return CreatePayload.class;
+		else if (TYPE_DELETE.equals(type))
+			return DeletePayload.class;
+		else if (TYPE_DOWNLOAD.equals(type))
+			return DownloadPayload.class;
+		else if (TYPE_FOLLOW.equals(type))
+			return FollowPayload.class;
+		else if (TYPE_FORK.equals(type))
+			return ForkPayload.class;
+		else if (TYPE_FORK_APPLY.equals(type))
+			return ForkApplyPayload.class;
+		else if (TYPE_GIST.equals(type))
+			return GistPayload.class;
+		else if (TYPE_GOLLUM.equals(type))
+			return GollumPayload.class;
+		else if (TYPE_ISSUE_COMMENT.equals(type))
+			return IssueCommentPayload.class;
+		else if (TYPE_ISSUES.equals(type))
+			return IssuesPayload.class;
+		else if (TYPE_MEMBER.equals(type))
+			return MemberPayload.class;
+		else if (TYPE_PUBLIC.equals(type))
+			return PublicPayload.class;
+		else if (TYPE_PULL_REQUEST.equals(type))
+			return PullRequestPayload.class;
+		else if (TYPE_PULL_REQUEST_REVIEW_COMMENT.equals(type))
+			return PullRequestReviewCommentPayload.class;
+		else if (TYPE_PUSH.equals(type))
+			return PushPayload.class;
+		else if (TYPE_RELEASE.equals(type))
+			return ReleasePayload.class;
+		else if (TYPE_TEAM_ADD.equals(type))
+			return TeamAddPayload.class;
+		else if (TYPE_WATCH.equals(type))
+			return WatchPayload.class;
+		else
+			return null;
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2011 GitHub Inc. and others
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  *  Contributors:
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
+ *    Vladislav Rassokhin (JetBrains, s.r.o.) - support timestamp in seconds
  *******************************************************************************/
 package org.eclipse.egit.github.core.client;
 
@@ -52,17 +53,32 @@ public class DateFormatter implements JsonDeserializer<Date>,
 
 	public Date deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
-		JsonParseException exception = null;
-		final String value = json.getAsString();
-		for (DateFormat format : formats)
-			try {
-				synchronized (format) {
-					return format.parse(value);
+		if (json instanceof JsonPrimitive) {
+			final JsonPrimitive primitive = (JsonPrimitive) json;
+			if (primitive.isNumber()) {
+				return getDateFromTimestamp(json.getAsLong());
+			} else if (primitive.isString()) {
+				JsonParseException exception = null;
+				final String value = json.getAsString();
+				for (DateFormat format : formats)
+					try {
+						synchronized (format) {
+							return format.parse(value);
+						}
+					} catch (ParseException e) {
+						exception = new JsonParseException(e);
+					}
+				try {
+					return getDateFromTimestamp(Long.parseLong(value));
+				} catch (NumberFormatException e) {
+					if (exception != null) {
+						throw exception;
+					}
+					throw e;
 				}
-			} catch (ParseException e) {
-				exception = new JsonParseException(e);
 			}
-		throw exception;
+		}
+		throw new JsonParseException("Expected either string or number primitive");
 	}
 
 	public JsonElement serialize(Date date, Type type,
@@ -73,5 +89,12 @@ public class DateFormatter implements JsonDeserializer<Date>,
 			formatted = primary.format(date);
 		}
 		return new JsonPrimitive(formatted);
+	}
+
+	private static Date getDateFromTimestamp(long timestamp) {
+		if (timestamp > 10000000000L) {
+			return new Date(timestamp);
+		}
+		return new Date(timestamp * 1000);
 	}
 }

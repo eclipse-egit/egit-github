@@ -42,5 +42,10 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>res/</directory>
+      </resource>
+    </resources>
   </build>
 </project>
