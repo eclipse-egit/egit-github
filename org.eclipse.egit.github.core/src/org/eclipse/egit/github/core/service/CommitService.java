@@ -21,6 +21,7 @@ import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_SIZE;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +31,7 @@ import org.eclipse.egit.github.core.CommitStatus;
 import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.RepositoryCommit;
 import org.eclipse.egit.github.core.RepositoryCommitCompare;
-import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.client.GitHubRequest;
-import org.eclipse.egit.github.core.client.PageIterator;
-import org.eclipse.egit.github.core.client.PagedRequest;
+import org.eclipse.egit.github.core.client.*;
 
 /**
  * Service for interacting with repository commits
@@ -68,7 +66,7 @@ public class CommitService extends GitHubService {
 	 */
 	public List<RepositoryCommit> getCommits(IRepositoryIdProvider repository)
 			throws IOException {
-		return getCommits(repository, null, null);
+		return getCommits(repository, null, null, null);
 	}
 
 	/**
@@ -78,12 +76,13 @@ public class CommitService extends GitHubService {
 	 * @param repository
 	 * @param sha
 	 * @param path
+	 * @param since
 	 * @return non-null but possibly empty list of repository commits
 	 * @throws IOException
 	 */
 	public List<RepositoryCommit> getCommits(IRepositoryIdProvider repository,
-			String sha, String path) throws IOException {
-		return getAll(pageCommits(repository, sha, path));
+			String sha, String path, Date since) throws IOException {
+		return getAll(pageCommits(repository, sha, path, since));
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class CommitService extends GitHubService {
 	 */
 	public PageIterator<RepositoryCommit> pageCommits(
 			IRepositoryIdProvider repository) {
-		return pageCommits(repository, null, null);
+		return pageCommits(repository, null, null, null);
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class CommitService extends GitHubService {
 	 */
 	public PageIterator<RepositoryCommit> pageCommits(
 			IRepositoryIdProvider repository, int size) {
-		return pageCommits(repository, null, null, size);
+		return pageCommits(repository, null, null, size, null);
 	}
 
 	/**
@@ -115,11 +114,12 @@ public class CommitService extends GitHubService {
 	 * @param repository
 	 * @param sha
 	 * @param path
+	 * @param since
 	 * @return page iterator
 	 */
 	public PageIterator<RepositoryCommit> pageCommits(
-			IRepositoryIdProvider repository, String sha, String path) {
-		return pageCommits(repository, sha, path, PAGE_SIZE);
+			IRepositoryIdProvider repository, String sha, String path,Date since) {
+		return pageCommits(repository, sha, path, PAGE_SIZE, since);
 	}
 
 	/**
@@ -129,10 +129,11 @@ public class CommitService extends GitHubService {
 	 * @param sha
 	 * @param path
 	 * @param size
+	 * @param since
 	 * @return page iterator
 	 */
 	public PageIterator<RepositoryCommit> pageCommits(
-			IRepositoryIdProvider repository, String sha, String path, int size) {
+			IRepositoryIdProvider repository, String sha, String path, int size,Date since) {
 		String id = getId(repository);
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -143,12 +144,16 @@ public class CommitService extends GitHubService {
 		request.setType(new TypeToken<List<RepositoryCommit>>() {
 		}.getType());
 
-		if (sha != null || path != null) {
+		if (sha != null || path != null || since!=null) {
 			Map<String, String> params = new HashMap<String, String>();
 			if (sha != null)
 				params.put("sha", sha); //$NON-NLS-1$
 			if (path != null)
 				params.put("path", path); //$NON-NLS-1$
+			if(since!=null) {
+				String formattedDate = new DateFormatter().serialize(since, null, null).toString();
+				params.put("since",formattedDate);
+			}
 			request.setParams(params);
 		}
 
