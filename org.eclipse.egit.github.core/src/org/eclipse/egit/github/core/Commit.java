@@ -38,6 +38,16 @@ public class Commit implements Serializable {
 	private Tree tree;
 
 	/**
+	 * To receive signature verification data in commit objects you must provide a custom media type in the header
+	 * Accept:application/vnd.github.cryptographer-preview
+	 *
+	 * https://developer.github.com/changes/2016-04-04-git-signing-api-preview/
+	 *
+	 * Note: This api is in preview and could be changed without notice from github.
+	 */
+	private Verification verification;
+
+	/**
 	 * @return author
 	 */
 	public CommitUser getAuthor() {
@@ -163,5 +173,19 @@ public class Commit implements Serializable {
 	public Commit setTree(Tree tree) {
 		this.tree = tree;
 		return this;
+	}
+
+	/**
+	 * @return the verification
+	 */
+	public Verification getVerification() {
+		return verification;
+	}
+
+	/**
+	 * @param verification the verification to set
+	 */
+	public void setVerification(Verification verification) {
+		this.verification = verification;
 	}
 }
