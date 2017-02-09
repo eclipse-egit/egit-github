@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c23755_d883b159",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/Verification.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 67457
+      },
+      "writtenOn": "2017-02-09T15:35:21Z",
+      "side": 1,
+      "message": "Should be named `getReason()`",
+      "revId": "fc823518c84fbc294e49060de4148ae6e0136e47",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
