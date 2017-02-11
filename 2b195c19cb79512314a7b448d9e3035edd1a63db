@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c23755_4d435dc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-02-11T00:14:35Z",
+      "side": 1,
+      "message": "these changes should go in separate commits",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "2b195c19cb79512314a7b448d9e3035edd1a63db",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7c23755_cd084dbb",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/WebhookPayloadFormatter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-02-11T00:14:35Z",
+      "side": 1,
+      "message": "style nit: missing braces",
+      "revId": "2b195c19cb79512314a7b448d9e3035edd1a63db",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
