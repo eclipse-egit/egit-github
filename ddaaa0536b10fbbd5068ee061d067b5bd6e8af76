@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7880b39_181d9a99",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2017-07-31T12:05:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we update the minimum version for all mylyn bundles to 3.9.0 then?",
+      "revId": "ddaaa0536b10fbbd5068ee061d067b5bd6e8af76",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
