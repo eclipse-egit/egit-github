@@ -17,3 +17,4 @@ Import-Package: org.eclipse.mylyn.internal.github.core;version="[4.9.0,4.10.0)",
  org.mockito;version="[1.8.4,2.0.0)",
  org.mockito.runners;version="[1.8.4,2.0.0)",
  org.mockito.stubbing;version="[1.8.4,2.0.0)"
+Automatic-Module-Name: org.eclipse.mylyn.github.tests

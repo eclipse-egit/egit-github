@@ -51,3 +51,4 @@ Import-Package: org.eclipse.egit.core;version="[4.0.0,5.0.0)",
  org.eclipse.mylyn.internal.github.core.gist;version="[4.9.0,4.10.0)",
  org.eclipse.mylyn.internal.github.core.issue;version="[4.9.0,4.10.0)",
  org.eclipse.mylyn.internal.github.core.pr;version="[4.9.0,4.10.0)"
+Automatic-Module-Name: org.eclipse.mylyn.github.ui
