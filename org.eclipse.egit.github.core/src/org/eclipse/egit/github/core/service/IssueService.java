@@ -60,8 +60,16 @@ public class IssueService extends GitHubService {
 
 	/**
 	 * Filter by issue assignee
+	 *
+	 * @deprecated
 	 */
+	@Deprecated
 	public static final String FILTER_ASSIGNEE = "assignee"; //$NON-NLS-1$
+
+	/**
+	 * Filter by issue assignees
+	 */
+	public static final String FILTER_ASSIGNEES = "assignees"; //$NON-NLS-1$
 
 	/**
 	 * Filter by issue's milestone
@@ -592,6 +600,13 @@ public class IssueService extends GitHubService {
 		if (issue != null) {
 			params.put(FIELD_BODY, issue.getBody());
 			params.put(FIELD_TITLE, issue.getTitle());
+			List<User> assignees = issue.getAssignees();
+			if (assignees != null) {
+				List<String> assigneeNames = new ArrayList<String>(assignees.size());
+				for (User assignee : assignees)
+					assigneeNames.add(assignee.getLogin());
+				params.put(FILTER_ASSIGNEES, assigneeNames);
+			}
 			User assignee = issue.getAssignee();
 			if (assignee != null)
 				params.put(FILTER_ASSIGNEE, assignee.getLogin());

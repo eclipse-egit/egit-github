@@ -57,7 +57,10 @@ public class Issue implements Serializable {
 
 	private String url;
 
+	@Deprecated
 	private User assignee;
+
+	private List<User> assignees;
 
 	private User user;
 
@@ -305,7 +308,9 @@ public class Issue implements Serializable {
 
 	/**
 	 * @return assignee
+	 * @deprecated
 	 */
+	@Deprecated
 	public User getAssignee() {
 		return assignee;
 	}
@@ -313,9 +318,27 @@ public class Issue implements Serializable {
 	/**
 	 * @param assignee
 	 * @return this issue
+	 * @deprecated
 	 */
+	@Deprecated
 	public Issue setAssignee(User assignee) {
 		this.assignee = assignee;
+		return this;
+	}
+
+	/**
+	 * @return assignee
+	 */
+	public List<User> getAssignees() {
+		return assignees;
+	}
+
+	/**
+	 * @param assignees
+	 * @return this issue
+	 */
+	public Issue setAssignees(List<User> assignees) {
+		this.assignees = assignees;
 		return this;
 	}
 
