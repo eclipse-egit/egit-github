@@ -914,4 +914,170 @@ public class IssueServiceTest {
 				.page("/legacy/issues/search/user/repo/open/a%20and%20a%2E"));
 		verify(gitHubClient).get(request);
 	}
+
+	/**
+	 * Lock issue with null user
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueNullUser() throws IOException {
+		issueService.lockIssue(null, "repo", 1);
+	}
+
+	/**
+	 * Lock issue with empty user
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueEmptyUser() throws IOException {
+		issueService.lockIssue("", "repo", 1);
+	}
+
+	/**
+	 * Lock issue with null repository name
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueNullRepositoryName() throws IOException {
+		issueService.lockIssue("user", null, 1);
+	}
+
+	/**
+	 * Lock issue with empty repository name
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueEmptyRepositoryName() throws IOException {
+		issueService.lockIssue("user", "", 1);
+	}
+
+	/**
+	 * Lock issue with null issue id
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueNullId() throws IOException {
+		issueService.lockIssue("user", "repo", null);
+	}
+
+	/**
+	 * Lock issue with empty issue id
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void lockIssueEmptyId() throws IOException {
+		issueService.lockIssue("user", "repo", "");
+	}
+
+	/**
+	 * Lock issue
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void lockIssue() throws IOException {
+		issueService.lockIssue("user", "repo", 1);
+		verify(gitHubClient).put("/repos/user/repo/issues/1/lock");
+	}
+
+	/**
+	 * Lock issue
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void lockIssueWithRepositoryId() throws IOException {
+		RepositoryId id = new RepositoryId("user", "repo");
+		issueService.lockIssue(id, 1);
+		verify(gitHubClient).put("/repos/user/repo/issues/1/lock");
+	}
+
+	/**
+	 * Unlock issue with null user
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueNullUser() throws IOException {
+		issueService.unlockIssue(null, "repo", 1);
+	}
+
+	/**
+	 * Unlock issue with empty user
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueEmptyUser() throws IOException {
+		issueService.unlockIssue("", "repo", 1);
+	}
+
+	/**
+	 * Unlock issue with null repository name
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueNullRepositoryName() throws IOException {
+		issueService.unlockIssue("user", null, 1);
+	}
+
+	/**
+	 * Unlock issue with empty repository name
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueEmptyRepositoryName() throws IOException {
+		issueService.unlockIssue("user", "", 1);
+	}
+
+	/**
+	 * Unlock issue with null issue id
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueNullId() throws IOException {
+		issueService.unlockIssue("user", "repo", null);
+	}
+
+	/**
+	 * Unlock issue with empty issue id
+	 *
+	 * @throws IOException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void unlockIssueEmptyId() throws IOException {
+		issueService.unlockIssue("user", "repo", "");
+	}
+
+	/**
+	 * Unlock issue
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void unlockIssue() throws IOException {
+		issueService.unlockIssue("user", "repo", 1);
+		verify(gitHubClient).delete("/repos/user/repo/issues/1/lock");
+	}
+
+	/**
+	 * Unlock issue
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void unlockIssueWithRepositoryId() throws IOException {
+		RepositoryId id = new RepositoryId("user", "repo");
+		issueService.unlockIssue(id, 1);
+		verify(gitHubClient).delete("/repos/user/repo/issues/1/lock");
+	}
 }

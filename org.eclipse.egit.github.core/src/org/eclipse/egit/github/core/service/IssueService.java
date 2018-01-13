@@ -15,6 +15,7 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_COMME
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_EVENTS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_ISSUES;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_LEGACY;
+import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_LOCK;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_REPOS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_SEARCH;
 import static org.eclipse.egit.github.core.client.PagedRequest.PAGE_FIRST;
@@ -1124,5 +1125,157 @@ public class IssueService extends GitHubService {
 		request.setUri(uri);
 		request.setType(IssueContainer.class);
 		return getAll(request);
+	}
+
+	/**
+	 * Lock the issue with the given id
+	 *
+	 * @param user
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void lockIssue(String user, String repository, int issueId)
+			throws IOException {
+		lockIssue(user, repository, Integer.toString(issueId));
+	}
+
+	/**
+	 * Lock the issue with the given id
+	 *
+	 * @param user
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void lockIssue(String user, String repository, String issueId)
+			throws IOException {
+		verifyRepository(user, repository);
+
+		String repoId = user + '/' + repository;
+		lockIssue(repoId, issueId);
+	}
+
+	/**
+	 * Lock the issue with the given id
+	 *
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void lockIssue(IRepositoryIdProvider repository, int issueId)
+			throws IOException {
+		lockIssue(repository, Integer.toString(issueId));
+	}
+
+	/**
+	 * Lock the issue with the given id
+	 *
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void lockIssue(IRepositoryIdProvider repository, String issueId)
+			throws IOException {
+		String repoId = getId(repository);
+		lockIssue(repoId, issueId);
+	}
+
+	/**
+	 * Lock the issue with the given id
+	 *
+	 * @param repoId
+	 * @param issueId
+	 * @throws IOException
+	 */
+	private void lockIssue(String repoId, String issueId)
+			throws IOException {
+		if (issueId == null)
+			throw new IllegalArgumentException("Issue cannot be null"); //$NON-NLS-1$
+		if (issueId.length() == 0)
+			throw new IllegalArgumentException("Issue cannot be empty"); //$NON-NLS-1$
+
+		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
+		uri.append('/').append(repoId);
+		uri.append(SEGMENT_ISSUES).append(SEGMENT_COMMENTS);
+		uri.append('/').append(issueId);
+		uri.append('/').append(SEGMENT_LOCK);
+		client.put(uri.toString());
+	}
+
+	/**
+	 * Unlock the issue with the given id
+	 *
+	 * @param user
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void unlockIssue(String user, String repository, int issueId)
+			throws IOException {
+		unlockIssue(user, repository, Integer.toString(issueId));
+	}
+
+	/**
+	 * Unlock the issue with the given id
+	 *
+	 * @param user
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void unlockIssue(String user, String repository, String issueId)
+			throws IOException {
+		verifyRepository(user, repository);
+
+		String repoId = user + '/' + repository;
+		unlockIssue(repoId, issueId);
+	}
+
+	/**
+	 * Unlock the issue with the given id
+	 *
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void unlockIssue(IRepositoryIdProvider repository, int issueId)
+			throws IOException {
+		unlockIssue(repository, Integer.toString(issueId));
+	}
+
+	/**
+	 * Unlock the issue with the given id
+	 *
+	 * @param repository
+	 * @param issueId
+	 * @throws IOException
+	 */
+	public void unlockIssue(IRepositoryIdProvider repository, String issueId)
+			throws IOException {
+		String repoId = getId(repository);
+		unlockIssue(repoId, issueId);
+	}
+
+	/**
+	 * Unlock the issue with the given id
+	 *
+	 * @param repoId
+	 * @param issueId
+	 * @throws IOException
+	 */
+	private void unlockIssue(String repoId, String issueId)
+			throws IOException {
+		if (issueId == null)
+			throw new IllegalArgumentException("Issue cannot be null"); //$NON-NLS-1$
+		if (issueId.length() == 0)
+			throw new IllegalArgumentException("Issue cannot be empty"); //$NON-NLS-1$
+
+		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
+		uri.append('/').append(repoId);
+		uri.append(SEGMENT_ISSUES).append(SEGMENT_COMMENTS);
+		uri.append('/').append(issueId);
+		uri.append('/').append(SEGMENT_LOCK);
+		client.delete(uri.toString());
 	}
 }
