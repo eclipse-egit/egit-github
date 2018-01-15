@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87929364_0d095a6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 162669
+      },
+      "writtenOn": "2018-01-15T01:44:38Z",
+      "side": 1,
+      "message": "Commit messages should follow the guidance in the Contributor Guide: https://wiki.eclipse.org/EGit/Contributor_Guide#Commit_message_guidelines.\n\nIn particular, the first line of the commit message should be \u003c\u003d 50 characters wide, and subsequent paragraphs should be at most 60-70 characters wide.",
+      "revId": "037bd60b843e549e732027c1a8fd125bc172120b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
