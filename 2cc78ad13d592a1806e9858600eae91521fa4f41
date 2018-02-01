@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87929364_6909c036",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/IssueService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-02-01T22:22:59Z",
+      "side": 1,
+      "message": "Too much duplicate code here. Unless I\u0027m missing something, the URL is exactly the same for both cases: lock and unlock. For locking, a PUT request is set, for unlocking a DELETE.\n\nSo all the calculation of the URL path should not be duplicated.",
+      "revId": "2cc78ad13d592a1806e9858600eae91521fa4f41",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
