@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Copyright (c) 2011, 2015 GitHub Inc. and others
+ *  Copyright (c) 2011, 2015, 2018 GitHub Inc. and others
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
  *    Michael Mathews (Arizona Board of Regents) - (Bug: 447419)
  *    			 Team Membership API implementation
+ *    Singaram Subramanian (Capital One) - (Bug: 529850)
+ *    			 User teams across GitHub organizations implementation
  *****************************************************************************/
 package org.eclipse.egit.github.core.tests;
 
@@ -418,6 +420,19 @@ public class TeamServiceTest {
 		service.getTeams(repo);
 		GitHubRequest request = new GitHubRequest();
 		request.setUri(Utils.page("/repos/o/n/teams"));
+		verify(client).get(request);
+	}
+
+	/**
+	 * Get current user's teams across all GitHub organizations
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void getAllTeams() throws IOException {
+		service.getTeams();
+		GitHubRequest request = new GitHubRequest();
+		request.setUri(Utils.page("/user/teams"));
 		verify(client).get(request);
 	}
 }
