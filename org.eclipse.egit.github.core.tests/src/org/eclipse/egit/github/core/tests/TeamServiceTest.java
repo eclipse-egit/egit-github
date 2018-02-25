@@ -420,4 +420,17 @@ public class TeamServiceTest {
 		request.setUri(Utils.page("/repos/o/n/teams"));
 		verify(client).get(request);
 	}
+
+	/**
+	 * Get current user's teams across all GitHub organizations
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void getAllTeams() throws IOException {
+		service.getTeams();
+		GitHubRequest request = new GitHubRequest();
+		request.setUri(Utils.page("/user/teams"));
+		verify(client).get(request);
+	}
 }

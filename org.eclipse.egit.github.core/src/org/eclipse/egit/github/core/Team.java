@@ -32,6 +32,8 @@ public class Team implements Serializable {
 
 	private String url;
 
+	private Organization organization;
+
 	/**
 	 * @return id
 	 */
@@ -126,6 +128,20 @@ public class Team implements Serializable {
 	public Team setUrl(String url) {
 		this.url = url;
 		return this;
+	}
+
+	/**
+	 * @return the organization
+	 */
+	public Organization getOrganization() {
+		return organization;
+	}
+
+	/**
+	 * @param organization the organization to set
+	 */
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
 
 }
