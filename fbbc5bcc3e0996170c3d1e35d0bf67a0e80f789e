@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c9e90f_83b6fe50",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/IssueService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-02-27T21:50:44Z",
+      "side": 1,
+      "message": "Hmmm. While it is mentioned as deprecated for many endpoints, it is _not_ listed as deprecated at https://developer.github.com/v3/issues/#list-issues-for-a-repository\n\nIt is used in IssueConnector and in IssueRepositoryQueryPage. So it looks as if this should _not_ be deprecated here.",
+      "revId": "fbbc5bcc3e0996170c3d1e35d0bf67a0e80f789e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
