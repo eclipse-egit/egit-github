@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2413f7a0_c4b56267",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-02-27T21:28:40Z",
+      "side": 1,
+      "message": "So this is https://developer.github.com/v3/teams/#list-user-teams ? That\u0027s provisional API only, and needs a special Accept header. We should wait with adding this until it becomes official API.",
+      "revId": "981494353c0d9d6d59db13b921a6a09957749802",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
