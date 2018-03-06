@@ -16,6 +16,24 @@
       "revId": "981494353c0d9d6d59db13b921a6a09957749802",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c44eec49_47e62289",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 106767
+      },
+      "writtenOn": "2018-03-06T15:27:08Z",
+      "side": 1,
+      "message": "It took a bit of time for me to figure out how to submit the reply. But, I\u0027ve reached out to the GitHub support, they mentioned that the API has a few preview fields (and not the endpoint itself), and the change I have made does not use any of those. I\u0027ve added the reply from GitHub support @ https://bugs.eclipse.org/bugs/show_bug.cgi?id\u003d529850 -- \"Ah, I just noticed why that endpoint is listed as in preview. You can call that endpoint with or without a preview header, but if you supply the preview header that\u0027s mentioned in the documentation -- each team in the list will contain more information (for example, they will have the \"parent\" field which tells you what the parent team is for that team).\"",
+      "parentUuid": "2413f7a0_c4b56267",
+      "revId": "981494353c0d9d6d59db13b921a6a09957749802",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
