@@ -391,7 +391,6 @@ public class GistServiceTest {
 	@Test
 	public void createGistNullUser() throws IOException {
 		Gist gist = new Gist();
-		gist.setUser(null);
 		gistService.createGist(gist);
 		verify(gitHubClient).post("/gists", gist, Gist.class);
 	}
