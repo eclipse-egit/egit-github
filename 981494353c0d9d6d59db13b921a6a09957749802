@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "ed2ea42e_a85b2678",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/OrganizationTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-03-15T22:01:33Z",
+      "side": 1,
+      "message": "This should be (c) 2018 Singaram Subramanian",
+      "revId": "981494353c0d9d6d59db13b921a6a09957749802",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817545c0_6ec57b07",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/Organization.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-03-15T22:01:33Z",
+      "side": 1,
+      "message": "This file needs a copyright header, like the others. (But of course with (c) 2018 Singaram Subramanian)",
+      "revId": "981494353c0d9d6d59db13b921a6a09957749802",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2413f7a0_c4b56267",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
         "patchSetId": 1
@@ -31,6 +65,24 @@
       "side": 1,
       "message": "It took a bit of time for me to figure out how to submit the reply. But, I\u0027ve reached out to the GitHub support, they mentioned that the API has a few preview fields (and not the endpoint itself), and the change I have made does not use any of those. I\u0027ve added the reply from GitHub support @ https://bugs.eclipse.org/bugs/show_bug.cgi?id\u003d529850 -- \"Ah, I just noticed why that endpoint is listed as in preview. You can call that endpoint with or without a preview header, but if you supply the preview header that\u0027s mentioned in the documentation -- each team in the list will contain more information (for example, they will have the \"parent\" field which tells you what the parent team is for that team).\"",
       "parentUuid": "2413f7a0_c4b56267",
+      "revId": "981494353c0d9d6d59db13b921a6a09957749802",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd7007a3_f065b84a",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-03-15T22:01:33Z",
+      "side": 1,
+      "message": "OK then.",
+      "parentUuid": "c44eec49_47e62289",
       "revId": "981494353c0d9d6d59db13b921a6a09957749802",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
