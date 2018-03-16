@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6631571a_07e07f72",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/GistTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-16T23:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3a7278_ab2d1d60",
+      "revId": "6d94c7b8b2cabaa1a38f15d2da6160b57ebe6b00",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2957031_cd7a03af",
         "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/internal/github/core/gist/GistTaskDataHandler.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-03-15T21:49:31Z",
       "side": 1,
       "message": "You can\u0027t just remove it. There\u0027s a replacement: Gist.getOwner/setOwner().",
+      "revId": "6d94c7b8b2cabaa1a38f15d2da6160b57ebe6b00",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2305aaf5_2da77bc9",
+        "filename": "org.eclipse.mylyn.github.core/src/org/eclipse/mylyn/internal/github/core/gist/GistTaskDataHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-16T23:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2957031_cd7a03af",
       "revId": "6d94c7b8b2cabaa1a38f15d2da6160b57ebe6b00",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
