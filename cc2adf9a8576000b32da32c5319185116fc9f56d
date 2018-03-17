@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41df682f_dce0edc0",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/GistTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-03-17T09:16:13Z",
+      "side": 1,
+      "message": "Here we now test getOwner() \u003d\u003d null twice. Since this is at the bottom of a whole chain of commits it\u0027s maybe easier to fix once this chain has been merged.",
+      "revId": "cc2adf9a8576000b32da32c5319185116fc9f56d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
