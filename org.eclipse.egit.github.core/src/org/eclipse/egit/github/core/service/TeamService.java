@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Copyright (c) 2011, 2014 GitHub Inc. and others
+ *  Copyright (c) 2011, 2014, 2018 GitHub Inc. and others
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Kevin Sawicki (GitHub Inc.) - initial API and implementation
  *    Michael Mathews (Arizona Board of Regents) - (Bug: 447419)
  *    			 Team Membership API implementation
+ *    Singaram Subramanian (Capital One) - (Bug: 529850)
+ *    			 User teams across GitHub organizations implementation
  *****************************************************************************/
 package org.eclipse.egit.github.core.service;
 
