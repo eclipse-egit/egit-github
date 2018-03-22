@@ -86,6 +86,8 @@ public class PullRequest implements Serializable {
 
 	private List<User> assignees;
 
+	private List<User> requestedReviewers;
+
 	/**
 	 * @return mergeable
 	 */
@@ -584,6 +586,23 @@ public class PullRequest implements Serializable {
 	 */
 	public List<User> getAssignees() {
 		return assignees;
+	}
+
+	/**
+	 * @param requestedReviewers
+	 * @return this pull request
+	 */
+	public PullRequest setRequestedReviewers(List<User> requestedReviewers) {
+		this.requestedReviewers = requestedReviewers;
+		return this;
+	}
+
+	/**
+	 *
+	 * @return requested reviewers
+	 */
+	public List<User> getRequestedReviewers() {
+		return requestedReviewers;
 	}
 
 	@Override
