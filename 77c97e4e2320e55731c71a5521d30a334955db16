@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49f3d23c_73cb075a",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "commitId",
+      "range": {
+        "startLine": 175,
+        "startChar": 35,
+        "endLine": 175,
+        "endChar": 40
+      },
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "599ee037_16bbf2b8",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "commitId ?",
+      "range": {
+        "startLine": 184,
+        "startChar": 10,
+        "endLine": 184,
+        "endChar": 13
+      },
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1ef499_cf454820",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "commitId",
+      "range": {
+        "startLine": 191,
+        "startChar": 36,
+        "endLine": 191,
+        "endChar": 41
+      },
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "786f47a5_99e56336",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "commitId ?",
+      "range": {
+        "startLine": 200,
+        "startChar": 10,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "717e9a38_85fe6482",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "commitId",
+      "range": {
+        "startLine": 207,
+        "startChar": 10,
+        "endLine": 207,
+        "endChar": 13
+      },
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e168f5ab_e75150f6",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-23T23:14:51Z",
+      "side": 1,
+      "message": "parse the commitId in order to check it\u0027s a valid hash:\n\n if ( ! ObjectId.isId(commitId)) {\n     throw IllegalArgumentException(...)\n }",
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
