@@ -131,6 +131,24 @@
       "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b8c4dc4_d157876a",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/CommitService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 162669
+      },
+      "writtenOn": "2018-03-24T06:24:00Z",
+      "side": 1,
+      "message": "ObjectId is part of JGit, which is not a dependency of org.eclipse.egit.github.core. Is it OK to leave this as-is?",
+      "parentUuid": "e168f5ab_e75150f6",
+      "revId": "77c97e4e2320e55731c71a5521d30a334955db16",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
