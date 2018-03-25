@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9946758b_8a518e21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 106767
+      },
+      "writtenOn": "2018-03-25T01:56:52Z",
+      "side": 1,
+      "message": "I\u0027ll take care of this :)",
+      "parentUuid": "b520edfd_5a698525",
+      "revId": "dc94ae70d94263129d1027a9eb2a68c542958cc9",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78aac18d_1a9de4fd",
         "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/TeamServiceTest.java",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2018-03-25T01:32:10Z",
       "side": 1,
       "message": "this is  not a list but from, to:\n\n2011, 2018",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 34
+      },
+      "revId": "dc94ae70d94263129d1027a9eb2a68c542958cc9",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adf2da5_af9566ce",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/TeamServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 106767
+      },
+      "writtenOn": "2018-03-25T01:56:52Z",
+      "side": 1,
+      "message": "thanks, I\u0027ll take care of this one as well.",
+      "parentUuid": "78aac18d_1a9de4fd",
       "range": {
         "startLine": 2,
         "startChar": 18,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "acd0bf35_c743eb06",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/Organization.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 106767
+      },
+      "writtenOn": "2018-03-25T01:56:52Z",
+      "side": 1,
+      "message": "I will add the doc.",
+      "parentUuid": "e884296c_b9bbd01c",
+      "revId": "dc94ae70d94263129d1027a9eb2a68c542958cc9",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b843481_7e5688a9",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
         "patchSetId": 2
@@ -70,6 +130,30 @@
       "writtenOn": "2018-03-25T01:32:10Z",
       "side": 1,
       "message": "odd formatting",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 15
+      },
+      "revId": "dc94ae70d94263129d1027a9eb2a68c542958cc9",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d612fc95_e568aca5",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/TeamService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 106767
+      },
+      "writtenOn": "2018-03-25T01:56:52Z",
+      "side": 1,
+      "message": "I wanted to keep all of it on same line, but split it up so it\u0027s formatted similar to other methods in the class.",
+      "parentUuid": "0b843481_7e5688a9",
       "range": {
         "startLine": 395,
         "startChar": 0,
