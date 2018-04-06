@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.mylyn.internal.tasks.ui.views.TaskRepositoryLabelProvider;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
@@ -64,7 +65,7 @@ public class GistConnectorSelectionDialog extends SelectionDialog {
 		viewer.setLabelProvider(new DecoratingLabelProvider(
 				new TaskRepositoryLabelProvider(), PlatformUI.getWorkbench()
 						.getDecoratorManager().getLabelDecorator()));
-		viewer.setSorter(new ViewerSorter());
+		viewer.setComparator(new ViewerComparator());
 		viewer.setInput(repos);
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 

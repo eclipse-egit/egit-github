@@ -38,6 +38,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.mylyn.internal.github.core.GitHub;
@@ -236,8 +237,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		CheckboxTreeViewer viewer = tree.getCheckboxTreeViewer();
 		viewer.setContentProvider(new WorkbenchContentProvider());
 		viewer.setLabelProvider(new RepositoryLabelProvider());
-		viewer.setSorter(new ViewerSorter() {
+		viewer.setComparator(new ViewerComparator() {
 
+			@Override
 			public int compare(Viewer viewer, Object e1, Object e2) {
 				if (e1 instanceof OrganizationAdapter)
 					if (e2 instanceof OrganizationAdapter)
