@@ -48,6 +48,7 @@
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
     <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/</orbit-site>
     <download-publish-path>/home/data/httpd/download.eclipse.org/egit/github/updates-nightly</download-publish-path>
+    <license-site>http://download.eclipse.org/cbi/updates/license</license-site>
   </properties>
 
     <modules>
@@ -81,6 +82,11 @@
       <id>mylyn</id>
       <layout>p2</layout>
       <url>${mylyn-site}</url>
+    </repository>
+    <repository>
+      <id>eclipse.license</id>
+      <layout>p2</layout>
+      <url>${license-site}</url>
     </repository>
   </repositories>
 
