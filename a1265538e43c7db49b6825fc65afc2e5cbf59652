@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd817cf8_5833ddcf",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-05-30T15:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a515989_72c96b4f",
+      "revId": "a1265538e43c7db49b6825fc65afc2e5cbf59652",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe37ffdf_b1d7a086",
         "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/gist/GistConnectorSelectionDialog.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-26T08:29:59Z",
       "side": 1,
       "message": "Unused import.",
+      "revId": "a1265538e43c7db49b6825fc65afc2e5cbf59652",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d004be85_c9512a30",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/gist/GistConnectorSelectionDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-05-30T15:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe37ffdf_b1d7a086",
       "revId": "a1265538e43c7db49b6825fc65afc2e5cbf59652",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
