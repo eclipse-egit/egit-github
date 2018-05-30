@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de2e53a6_7bfeaff0",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-05-30T06:19:02Z",
+      "side": 1,
+      "message": "This link must point to EPL 2.0, and the SPDX identifier could be included.",
+      "revId": "a06570c4fe150be57048d341cf16940919847b7c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
