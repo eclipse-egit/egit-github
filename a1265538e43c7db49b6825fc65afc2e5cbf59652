@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ea1cc592_ab19a9c5",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-06-01T18:10:34Z",
+      "side": 1,
+      "message": "Sorry for not seeing this earlier. But that is exactly why I like to fix errors category by category. You can set that category to error instead of warning afterwards and never have such an issue again.",
+      "parentUuid": "dd817cf8_5833ddcf",
+      "revId": "a1265538e43c7db49b6825fc65afc2e5cbf59652",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe37ffdf_b1d7a086",
         "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/gist/GistConnectorSelectionDialog.java",
         "patchSetId": 1
