@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "713f6afe_d1ab3b2e",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-06-01T18:19:51Z",
+      "side": 1,
+      "message": "You may notice that I did give the egit-github projects full JDT configs (taken from EGit) in the parent commit.\n\nSo in the future, you\u0027ll get the warnings/errors in Eclipse, and the build will take these settings into account, too.",
+      "parentUuid": "ea1cc592_ab19a9c5",
+      "revId": "a1265538e43c7db49b6825fc65afc2e5cbf59652",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe37ffdf_b1d7a086",
         "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/gist/GistConnectorSelectionDialog.java",
         "patchSetId": 1
