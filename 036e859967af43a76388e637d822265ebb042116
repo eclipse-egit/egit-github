@@ -45,6 +45,30 @@
       "revId": "036e859967af43a76388e637d822265ebb042116",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae1136d_2f57071e",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-06-03T21:01:48Z",
+      "side": 1,
+      "message": "ok, let\u0027s use the version 4.6 which we currently use by default for EGit\n\nWe guarantee support for at least the last two platform releases [1]. This currently means 4.6+ (4.8 is not yet released).\n\n[1] https://wiki.eclipse.org/EGit/FAQ#What_versions_of_Eclipse_does_EGit_target.3F",
+      "parentUuid": "4343550d_533f5f5b",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "036e859967af43a76388e637d822265ebb042116",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
