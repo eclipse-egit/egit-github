@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ea61ae_293a74a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-06-03T19:54:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "036e859967af43a76388e637d822265ebb042116",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4343550d_533f5f5b",
+        "filename": "org.eclipse.mylyn.github-feature/github.target",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-06-03T19:54:23Z",
+      "side": 1,
+      "message": "Is this really intended? The other egit parts are still compatible to 4.4 according to https://wiki.eclipse.org/EGit/FAQ#What_versions_of_Eclipse_does_EGit_target.3F, right? What\u0027s the reason to use the latest one instead here?\n\nIn practical terms this can easily lead to compile errors in the local IDE. A github only developers may add 4.4+ API usage. In the complete egit developers IDE everything is checked out, the egit.target is used, and those new APIs lead to errors with that more restrictive target.",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "036e859967af43a76388e637d822265ebb042116",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
