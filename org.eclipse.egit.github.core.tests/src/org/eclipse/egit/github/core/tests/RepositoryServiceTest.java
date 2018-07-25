@@ -25,6 +25,8 @@ import java.util.Map;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.RepositoryHook;
 import org.eclipse.egit.github.core.RepositoryId;
+import org.eclipse.egit.github.core.RepositoryMerging;
+import org.eclipse.egit.github.core.RepositoryMergingResponse;
 import org.eclipse.egit.github.core.User;
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.client.GitHubRequest;
@@ -625,4 +627,19 @@ public class RepositoryServiceTest {
 		service.testHook(repo, 5609);
 		verify(client).post("/repos/o/n/hooks/5609/test");
 	}
+
+        /**
+         * Run merge in repository
+         *
+         * @throws IOException
+         */
+        @Test
+        public void runMerge() throws IOException {
+                RepositoryMerging merge = new RepositoryMerging();
+                merge.setBase("develop");
+                merge.setHead("master");
+                merge.setCommitMessage("Test Merge");
+                service.mergingBranches(repo, merge);
+                verify(client).post("/repos/o/n/merges", merge, RepositoryMergingResponse.class);
+        }
 }
