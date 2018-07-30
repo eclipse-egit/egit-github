@@ -15,6 +15,7 @@ package org.eclipse.egit.github.core.service;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_BLOBS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_COMMITS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_GIT;
+import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_HEADS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_REFS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_REPOS;
 import static org.eclipse.egit.github.core.client.IGitHubConstants.SEGMENT_TAGS;
@@ -197,7 +198,7 @@ public class DataService extends GitHubService {
 		GitHubRequest request = createRequest();
 		request.setType(Tree.class);
 		request.setUri(uri);
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		if (entries != null)
 			params.put("tree", entries.toArray()); //$NON-NLS-1$
 		if (baseTree != null)
@@ -279,7 +280,7 @@ public class DataService extends GitHubService {
 		uri.append('/').append(id);
 		uri.append(SEGMENT_GIT);
 		uri.append(SEGMENT_REFS);
-		Map<String, String> params = new HashMap<String, String>();
+		Map<String, String> params = new HashMap<>();
 		params.put("sha", object.getSha()); //$NON-NLS-1$
 		params.put("ref", reference.getRef()); //$NON-NLS-1$
 		return client.post(uri.toString(), params, Reference.class);
@@ -328,7 +329,7 @@ public class DataService extends GitHubService {
 		if (!ref.startsWith("refs/")) //$NON-NLS-1$
 			uri.append(SEGMENT_REFS);
 		uri.append('/').append(ref);
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("sha", object.getSha()); //$NON-NLS-1$
 		if (force)
 			params.put("force", true); //$NON-NLS-1$
@@ -382,13 +383,13 @@ public class DataService extends GitHubService {
 		uri.append('/').append(id);
 		uri.append(SEGMENT_GIT);
 		uri.append(SEGMENT_COMMITS);
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("author", commit.getAuthor()); //$NON-NLS-1$
 		params.put("committer", commit.getCommitter()); //$NON-NLS-1$
 		params.put("message", commit.getMessage()); //$NON-NLS-1$
 		List<Commit> parents = commit.getParents();
 		if (parents != null && parents.size() > 0) {
-			List<String> parentIds = new ArrayList<String>();
+			List<String> parentIds = new ArrayList<>();
 			for (Commit parent : parents)
 				parentIds.add(parent.getSha());
 			params.put("parents", parentIds); //$NON-NLS-1$
@@ -446,7 +447,7 @@ public class DataService extends GitHubService {
 		uri.append('/').append(id);
 		uri.append(SEGMENT_GIT);
 		uri.append(SEGMENT_TAGS);
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("tag", tag.getTag()); //$NON-NLS-1$
 		params.put("message", tag.getMessage()); //$NON-NLS-1$
 		TypedResource object = tag.getObject();
@@ -456,5 +457,76 @@ public class DataService extends GitHubService {
 		}
 		params.put("tagger", tag.getTagger()); //$NON-NLS-1$
 		return client.post(uri.toString(), params, Tag.class);
+	}
+
+	/**
+	 * Delete reference
+	 *
+	 * @param repository
+	 * @param reference
+	 * @throws IOException
+	 */
+	public void deleteReference(IRepositoryIdProvider repository,
+			Reference reference) throws IOException {
+		final String id = getId(repository);
+		if (reference == null)
+			throw new IllegalArgumentException("Reference cannot be null"); //$NON-NLS-1$
+		String ref = reference.getRef();
+		if (ref == null)
+			throw new IllegalArgumentException("Ref cannot be null"); //$NON-NLS-1$
+		if (ref.length() == 0)
+			throw new IllegalArgumentException("Ref cannot be empty"); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder();
+		uri.append(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_GIT);
+		if (!ref.startsWith("refs/")) //$NON-NLS-1$
+			uri.append(SEGMENT_REFS);
+		uri.append('/').append(ref);
+		client.delete(uri.toString());
+	}
+
+	/**
+	 * Delete branch
+	 *
+	 * @param repository
+	 * @param branchName
+	 * @throws IOException
+	 */
+	public void deleteBranch(IRepositoryIdProvider repository,
+			String branchName) throws IOException {
+		final String id = getId(repository);
+		if (branchName == null)
+			throw new IllegalArgumentException("BranchName cannot be null"); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder();
+		uri.append(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_GIT);
+		uri.append(SEGMENT_REFS);
+		uri.append(SEGMENT_HEADS).append('/').append(branchName);
+		client.delete(uri.toString());
+	}
+
+	/**
+	 * Delete tag
+	 *
+	 * @param repository
+	 * @param tag
+	 * @throws IOException
+	 */
+	public void deleteTag(IRepositoryIdProvider repository, Tag tag)
+			throws IOException {
+		final String id = getId(repository);
+		if (tag == null)
+			throw new IllegalArgumentException("Tag cannot be null"); //$NON-NLS-1$
+		if (tag.getTag() == null)
+			throw new IllegalArgumentException("Tag Name cannot be empty"); //$NON-NLS-1$
+		StringBuilder uri = new StringBuilder();
+		uri.append(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_GIT);
+		uri.append(SEGMENT_REFS);
+		uri.append(SEGMENT_TAGS).append('/').append(tag.getTag());
+		client.delete(uri.toString());
 	}
 }
