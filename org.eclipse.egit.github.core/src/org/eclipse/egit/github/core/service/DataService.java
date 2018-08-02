@@ -429,6 +429,28 @@ public class DataService extends GitHubService {
 	}
 
 	/**
+	 * List tags for given repository
+	 *
+	 * @param repository
+	 * @return references
+	 * @throws IOException
+	 */
+	public List<Reference> listTags(IRepositoryIdProvider repository)
+			throws IOException {
+		final String id = getId(repository);
+		StringBuilder uri = new StringBuilder();
+		uri.append(SEGMENT_REPOS);
+		uri.append('/').append(id);
+		uri.append(SEGMENT_GIT);
+		uri.append(SEGMENT_REFS);
+		uri.append(SEGMENT_TAGS);
+		GitHubRequest request = createRequest();
+		request.setType(List.class);
+		request.setUri(uri);
+		return (List<Reference>) client.get(request).getBody();
+	}
+
+	/**
 	 * Create tag object in given repository
 	 *
 	 * @param repository
