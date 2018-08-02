@@ -369,7 +369,8 @@ public class DataServiceTest {
 	@Test
 	public void createCommit() throws IOException {
 		Commit commit = new Commit();
-		commit.setParents(Collections.singletonList(new Commit().setSha("abcd")));
+		commit.setParents(
+				Collections.singletonList(new Commit().setSha("abcd")));
 		commit.setTree(new Tree().setSha("aaa"));
 		service.createCommit(repo, commit);
 		verify(client).post(eq("/repos/o/n/git/commits"), any(),
@@ -410,6 +411,19 @@ public class DataServiceTest {
 	}
 
 	/**
+	 * List tags
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void listTags() throws IOException {
+		service.listTags(repo);
+		GitHubRequest request = new GitHubRequest();
+		request.setUri(Utils.page("/repos/o/n/git/refs/tags"));
+		verify(client).get(request);
+	}
+
+	/**
 	 * Create tag with null tag
 	 *
 	 * @throws IOException
@@ -432,42 +446,41 @@ public class DataServiceTest {
 		verify(client).post(eq("/repos/o/n/git/tags"), any(), eq(Tag.class));
 	}
 
-
 	/**
 	 * Delete reference
 	 *
 	 * @throws IOException
 	 */
-	 @Test
-	 public void deleteReference() throws IOException {
-	        Reference ref = new Reference();
-	        ref.setRef("refs/heads/master");
-	        service.deleteReference(repo, ref);
-	        verify(client).delete(eq("/repos/o/n/git/refs/heads/master"));
-	 }
+	@Test
+	public void deleteReference() throws IOException {
+		Reference ref = new Reference();
+		ref.setRef("refs/heads/master");
+		service.deleteReference(repo, ref);
+		verify(client).delete(eq("/repos/o/n/git/refs/heads/master"));
+	}
 
-	 /**
-	  * Delete branch
-	  *
-	  * @throws IOException
-	  */
-	 @Test
-	 public void deleteBranch() throws IOException {
-	        String branch = "branch";
-	        service.deleteBranch(repo, branch);
-	        verify(client).delete(eq("/repos/o/n/git/refs/heads/branch"));
-	 }
+	/**
+	 * Delete branch
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void deleteBranch() throws IOException {
+		String branch = "branch";
+		service.deleteBranch(repo, branch);
+		verify(client).delete(eq("/repos/o/n/git/refs/heads/branch"));
+	}
 
-	 /**
-	  * Delete tag
-	  *
-	  * @throws IOException
-	  */
-	 @Test
-	 public void deleteTag() throws IOException {
-	        Tag tag = new Tag();
-	        tag.setTag("tag");
-	        service.deleteTag(repo, tag);
-	        verify(client).delete(eq("/repos/o/n/git/refs/tags/tag"));
-	 }
+	/**
+	 * Delete tag
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void deleteTag() throws IOException {
+		Tag tag = new Tag();
+		tag.setTag("tag");
+		service.deleteTag(repo, tag);
+		verify(client).delete(eq("/repos/o/n/git/refs/tags/tag"));
+	}
 }
