@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Copyright (c) 2011 GitHub Inc.
+ *  Copyright (c) 2018 Hardis Group
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
  *  which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: EPL-2.0
  *
  *  Contributors:
- *    Frédéric Cilia (GitHub Inc.) - initial API and implementation
+ *    Frédéric Cilia (Hardis Group) - initial API and implementation
  *****************************************************************************/
 package org.eclipse.egit.github.core.tests;
 
