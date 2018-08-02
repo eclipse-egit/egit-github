@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fe5573_df565f78",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/DataServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-02T13:13:06Z",
+      "side": 1,
+      "message": "Please undo all these unrelated formatting changes. We indent Java sources using TABs.",
+      "revId": "aa3a13153cdfd6f3d0fa1a1b1ca19862fecb777f",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d74ed21_5fe731f8",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-02T13:13:06Z",
+      "side": 1,
+      "message": "Comment should probably explain that the user might have to use the urls in the references\u0027 TypedObject fields if he wants to get more information about the tags (tagger, message, signature, etc.)",
+      "revId": "aa3a13153cdfd6f3d0fa1a1b1ca19862fecb777f",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
