@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3e3ecd77_4cd61d06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-02T13:13:54Z",
+      "side": 1,
+      "message": "Please add an empty line between commit message summary (first line) and the footers.",
+      "revId": "aa3a13153cdfd6f3d0fa1a1b1ca19862fecb777f",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fe5573_df565f78",
         "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/DataServiceTest.java",
         "patchSetId": 2
