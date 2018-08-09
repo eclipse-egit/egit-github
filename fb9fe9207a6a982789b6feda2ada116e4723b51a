@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b832ed66_bfb837d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "Please add an empty line between message header and footers.",
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2faacab8_2b359c5a",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryMergingResponseTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "See comments on RepositoryMergingResponse.",
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e18ceeb2_3eb08ca6",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryMergingTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "See comments on RepositoryMergingResponse.",
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e404ca4b_31cec6f1",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryMerging.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "See comments on RepositoryMergingResponse.",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 34
+      },
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbe882d2_11e6c4af",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryMergingResponse.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bd321f_ca6516b3",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryMergingResponse.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-09T13:56:59Z",
+      "side": 1,
+      "message": "Are you employed by GitHub Inc.? Your e-mail seems to indicate Hardis Group.\n\nIf you are not employed by GitHub, then please remove this and fix the copyright owner above to either yourself or to Hardis Group, whatever is appropriate.",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "fb9fe9207a6a982789b6feda2ada116e4723b51a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
