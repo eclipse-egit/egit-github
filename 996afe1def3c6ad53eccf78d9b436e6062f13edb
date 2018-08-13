@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4fbf537_38db303c",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/messages.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-13T19:48:26Z",
+      "side": 1,
+      "message": "Minuscule \u0027o\u0027 looks better.",
+      "range": {
+        "startLine": 16,
+        "startChar": 109,
+        "endLine": 16,
+        "endChar": 110
+      },
+      "revId": "996afe1def3c6ad53eccf78d9b436e6062f13edb",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044e020b_2d15e4c4",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/messages.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-13T19:48:26Z",
+      "side": 1,
+      "message": "Minuscule \u0027n\u0027 looks better (it\u0027s after the comma).",
+      "range": {
+        "startLine": 16,
+        "startChar": 95,
+        "endLine": 16,
+        "endChar": 96
+      },
+      "revId": "996afe1def3c6ad53eccf78d9b436e6062f13edb",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
