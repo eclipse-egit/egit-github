@@ -45,6 +45,54 @@
       "revId": "996afe1def3c6ad53eccf78d9b436e6062f13edb",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f01fe685_a2c49cff",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/messages.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-13T20:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fbf537_38db303c",
+      "range": {
+        "startLine": 16,
+        "startChar": 109,
+        "endLine": 16,
+        "endChar": 110
+      },
+      "revId": "996afe1def3c6ad53eccf78d9b436e6062f13edb",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da7662e_359f585d",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/messages.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-08-13T20:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044e020b_2d15e4c4",
+      "range": {
+        "startLine": 16,
+        "startChar": 95,
+        "endLine": 16,
+        "endChar": 96
+      },
+      "revId": "996afe1def3c6ad53eccf78d9b436e6062f13edb",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
