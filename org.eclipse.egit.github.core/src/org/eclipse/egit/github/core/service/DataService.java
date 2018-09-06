@@ -429,7 +429,9 @@ public class DataService extends GitHubService {
 	}
 
 	/**
-	 * List tags for given repository
+	 * List tags for given repository Tags informations are coming from the
+	 * reference url. As specified here :
+	 * https://developer.github.com/v3/git/refs/#get-all-references
 	 *
 	 * @param repository
 	 * @return references
