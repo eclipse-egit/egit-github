@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbea5e95_1d609b83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T07:47:39Z",
+      "side": 1,
+      "message": "looks like save rules need to be fixed in order not to reformat code unrelated to the change at hand",
+      "revId": "6228786e3ff33faea49550e1fcf57e51f31e8950",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "710643ce_8339be9e",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T07:47:39Z",
+      "side": 1,
+      "message": "unrelated drive-by change",
+      "revId": "6228786e3ff33faea49550e1fcf57e51f31e8950",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75b31f60_bf8def8d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T07:47:39Z",
+      "side": 1,
+      "message": "unrelated drive-by change",
+      "revId": "6228786e3ff33faea49550e1fcf57e51f31e8950",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96ea936_9bfe09a4",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T07:47:39Z",
+      "side": 1,
+      "message": "unrelated drive-by change",
+      "revId": "6228786e3ff33faea49550e1fcf57e51f31e8950",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7873f845_6e7677e0",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T07:47:39Z",
+      "side": 1,
+      "message": "unrelated drive-by change",
+      "revId": "6228786e3ff33faea49550e1fcf57e51f31e8950",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
