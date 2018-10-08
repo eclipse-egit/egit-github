@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4572f24f_34e723b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-08T23:21:31Z",
+      "side": 1,
+      "message": "this is misleading, you are not fixing Findbugs, instead I\u0027d prefix this:\n\n[findbugs] Fix warning (what\u0027s the warning type?) for String constructor",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "1eab95e0cd54719620f7cf656fa73076ec34e970",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
