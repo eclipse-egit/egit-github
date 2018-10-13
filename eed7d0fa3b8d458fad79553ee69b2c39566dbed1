@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d6ea18_5f094656",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-10-13T21:08:51Z",
+      "side": 1,
+      "message": "this is correct but cryptic, can you describe this, e.g. :\n\nDon\u0027t use inefficient String c\u0027tor in encoding unit test",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "eed7d0fa3b8d458fad79553ee69b2c39566dbed1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
