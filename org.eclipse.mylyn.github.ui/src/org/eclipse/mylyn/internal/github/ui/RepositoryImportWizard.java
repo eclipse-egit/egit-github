@@ -103,10 +103,9 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 	public boolean performFinish() {
 		final SearchRepository[] repositories = repositorySearchWizardPage
 				.getRepositories();
-		String name = repositories.length != 1 ? MessageFormat.format(
+		String name = MessageFormat.format(
 				Messages.RepositoryImportWizard_CloningRepositories,
-				Integer.valueOf(repositories.length))
-				: Messages.RepositoryImportWizard_CloningRepository;
+				Integer.valueOf(repositories.length));
 		Job job = new Job(name) {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
