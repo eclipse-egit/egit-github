@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f136841_0f32a368",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryMergingResponseTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-12-02T07:00:37Z",
+      "side": 1,
+      "message": "The 4 copyright changes in this gerrit change (tag list API) should be moved to the \"merge repository API\" gerrit change.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "94d64959e873eb3a06fb6c1555731e34ae679ae3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e98587c9_3475176d",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-12-02T07:00:37Z",
+      "side": 1,
+      "message": "missing dot",
+      "range": {
+        "startLine": 433,
+        "startChar": 34,
+        "endLine": 433,
+        "endChar": 35
+      },
+      "revId": "94d64959e873eb3a06fb6c1555731e34ae679ae3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
