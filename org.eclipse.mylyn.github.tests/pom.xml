@@ -28,7 +28,7 @@
   
   <properties>
     <test.vmparams></test.vmparams>
-    <uitest.vmparams>-Xmx512m -Dorg.eclipse.swtbot.search.timeout=30000 -Dorg.eclipse.swtbot.screenshots.dir=target/screenshots -Xmx1024m</uitest.vmparams>
+    <uitest.vmparams>-Xmx1024m -Dorg.eclipse.swtbot.search.timeout=30000 -Dorg.eclipse.swtbot.screenshots.dir=target/screenshots</uitest.vmparams>
   </properties>
 
   <build>
