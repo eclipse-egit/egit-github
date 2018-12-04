@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72067711_25505809",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/RepositoryService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T13:31:51Z",
+      "side": 1,
+      "message": "Missing period at end of sentence.",
+      "revId": "2ba3bcc87e20bfe935fa27fb78ae72e85dab2774",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "957c048e_d9a4a161",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/RepositoryService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T13:31:51Z",
+      "side": 1,
+      "message": "My question still stands: how is the 204 result (nothing to merge) handled and represented? The javadoc should state so.",
+      "revId": "2ba3bcc87e20bfe935fa27fb78ae72e85dab2774",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
