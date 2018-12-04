@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe938aff_f08b985a",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryMergingTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:39:47Z",
+      "side": 1,
+      "message": "Please indent with TABs.",
+      "revId": "0645b95db61c6e678d641c09de235ca3abf4074a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23006fb3_5ea971c3",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryServiceTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:39:47Z",
+      "side": 1,
+      "message": "Inconsistent indentation, please use TABs.",
+      "revId": "0645b95db61c6e678d641c09de235ca3abf4074a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efc73659_731db740",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryMerging.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:39:47Z",
+      "side": 1,
+      "message": "Useless comment, please remove.",
+      "revId": "0645b95db61c6e678d641c09de235ca3abf4074a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ad69b05_940a6345",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryMergingResponse.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:39:47Z",
+      "side": 1,
+      "message": "Useless comment, please remove.",
+      "revId": "0645b95db61c6e678d641c09de235ca3abf4074a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826b2cd1_b29ae266",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/RepositoryService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:39:47Z",
+      "side": 1,
+      "message": "Judging from https://developer.github.com/v3/repos/merging/ result.getCommit().getSha() \u003d\u003d null. Probably this should be set explicitly here then? Something like\n\n  if (result.getCommit() !\u003d null \u0026\u0026 result.getCommit().getSha() \u003d\u003d null) {\n    result.getCommit().setSha(result.getSha());\n  }\n\n?\n\nAlso, how do you represent the 204 response (nothing to merge)? How is 409 (merge conflict) handled?",
+      "revId": "0645b95db61c6e678d641c09de235ca3abf4074a",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
