@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "172425d2_26567036",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e15b6d36_dc1cd0ce",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978f966e_44ce5b1b",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e3bf17_86b7df43",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1343ced2_49bb9f10",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fe35c31_b2e84b1c",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "No test for branch.isEmpty() ?",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7d5bafa_3bdd8bb4",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c78feb63_da3224b2",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "Missing curly braces.",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d27d474_3dd1e3b2",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/service/DataService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-04T10:46:13Z",
+      "side": 1,
+      "message": "No test for tag.getTag().isEmpty() ?",
+      "revId": "404578aa9ecc60b108ec160abfe1710e961f3a4b",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
