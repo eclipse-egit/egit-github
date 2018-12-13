@@ -56,6 +56,23 @@
       "revId": "46c72934d3040f79599245c4fc1725e0ceb264f8",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69d4fc48_15d8f8e1",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-13T14:53:58Z",
+      "side": 1,
+      "message": "This needs an @since 5.3 annotation.",
+      "revId": "46c72934d3040f79599245c4fc1725e0ceb264f8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
