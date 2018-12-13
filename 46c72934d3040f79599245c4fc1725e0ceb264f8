@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3121406_32142f1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-13T14:52:56Z",
+      "side": 1,
+      "message": "Can you please change your git config such that author and committer match the signed-off line below? (In other words, include the family name.)",
+      "revId": "46c72934d3040f79599245c4fc1725e0ceb264f8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d58296a7_37a9d4f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-13T14:52:56Z",
+      "side": 1,
+      "message": "English: \"adds the\".\n\n\"This change\" is not necessary; of course the commit message for this change describes what this change is about. :-)\n\nSo simply \"Adds the possibility to use a proxy in the EGit GitHubClient.\" is fine.",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "46c72934d3040f79599245c4fc1725e0ceb264f8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12f35fa2_05ea3140",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2018-12-13T14:52:56Z",
+      "side": 1,
+      "message": "Please add curly braces {}, also for single-line bodies.\n\nI know, old code doesn\u0027t have this, but for new code we require it since several years. We add it where we change things anyway, so don\u0027t change all the other ifs in this source.",
+      "revId": "46c72934d3040f79599245c4fc1725e0ceb264f8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
