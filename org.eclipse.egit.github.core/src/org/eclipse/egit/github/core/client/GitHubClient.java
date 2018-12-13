@@ -46,6 +46,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.Proxy;
 import java.net.URL;
 
 import org.eclipse.egit.github.core.RequestError;
@@ -145,6 +146,8 @@ public class GitHubClient {
 	private String user;
 
 	private String credentials;
+
+	private Proxy proxy;
 
 	private String userAgent = USER_AGENT;
 
@@ -287,6 +290,10 @@ public class GitHubClient {
 	 */
 	protected HttpURLConnection createConnection(String uri) throws IOException {
 		URL url = new URL(createUri(uri));
+
+		if (proxy != null)
+			return (HttpURLConnection) url.openConnection(proxy);
+
 		return (HttpURLConnection) url.openConnection();
 	}
 
@@ -364,6 +371,17 @@ public class GitHubClient {
 					+ EncodingUtils.toBase64(user + ':' + password);
 		else
 			credentials = null;
+		return this;
+	}
+
+	/**
+	 * Set proxy
+	 *
+	 * @param proxy
+	 * @return this client
+	 */
+	public GitHubClient setProxy(final Proxy proxy) {
+		this.proxy = proxy;
 		return this;
 	}
 
