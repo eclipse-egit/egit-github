@@ -22,6 +22,30 @@
       "revId": "0ffc1b8dcba38fa0a90a4279a84b593dc076d28e",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64b17600_f5b5fc25",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositoryImportWizard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2018-12-29T13:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de96233d_281ee010",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "0ffc1b8dcba38fa0a90a4279a84b593dc076d28e",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
