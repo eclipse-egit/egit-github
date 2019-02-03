@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "323f7f32_91802931",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositoryImportWizard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-02-03T10:19:31Z",
+      "side": 1,
+      "message": "this unrelated change should go in its own change",
+      "revId": "7bfabb5021c646b56c128fd9d2eb0ddac0c647e1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "971603ab_a800042f",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/pr/CheckoutPullRequestHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-02-03T10:19:31Z",
+      "side": 1,
+      "message": "another unrelated change, could go with the other progress monitor change",
+      "revId": "7bfabb5021c646b56c128fd9d2eb0ddac0c647e1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b645693_d8d0ce2e",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/pr/MergePullRequestHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-02-03T10:19:31Z",
+      "side": 1,
+      "message": "one more unrelated progress monitor change",
+      "revId": "7bfabb5021c646b56c128fd9d2eb0ddac0c647e1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec52736_e5ef7155",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/pr/RebasePullRequestHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-02-03T10:19:31Z",
+      "side": 1,
+      "message": "one more progress monitor change",
+      "revId": "7bfabb5021c646b56c128fd9d2eb0ddac0c647e1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
