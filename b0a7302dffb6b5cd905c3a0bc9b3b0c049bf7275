@@ -22,6 +22,30 @@
       "revId": "b0a7302dffb6b5cd905c3a0bc9b3b0c049bf7275",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d462c30a_00b71b13",
+        "filename": "org.eclipse.mylyn.github.ui/plugin.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-02-03T18:35:00Z",
+      "side": 1,
+      "message": "Done\n\nThanks, Matthias. Will have to remember the rule to differentiate between the wizard titles and descriptions regarding case style.",
+      "parentUuid": "c28047c3_2088b4a7",
+      "range": {
+        "startLine": 8,
+        "startChar": 36,
+        "endLine": 8,
+        "endChar": 72
+      },
+      "revId": "b0a7302dffb6b5cd905c3a0bc9b3b0c049bf7275",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
