@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c28047c3_2088b4a7",
+        "filename": "org.eclipse.mylyn.github.ui/plugin.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 32479
+      },
+      "writtenOn": "2019-02-03T08:42:15Z",
+      "side": 1,
+      "message": "Has to be sentence style:\n\"Import task repositories from GitHub\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 36,
+        "endLine": 8,
+        "endChar": 72
+      },
+      "revId": "b0a7302dffb6b5cd905c3a0bc9b3b0c049bf7275",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
