@@ -21,7 +21,7 @@ import java.text.MessageFormat;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.egit.core.Activator;
 import org.eclipse.egit.core.RepositoryUtil;
@@ -109,33 +109,31 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 		Job job = new Job(name) {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-				monitor.beginTask(name, repositories.length * 3);
+				SubMonitor progress = SubMonitor.convert(monitor, name,
+						repositories.length * 3);
 				GitHubClient client = GitHub
 						.configureClient(new GitHubClient());
 				RepositoryUtil repositoryUtil = Activator.getDefault()
 						.getRepositoryUtil();
 				RepositoryService service = new RepositoryService(client);
-				for (SearchRepository repo : repositories)
+				for (SearchRepository repo : repositories) {
 					try {
 						final String id = repo.getId();
 						monitor.setTaskName(MessageFormat
 								.format(Messages.RepositoryImportWizard_CreatingOperation,
 										id));
 						CloneOperation op = createCloneOperation(repo, service);
-						monitor.worked(1);
+						progress.worked(1);
 
-						monitor.setTaskName(MessageFormat.format(
+						progress.setTaskName(MessageFormat.format(
 								Messages.RepositoryImportWizard_Cloning, id));
-						SubProgressMonitor sub = new SubProgressMonitor(
-								monitor, 1);
-						op.run(sub);
-						sub.done();
+						op.run(progress.split(1));
 
-						monitor.setTaskName(MessageFormat
+						progress.setTaskName(MessageFormat
 								.format(Messages.RepositoryImportWizard_Registering,
 										id));
 						repositoryUtil.addConfiguredRepository(op.getGitDir());
-						monitor.worked(1);
+						progress.worked(1);
 					} catch (InvocationTargetException e) {
 						GitHubUi.logError(e);
 					} catch (InterruptedException e) {
@@ -145,7 +143,8 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 					} catch (URISyntaxException e) {
 						GitHubUi.logError(e);
 					}
-				monitor.done();
+				}
+				progress.done();
 
 				return Status.OK_STATUS;
 			}

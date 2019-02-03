@@ -23,7 +23,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.egit.core.op.CreateLocalBranchOperation;
 import org.eclipse.egit.core.op.FetchOperation;
@@ -68,6 +68,7 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 		}
 	}
 
+	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
@@ -76,8 +77,8 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 		Job job = new Job(MessageFormat.format(
 				Messages.CheckoutPullRequestHandler_JobName, data.getTaskId())) {
 
-			protected IStatus run(IProgressMonitor monitor) {
-				SubProgressMonitor sub;
+			@Override
+			protected IStatus run(IProgressMonitor m) {
 				try {
 					PullRequestComposite prComp = PullRequestConnector
 							.getPullRequest(data);
@@ -93,11 +94,11 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 					RemoteConfig remote = null;
 					String headBranch = null;
 
-					monitor.beginTask("", 5); //$NON-NLS-1$
+					SubMonitor progress = SubMonitor.convert(m, 5);
 
 					// Add remote
 					if (!PullRequestUtils.isFromSameRepository(request)) {
-						monitor.subTask(MessageFormat
+						progress.subTask(MessageFormat
 								.format(Messages.CheckoutPullRequestHandler_TaskAddRemote,
 										request.getHead().getRepo().getOwner()
 												.getLogin()));
@@ -108,52 +109,50 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 								Constants.DEFAULT_REMOTE_NAME);
 						headBranch = request.getHead().getRef();
 					}
-					monitor.worked(1);
+					progress.worked(1);
 
 					// Create topic branch starting at SHA-1 of base
 					if (branchRef == null) {
-						sub = new SubProgressMonitor(monitor, 1);
-						sub.subTask(MessageFormat
+						SubMonitor sub = progress.split(1);
+						progress.subTask(MessageFormat
 								.format(Messages.CheckoutPullRequestHandler_TaskCreateBranch,
 										branchName));
 						PullRequestUtils.configureTopicBranch(repo, request);
 						new CreateLocalBranchOperation(repo, branchName,
 								getBase(repo, request)).execute(sub);
-						sub.done();
-					} else
-						monitor.worked(1);
+					} else {
+						progress.setWorkRemaining(3);
+					}
 
 					// Checkout topic branch
 					if (!PullRequestUtils.isCurrentBranch(branchName, repo)) {
-						sub = new SubProgressMonitor(monitor, 1);
-						sub.subTask(MessageFormat
+						SubMonitor sub = progress.split(1);
+						progress.subTask(MessageFormat
 								.format(Messages.CheckoutPullRequestHandler_TaskCheckoutBranch,
 										branchName));
 						BranchOperationUI.checkout(repo, branchName).run(sub);
-						sub.done();
-					} else
-						monitor.worked(1);
+					} else {
+						progress.setWorkRemaining(2);
+					}
 
 					// Fetch from remote
-					sub = new SubProgressMonitor(monitor, 1);
-					sub.subTask(MessageFormat.format(
+					SubMonitor sub = progress.split(1);
+					progress.subTask(MessageFormat.format(
 							Messages.CheckoutPullRequestHandler_TaskFetching,
 							remote.getName()));
 					new FetchOperation(repo, remote, Activator.getDefault()
 							.getPreferenceStore()
 							.getInt(UIPreferences.REMOTE_CONNECTION_TIMEOUT),
 							false).run(sub);
-					sub.done();
 
 					// Merge head onto base
-					sub = new SubProgressMonitor(monitor, 1);
-					sub.subTask(MessageFormat.format(
+					sub = progress.split(1);
+					progress.subTask(MessageFormat.format(
 							Messages.CheckoutPullRequestHandler_TaskMerging,
 							headBranch));
 					new MergeOperation(repo, headBranch).execute(sub);
-					sub.done();
 
-					monitor.done();
+					progress.done();
 					executeCallback(event);
 				} catch (IOException e) {
 					GitHubUi.logError(e);

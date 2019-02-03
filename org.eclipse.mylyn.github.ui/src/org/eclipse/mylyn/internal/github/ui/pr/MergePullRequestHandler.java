@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.egit.core.op.MergeOperation;
 import org.eclipse.egit.github.core.PullRequest;
@@ -45,6 +45,7 @@ public class MergePullRequestHandler extends TaskDataHandler {
 	 */
 	public static final String ID = "org.eclipse.mylyn.github.ui.command.mergePullRequest"; //$NON-NLS-1$
 
+	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
@@ -52,6 +53,7 @@ public class MergePullRequestHandler extends TaskDataHandler {
 		Job job = new Job(MessageFormat.format(
 				Messages.MergePullRequestHandler_MergeJob, data.getTaskId())) {
 
+			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				PullRequestComposite prComp = PullRequestConnector
 						.getPullRequest(data);
@@ -66,18 +68,19 @@ public class MergePullRequestHandler extends TaskDataHandler {
 				try {
 					Ref sourceRef = repo.findRef(branchName);
 					if (sourceRef != null) {
+						SubMonitor progress = SubMonitor.convert(monitor, 2);
 						if (!PullRequestUtils.isCurrentBranch(target, repo)) {
 							monitor.setTaskName(MessageFormat
 									.format(Messages.MergePullRequestHandler_TaskCheckout,
 											target));
 							BranchOperationUI.checkout(repo, target).run(
-									new SubProgressMonitor(monitor, 1));
+									progress.split(1));
 						}
 						monitor.setTaskName(MessageFormat.format(
 								Messages.MergePullRequestHandler_TaskMerge,
 								branchName, target));
 						new MergeOperation(repo, branchName)
-								.execute(new SubProgressMonitor(monitor, 1));
+								.execute(progress.split(1));
 						executeCallback(event);
 					}
 				} catch (IOException e) {

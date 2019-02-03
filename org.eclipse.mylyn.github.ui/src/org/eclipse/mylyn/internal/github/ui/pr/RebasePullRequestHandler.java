@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.egit.core.op.RebaseOperation;
 import org.eclipse.egit.github.core.PullRequest;
@@ -45,6 +45,7 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 	 */
 	public static final String ID = "org.eclipse.mylyn.github.ui.command.rebasePullRequest"; //$NON-NLS-1$
 
+	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
@@ -52,6 +53,7 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 		Job job = new Job(MessageFormat.format(
 				Messages.RebasePullRequestHandler_RebaseJob, data.getTaskId())) {
 
+			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				PullRequestComposite prComp = PullRequestConnector
 						.getPullRequest(data);
@@ -66,18 +68,21 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 					String target = request.getBase().getRef();
 					Ref targetRef = repo.findRef(request.getBase().getRef());
 					if (targetRef != null) {
+						SubMonitor progress = SubMonitor.convert(monitor, 2);
 						if (!PullRequestUtils.isCurrentBranch(branchName, repo)) {
 							monitor.setTaskName(MessageFormat
 									.format(Messages.RebasePullRequestHandler_TaskCheckout,
 											branchName));
 							BranchOperationUI.checkout(repo, branchName).run(
-									new SubProgressMonitor(monitor, 1));
+									progress.split(1));
+						} else {
+							progress.setWorkRemaining(1);
 						}
 						monitor.setTaskName(MessageFormat.format(
 								Messages.RebasePullRequestHandler_TaskRebase,
 								branchName, target));
 						new RebaseOperation(repo, targetRef)
-								.execute(new SubProgressMonitor(monitor, 1));
+								.execute(progress.split(1));
 						executeCallback(event);
 					}
 				} catch (IOException e) {
