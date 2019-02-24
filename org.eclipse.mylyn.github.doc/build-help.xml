@@ -19,7 +19,7 @@
 
 	<taskdef resource="org/eclipse/mylyn/wikitext/mediawiki/ant/tasks.properties"/>
 
-	<property name="help.doc.url.base" value="http://wiki.eclipse.org" />
+	<property name="help.doc.url.base" value="https://wiki.eclipse.org" />
 
 	<target name="all" description="Generate Eclipse help content from the wiki documentation">
 		<sequential>
