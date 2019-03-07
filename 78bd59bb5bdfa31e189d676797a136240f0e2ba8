@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4657c56c_d2d01e4c",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-03-07T20:40:07Z",
+      "side": 1,
+      "message": "missing mupdate",
+      "range": {
+        "startLine": 17,
+        "startChar": 50,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "78bd59bb5bdfa31e189d676797a136240f0e2ba8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "717f9d9f_a262d60e",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-03-07T20:40:07Z",
+      "side": 1,
+      "message": "missing update",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "78bd59bb5bdfa31e189d676797a136240f0e2ba8",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
