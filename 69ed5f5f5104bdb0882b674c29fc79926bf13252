@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6bbc07c_158e7053",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/CredentialsWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2019-03-09T22:31:46Z",
+      "side": 1,
+      "message": "Suggestion: Use an else-if for these two and provide the missing braces. And instead of length() \u003d\u003d 0 I\u0027d use isEmpty().",
+      "revId": "69ed5f5f5104bdb0882b674c29fc79926bf13252",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
