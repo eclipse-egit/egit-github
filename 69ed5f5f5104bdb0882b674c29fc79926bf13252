@@ -16,6 +16,24 @@
       "revId": "69ed5f5f5104bdb0882b674c29fc79926bf13252",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae028f72_76841111",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/CredentialsWizardPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-03-12T17:33:52Z",
+      "side": 1,
+      "message": "Done\n\nMuch more reasonable. I should not have been in such a hurry to ignore everything else...",
+      "parentUuid": "f6bbc07c_158e7053",
+      "revId": "69ed5f5f5104bdb0882b674c29fc79926bf13252",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
