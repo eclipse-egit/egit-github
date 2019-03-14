@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b153023_33ccc11b",
+        "filename": "org.eclipse.mylyn.github.core/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-03-14T16:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3334616_0dce291c",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "f07cf9091575034bdb48a46f47c2f1d9f0cd7f10",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6e8147c_8836858e",
         "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-14T16:33:40Z",
       "side": 1,
       "message": "jgit versions also need to be updated",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "f07cf9091575034bdb48a46f47c2f1d9f0cd7f10",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28feb2a4_5243131b",
+        "filename": "org.eclipse.mylyn.github.ui/META-INF/MANIFEST.MF",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-03-14T16:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e8147c_8836858e",
       "range": {
         "startLine": 45,
         "startChar": 35,
