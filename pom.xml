@@ -59,7 +59,7 @@
     <tycho-extras-version>${tycho-version}</tycho-extras-version>
     <spotbugs-maven-plugin-version>3.1.11</spotbugs-maven-plugin-version>
     <egit-site>file:/${basedir}/../../egit/org.eclipse.egit.repository/target/repository</egit-site>
-    <platform-version-name>oxygen</platform-version-name>
+    <platform-version-name>oxygen</platform-version-name><!--  TODO: oops. Shouldn't this be Neon?? -->
     <download-publish-path>/home/data/httpd/download.eclipse.org/egit/github/updates-nightly</download-publish-path>
     <license-site>http://download.eclipse.org/cbi/updates/license</license-site>
   </properties>
