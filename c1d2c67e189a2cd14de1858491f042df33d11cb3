@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1151f2e_a2a1fd32",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/event/PushPayload.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2019-06-17T08:40:29Z",
+      "side": 1,
+      "message": "I don\u0027t see organization in the GitHub documentation, neither in the table nor in the web hook example.",
+      "revId": "c1d2c67e189a2cd14de1858491f042df33d11cb3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
