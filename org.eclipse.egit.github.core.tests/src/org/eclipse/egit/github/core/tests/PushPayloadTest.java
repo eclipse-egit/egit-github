@@ -13,6 +13,8 @@
 package org.eclipse.egit.github.core.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
@@ -38,6 +40,17 @@ public class PushPayloadTest {
 		assertEquals(0, payload.getSize());
 		assertNull(payload.getCommits());
 		assertNull(payload.getBefore());
+		assertNull(payload.getAfter());
+		assertFalse(payload.isCreated());
+		assertFalse(payload.isDeleted());
+		assertFalse(payload.isForced());
+		assertNull(payload.getBaseRef());
+		assertNull(payload.getCompare());
+		assertNull(payload.getHeadCommit());
+		assertNull(payload.getRepository());
+		assertNull(payload.getPusher());
+		assertNull(payload.getOrganization());
+		assertNull(payload.getSender());
 	}
 
 	/**
@@ -53,5 +66,11 @@ public class PushPayloadTest {
 		assertEquals(9000, payload.setSize(9000).getSize());
 		assertEquals(commits, payload.setCommits(commits).getCommits());
 		assertEquals("a1b2", payload.setBefore("a1b2").getBefore());
+		assertEquals("2b1a", payload.setAfter("2b1a").getAfter());
+		assertTrue(payload.setCreated(true).isCreated());
+		assertTrue(payload.setDeleted(true).isDeleted());
+		assertTrue(payload.setForced(true).isForced());
+		assertEquals("base", payload.setBaseRef("base").getBaseRef());
+		assertEquals("http", payload.setCompare("http").getCompare());
 	}
 }
