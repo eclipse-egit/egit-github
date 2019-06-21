@@ -26,7 +26,7 @@ public class PullRequest implements Serializable {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 7858604768525096763L;
 
-	private boolean mergeable;
+	private Boolean mergeable;
 
 	private boolean merged;
 
@@ -89,9 +89,14 @@ public class PullRequest implements Serializable {
 	private List<User> assignees;
 
 	/**
-	 * @return mergeable
+	 * @return
+	 * The mergeable field can be null; an indication that GitHub
+	 * is busy calculating the mergeability. See the "Get a single
+	 * pull request" section of
+	 * <a href="https://developer.github.com/v3/pulls/#get-a-single-pull-request">GitHub
+	 * Rest API v3: Pull Requests</a>.
 	 */
-	public boolean isMergeable() {
+	public Boolean isMergeable() {
 		return mergeable;
 	}
 
@@ -99,7 +104,7 @@ public class PullRequest implements Serializable {
 	 * @param mergeable
 	 * @return this pull request
 	 */
-	public PullRequest setMergeable(boolean mergeable) {
+	public PullRequest setMergeable(Boolean mergeable) {
 		this.mergeable = mergeable;
 		return this;
 	}
