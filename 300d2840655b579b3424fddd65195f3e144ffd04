@@ -16,6 +16,24 @@
       "revId": "300d2840655b579b3424fddd65195f3e144ffd04",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5a6c327_f9b93194",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/PullRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-06-21T12:26:02Z",
+      "side": 1,
+      "message": "I\u0027ll give it a shot.",
+      "parentUuid": "84170b1e_a968c3fb",
+      "revId": "300d2840655b579b3424fddd65195f3e144ffd04",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
