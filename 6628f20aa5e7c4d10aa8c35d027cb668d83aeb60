@@ -34,6 +34,24 @@
       "revId": "6628f20aa5e7c4d10aa8c35d027cb668d83aeb60",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c2aba6f_d0b92c7d",
+        "filename": "org.eclipse.mylyn.github-feature/feature.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2019-08-30T22:50:47Z",
+      "side": 1,
+      "message": "Oh. So this is not simply a redirect done on the release day. I had somehow assumed that .../updates was simply a link that would be set automatically on the release day to point to the latest updates-X.Y folder. But yes, we can add a \"release\" job on Jenkins that copies both egit and egit-github to these locations.",
+      "parentUuid": "a995daa8_65ad7379",
+      "revId": "6628f20aa5e7c4d10aa8c35d027cb668d83aeb60",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
