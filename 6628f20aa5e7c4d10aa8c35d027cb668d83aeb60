@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681ec083_9d82c62b",
+        "filename": "org.eclipse.mylyn.github-feature/feature.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2019-08-30T20:59:37Z",
+      "side": 1,
+      "message": "Change itself is fine, but please note that this update site currently contains a 5.3.0 version! Where is 5.4.0?",
+      "revId": "6628f20aa5e7c4d10aa8c35d027cb668d83aeb60",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
