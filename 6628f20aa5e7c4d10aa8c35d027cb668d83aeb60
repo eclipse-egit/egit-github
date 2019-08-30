@@ -16,6 +16,24 @@
       "revId": "6628f20aa5e7c4d10aa8c35d027cb668d83aeb60",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a995daa8_65ad7379",
+        "filename": "org.eclipse.mylyn.github-feature/feature.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-08-30T21:39:41Z",
+      "side": 1,
+      "message": "I use to copy the latest release to this update site manually, looks like I missed this for 5.4. 5.4 should be available at https://download.eclipse.org/egit/github/updates-5.4\n\nSince this week ssh access to build.eclipse.org only provides a very limited shell. E.g. there is no more cd, no tab completion etc.\nHence copying manually became messy.\n\nActually I tried to delete the current content of https://download.eclipse.org/egit/github/updates but this just doesn\u0027t work anymore using this restricted shell, though I think it should.\n\nLooks like we need to add Jenkins jobs for such releng work.",
+      "parentUuid": "681ec083_9d82c62b",
+      "revId": "6628f20aa5e7c4d10aa8c35d027cb668d83aeb60",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
