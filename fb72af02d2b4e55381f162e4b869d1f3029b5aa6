@@ -16,6 +16,24 @@
       "revId": "fb72af02d2b4e55381f162e4b869d1f3029b5aa6",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4618f9a9_8ef2d9c4",
+        "filename": "org.eclipse.mylyn.github-feature/feature.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-08-30T20:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12b3a782_15aa00a2",
+      "revId": "fb72af02d2b4e55381f162e4b869d1f3029b5aa6",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
