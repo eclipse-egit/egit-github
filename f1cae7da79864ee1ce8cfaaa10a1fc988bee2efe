@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "895ff8a3_d531e97e",
+        "filename": "org.eclipse.mylyn.github.target/projects/license.tpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2019-10-04T21:09:11Z",
+      "side": 1,
+      "message": "move this unrelated change to a separate change",
+      "revId": "f1cae7da79864ee1ce8cfaaa10a1fc988bee2efe",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
