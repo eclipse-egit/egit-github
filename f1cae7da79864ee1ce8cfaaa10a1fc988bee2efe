@@ -16,6 +16,24 @@
       "revId": "f1cae7da79864ee1ce8cfaaa10a1fc988bee2efe",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee3ac0d8_532e94da",
+        "filename": "org.eclipse.mylyn.github.target/projects/license.tpd",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-10-05T06:47:56Z",
+      "side": 1,
+      "message": "Done\n\nAs an unrelated side note: I also tried creating the change for jgit but failed because of the bazel WORKSPACE file. Is there some simple guide how to change such a file without actually using bazel? I did find the checksums of the artifacts via maven search, can I just copy those?",
+      "parentUuid": "895ff8a3_d531e97e",
+      "revId": "f1cae7da79864ee1ce8cfaaa10a1fc988bee2efe",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
