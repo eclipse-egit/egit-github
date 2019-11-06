@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb4eb70_584a5a0f",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/PullRequestTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2019-11-06T18:53:03Z",
+      "side": 0,
+      "message": "That explains why this file show up always as modified when checked out on Windows... it was committed with mixed line endings! LF here from an update via a script, and CR-LF on all other lines. So no matter what core.autocrlf settings I chose, the file in the workspace always differed from the file in the index.",
+      "revId": "e10da3c8fae45b9c240946b674b2d5f9bc2a2d25",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
