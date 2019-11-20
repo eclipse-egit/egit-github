@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d494e78_f67cb98c",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/AvatarLabel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-11-20T13:53:51Z",
+      "side": 1,
+      "message": "I would want have an (informal) rule of avoiding single character names for lambda arguments, since there is no type declaration, and the name needs to give at least a clue.",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ccb23eb_238cbede",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2019-11-20T13:53:51Z",
+      "side": 1,
+      "message": "Is that a refactoring bug, or really required for the lambda declaration?",
+      "range": {
+        "startLine": 414,
+        "startChar": 28,
+        "endLine": 414,
+        "endChar": 29
+      },
+      "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
