@@ -16,8 +16,6 @@ import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -54,26 +52,14 @@ public class CredentialsWizardPage extends WizardPage {
 				.setText(Messages.CredentialsWizardPage_LabelUser);
 
 		userText = new Text(displayArea, SWT.BORDER | SWT.SINGLE);
-		userText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				validatePage();
-			}
-		});
+		userText.addModifyListener(e -> validatePage());
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(userText);
 
 		new Label(displayArea, SWT.NONE)
 				.setText(Messages.CredentialsWizardPage_LabelPassword);
 		passwordText = new Text(displayArea,
 				SWT.BORDER | SWT.SINGLE | SWT.PASSWORD);
-		passwordText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				validatePage();
-			}
-		});
+		passwordText.addModifyListener(e -> validatePage());
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(passwordText);
 
 		setControl(displayArea);

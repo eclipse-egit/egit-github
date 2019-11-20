@@ -22,7 +22,6 @@ import static org.mockito.Mockito.verify;
 import java.io.IOException;
 
 import org.eclipse.egit.github.core.CommitComment;
-import org.eclipse.egit.github.core.IRepositoryIdProvider;
 import org.eclipse.egit.github.core.MergeStatus;
 import org.eclipse.egit.github.core.PullRequest;
 import org.eclipse.egit.github.core.PullRequestMarker;
@@ -121,13 +120,7 @@ public class PullRequestServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void getPullRequestsNullRepositoryId() throws IOException {
-		pullRequestService.getPullRequests(new IRepositoryIdProvider() {
-
-			@Override
-			public String generateId() {
-				return null;
-			}
-		}, "test_state");
+		pullRequestService.getPullRequests(() -> null, "test_state");
 	}
 
 	/**

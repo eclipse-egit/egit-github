@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
 import org.eclipse.egit.github.core.client.GitHubClient;
@@ -29,13 +28,10 @@ import org.eclipse.egit.github.core.service.RepositoryService;
 import org.eclipse.egit.ui.internal.components.FilteredCheckboxTree;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
-import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StyledString;
@@ -294,13 +290,7 @@ public class RepositorySelectionWizardPage extends WizardPage {
 			}
 
 		});
-		viewer.addCheckStateListener(new ICheckStateListener() {
-
-			@Override
-			public void checkStateChanged(CheckStateChangedEvent event) {
-				updateSelectionLabel();
-			}
-		});
+		viewer.addCheckStateListener(event -> updateSelectionLabel());
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(tree);
 
 		ToolBar toolbar = new ToolBar(displayArea, SWT.FLAT | SWT.VERTICAL);
@@ -375,24 +365,20 @@ public class RepositorySelectionWizardPage extends WizardPage {
 	}
 
 	private void updateInput(final List<Object> repos) {
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-			@Override
-			public void run() {
-				if (getControl().isDisposed()) {
-					return;
-				}
-				tree.getCheckboxTreeViewer().setCheckedElements(new Object[0]);
-				tree.getViewer().setInput(new WorkbenchAdapter() {
-
-					@Override
-					public Object[] getChildren(Object object) {
-						return repos.toArray();
-					}
-
-				});
-				updateSelectionLabel();
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			if (getControl().isDisposed()) {
+				return;
 			}
+			tree.getCheckboxTreeViewer().setCheckedElements(new Object[0]);
+			tree.getViewer().setInput(new WorkbenchAdapter() {
+
+				@Override
+				public Object[] getChildren(Object object) {
+					return repos.toArray();
+				}
+
+			});
+			updateSelectionLabel();
 		});
 	}
 
@@ -416,55 +402,50 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		addGistRepoButton.setVisible(TasksUi.getRepositoryManager()
 				.getRepositories(GistConnector.KIND).isEmpty());
 		try {
-			getContainer().run(true, true, new IRunnableWithProgress() {
-
-				@Override
-				public void run(IProgressMonitor monitor)
-						throws InvocationTargetException, InterruptedException {
-					GitHubClient client = GitHub
-							.configureClient(new GitHubClient());
-					client.setCredentials(user, password);
-					RepositoryService service = new RepositoryService(client);
-					OrganizationService orgs = new OrganizationService(client);
-					repoCount = 0;
-					List<Object> repos = new ArrayList<>();
-					List<String> existing = new ArrayList<>();
-					for (TaskRepository repo : TasksUi.getRepositoryManager()
-							.getRepositories(GitHub.CONNECTOR_KIND)) {
-						String id = GitHub
-								.getRepository(repo.getRepositoryUrl())
-								.generateId();
-						if (id != null) {
-							existing.add(id);
-						}
-					}
-					try {
-						monitor.beginTask("", 2); //$NON-NLS-1$
-						monitor.setTaskName(
-								Messages.RepositorySelectionWizardPage_TaskFetchingRepositories);
-						List<Repository> userRepos = service.getRepositories();
-						removeExisting(userRepos, existing);
-						repoCount += userRepos.size();
-						for (Repository repo : userRepos) {
-							repos.add(new RepositoryAdapter(repo));
-						}
-						monitor.worked(1);
-						monitor.setTaskName(
-								Messages.RepositorySelectionWizardPage_TaskFetchingOrganizationRepositories);
-						for (User org : orgs.getOrganizations()) {
-							List<Repository> orgRepos = service
-									.getOrgRepositories(org.getLogin());
-							removeExisting(orgRepos, existing);
-							repoCount += orgRepos.size();
-							repos.add(new OrganizationAdapter(org, orgRepos));
-						}
-						updateInput(repos);
-					} catch (IOException e) {
-						throw new InvocationTargetException(
-								GitHubException.wrap(e));
-					}
-				}
-			});
+			getContainer().run(true, true, monitor -> {
+GitHubClient client = GitHub
+				.configureClient(new GitHubClient());
+client.setCredentials(user, password);
+RepositoryService service = new RepositoryService(client);
+OrganizationService orgs = new OrganizationService(client);
+repoCount = 0;
+List<Object> repos = new ArrayList<>();
+List<String> existing = new ArrayList<>();
+for (TaskRepository repo1 : TasksUi.getRepositoryManager()
+				.getRepositories(GitHub.CONNECTOR_KIND)) {
+			String id = GitHub
+					.getRepository(repo1.getRepositoryUrl())
+					.generateId();
+			if (id != null) {
+				existing.add(id);
+			}
+}
+try {
+			monitor.beginTask("", 2); //$NON-NLS-1$
+			monitor.setTaskName(
+					Messages.RepositorySelectionWizardPage_TaskFetchingRepositories);
+			List<Repository> userRepos = service.getRepositories();
+			removeExisting(userRepos, existing);
+			repoCount += userRepos.size();
+			for (Repository repo2 : userRepos) {
+				repos.add(new RepositoryAdapter(repo2));
+			}
+			monitor.worked(1);
+			monitor.setTaskName(
+					Messages.RepositorySelectionWizardPage_TaskFetchingOrganizationRepositories);
+			for (User org : orgs.getOrganizations()) {
+				List<Repository> orgRepos = service
+						.getOrgRepositories(org.getLogin());
+				removeExisting(orgRepos, existing);
+				repoCount += orgRepos.size();
+				repos.add(new OrganizationAdapter(org, orgRepos));
+			}
+			updateInput(repos);
+} catch (IOException e) {
+			throw new InvocationTargetException(
+					GitHubException.wrap(e));
+}
+});
 			setErrorMessage(null);
 		} catch (InvocationTargetException e) {
 			updateInput(Collections.emptyList());

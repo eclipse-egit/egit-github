@@ -18,7 +18,6 @@ import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.egit.github.core.Language;
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.SearchRepository;
@@ -29,15 +28,12 @@ import org.eclipse.egit.ui.internal.provisional.wizards.IRepositorySearchResult;
 import org.eclipse.egit.ui.internal.provisional.wizards.NoRepositoryInfoException;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.TableViewer;
@@ -45,8 +41,6 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.mylyn.internal.github.core.GitHub;
 import org.eclipse.mylyn.internal.github.core.GitHubException;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -187,22 +181,10 @@ public class RepositorySearchWizardPage extends WizardPage
 				}));
 
 		repoListViewer
-				.addSelectionChangedListener(new ISelectionChangedListener() {
+				.addSelectionChangedListener(event -> validate(repoListViewer));
 
-					@Override
-					public void selectionChanged(SelectionChangedEvent event) {
-						validate(repoListViewer);
-					}
-				});
-
-		searchText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				searchButton
-						.setEnabled(searchText.getText().trim().length() != 0);
-			}
-		});
+		searchText.addModifyListener(e -> searchButton
+				.setEnabled(searchText.getText().trim().length() != 0));
 
 		searchButton.addSelectionListener(new SelectionAdapter() {
 
@@ -241,34 +223,29 @@ public class RepositorySearchWizardPage extends WizardPage
 			final TableViewer viewer) {
 		viewer.setSelection(StructuredSelection.EMPTY);
 		try {
-			getContainer().run(true, true, new IRunnableWithProgress() {
-
-				@Override
-				public void run(IProgressMonitor monitor)
-						throws InvocationTargetException, InterruptedException {
-					monitor.beginTask(MessageFormat.format(
-							Messages.RepositorySearchWizardPage_Searching,
-							text), 10);
-					try {
-						final List<SearchRepository> repositories = repositoryService
-								.searchRepositories(text.trim(), language);
-						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-							if (viewer.getControl().isDisposed()) {
-								return;
-							}
-							setMessage(MessageFormat.format(
-									Messages.RepositorySearchWizardPage_Found,
-									Integer.valueOf(repositories.size())),
-									INFORMATION);
-							viewer.setInput(repositories);
-							validate(viewer);
-						});
-					} catch (IOException e) {
-						throw new InvocationTargetException(
-								GitHubException.wrap(e));
-					}
+			getContainer().run(true, true, monitor -> {
+monitor.beginTask(MessageFormat.format(
+				Messages.RepositorySearchWizardPage_Searching,
+				text), 10);
+try {
+			final List<SearchRepository> repositories = repositoryService
+					.searchRepositories(text.trim(), language);
+			PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+				if (viewer.getControl().isDisposed()) {
+					return;
 				}
+				setMessage(MessageFormat.format(
+						Messages.RepositorySearchWizardPage_Found,
+						Integer.valueOf(repositories.size())),
+						INFORMATION);
+				viewer.setInput(repositories);
+				validate(viewer);
 			});
+} catch (IOException e) {
+			throw new InvocationTargetException(
+					GitHubException.wrap(e));
+}
+});
 			setErrorMessage(null);
 		} catch (InvocationTargetException e) {
 			viewer.setInput(Collections.emptyList());

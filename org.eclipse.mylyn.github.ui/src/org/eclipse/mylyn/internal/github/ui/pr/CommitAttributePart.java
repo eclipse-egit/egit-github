@@ -27,9 +27,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
-import org.eclipse.jface.viewers.IOpenListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jgit.errors.MissingObjectException;
@@ -134,19 +132,15 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 				.applyTo(commitViewer.getControl());
 		commitViewer.getControl().setData(FormToolkit.KEY_DRAW_BORDER,
 				FormToolkit.TREE_BORDER);
-		commitViewer.addOpenListener(new IOpenListener() {
-
-			@Override
-			public void open(final OpenEvent event) {
-				PullRequest pr = request.getRequest();
-				Repository repo = PullRequestUtils.getRepository(pr);
-				if (repo != null) {
-					openCommits(repo,
-							((IStructuredSelection) event.getSelection())
-									.toArray());
-				} else {
-					PullRequestConnectorUi.showNoRepositoryDialog(pr);
-				}
+		commitViewer.addOpenListener(event -> {
+			PullRequest pr = request.getRequest();
+			Repository repo = PullRequestUtils.getRepository(pr);
+			if (repo != null) {
+				openCommits(repo,
+						((IStructuredSelection) event.getSelection())
+								.toArray());
+			} else {
+				PullRequestConnectorUi.showNoRepositoryDialog(pr);
 			}
 		});
 

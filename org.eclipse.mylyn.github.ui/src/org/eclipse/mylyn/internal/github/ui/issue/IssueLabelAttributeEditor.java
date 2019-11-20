@@ -18,11 +18,8 @@ import java.util.List;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -76,16 +73,12 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 			InputDialog dialog = new InputDialog(getControl().getShell(),
 					Messages.IssueLabelAttributeEditor_TitleNewLabel,
 					Messages.IssueLabelAttributeEditor_DescriptionNewLabel, "", //$NON-NLS-1$
-					new IInputValidator() {
-
-						@Override
-						public String isValid(String newText) {
-							if (newText == null
-									|| newText.trim().length() == 0) {
-								return Messages.IssueLabelAttributeEditor_MessageEnterName;
-							}
-							return null;
+					newText -> {
+						if (newText == null
+								|| newText.trim().length() == 0) {
+							return Messages.IssueLabelAttributeEditor_MessageEnterName;
 						}
+						return null;
 					});
 			if (Window.OK == dialog.open() && !getTaskAttribute().getValues()
 					.contains(dialog.getValue())) {
@@ -170,13 +163,7 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 				CLabel cLabel = new CLabel(labelsArea, SWT.NONE);
 				MenuManager manager = new MenuManager();
 				manager.setRemoveAllWhenShown(true);
-				manager.addMenuListener(new IMenuListener() {
-
-					@Override
-					public void menuAboutToShow(IMenuManager manager) {
-						manager.add(new RemoveLabelAction(label));
-					}
-				});
+				manager.addMenuListener(manager1 -> manager1.add(new RemoveLabelAction(label)));
 				Menu menu = manager.createContextMenu(cLabel);
 				cLabel.setMenu(menu);
 				String shortened = TaskDiffUtil.shortenText(displayArea, label,
@@ -223,20 +210,16 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 
 		MenuManager manager = new MenuManager();
 		manager.setRemoveAllWhenShown(true);
-		manager.addMenuListener(new IMenuListener() {
-
-			@Override
-			public void menuAboutToShow(IMenuManager manager) {
-				manager.add(new NewLabelAction());
-				manager.add(new Separator());
-				List<String> labels = new LinkedList<>(
-						getTaskAttribute().getOptions().values());
-				labels.removeAll(getTaskAttribute().getValues());
-				for (String label : labels) {
-					manager.add(new LabelAction(label));
-				}
-				manager.update();
+		manager.addMenuListener(manager1 -> {
+			manager1.add(new NewLabelAction());
+			manager1.add(new Separator());
+			List<String> labels = new LinkedList<>(
+					getTaskAttribute().getOptions().values());
+			labels.removeAll(getTaskAttribute().getValues());
+			for (String label : labels) {
+				manager1.add(new LabelAction(label));
 			}
+			manager1.update();
 		});
 		final Menu menu = manager.createContextMenu(displayArea);
 		addItem.addSelectionListener(new SelectionAdapter() {

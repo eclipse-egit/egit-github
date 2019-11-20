@@ -18,11 +18,7 @@ import java.util.Collections;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.mylyn.internal.tasks.ui.views.TaskRepositoryLabelProvider;
@@ -70,24 +66,16 @@ public class GistConnectorSelectionDialog extends SelectionDialog {
 						.getDecoratorManager().getLabelDecorator()));
 		viewer.setComparator(new ViewerComparator());
 		viewer.setInput(repos);
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
-
-			@Override
-			public void doubleClick(DoubleClickEvent event) {
-				Object selected = ((IStructuredSelection) event.getSelection())
-						.getFirstElement();
-				setResult(Collections.singletonList(selected));
-				okPressed();
-			}
+		viewer.addDoubleClickListener(event -> {
+			Object selected = ((IStructuredSelection) event.getSelection())
+					.getFirstElement();
+			setResult(Collections.singletonList(selected));
+			okPressed();
 		});
-		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
-				Object selected = ((IStructuredSelection) event.getSelection())
-						.getFirstElement();
-				setResult(Collections.singletonList(selected));
-			}
+		viewer.addSelectionChangedListener(event -> {
+			Object selected = ((IStructuredSelection) event.getSelection())
+					.getFirstElement();
+			setResult(Collections.singletonList(selected));
 		});
 
 		return c;

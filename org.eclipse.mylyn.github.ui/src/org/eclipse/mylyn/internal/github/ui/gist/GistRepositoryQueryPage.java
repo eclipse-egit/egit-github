@@ -23,7 +23,6 @@ import org.eclipse.mylyn.tasks.core.IRepositoryQuery;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.wizards.AbstractRepositoryQueryPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -70,13 +69,7 @@ public class GistRepositoryQueryPage extends AbstractRepositoryQueryPage {
 				.applyTo(displayArea);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(displayArea);
 
-		ModifyListener completeListener = new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				setPageComplete(isPageComplete());
-			}
-		};
+		ModifyListener completeListener = e -> setPageComplete(isPageComplete());
 
 		if (!inSearchContainer()) {
 			new Label(displayArea, SWT.NONE)

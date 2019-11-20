@@ -34,7 +34,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.egit.core.RepositoryUtil;
 import org.eclipse.egit.core.op.CloneOperation;
-import org.eclipse.egit.core.op.CloneOperation.PostCloneTask;
 import org.eclipse.egit.core.op.ConnectProviderOperation;
 import org.eclipse.egit.ui.Activator;
 import org.eclipse.egit.ui.UIPreferences;
@@ -154,44 +153,29 @@ public class CloneGistHandler extends TaskDataHandler {
 
 					CloneOperation operation = createCloneOperation(data, name);
 
-					operation.addPostCloneTask(new PostCloneTask() {
+					operation.addPostCloneTask((repository, monitor1) -> {
+if (monitor1.isCanceled()) {
+					return;
+}
+monitor1.setTaskName(
+						Messages.CloneGistHandler_TaskRegisteringRepository);
+getRepoUtil().addConfiguredRepository(
+						repository.getDirectory());
+});
 
-						@Override
-						public void execute(Repository repository,
-								IProgressMonitor monitor) throws CoreException {
-							if (monitor.isCanceled()) {
-								return;
-							}
-							monitor.setTaskName(
-									Messages.CloneGistHandler_TaskRegisteringRepository);
-							getRepoUtil().addConfiguredRepository(
-									repository.getDirectory());
-						}
-					});
-
-					operation.addPostCloneTask(new PostCloneTask() {
-
-						@Override
-						public void execute(final Repository repository,
-								IProgressMonitor monitor) throws CoreException {
-							IWorkspaceRunnable runnable = new IWorkspaceRunnable() {
-
-								@Override
-								public void run(IProgressMonitor monitor)
-										throws CoreException {
-									if (monitor.isCanceled()) {
-										return;
-									}
-									createProject(
-											repository.getDirectory()
-													.getParentFile(),
-											name, repository, monitor);
-								}
-							};
-							ResourcesPlugin.getWorkspace().run(runnable,
-									monitor);
-						}
-					});
+					operation.addPostCloneTask((repository, monitor2) -> {
+IWorkspaceRunnable runnable = monitor1 -> {
+if (monitor1.isCanceled()) {
+return;
+}
+createProject(
+					repository.getDirectory()
+							.getParentFile(),
+					name, repository, monitor1);
+};
+ResourcesPlugin.getWorkspace().run(runnable,
+						monitor2);
+});
 
 					operation.run(monitor);
 				} catch (Exception e) {
@@ -211,17 +195,11 @@ public class CloneGistHandler extends TaskDataHandler {
 		final Throwable cause = exception.getCause() != null
 				? exception.getCause()
 				: exception;
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-			@Override
-			public void run() {
-				ErrorDialog.openError(HandlerUtil.getActiveShell(event),
-						Messages.CloneGistHandler_ErrorTitle,
-						Messages.CloneGistHandler_ErrorMessage,
-						Activator.createErrorStatus(cause.getLocalizedMessage(),
-								cause));
-			}
-		});
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> ErrorDialog.openError(HandlerUtil.getActiveShell(event),
+				Messages.CloneGistHandler_ErrorTitle,
+				Messages.CloneGistHandler_ErrorMessage,
+				Activator.createErrorStatus(cause.getLocalizedMessage(),
+						cause)));
 	}
 
 	/**
