@@ -257,9 +257,10 @@ public class RepositoryService extends GitHubService {
 	public PageIterator<Repository> pageAllRepositories(final long since) {
 		PagedRequest<Repository> request = createPagedRequest();
 		request.setUri(SEGMENT_REPOSITORIES);
-		if (since > 0)
+		if (since > 0) {
 			request.setParams(Collections.singletonMap("since", //$NON-NLS-1$
 					Long.toString(since)));
+		}
 		request.setType(new TypeToken<List<Repository>>() {
 			// make protected type visible
 		}.getType());
@@ -308,10 +309,12 @@ public class RepositoryService extends GitHubService {
 	 */
 	public PageIterator<Repository> pageRepositories(String user, int start,
 			int size) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 		uri.append('/').append(user);
@@ -420,10 +423,12 @@ public class RepositoryService extends GitHubService {
 	 */
 	public PageIterator<Repository> pageOrgRepositories(String organization,
 			Map<String, String> filterData, int start, int size) {
-		if (organization == null)
+		if (organization == null) {
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
-		if (organization.length() == 0)
+		}
+		if (organization.length() == 0) {
 			throw new IllegalArgumentException("Organization cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_ORGS);
 		uri.append('/').append(organization);
@@ -486,10 +491,12 @@ public class RepositoryService extends GitHubService {
 	 */
 	public List<SearchRepository> searchRepositories(final String query,
 			final String language, final int startPage) throws IOException {
-		if (query == null)
+		if (query == null) {
 			throw new IllegalArgumentException("Query cannot be null"); //$NON-NLS-1$
-		if (query.length() == 0)
+		}
+		if (query.length() == 0) {
 			throw new IllegalArgumentException("Query cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(
 				SEGMENT_LEGACY + SEGMENT_REPOS + SEGMENT_SEARCH);
@@ -501,12 +508,15 @@ public class RepositoryService extends GitHubService {
 		PagedRequest<SearchRepository> request = createPagedRequest();
 
 		Map<String, String> params = new HashMap<>(2, 1);
-		if (language != null && language.length() > 0)
+		if (language != null && language.length() > 0) {
 			params.put(PARAM_LANGUAGE, language);
-		if (startPage > 0)
+		}
+		if (startPage > 0) {
 			params.put(PARAM_START_PAGE, Integer.toString(startPage));
-		if (!params.isEmpty())
+		}
+		if (!params.isEmpty()) {
 			request.setParams(params);
+		}
 
 		request.setUri(uri);
 		request.setType(RepositoryContainer.class);
@@ -536,15 +546,18 @@ public class RepositoryService extends GitHubService {
 	public List<SearchRepository> searchRepositories(
 			final Map<String, String> queryParams, final int startPage)
 			throws IOException {
-		if (queryParams == null)
+		if (queryParams == null) {
 			throw new IllegalArgumentException("Params cannot be null"); //$NON-NLS-1$
-		if (queryParams.isEmpty())
+		}
+		if (queryParams.isEmpty()) {
 			throw new IllegalArgumentException("Params cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder query = new StringBuilder();
-		for (Entry<String, String> param : queryParams.entrySet())
+		for (Entry<String, String> param : queryParams.entrySet()) {
 			query.append(param.getKey()).append(':').append(param.getValue())
 					.append(' ');
+		}
 		return searchRepositories(query.toString(), startPage);
 	}
 
@@ -557,8 +570,9 @@ public class RepositoryService extends GitHubService {
 	 */
 	public Repository createRepository(Repository repository)
 			throws IOException {
-		if (repository == null)
+		if (repository == null) {
 			throw new IllegalArgumentException("Repository cannot be null"); //$NON-NLS-1$
+		}
 
 		return client.post(SEGMENT_USER + SEGMENT_REPOS, repository,
 				Repository.class);
@@ -574,12 +588,15 @@ public class RepositoryService extends GitHubService {
 	 */
 	public Repository createRepository(String organization,
 			Repository repository) throws IOException {
-		if (organization == null)
+		if (organization == null) {
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
-		if (organization.length() == 0)
+		}
+		if (organization.length() == 0) {
 			throw new IllegalArgumentException("Organization cannot be empty"); //$NON-NLS-1$
-		if (repository == null)
+		}
+		if (repository == null) {
 			throw new IllegalArgumentException("Repository cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_ORGS);
 		uri.append('/').append(organization);
@@ -696,8 +713,9 @@ public class RepositoryService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Repository editRepository(Repository repository) throws IOException {
-		if (repository == null)
+		if (repository == null) {
 			throw new IllegalArgumentException("Repository cannot be null"); //$NON-NLS-1$
+		}
 
 		final String repoId = getId(repository);
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
@@ -719,8 +737,9 @@ public class RepositoryService extends GitHubService {
 	public Repository editRepository(String owner, String name,
 			Map<String, Object> fields) throws IOException {
 		verifyRepository(owner, name);
-		if (fields == null)
+		if (fields == null) {
 			throw new IllegalArgumentException("Fields cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(owner).append('/').append(name);
@@ -740,8 +759,9 @@ public class RepositoryService extends GitHubService {
 	public Repository editRepository(IRepositoryIdProvider provider,
 			Map<String, Object> fields) throws IOException {
 		String id = getId(provider);
-		if (fields == null)
+		if (fields == null) {
 			throw new IllegalArgumentException("Fields cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -778,8 +798,9 @@ public class RepositoryService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
 		uri.append(SEGMENT_FORKS);
-		if (organization != null)
+		if (organization != null) {
 			uri.append("?org=").append(organization); //$NON-NLS-1$
+		}
 		return client.post(uri.toString(), null, Repository.class);
 	}
 
@@ -877,8 +898,9 @@ public class RepositoryService extends GitHubService {
 		uri.append(SEGMENT_CONTRIBUTORS);
 		PagedRequest<Contributor> request = createPagedRequest();
 		request.setUri(uri);
-		if (includeAnonymous)
+		if (includeAnonymous) {
 			request.setParams(Collections.singletonMap("anon", "1")); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 		request.setType(new TypeToken<List<Contributor>>() {
 			// make protected type visible
 		}.getType());
@@ -955,8 +977,9 @@ public class RepositoryService extends GitHubService {
 	public RepositoryHook editHook(IRepositoryIdProvider repository,
 			RepositoryHook hook) throws IOException {
 		String id = getId(repository);
-		if (hook == null)
+		if (hook == null) {
 			throw new IllegalArgumentException("Hook cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);

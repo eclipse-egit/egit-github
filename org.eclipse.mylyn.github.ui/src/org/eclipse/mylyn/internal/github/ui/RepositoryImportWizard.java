@@ -117,7 +117,7 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 				RepositoryUtil repositoryUtil = Activator.getDefault()
 						.getRepositoryUtil();
 				RepositoryService service = new RepositoryService(client);
-				for (SearchRepository repo : repositories)
+				for (SearchRepository repo : repositories) {
 					try {
 						final String id = repo.getId();
 						monitor.setTaskName(MessageFormat.format(
@@ -147,6 +147,7 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 					} catch (URISyntaxException e) {
 						GitHubUi.logError(e);
 					}
+				}
 				monitor.done();
 
 				return Status.OK_STATUS;
@@ -154,10 +155,11 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 		};
 		IWorkbenchSiteProgressService progress = PlatformUI.getWorkbench()
 				.getService(IWorkbenchSiteProgressService.class);
-		if (progress != null)
+		if (progress != null) {
 			progress.schedule(job);
-		else
+		} else {
 			job.schedule();
+		}
 		return true;
 	}
 }

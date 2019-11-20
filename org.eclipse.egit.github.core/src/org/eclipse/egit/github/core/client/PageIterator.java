@@ -94,8 +94,9 @@ public class PageIterator<V>
 	 * @return page number
 	 */
 	protected int parsePageNumber(String uri) {
-		if (uri == null || uri.length() == 0)
+		if (uri == null || uri.length() == 0) {
 			return -1;
+		}
 		final URI parsed;
 		try {
 			parsed = new URI(uri);
@@ -103,8 +104,9 @@ public class PageIterator<V>
 			return -1;
 		}
 		final String param = UrlUtils.getParam(parsed, PARAM_PAGE);
-		if (param == null || param.length() == 0)
+		if (param == null || param.length() == 0) {
 			return -1;
+		}
 		try {
 			return Integer.parseInt(param);
 		} catch (NumberFormatException nfe) {
@@ -161,17 +163,20 @@ public class PageIterator<V>
 	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<V> next() {
-		if (!hasNext())
+		if (!hasNext()) {
 			throw new NoSuchElementException();
-		if (next != null)
-			if (nextPage < 1)
+		}
+		if (next != null) {
+			if (nextPage < 1) {
 				request.setUri(next);
-			else
+			} else {
 				try {
 					request.setUri(new URL(next).getFile());
 				} catch (MalformedURLException e) {
 					request.setUri(next);
 				}
+			}
+		}
 
 		GitHubResponse response;
 		try {
@@ -181,15 +186,18 @@ public class PageIterator<V>
 		}
 		Collection<V> resources = null;
 		Object body = response.getBody();
-		if (body != null)
-			if (body instanceof Collection)
+		if (body != null) {
+			if (body instanceof Collection) {
 				resources = (Collection<V>) body;
-			else if (body instanceof IResourceProvider)
+			} else if (body instanceof IResourceProvider) {
 				resources = ((IResourceProvider<V>) body).getResources();
-			else
+			} else {
 				resources = (Collection<V>) Collections.singletonList(body);
-		if (resources == null)
+			}
+		}
+		if (resources == null) {
 			resources = Collections.emptyList();
+		}
 		nextPage++;
 		next = response.getNext();
 		nextPage = parsePageNumber(next);

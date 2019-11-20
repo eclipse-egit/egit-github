@@ -246,12 +246,14 @@ public class DownloadService extends GitHubService {
 	 */
 	public void uploadResource(DownloadResource resource, InputStream content,
 			long size) throws IOException {
-		if (resource == null)
+		if (resource == null) {
 			throw new IllegalArgumentException(
 					"Download resource cannot be null"); //$NON-NLS-1$
-		if (content == null)
+		}
+		if (content == null) {
 			throw new IllegalArgumentException(
 					"Content input stream cannot be null"); //$NON-NLS-1$
+		}
 
 		Map<String, Object> parts = new LinkedHashMap<>();
 		parts.put(UPLOAD_KEY, resource.getPath());
@@ -267,8 +269,9 @@ public class DownloadService extends GitHubService {
 		HttpURLConnection connection = MultiPartUtils.post(resource.getS3Url(),
 				parts);
 		int status = connection.getResponseCode();
-		if (status != HTTP_CREATED)
+		if (status != HTTP_CREATED) {
 			throw new IOException("Unexpected response status of " + status); //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -310,8 +313,9 @@ public class DownloadService extends GitHubService {
 	 */
 	public DownloadResource createDownload(IRepositoryIdProvider repository,
 			Download download, File file) throws IOException {
-		if (file == null)
+		if (file == null) {
 			throw new IllegalArgumentException("File cannot be null"); //$NON-NLS-1$
+		}
 
 		return createDownload(repository, download,
 				Files.newInputStream(file.toPath()), file.length());

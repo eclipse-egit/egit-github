@@ -80,9 +80,10 @@ public class IssueRepositorySettingsPage
 		if (syncLabel) {
 			String url = serverUrlCombo.getText();
 			RepositoryId repo = GitHub.getRepository(url);
-			if (repo != null)
+			if (repo != null) {
 				repositoryLabelEditor.setStringValue(
 						IssueConnector.getRepositoryLabel(repo));
+			}
 		}
 	}
 
@@ -119,14 +120,16 @@ public class IssueRepositorySettingsPage
 
 						@Override
 						public void modifyText(ModifyEvent e) {
-							if (!editingUrl)
+							if (!editingUrl) {
 								syncLabel = false;
+							}
 						}
 					});
 		}
 
-		if (getRepository() == null)
+		if (getRepository() == null) {
 			setAnonymous(false);
+		}
 	}
 
 	@Override
@@ -173,13 +176,14 @@ public class IssueRepositorySettingsPage
 	@SuppressWarnings("unused")
 	@Override
 	protected boolean isValidUrl(final String url) {
-		if (url.startsWith("http://") || url.startsWith("https://")) //$NON-NLS-1$ //$NON-NLS-2$
+		if (url.startsWith("http://") || url.startsWith("https://")) { //$NON-NLS-1$ //$NON-NLS-2$
 			try {
 				new URL(url);
 				return GitHub.getRepository(url) != null;
 			} catch (IOException e) {
 				return false;
 			}
+		}
 		return false;
 	}
 

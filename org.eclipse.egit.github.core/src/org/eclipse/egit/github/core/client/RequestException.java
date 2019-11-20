@@ -93,25 +93,30 @@ public class RequestException extends IOException {
 		String value = error.getValue();
 		String field = error.getField();
 
-		if (CODE_INVALID.equals(code))
-			if (value != null)
+		if (CODE_INVALID.equals(code)) {
+			if (value != null) {
 				return MessageFormat.format(FIELD_INVALID_WITH_VALUE, value,
 						field);
-			else
+			} else {
 				return MessageFormat.format(FIELD_INVALID, field);
+			}
+		}
 
-		if (CODE_MISSING_FIELD.equals(code))
+		if (CODE_MISSING_FIELD.equals(code)) {
 			return MessageFormat.format(FIELD_MISSING, field);
+		}
 
-		if (CODE_ALREADY_EXISTS.equals(code))
+		if (CODE_ALREADY_EXISTS.equals(code)) {
 			return MessageFormat.format(FIELD_EXISTS, error.getResource(),
 					field);
+		}
 
 		// Use field error message as is if custom code
 		if (FieldError.CODE_CUSTOM.equals(code)) {
 			String message = error.getMessage();
-			if (message != null && message.length() > 0)
+			if (message != null && message.length() > 0) {
 				return message;
+			}
 		}
 
 		return MessageFormat.format(FIELD_ERROR, field, error.getResource());
@@ -124,18 +129,21 @@ public class RequestException extends IOException {
 	 */
 	public String formatErrors() {
 		String errorMessage = error.getMessage();
-		if (errorMessage == null)
+		if (errorMessage == null) {
 			errorMessage = ""; //$NON-NLS-1$
+		}
 		StringBuilder message = new StringBuilder(errorMessage);
-		if (message.length() > 0)
+		if (message.length() > 0) {
 			message.append(' ').append('(').append(status).append(')');
-		else
+		} else {
 			message.append(status);
+		}
 		List<FieldError> errors = error.getErrors();
 		if (errors != null && errors.size() > 0) {
 			message.append(':');
-			for (FieldError fieldError : errors)
+			for (FieldError fieldError : errors) {
 				message.append(' ').append(format(fieldError)).append(',');
+			}
 			message.deleteCharAt(message.length() - 1);
 		}
 		return message.toString();

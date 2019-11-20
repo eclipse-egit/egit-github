@@ -58,8 +58,9 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 		while (descriptorIt.hasNext()) {
 			TaskEditorPartDescriptor partDescriptor = descriptorIt.next();
 			String id = partDescriptor.getId();
-			if (id.equals(ID_PART_ATTRIBUTES) || id.equals(ID_PART_SUMMARY))
+			if (id.equals(ID_PART_ATTRIBUTES) || id.equals(ID_PART_SUMMARY)) {
 				descriptorIt.remove();
+			}
 		}
 		partDescriptors.add(new TaskEditorPartDescriptor(ID_PART_SUMMARY) {
 
@@ -94,8 +95,9 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 
 	@Override
 	public void doSubmit() {
-		if (!checkCanSubmit(IMessageProvider.ERROR))
+		if (!checkCanSubmit(IMessageProvider.ERROR)) {
 			return;
+		}
 		super.doSubmit();
 	}
 

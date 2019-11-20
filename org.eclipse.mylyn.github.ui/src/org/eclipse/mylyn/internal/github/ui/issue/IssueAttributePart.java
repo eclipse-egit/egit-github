@@ -71,28 +71,32 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 	protected AbstractAttributeEditor createAttributeEditor(
 			TaskAttribute attribute) {
 		if (IssueAttribute.LABELS.getMetadata().getId()
-				.equals(attribute.getId()))
+				.equals(attribute.getId())) {
 			return new IssueLabelAttributeEditor(getModel(), attribute);
+		}
 		if (IssueAttribute.MILESTONE.getMetadata().getId()
-				.equals(attribute.getId()))
+				.equals(attribute.getId())) {
 			return super.createAttributeEditor(attribute);
+		}
 		return null;
 	}
 
 	private void createAttributeControls(Composite attributesComposite,
 			FormToolkit toolkit) {
 		for (AbstractAttributeEditor attributeEditor : attributeEditors) {
-			if (attributeEditor.hasLabel())
+			if (attributeEditor.hasLabel()) {
 				attributeEditor.createLabelControl(attributesComposite,
 						toolkit);
+			}
 			attributeEditor.createControl(attributesComposite, toolkit);
 			Object data = attributeEditor.getControl().getLayoutData();
 			if (data == null) {
 				data = GridDataFactory.swtDefaults().create();
 				attributeEditor.getControl().setLayoutData(data);
 			}
-			if (data instanceof GridData)
+			if (data instanceof GridData) {
 				((GridData) data).widthHint = 140;
+			}
 			getTaskEditorPage().getAttributeEditorToolkit()
 					.adapt(attributeEditor);
 		}
@@ -122,8 +126,9 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 			public void handleEvent(Event event) {
 				Control focus = event.display.getFocusControl();
 				if (focus instanceof Text
-						&& ((Text) focus).getEditable() == false)
+						&& ((Text) focus).getEditable() == false) {
 					getManagedForm().getForm().setFocus();
+				}
 			}
 		});
 
@@ -197,21 +202,24 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 		List<TaskAttribute> attributes = new LinkedList<>();
 		TaskAttribute milestones = root
 				.getAttribute(IssueAttribute.MILESTONE.getMetadata().getId());
-		if (milestones != null)
+		if (milestones != null) {
 			attributes.add(milestones);
+		}
 
 		TaskAttribute labels = root
 				.getAttribute(IssueAttribute.LABELS.getMetadata().getId());
-		if (labels != null)
+		if (labels != null) {
 			attributes.add(labels);
+		}
 
 		for (TaskAttribute attribute : attributes) {
 			AbstractAttributeEditor attributeEditor = createAttributeEditor(
 					attribute);
 			if (attributeEditor != null) {
 				attributeEditors.add(attributeEditor);
-				if (getModel().hasIncomingChanges(attribute))
+				if (getModel().hasIncomingChanges(attribute)) {
 					hasIncoming = true;
+				}
 			}
 		}
 	}
@@ -222,12 +230,15 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 			String text = (String) input;
 			Map<String, TaskAttribute> attributes = getTaskData().getRoot()
 					.getAttributes();
-			for (TaskAttribute attribute : attributes.values())
+			for (TaskAttribute attribute : attributes.values()) {
 				if (text.equals(attribute.getId())) {
 					TaskAttributeMetaData properties = attribute.getMetaData();
-					if (TaskAttribute.KIND_DEFAULT.equals(properties.getKind()))
+					if (TaskAttribute.KIND_DEFAULT
+							.equals(properties.getKind())) {
 						selectReveal(attribute);
+					}
 				}
+			}
 		}
 		return super.setFormInput(input);
 	}
@@ -239,11 +250,13 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 	 *            to show
 	 */
 	public void selectReveal(TaskAttribute attribute) {
-		if (attribute == null)
+		if (attribute == null) {
 			return;
+		}
 
-		if (!getSection().isExpanded())
+		if (!getSection().isExpanded()) {
 			CommonFormUtil.setExpanded(getSection(), true);
+		}
 
 		EditorUtil.reveal(getTaskEditorPage().getManagedForm().getForm(),
 				attribute.getId());

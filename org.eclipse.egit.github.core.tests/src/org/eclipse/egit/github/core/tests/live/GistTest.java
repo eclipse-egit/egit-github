@@ -135,8 +135,9 @@ public class GistTest extends LiveTest {
 		try {
 			List<Gist> starred = service.getStarredGists();
 			assertNotNull(starred);
-			for (Gist star : starred)
+			for (Gist star : starred) {
 				assertFalse(id.equals(star.getId()));
+			}
 			assertFalse(service.isStarred(id));
 			service.starGist(id);
 			assertTrue(service.isStarred(id));
@@ -145,8 +146,9 @@ public class GistTest extends LiveTest {
 			boolean gistStarred = false;
 			for (Gist star : starred) {
 				gistStarred = id.equals(star.getId());
-				if (gistStarred)
+				if (gistStarred) {
 					break;
+				}
 			}
 			assertTrue(gistStarred);
 			service.unstarGist(id);

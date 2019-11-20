@@ -48,8 +48,9 @@ public class DateFormatter
 		formats[1] = new SimpleDateFormat(DATE_FORMAT_V2_1);
 		formats[2] = new SimpleDateFormat(DATE_FORMAT_V2_2);
 		final TimeZone timeZone = TimeZone.getTimeZone("Zulu"); //$NON-NLS-1$
-		for (DateFormat format : formats)
+		for (DateFormat format : formats) {
 			format.setTimeZone(timeZone);
+		}
 	}
 
 	@Override

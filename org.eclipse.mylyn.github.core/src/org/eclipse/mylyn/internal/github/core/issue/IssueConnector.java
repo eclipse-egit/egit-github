@@ -92,9 +92,10 @@ public class IssueConnector extends RepositoryConnector {
 		TaskRepository repository = new TaskRepository(KIND, url);
 		repository.setProperty(IRepositoryConstants.PROPERTY_LABEL,
 				getRepositoryLabel(repo));
-		if (username != null && password != null)
+		if (username != null && password != null) {
 			repository.setCredentials(AuthenticationType.REPOSITORY,
 					new AuthenticationCredentials(username, password), true);
+		}
 		repository.setProperty(IRepositoryConstants.PROPERTY_CATEGORY,
 				TaskRepository.CATEGORY_BUGS);
 		return repository;
@@ -165,8 +166,9 @@ public class IssueConnector extends RepositoryConnector {
 		Assert.isNotNull(repository, "Repository cannot be null"); //$NON-NLS-1$
 		List<Label> labels = new LinkedList<>();
 		List<Label> cached = this.repositoryLabels.get(repository);
-		if (cached != null)
+		if (cached != null) {
 			labels.addAll(cached);
+		}
 		return labels;
 	}
 
@@ -217,8 +219,9 @@ public class IssueConnector extends RepositoryConnector {
 		Assert.isNotNull(repository, "Repository cannot be null"); //$NON-NLS-1$
 		List<Milestone> milestones = new LinkedList<>();
 		List<Milestone> cached = this.repositoryMilestones.get(repository);
-		if (cached != null)
+		if (cached != null) {
 			milestones.addAll(cached);
+		}
 		return milestones;
 	}
 
@@ -296,24 +299,28 @@ public class IssueConnector extends RepositoryConnector {
 
 			Map<String, String> filterData = new HashMap<>();
 			String mentions = query.getAttribute(IssueService.FILTER_MENTIONED);
-			if (mentions != null)
+			if (mentions != null) {
 				filterData.put(IssueService.FILTER_MENTIONED, mentions);
+			}
 
 			String assignee = query.getAttribute(IssueService.FILTER_ASSIGNEE);
-			if (assignee != null)
+			if (assignee != null) {
 				filterData.put(IssueService.FILTER_ASSIGNEE, assignee);
+			}
 
 			String milestone = query
 					.getAttribute(IssueService.FILTER_MILESTONE);
-			if (milestone != null)
+			if (milestone != null) {
 				filterData.put(IssueService.FILTER_MILESTONE, milestone);
+			}
 
 			List<String> labels = QueryUtils
 					.getAttributes(IssueService.FILTER_LABELS, query);
 			if (!labels.isEmpty()) {
 				StringBuilder labelsQuery = new StringBuilder();
-				for (String label : labels)
+				for (String label : labels) {
 					labelsQuery.append(label).append(',');
+				}
 				filterData.put(IssueService.FILTER_LABELS,
 						labelsQuery.toString());
 			}
@@ -327,12 +334,14 @@ public class IssueConnector extends RepositoryConnector {
 
 				// collect task data
 				for (Issue issue : issues) {
-					if (isPullRequest(issue))
+					if (isPullRequest(issue)) {
 						continue;
+					}
 					List<Comment> comments = null;
-					if (issue.getComments() > 0)
+					if (issue.getComments() > 0) {
 						comments = service.getComments(owner, name,
 								Integer.toString(issue.getNumber()));
+					}
 					TaskData taskData = taskDataHandler.createTaskData(
 							repository, monitor, owner, name, issue, comments);
 					collector.accept(taskData);
@@ -362,12 +371,14 @@ public class IssueConnector extends RepositoryConnector {
 			IssueService service = new IssueService(client);
 			Issue issue = service.getIssue(repo.getOwner(), repo.getName(),
 					taskId);
-			if (isPullRequest(issue))
+			if (isPullRequest(issue)) {
 				return null;
+			}
 			List<Comment> comments = null;
-			if (issue.getComments() > 0)
+			if (issue.getComments() > 0) {
 				comments = service.getComments(repo.getOwner(), repo.getName(),
 						taskId);
+			}
 			return taskDataHandler.createTaskData(repository, monitor,
 					repo.getOwner(), repo.getName(), issue, comments);
 		} catch (IOException e) {
@@ -380,8 +391,9 @@ public class IssueConnector extends RepositoryConnector {
 		if (taskFullUrl != null) {
 			Matcher matcher = Pattern.compile("(http://.+?)/issues/([^/]+)") //$NON-NLS-1$
 					.matcher(taskFullUrl);
-			if (matcher.matches())
+			if (matcher.matches()) {
 				return matcher.group(1);
+			}
 		}
 		return null;
 	}
@@ -391,8 +403,9 @@ public class IssueConnector extends RepositoryConnector {
 		if (taskFullUrl != null) {
 			Matcher matcher = Pattern.compile(".+?/issues/([^/]+)") //$NON-NLS-1$
 					.matcher(taskFullUrl);
-			if (matcher.matches())
+			if (matcher.matches()) {
 				return matcher.group(1);
+			}
 		}
 		return null;
 	}

@@ -150,10 +150,12 @@ public class CommitService extends GitHubService {
 
 		if (sha != null || path != null) {
 			Map<String, String> params = new HashMap<>();
-			if (sha != null)
+			if (sha != null) {
 				params.put("sha", sha); //$NON-NLS-1$
-			if (path != null)
+			}
+			if (path != null) {
 				params.put("path", path); //$NON-NLS-1$
+			}
 			request.setParams(params);
 		}
 
@@ -273,10 +275,12 @@ public class CommitService extends GitHubService {
 	public PageIterator<CommitComment> pageComments(
 			IRepositoryIdProvider repository, String sha, int start, int size) {
 		String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("Sha cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("Sha cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -324,10 +328,12 @@ public class CommitService extends GitHubService {
 	public CommitComment addComment(IRepositoryIdProvider repository,
 			String sha, CommitComment comment) throws IOException {
 		String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("Sha cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("Sha cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -348,8 +354,9 @@ public class CommitService extends GitHubService {
 	public CommitComment editComment(IRepositoryIdProvider repository,
 			CommitComment comment) throws IOException {
 		String id = getId(repository);
-		if (comment == null)
+		if (comment == null) {
 			throw new IllegalArgumentException("Comment cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -457,10 +464,12 @@ public class CommitService extends GitHubService {
 	public List<CommitStatus> getStatuses(IRepositoryIdProvider repository,
 			String sha) throws IOException {
 		String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -486,22 +495,29 @@ public class CommitService extends GitHubService {
 	public CommitStatus createStatus(IRepositoryIdProvider repository,
 			String sha, CommitStatus status) throws IOException {
 		String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
-		if (status == null)
+		}
+		if (status == null) {
 			throw new IllegalArgumentException("Status cannot be null"); //$NON-NLS-1$
+		}
 
 		Map<String, String> params = new HashMap<>(3, 1);
-		if (status.getState() != null)
+		if (status.getState() != null) {
 			params.put("state", status.getState()); //$NON-NLS-1$
-		if (status.getTargetUrl() != null)
+		}
+		if (status.getTargetUrl() != null) {
 			params.put("target_url", status.getTargetUrl()); //$NON-NLS-1$
-		if (status.getDescription() != null)
+		}
+		if (status.getDescription() != null) {
 			params.put("description", status.getDescription()); //$NON-NLS-1$
-		if (status.getContext() != null)
+		}
+		if (status.getContext() != null) {
 			params.put("context", status.getContext()); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);

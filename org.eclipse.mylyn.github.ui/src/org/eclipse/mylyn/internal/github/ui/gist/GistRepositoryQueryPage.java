@@ -95,16 +95,19 @@ public class GistRepositoryQueryPage extends AbstractRepositoryQueryPage {
 
 		IRepositoryQuery query = getQuery();
 		if (query != null) {
-			if (titleText != null && query.getSummary() != null)
+			if (titleText != null && query.getSummary() != null) {
 				titleText.setText(query.getSummary());
-			if (query.getAttribute(IGistQueryConstants.USER) != null)
+			}
+			if (query.getAttribute(IGistQueryConstants.USER) != null) {
 				userText.setText(query.getAttribute(IGistQueryConstants.USER));
+			}
 		} else if (!inSearchContainer() && !hasQueries()) {
 			titleText.setText(Messages.GistRepositoryQueryPage_TitleDefault);
 			AuthenticationCredentials credentials = getTaskRepository()
 					.getCredentials(AuthenticationType.REPOSITORY);
-			if (credentials != null)
+			if (credentials != null) {
 				userText.setText(credentials.getUserName());
+			}
 		}
 
 		Dialog.applyDialogFont(displayArea);
@@ -134,8 +137,9 @@ public class GistRepositoryQueryPage extends AbstractRepositoryQueryPage {
 	@Override
 	public boolean isPageComplete() {
 		boolean complete = inSearchContainer() ? true : super.isPageComplete();
-		if (complete)
+		if (complete) {
 			complete = userText.getText().trim().length() > 0;
+		}
 		return complete;
 	}
 

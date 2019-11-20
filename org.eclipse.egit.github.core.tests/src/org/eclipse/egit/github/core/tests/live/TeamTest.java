@@ -118,8 +118,9 @@ public class TeamTest extends LiveTest {
 			List<Repository> repos = teamService.getRepositories(team.getId());
 			assertNotNull(repos);
 			assertFalse(repos.isEmpty());
-			for (Repository repo : repos)
+			for (Repository repo : repos) {
 				assertTrue(teamService.isTeamRepository(team.getId(), repo));
+			}
 		}
 	}
 

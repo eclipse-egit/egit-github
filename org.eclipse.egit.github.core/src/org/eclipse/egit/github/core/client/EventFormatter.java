@@ -79,56 +79,60 @@ public class EventFormatter implements JsonDeserializer<Event> {
 	public Event deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
 		final Event event = gson.fromJson(json, Event.class);
-		if (event == null || !json.isJsonObject())
+		if (event == null || !json.isJsonObject()) {
 			return event;
+		}
 		final JsonElement rawPayload = json.getAsJsonObject().get("payload"); //$NON-NLS-1$
-		if (rawPayload == null || !rawPayload.isJsonObject())
+		if (rawPayload == null || !rawPayload.isJsonObject()) {
 			return event;
+		}
 		final String type = event.getType();
-		if (type == null || type.length() == 0)
+		if (type == null || type.length() == 0) {
 			return event;
+		}
 
 		Class<? extends EventPayload> payloadClass;
-		if (TYPE_COMMIT_COMMENT.equals(type))
+		if (TYPE_COMMIT_COMMENT.equals(type)) {
 			payloadClass = CommitCommentPayload.class;
-		else if (TYPE_CREATE.equals(type))
+		} else if (TYPE_CREATE.equals(type)) {
 			payloadClass = CreatePayload.class;
-		else if (TYPE_DELETE.equals(type))
+		} else if (TYPE_DELETE.equals(type)) {
 			payloadClass = DeletePayload.class;
-		else if (TYPE_DOWNLOAD.equals(type))
+		} else if (TYPE_DOWNLOAD.equals(type)) {
 			payloadClass = DownloadPayload.class;
-		else if (TYPE_FOLLOW.equals(type))
+		} else if (TYPE_FOLLOW.equals(type)) {
 			payloadClass = FollowPayload.class;
-		else if (TYPE_FORK.equals(type))
+		} else if (TYPE_FORK.equals(type)) {
 			payloadClass = ForkPayload.class;
-		else if (TYPE_FORK_APPLY.equals(type))
+		} else if (TYPE_FORK_APPLY.equals(type)) {
 			payloadClass = ForkApplyPayload.class;
-		else if (TYPE_GIST.equals(type))
+		} else if (TYPE_GIST.equals(type)) {
 			payloadClass = GistPayload.class;
-		else if (TYPE_GOLLUM.equals(type))
+		} else if (TYPE_GOLLUM.equals(type)) {
 			payloadClass = GollumPayload.class;
-		else if (TYPE_ISSUE_COMMENT.equals(type))
+		} else if (TYPE_ISSUE_COMMENT.equals(type)) {
 			payloadClass = IssueCommentPayload.class;
-		else if (TYPE_ISSUES.equals(type))
+		} else if (TYPE_ISSUES.equals(type)) {
 			payloadClass = IssuesPayload.class;
-		else if (TYPE_MEMBER.equals(type))
+		} else if (TYPE_MEMBER.equals(type)) {
 			payloadClass = MemberPayload.class;
-		else if (TYPE_PUBLIC.equals(type))
+		} else if (TYPE_PUBLIC.equals(type)) {
 			payloadClass = PublicPayload.class;
-		else if (TYPE_PULL_REQUEST.equals(type))
+		} else if (TYPE_PULL_REQUEST.equals(type)) {
 			payloadClass = PullRequestPayload.class;
-		else if (TYPE_PULL_REQUEST_REVIEW_COMMENT.equals(type))
+		} else if (TYPE_PULL_REQUEST_REVIEW_COMMENT.equals(type)) {
 			payloadClass = PullRequestReviewCommentPayload.class;
-		else if (TYPE_PUSH.equals(type))
+		} else if (TYPE_PUSH.equals(type)) {
 			payloadClass = PushPayload.class;
-		else if (TYPE_RELEASE.equals(type))
+		} else if (TYPE_RELEASE.equals(type)) {
 			payloadClass = ReleasePayload.class;
-		else if (TYPE_TEAM_ADD.equals(type))
+		} else if (TYPE_TEAM_ADD.equals(type)) {
 			payloadClass = TeamAddPayload.class;
-		else if (TYPE_WATCH.equals(type))
+		} else if (TYPE_WATCH.equals(type)) {
 			payloadClass = WatchPayload.class;
-		else
+		} else {
 			return event;
+		}
 
 		try {
 			EventPayload typedPayload = context.deserialize(rawPayload,

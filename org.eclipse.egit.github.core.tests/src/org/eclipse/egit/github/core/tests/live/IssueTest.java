@@ -74,8 +74,9 @@ public class IssueTest extends LiveTest {
 				assertNotNull(event);
 				assertTrue(event.getId() > 0);
 				assertNotNull(event.getActor());
-				if (event.getIssue() != null)
+				if (event.getIssue() != null) {
 					assertTrue(event.getIssue().getNumber() > 0);
+				}
 				assertNotNull(event.getCreatedAt());
 				assertNotNull(event.getEvent());
 				assertNotNull(event.getUrl());
@@ -84,8 +85,9 @@ public class IssueTest extends LiveTest {
 				assertEquals(event.getId(), fetched.getId());
 				assertNotNull(fetched.getActor());
 				assertEquals(event.getActor().getLogin(), fetched.getActor().getLogin());
-				if (event.getCommitId() != null)
+				if (event.getCommitId() != null) {
 					assertEquals(event.getCommitId(), fetched.getCommitId());
+				}
 				assertEquals(event.getCreatedAt(), fetched.getCreatedAt());
 				assertEquals(event.getEvent(), fetched.getEvent());
 				assertEquals(event.getUrl(), fetched.getUrl());
@@ -128,8 +130,9 @@ public class IssueTest extends LiveTest {
 		List<Issue> issues = service.getIssues("schacon", "showoff",
 				Collections.singletonMap(IssueService.FILTER_STATE, IssueService.STATE_OPEN));
 		assertFalse(issues.isEmpty());
-		for (Issue issue : issues)
+		for (Issue issue : issues) {
 			assertNotNull(issue);
+		}
 	}
 
 	/**

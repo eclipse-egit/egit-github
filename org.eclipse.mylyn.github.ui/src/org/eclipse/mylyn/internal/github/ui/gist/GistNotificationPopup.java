@@ -77,10 +77,11 @@ public class GistNotificationPopup extends AbstractNotificationPopup {
 				AbstractTask task = TasksUiInternal.getTask(
 						repository.getRepositoryUrl(), gist.getId(),
 						gist.getHtmlUrl());
-				if (task != null)
+				if (task != null) {
 					TasksUiInternal.refreshAndOpenTaskListElement(task);
-				else
+				} else {
 					TasksUiInternal.openTask(repository, gist.getId(), null);
+				}
 			}
 		});
 	}

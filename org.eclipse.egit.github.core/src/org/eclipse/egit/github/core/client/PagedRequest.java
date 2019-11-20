@@ -70,11 +70,13 @@ public class PagedRequest<V> extends GitHubRequest {
 	protected void addParams(final StringBuilder uri) {
 		super.addParams(uri);
 		final int size = getPageSize();
-		if (size > 0)
+		if (size > 0) {
 			UrlUtils.addParam(PARAM_PER_PAGE, Integer.toString(size), uri);
+		}
 		final int number = getPage();
-		if (number > 0)
+		if (number > 0) {
 			UrlUtils.addParam(PARAM_PAGE, Integer.toString(number), uri);
+		}
 	}
 
 	/**

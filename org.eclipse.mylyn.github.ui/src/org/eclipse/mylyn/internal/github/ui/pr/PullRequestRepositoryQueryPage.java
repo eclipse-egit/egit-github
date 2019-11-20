@@ -137,8 +137,9 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 
 	private void initialize() {
 		IRepositoryQuery query = getQuery();
-		if (query == null)
+		if (query == null) {
 			return;
+		}
 
 		titleText.setText(query.getSummary());
 		List<String> status = QueryUtils
@@ -155,8 +156,9 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		boolean complete = super.isPageComplete();
 		if (complete) {
 			String message = null;
-			if (!openButton.getSelection() && !closedButton.getSelection())
+			if (!openButton.getSelection() && !closedButton.getSelection()) {
 				message = Messages.PullRequestRepositoryQueryPage_MessageSelectStatus;
+			}
 
 			setErrorMessage(message);
 			complete = message == null;
@@ -180,10 +182,12 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		query.setSummary(getQueryTitle());
 
 		List<String> statuses = new LinkedList<>();
-		if (openButton.getSelection())
+		if (openButton.getSelection()) {
 			statuses.add(IssueService.STATE_OPEN);
-		if (closedButton.getSelection())
+		}
+		if (closedButton.getSelection()) {
 			statuses.add(IssueService.STATE_CLOSED);
+		}
 		QueryUtils.setAttribute(IssueService.FILTER_STATE, statuses, query);
 	}
 }

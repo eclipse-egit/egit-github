@@ -60,8 +60,9 @@ public class CommitTest extends LiveTest {
 				assertNotNull(commit.getCommit());
 			}
 			pages++;
-			if (pages == 3)
+			if (pages == 3) {
 				break;
+			}
 		}
 	}
 

@@ -85,8 +85,9 @@ public class AvatarStore implements Serializable, ISchedulingRule {
 		url = normalize(url);
 		if (url != null) {
 			byte[] cached = this.avatars.get(url);
-			if (cached != null)
+			if (cached != null) {
 				data = getData(cached);
+			}
 		}
 		return data;
 	}
@@ -121,8 +122,9 @@ public class AvatarStore implements Serializable, ISchedulingRule {
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
 					ImageData data = loadAvatar(url);
-					if (data != null)
+					if (data != null) {
 						callback.loaded(data, AvatarStore.this);
+					}
 				} catch (IOException ignore) {
 					// Ignored
 				}
@@ -144,8 +146,9 @@ public class AvatarStore implements Serializable, ISchedulingRule {
 		URL parsed = new URL(url);
 
 		byte[] data = this.avatars.get(url);
-		if (data != null)
+		if (data != null) {
 			return getData(data);
+		}
 
 		URLConnection connection = parsed.openConnection();
 		connection.setConnectTimeout(TIMEOUT);
@@ -189,8 +192,9 @@ public class AvatarStore implements Serializable, ISchedulingRule {
 		Rectangle sourceBounds = image.getBounds();
 
 		// Return original image and don't scale if size matches request
-		if (sourceBounds.width == size)
+		if (sourceBounds.width == size) {
 			return image;
+		}
 
 		Image scaled = new Image(display, size, size);
 		GC gc = new GC(scaled);
@@ -217,8 +221,9 @@ public class AvatarStore implements Serializable, ISchedulingRule {
 		ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
 		try {
 			ImageData[] images = new ImageLoader().load(stream);
-			if (images.length > 0)
+			if (images.length > 0) {
 				return images[0];
+			}
 		} finally {
 			try {
 				stream.close();

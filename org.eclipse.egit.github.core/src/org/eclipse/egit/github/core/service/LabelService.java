@@ -128,10 +128,12 @@ public class LabelService extends GitHubService {
 
 	private List<Label> setLabels(String id, String issueId, List<Label> labels)
 			throws IOException {
-		if (issueId == null)
+		if (issueId == null) {
 			throw new IllegalArgumentException("Issue id cannot be null"); //$NON-NLS-1$
-		if (issueId.length() == 0)
+		}
+		if (issueId.length() == 0) {
 			throw new IllegalArgumentException("Issue id cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -176,8 +178,9 @@ public class LabelService extends GitHubService {
 	}
 
 	private Label createLabel(String id, Label label) throws IOException {
-		if (label == null)
+		if (label == null) {
 			throw new IllegalArgumentException("Label cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -217,10 +220,12 @@ public class LabelService extends GitHubService {
 	}
 
 	private Label getLabel(String id, String label) throws IOException {
-		if (label == null)
+		if (label == null) {
 			throw new IllegalArgumentException("Label cannot be null"); //$NON-NLS-1$
-		if (label.length() == 0)
+		}
+		if (label.length() == 0) {
 			throw new IllegalArgumentException("Label cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -262,10 +267,12 @@ public class LabelService extends GitHubService {
 	}
 
 	private void deleteLabel(String id, String label) throws IOException {
-		if (label == null)
+		if (label == null) {
 			throw new IllegalArgumentException("Label cannot be null"); //$NON-NLS-1$
-		if (label.length() == 0)
+		}
+		if (label.length() == 0) {
 			throw new IllegalArgumentException("Label cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -285,13 +292,16 @@ public class LabelService extends GitHubService {
 	public Label editLabel(IRepositoryIdProvider repository, Label label)
 			throws IOException {
 		String repoId = getId(repository);
-		if (label == null)
+		if (label == null) {
 			throw new IllegalArgumentException("Label cannot be null"); //$NON-NLS-1$
+		}
 		String name = label.getName();
-		if (name == null)
+		if (name == null) {
 			throw new IllegalArgumentException("Label name cannot be null"); //$NON-NLS-1$
-		if (name.length() == 0)
+		}
+		if (name.length() == 0) {
 			throw new IllegalArgumentException("Label name cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(repoId);

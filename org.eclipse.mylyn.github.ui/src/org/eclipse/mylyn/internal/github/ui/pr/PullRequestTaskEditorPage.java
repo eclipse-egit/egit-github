@@ -52,8 +52,9 @@ public class PullRequestTaskEditorPage extends AbstractTaskEditorPage {
 		while (descriptorIt.hasNext()) {
 			TaskEditorPartDescriptor partDescriptor = descriptorIt.next();
 			String id = partDescriptor.getId();
-			if (id.equals(ID_PART_ATTRIBUTES) || id.equals(ID_PART_SUMMARY))
+			if (id.equals(ID_PART_ATTRIBUTES) || id.equals(ID_PART_SUMMARY)) {
 				descriptorIt.remove();
+			}
 		}
 		partDescriptors.add(new TaskEditorPartDescriptor(ID_PART_SUMMARY) {
 

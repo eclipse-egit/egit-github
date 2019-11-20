@@ -70,8 +70,9 @@ public class GitHubClient {
 	public static GitHubClient createClient(String url) {
 		try {
 			String host = new URL(url).getHost();
-			if (HOST_DEFAULT.equals(host) || HOST_GISTS.equals(host))
+			if (HOST_DEFAULT.equals(host) || HOST_GISTS.equals(host)) {
 				host = HOST_API;
+			}
 			return new GitHubClient(host);
 		} catch (IOException e) {
 			throw new IllegalArgumentException(e);
@@ -187,15 +188,17 @@ public class GitHubClient {
 		final StringBuilder uri = new StringBuilder(scheme);
 		uri.append("://"); //$NON-NLS-1$
 		uri.append(hostname);
-		if (port > 0)
+		if (port > 0) {
 			uri.append(':').append(port);
+		}
 		baseUri = uri.toString();
 
 		// Use URI prefix on non-standard host names
-		if (HOST_API.equals(hostname))
+		if (HOST_API.equals(hostname)) {
 			prefix = null;
-		else
+		} else {
 			prefix = SEGMENT_V3_API;
+		}
 	}
 
 	/**
@@ -218,10 +221,11 @@ public class GitHubClient {
 	 * @return this client
 	 */
 	public GitHubClient setUserAgent(final String agent) {
-		if (agent != null && agent.length() > 0)
+		if (agent != null && agent.length() > 0) {
 			userAgent = agent;
-		else
+		} else {
 			userAgent = USER_AGENT;
+		}
 		return this;
 	}
 
@@ -234,10 +238,11 @@ public class GitHubClient {
 	 * @return this client
 	 */
 	public GitHubClient setHeaderAccept(final String header) {
-		if (header != null && header.length() > 0)
+		if (header != null && header.length() > 0) {
 			headerAccept = header;
-		else
+		} else {
 			headerAccept = ACCEPT_FULL;
+		}
 		return this;
 	}
 
@@ -248,10 +253,11 @@ public class GitHubClient {
 	 * @since 4.2
 	 */
 	public String getHeaderAccept() {
-		if (headerAccept != null && headerAccept.length() > 0)
+		if (headerAccept != null && headerAccept.length() > 0) {
 			return headerAccept;
-		else
+		} else {
 			return ACCEPT_FULL;
+		}
 	}
 
 	/**
@@ -262,8 +268,9 @@ public class GitHubClient {
 	 */
 	protected HttpURLConnection configureRequest(
 			final HttpURLConnection request) {
-		if (credentials != null)
+		if (credentials != null) {
 			request.setRequestProperty(HEADER_AUTHORIZATION, credentials);
+		}
 		request.setRequestProperty(HEADER_USER_AGENT, userAgent);
 		request.setRequestProperty(HEADER_ACCEPT, getHeaderAccept());
 		return request;
@@ -276,10 +283,11 @@ public class GitHubClient {
 	 * @return configured URI
 	 */
 	protected String configureUri(final String uri) {
-		if (prefix == null || uri.startsWith(prefix))
+		if (prefix == null || uri.startsWith(prefix)) {
 			return uri;
-		else
+		} else {
 			return prefix + uri;
+		}
 	}
 
 	/**
@@ -370,11 +378,12 @@ public class GitHubClient {
 			final String password) {
 		this.user = user;
 		if (user != null && user.length() > 0 && password != null
-				&& password.length() > 0)
+				&& password.length() > 0) {
 			credentials = "Basic " //$NON-NLS-1$
 					+ EncodingUtils.toBase64(user + ':' + password);
-		else
+		} else {
 			credentials = null;
+		}
 		return this;
 	}
 
@@ -398,10 +407,11 @@ public class GitHubClient {
 	 * @return this client
 	 */
 	public GitHubClient setOAuth2Token(String token) {
-		if (token != null && token.length() > 0)
+		if (token != null && token.length() > 0) {
 			credentials = AUTH_TOKEN + ' ' + token;
-		else
+		} else {
 			credentials = null;
+		}
 		return this;
 	}
 
@@ -412,9 +422,10 @@ public class GitHubClient {
 	 * @return this client
 	 */
 	public GitHubClient setBufferSize(int bufferSize) {
-		if (bufferSize < 1)
+		if (bufferSize < 1) {
 			throw new IllegalArgumentException(
 					"Buffer size must be greater than zero"); //$NON-NLS-1$
+		}
 
 		this.bufferSize = bufferSize;
 		return this;
@@ -475,7 +486,7 @@ public class GitHubClient {
 			throws IOException {
 		BufferedReader reader = new BufferedReader(
 				new InputStreamReader(stream, CHARSET_UTF8), bufferSize);
-		if (listType == null)
+		if (listType == null) {
 			try {
 				return gson.fromJson(reader, type);
 			} catch (JsonParseException jpe) {
@@ -490,13 +501,14 @@ public class GitHubClient {
 					// Ignored
 				}
 			}
-		else {
+		} else {
 			JsonReader jsonReader = new JsonReader(reader);
 			try {
-				if (jsonReader.peek() == BEGIN_ARRAY)
+				if (jsonReader.peek() == BEGIN_ARRAY) {
 					return gson.fromJson(jsonReader, listType);
-				else
+				} else {
 					return gson.fromJson(jsonReader, type);
+				}
 			} catch (JsonParseException jpe) {
 				IOException ioe = new IOException(
 						"Parse exception converting JSON to object"); //$NON-NLS-1$
@@ -583,10 +595,11 @@ public class GitHubClient {
 	protected Object getBody(GitHubRequest request, InputStream stream)
 			throws IOException {
 		Type type = request.getType();
-		if (type != null)
+		if (type != null) {
 			return parseJson(stream, type, request.getArrayType());
-		else
+		} else {
 			return null;
+		}
 	}
 
 	/**
@@ -606,19 +619,22 @@ public class GitHubClient {
 			} catch (IOException e) {
 				return e;
 			}
-			if (error != null)
+			if (error != null) {
 				return new RequestException(error, code);
-		} else
+			}
+		} else {
 			try {
 				response.close();
 			} catch (IOException ignored) {
 				// Ignored
 			}
+		}
 		String message;
-		if (status != null && status.length() > 0)
+		if (status != null && status.length() > 0) {
 			message = status + " (" + code + ')'; //$NON-NLS-1$
-		else
+		} else {
 			message = "Unknown error occurred (" + code + ')'; //$NON-NLS-1$
+		}
 		return new IOException(message);
 	}
 
@@ -691,13 +707,16 @@ public class GitHubClient {
 		sendParams(request, params);
 		final int code = request.getResponseCode();
 		updateRateLimits(request);
-		if (isOk(code))
-			if (type != null)
+		if (isOk(code)) {
+			if (type != null) {
 				return parseJson(getStream(request), type);
-			else
+			} else {
 				return null;
-		if (isEmpty(code))
+			}
+		}
+		if (isEmpty(code)) {
 			return null;
+		}
 		throw createException(getStream(request), code,
 				request.getResponseMessage());
 	}
@@ -758,10 +777,11 @@ public class GitHubClient {
 		InputStream stream = getStream(request);
 		int code = request.getResponseCode();
 		updateRateLimits(request);
-		if (isOk(code))
+		if (isOk(code)) {
 			return stream;
-		else
+		} else {
 			throw createException(stream, code, request.getResponseMessage());
+		}
 	}
 
 	/**
@@ -773,9 +793,9 @@ public class GitHubClient {
 	 */
 	protected InputStream getStream(HttpURLConnection request)
 			throws IOException {
-		if (request.getResponseCode() < HTTP_BAD_REQUEST)
+		if (request.getResponseCode() < HTTP_BAD_REQUEST) {
 			return request.getInputStream();
-		else {
+		} else {
 			InputStream stream = request.getErrorStream();
 			return stream != null ? stream : request.getInputStream();
 		}
@@ -791,15 +811,18 @@ public class GitHubClient {
 	public GitHubResponse get(GitHubRequest request) throws IOException {
 		HttpURLConnection httpRequest = createGet(request.generateUri());
 		String accept = request.getResponseContentType();
-		if (accept != null)
+		if (accept != null) {
 			httpRequest.setRequestProperty(HEADER_ACCEPT, accept);
+		}
 		final int code = httpRequest.getResponseCode();
 		updateRateLimits(httpRequest);
-		if (isOk(code))
+		if (isOk(code)) {
 			return new GitHubResponse(httpRequest,
 					getBody(request, getStream(httpRequest)));
-		if (isEmpty(code))
+		}
+		if (isEmpty(code)) {
 			return new GitHubResponse(httpRequest, null);
+		}
 		throw createException(getStream(httpRequest), code,
 				httpRequest.getResponseMessage());
 	}
@@ -847,12 +870,14 @@ public class GitHubClient {
 	public void delete(final String uri, final Object params)
 			throws IOException {
 		HttpURLConnection request = createDelete(uri);
-		if (params != null)
+		if (params != null) {
 			sendParams(request, params);
+		}
 		final int code = request.getResponseCode();
 		updateRateLimits(request);
-		if (!isEmpty(code))
+		if (!isEmpty(code)) {
 			throw new RequestException(parseError(getStream(request)), code);
+		}
 	}
 
 	/**
@@ -863,24 +888,26 @@ public class GitHubClient {
 	 */
 	protected GitHubClient updateRateLimits(HttpURLConnection request) {
 		String limit = request.getHeaderField("X-RateLimit-Limit"); //$NON-NLS-1$
-		if (limit != null && limit.length() > 0)
+		if (limit != null && limit.length() > 0) {
 			try {
 				requestLimit = Integer.parseInt(limit);
 			} catch (NumberFormatException nfe) {
 				requestLimit = -1;
 			}
-		else
+		} else {
 			requestLimit = -1;
+		}
 
 		String remaining = request.getHeaderField("X-RateLimit-Remaining"); //$NON-NLS-1$
-		if (remaining != null && remaining.length() > 0)
+		if (remaining != null && remaining.length() > 0) {
 			try {
 				remainingRequests = Integer.parseInt(remaining);
 			} catch (NumberFormatException nfe) {
 				remainingRequests = -1;
 			}
-		else
+		} else {
 			remainingRequests = -1;
+		}
 
 		return this;
 	}

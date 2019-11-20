@@ -160,8 +160,9 @@ public class GitHubUi extends AbstractUIPlugin {
 		INSTANCE = this;
 		loadAvatars(context);
 		ITaskActivityManager activityManager = TasksUi.getTaskActivityManager();
-		if (activityManager != null)
+		if (activityManager != null) {
 			activityManager.addActivationListener(prSynchronize);
+		}
 	}
 
 	/**
@@ -183,16 +184,18 @@ public class GitHubUi extends AbstractUIPlugin {
 			} catch (ClassNotFoundException cnfe) {
 				logError("Error reading avatar store", cnfe); //$NON-NLS-1$
 			} finally {
-				if (stream != null)
+				if (stream != null) {
 					try {
 						stream.close();
 					} catch (IOException ignore) {
 						// Ignored
 					}
+				}
 			}
 		}
-		if (store == null)
+		if (store == null) {
 			store = new AvatarStore();
+		}
 	}
 
 	/**
@@ -222,7 +225,8 @@ public class GitHubUi extends AbstractUIPlugin {
 		INSTANCE = null;
 		saveAvatars(context);
 		ITaskActivityManager activityManager = TasksUi.getTaskActivityManager();
-		if (activityManager != null)
+		if (activityManager != null) {
 			activityManager.removeActivationListener(prSynchronize);
+		}
 	}
 }

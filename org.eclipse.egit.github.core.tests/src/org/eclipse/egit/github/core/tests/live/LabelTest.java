@@ -48,11 +48,12 @@ public class LabelTest extends LiveTest {
 		List<Label> labels = service.getLabels(client.getUser(), writableRepo);
 		Label fetched = null;
 		assertNotNull(labels);
-		for (Label label : labels)
+		for (Label label : labels) {
 			if (created.getName().equals(label.getName())) {
 				fetched = label;
 				break;
 			}
+		}
 		assertNotNull(fetched);
 		assertEquals(created.getName(), fetched.getName());
 

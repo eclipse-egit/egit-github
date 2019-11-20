@@ -74,14 +74,16 @@ public abstract class PullRequestUtils {
 				+ remoteRepo.getName() + Constants.DOT_GIT;
 		RepositoryCache cache = Activator.getDefault().getRepositoryCache();
 		for (String path : Activator.getDefault().getRepositoryUtil()
-				.getConfiguredRepositories())
+				.getConfiguredRepositories()) {
 			try {
 				Repository repo = cache.lookupRepository(new File(path));
 				RemoteConfig rc = new RemoteConfig(repo.getConfig(),
 						Constants.DEFAULT_REMOTE_NAME);
-				for (URIish uri : rc.getURIs())
-					if (uri.toString().endsWith(id))
+				for (URIish uri : rc.getURIs()) {
+					if (uri.toString().endsWith(id)) {
 						return repo;
+					}
+				}
 			} catch (IOException e) {
 				GitHub.logError(e);
 				continue;
@@ -89,6 +91,7 @@ public abstract class PullRequestUtils {
 				GitHub.logError(e);
 				continue;
 			}
+		}
 		return null;
 	}
 
@@ -118,11 +121,13 @@ public abstract class PullRequestUtils {
 	 * @return owner login name, may be null
 	 */
 	public static String getOwner(PullRequestMarker marker) {
-		if (marker == null)
+		if (marker == null) {
 			return null;
+		}
 		org.eclipse.egit.github.core.Repository repo = marker.getRepo();
-		if (repo == null)
+		if (repo == null) {
 			return null;
+		}
 		User owner = repo.getOwner();
 		return owner != null ? owner.getLogin() : null;
 	}
@@ -135,11 +140,13 @@ public abstract class PullRequestUtils {
 	 * @return true if same, false otherwise
 	 */
 	public static boolean isFromSameRepository(PullRequest request) {
-		if (request == null)
+		if (request == null) {
 			return false;
+		}
 		String headLogin = getOwner(request.getHead());
-		if (headLogin == null)
+		if (headLogin == null) {
 			return false;
+		}
 		return headLogin.equals(getOwner(request.getBase()));
 	}
 
@@ -153,10 +160,11 @@ public abstract class PullRequestUtils {
 	 */
 	public static RemoteConfig getRemote(Repository repo, PullRequest request)
 			throws URISyntaxException {
-		if (isFromSameRepository(request))
+		if (isFromSameRepository(request)) {
 			return getRemoteConfig(repo, Constants.DEFAULT_REMOTE_NAME);
-		else
+		} else {
 			return getRemoteConfig(repo, getOwner(request.getHead()));
+		}
 	}
 
 	/**
@@ -170,9 +178,11 @@ public abstract class PullRequestUtils {
 	public static RemoteConfig getRemoteConfig(Repository repo, String name)
 			throws URISyntaxException {
 		for (RemoteConfig candidate : RemoteConfig
-				.getAllRemoteConfigs(repo.getConfig()))
-			if (name.equals(candidate.getName()))
+				.getAllRemoteConfigs(repo.getConfig())) {
+			if (name.equals(candidate.getName())) {
 				return candidate;
+			}
+		}
 		return null;
 	}
 
@@ -188,17 +198,19 @@ public abstract class PullRequestUtils {
 	public static RemoteConfig addRemote(Repository repo, PullRequest request)
 			throws IOException, URISyntaxException {
 		RemoteConfig remote = getRemote(repo, request);
-		if (remote != null)
+		if (remote != null) {
 			return remote;
+		}
 
 		StoredConfig config = repo.getConfig();
 		org.eclipse.egit.github.core.Repository head = request.getHead()
 				.getRepo();
 		remote = new RemoteConfig(config, head.getOwner().getLogin());
-		if (head.isPrivate())
+		if (head.isPrivate()) {
 			remote.addURI(new URIish(UrlUtils.createRemoteSshUrl(head)));
-		else
+		} else {
 			remote.addURI(new URIish(UrlUtils.createRemoteReadOnlyUrl(head)));
+		}
 
 		remote.addFetchRefSpec(
 				new RefSpec(HEAD_SOURCE + ":" + getDesintationRef(remote))); //$NON-NLS-1$

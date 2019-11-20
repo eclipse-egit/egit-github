@@ -136,8 +136,9 @@ public class IssueConnectorUi extends AbstractRepositoryConnectorUi {
 					// same project name, different user
 					String url = repository.getUrl();
 					RepositoryId repo = GitHub.getRepository(url);
-					if (repo != null)
+					if (repo != null) {
 						project = repo.getName();
+					}
 				}
 
 				TaskRepository taskRepository = null;

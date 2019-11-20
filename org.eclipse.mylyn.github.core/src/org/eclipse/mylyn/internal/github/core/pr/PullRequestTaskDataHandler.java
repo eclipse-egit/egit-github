@@ -108,20 +108,23 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 	private void createOperations(TaskData data, PullRequest pr) {
 		createOperationAttribute(data);
 
-		if (data.isNew())
+		if (data.isNew()) {
 			return;
+		}
 
 		// Merged pull requests cannot be reopened
-		if (pr.isMerged())
+		if (pr.isMerged()) {
 			return;
+		}
 
 		String state = pr.getState();
 		if (state != null) {
 			addOperation(data, pr, PullRequestOperation.LEAVE, true);
-			if (state.equals(IssueService.STATE_OPEN))
+			if (state.equals(IssueService.STATE_OPEN)) {
 				addOperation(data, pr, PullRequestOperation.CLOSE, false);
-			else if (state.equals(IssueService.STATE_CLOSED))
+			} else if (state.equals(IssueService.STATE_CLOSED)) {
 				addOperation(data, pr, PullRequestOperation.REOPEN, false);
+			}
 		}
 	}
 
@@ -162,8 +165,9 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 
 	private PullRequest createPullRequest(TaskData taskData) {
 		PullRequest pr = new PullRequest();
-		if (!taskData.isNew())
+		if (!taskData.isNew()) {
 			pr.setNumber(Integer.parseInt(taskData.getTaskId()));
+		}
 
 		pr.setBody(getAttributeValue(taskData,
 				PullRequestAttribute.BODY.getMetadata()));
@@ -178,9 +182,11 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 			ITaskMapping initializationData, IProgressMonitor monitor)
 			throws CoreException {
 		data.setVersion(DATA_VERSION);
-		for (PullRequestAttribute attr : PullRequestAttribute.values())
-			if (attr.getMetadata().isInitTask())
+		for (PullRequestAttribute attr : PullRequestAttribute.values()) {
+			if (attr.getMetadata().isInitTask()) {
 				createAttribute(data, attr.getMetadata(), (String) null);
+			}
+		}
 		return true;
 	}
 
@@ -205,9 +211,10 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 				// Handle new comment
 				String comment = getAttributeValue(taskData,
 						PullRequestAttribute.COMMENT_NEW.getMetadata());
-				if (comment != null && comment.length() > 0)
+				if (comment != null && comment.length() > 0) {
 					issueService.createComment(repo.getOwner(), repo.getName(),
 							taskId, comment);
+				}
 
 				boolean reporter = attributeMatchesUser(client,
 						PullRequestAttribute.REPORTER.getMetadata(), taskData);
@@ -218,10 +225,11 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 					if (operationAttribute != null) {
 						PullRequestOperation operation = PullRequestOperation
 								.fromId(operationAttribute.getValue());
-						if (operation == PullRequestOperation.REOPEN)
+						if (operation == PullRequestOperation.REOPEN) {
 							pr.setState(IssueService.STATE_OPEN);
-						else if (operation == PullRequestOperation.CLOSE)
+						} else if (operation == PullRequestOperation.CLOSE) {
 							pr.setState(IssueService.STATE_CLOSED);
+						}
 					}
 					prService.editPullRequest(repo, pr);
 				}

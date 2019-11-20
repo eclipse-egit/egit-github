@@ -103,8 +103,9 @@ public class GitHubImages {
 	 * @return the {@link Image}, or {@code null} if not found
 	 */
 	public static Image get(String key) {
-		if (manager == null)
+		if (manager == null) {
 			initialize();
+		}
 		return manager.get(key);
 	}
 

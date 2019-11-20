@@ -80,8 +80,10 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 
 						@Override
 						public String isValid(String newText) {
-							if (newText == null || newText.trim().length() == 0)
+							if (newText == null
+									|| newText.trim().length() == 0) {
 								return Messages.IssueLabelAttributeEditor_MessageEnterName;
+							}
 							return null;
 						}
 					});
@@ -154,15 +156,16 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 	}
 
 	private void refreshLabels() {
-		for (CLabel labelControl : this.labelControls)
+		for (CLabel labelControl : this.labelControls) {
 			labelControl.dispose();
+		}
 		this.labelControls.clear();
 
 		Image labelImage = GitHubImages
 				.get(GitHubImages.GITHUB_ISSUE_LABEL_OBJ);
 		List<String> labels = new LinkedList<>(getTaskAttribute().getValues());
 		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
-		if (!labels.isEmpty())
+		if (!labels.isEmpty()) {
 			for (final String label : labels) {
 				CLabel cLabel = new CLabel(labelsArea, SWT.NONE);
 				MenuManager manager = new MenuManager();
@@ -181,15 +184,18 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 				cLabel.setImage(labelImage);
 				cLabel.setText(shortened);
 				cLabel.setForeground(toolkit.getColors().getForeground());
-				if (!shortened.equals(label))
+				if (!shortened.equals(label)) {
 					cLabel.setToolTipText(label);
+				}
 				this.labelControls.add(cLabel);
 			}
-		else
+		} else {
 			this.labelControls.add(new CLabel(labelsArea, SWT.NONE));
+		}
 
-		if (this.layout)
+		if (this.layout) {
 			displayArea.getParent().getParent().layout(true, true);
+		}
 	}
 
 	private void markLabelsChanged() {
@@ -226,8 +232,9 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 				List<String> labels = new LinkedList<>(
 						getTaskAttribute().getOptions().values());
 				labels.removeAll(getTaskAttribute().getValues());
-				for (String label : labels)
+				for (String label : labels) {
 					manager.add(new LabelAction(label));
+				}
 				manager.update();
 			}
 		});

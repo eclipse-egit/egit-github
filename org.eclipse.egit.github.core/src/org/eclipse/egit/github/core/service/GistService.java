@@ -69,10 +69,12 @@ public class GistService extends GitHubService {
 	 * @return gist id
 	 */
 	protected String checkGistId(String gistId) {
-		if (gistId == null)
+		if (gistId == null) {
 			throw new IllegalArgumentException("Gist id cannot be null"); //$NON-NLS-1$
-		if (gistId.length() == 0)
+		}
+		if (gistId.length() == 0) {
 			throw new IllegalArgumentException("Gist id cannot be empty"); //$NON-NLS-1$
+		}
 		return gistId;
 	}
 
@@ -152,10 +154,12 @@ public class GistService extends GitHubService {
 	 */
 	protected PagedRequest<Gist> createUserGistRequest(String user, int start,
 			int size) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 		uri.append('/').append(user);
@@ -262,8 +266,9 @@ public class GistService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Gist createGist(Gist gist) throws IOException {
-		if (gist == null)
+		if (gist == null) {
 			throw new IllegalArgumentException("Gist cannot be null"); //$NON-NLS-1$
+		}
 
 		return client.post(SEGMENT_GISTS, gist, Gist.class);
 	}
@@ -276,8 +281,9 @@ public class GistService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Gist updateGist(Gist gist) throws IOException {
-		if (gist == null)
+		if (gist == null) {
 			throw new IllegalArgumentException("Gist cannot be null"); //$NON-NLS-1$
+		}
 		String id = gist.getId();
 		checkGistId(id);
 
@@ -297,8 +303,9 @@ public class GistService extends GitHubService {
 	public Comment createComment(String gistId, String comment)
 			throws IOException {
 		checkGistId(gistId);
-		if (comment == null)
+		if (comment == null) {
 			throw new IllegalArgumentException("Gist comment cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_GISTS);
 		uri.append('/').append(gistId);
@@ -366,8 +373,9 @@ public class GistService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Comment editComment(Comment comment) throws IOException {
-		if (comment == null)
+		if (comment == null) {
 			throw new IllegalArgumentException("Comment cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_GISTS + SEGMENT_COMMENTS);
 		uri.append('/').append(comment.getId());

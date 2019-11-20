@@ -137,9 +137,10 @@ public class GistConnector extends RepositoryConnector {
 					repository.getUrl(), gist.getId());
 			data.setPartial(false);
 			dataHandler.fillTaskData(repository, data, gist);
-			if (gist.getComments() > 0)
+			if (gist.getComments() > 0) {
 				dataHandler.fillComments(repository, data,
 						service.getComments(gist.getId()));
+			}
 			return data;
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createWrappedStatus(e));

@@ -142,11 +142,13 @@ public final class UrlUtils {
 	 */
 	public static void addParam(final String name, final String value,
 			final StringBuilder uri) {
-		if (uri.length() > 0)
+		if (uri.length() > 0) {
 			uri.append('&');
+		}
 		uri.append(encode(name)).append('=');
-		if (value != null)
+		if (value != null) {
 			uri.append(encode(value));
+		}
 	}
 
 	/**
@@ -157,10 +159,12 @@ public final class UrlUtils {
 	 */
 	public static void addParams(final Map<String, String> params,
 			final StringBuilder uri) {
-		if (params == null || params.isEmpty())
+		if (params == null || params.isEmpty()) {
 			return;
-		for (Entry<String, String> param : params.entrySet())
+		}
+		for (Entry<String, String> param : params.entrySet()) {
 			addParam(param.getKey(), param.getValue(), uri);
+		}
 	}
 
 	/**
@@ -172,15 +176,18 @@ public final class UrlUtils {
 	 */
 	public static String getParam(final URI uri, final String name) {
 		final String query = uri.getRawQuery();
-		if (query == null || query.length() == 0)
+		if (query == null || query.length() == 0) {
 			return null;
+		}
 		final String[] params = query.split("&"); //$NON-NLS-1$
 		for (String param : params) {
 			final String[] parts = param.split("="); //$NON-NLS-1$
-			if (parts.length != 2)
+			if (parts.length != 2) {
 				continue;
-			if (!name.equals(parts[0]))
+			}
+			if (!name.equals(parts[0])) {
 				continue;
+			}
 			return decode(parts[1]);
 		}
 		return null;

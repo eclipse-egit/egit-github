@@ -69,9 +69,10 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 		TaskAttribute urlAttribute = attachmentAttribute
 				.getAttribute(GistAttribute.RAW_FILE_URL.getMetadata().getId());
 		try {
-			if (urlAttribute == null)
+			if (urlAttribute == null) {
 				throw new IOException(
 						"Unable to obtain raw file URL from Gist"); //$NON-NLS-1$
+			}
 			URL url = new URL(urlAttribute.getValue());
 			GitHubClient client = new GitHubClient(url.getHost()) {
 
@@ -117,8 +118,9 @@ public class GistAttachmentHandler extends AbstractTaskAttachmentHandler {
 			byte[] buffer = new byte[8192];
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			int read;
-			while ((read = input.read(buffer)) != -1)
+			while ((read = input.read(buffer)) != -1) {
 				output.write(buffer, 0, read);
+			}
 			file.setContent(output.toString());
 			service.updateGist(gist);
 		} catch (IOException e) {

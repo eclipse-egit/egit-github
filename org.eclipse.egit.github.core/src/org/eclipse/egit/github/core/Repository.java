@@ -569,11 +569,13 @@ public class Repository implements IRepositoryIdProvider, Serializable {
 	public String generateId() {
 		final User owner = this.owner;
 		final String name = this.name;
-		if (owner == null || name == null || name.length() == 0)
+		if (owner == null || name == null || name.length() == 0) {
 			return null;
+		}
 		final String login = owner.getLogin();
-		if (login == null || login.length() == 0)
+		if (login == null || login.length() == 0) {
 			return null;
+		}
 		return login + "/" + name; //$NON-NLS-1$
 	}
 }

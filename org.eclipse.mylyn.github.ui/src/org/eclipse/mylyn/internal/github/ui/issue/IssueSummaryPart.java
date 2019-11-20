@@ -74,8 +74,9 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 	private void addAttribute(Composite composite, FormToolkit toolkit,
 			TaskAttribute attribute, int indent, boolean showLabel) {
 		AbstractAttributeEditor editor = createAttributeEditor(attribute);
-		if (editor == null)
+		if (editor == null) {
 			return;
+		}
 
 		editor.setReadOnly(true);
 		editor.setDecorationEnabled(false);
@@ -87,8 +88,9 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 		}
 
 		if (isAttribute(attribute, TaskAttribute.DATE_MODIFICATION)
-				&& editor instanceof DateAttributeEditor)
+				&& editor instanceof DateAttributeEditor) {
 			((DateAttributeEditor) editor).setShowTime(true);
+		}
 
 		editor.createControl(composite, toolkit);
 		getTaskEditorPage().getAttributeEditorToolkit().adapt(editor);
@@ -106,11 +108,13 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 		TaskAttribute summaryAttrib = getTaskData().getRoot()
 				.getMappedAttribute(TaskAttribute.SUMMARY);
 		summaryEditor = createAttributeEditor(summaryAttrib);
-		if (summaryEditor == null)
+		if (summaryEditor == null) {
 			return;
+		}
 
-		if (summaryAttrib.getMetaData().isReadOnly())
+		if (summaryAttrib.getMetaData().isReadOnly()) {
 			summaryEditor.setReadOnly(true);
+		}
 
 		if (summaryEditor instanceof RichTextAttributeEditor) {
 			Composite roundedBorder = EditorUtil.createBorder(composite,
@@ -141,8 +145,10 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 
 	private boolean addAvatarPart(Composite parent, FormToolkit toolkit,
 			TaskAttribute avatarAttribute, IRepositoryPerson person) {
-		if (avatarAttribute == null || avatarAttribute.getValue().length() == 0)
+		if (avatarAttribute == null
+				|| avatarAttribute.getValue().length() == 0) {
 			return false;
+		}
 
 		AvatarLabel label = new AvatarLabel(GitHubUi.getDefault().getStore(),
 				person, avatarAttribute);
@@ -172,8 +178,9 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 			IRepositoryPerson person = getTaskData().getAttributeMapper()
 					.getRepositoryPerson(reporter);
 			if (reporterAvatarId != null && addAvatarPart(composite, toolkit,
-					getAttribute(reporterAvatarId), person))
+					getAttribute(reporterAvatarId), person)) {
 				layout.numColumns++;
+			}
 		}
 		addSummaryText(composite, toolkit);
 
@@ -182,12 +189,14 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 			IRepositoryPerson person = getTaskData().getAttributeMapper()
 					.getRepositoryPerson(assignee);
 			if (this.assigneeAvatarId != null && addAvatarPart(composite,
-					toolkit, getAttribute(this.assigneeAvatarId), person))
+					toolkit, getAttribute(this.assigneeAvatarId), person)) {
 				layout.numColumns++;
+			}
 		}
 
-		if (needsHeader())
+		if (needsHeader()) {
 			createHeaderLayout(composite, toolkit);
+		}
 
 		toolkit.paintBordersFor(composite);
 		setControl(composite);
@@ -235,7 +244,8 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 	 */
 	@Override
 	public void setFocus() {
-		if (summaryEditor != null)
+		if (summaryEditor != null) {
 			summaryEditor.getControl().setFocus();
+		}
 	}
 }

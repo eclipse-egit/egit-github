@@ -63,10 +63,12 @@ public class PullRequestCommitAdapter extends WorkbenchAdapter {
 		String desc = commit.getCommit().getMessage();
 		if (desc != null) {
 			int delim = desc.indexOf('\n');
-			if (delim == -1)
+			if (delim == -1) {
 				delim = 80;
-			if (delim < desc.length())
+			}
+			if (delim < desc.length()) {
 				desc = desc.substring(0, delim);
+			}
 			styled.append(": ").append(desc); //$NON-NLS-1$
 		}
 		styled.append(' ');

@@ -80,8 +80,9 @@ public class ContentsService extends GitHubService {
 		uri.append(SEGMENT_README);
 		GitHubRequest request = createRequest();
 		request.setUri(uri);
-		if (ref != null && ref.length() > 0)
+		if (ref != null && ref.length() > 0) {
 			request.setParams(Collections.singletonMap("ref", ref)); //$NON-NLS-1$
+		}
 		request.setType(RepositoryContents.class);
 		return (RepositoryContents) client.get(request).getBody();
 	}
@@ -133,8 +134,9 @@ public class ContentsService extends GitHubService {
 		uri.append('/').append(id);
 		uri.append(SEGMENT_CONTENTS);
 		if (path != null && path.length() > 0) {
-			if (path.charAt(0) != '/')
+			if (path.charAt(0) != '/') {
 				uri.append('/');
+			}
 			uri.append(path);
 		}
 		GitHubRequest request = createRequest();
@@ -143,13 +145,15 @@ public class ContentsService extends GitHubService {
 		request.setArrayType(new TypeToken<List<RepositoryContents>>() {
 			// make protected type visible
 		}.getType());
-		if (ref != null && ref.length() > 0)
+		if (ref != null && ref.length() > 0) {
 			request.setParams(Collections.singletonMap("ref", ref)); //$NON-NLS-1$
+		}
 
 		Object body = client.get(request).getBody();
-		if (body instanceof RepositoryContents)
+		if (body instanceof RepositoryContents) {
 			return Collections.singletonList((RepositoryContents) body);
-		else
+		} else {
 			return (List<RepositoryContents>) body;
+		}
 	}
 }

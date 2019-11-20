@@ -109,8 +109,9 @@ public abstract class GitHubService {
 	 *            must be non-null
 	 */
 	public GitHubService(GitHubClient client) {
-		if (client == null)
+		if (client == null) {
 			throw new IllegalArgumentException("Client cannot be null"); //$NON-NLS-1$
+		}
 		this.client = client;
 	}
 
@@ -191,8 +192,9 @@ public abstract class GitHubService {
 	protected <V> List<V> getAll(PageIterator<V> iterator) throws IOException {
 		List<V> elements = new ArrayList<>();
 		try {
-			while (iterator.hasNext())
+			while (iterator.hasNext()) {
 				elements.addAll(iterator.next());
+			}
 		} catch (NoSuchPageException pageException) {
 			throw pageException.getCause();
 		}
@@ -211,8 +213,9 @@ public abstract class GitHubService {
 			client.get(createRequest().setUri(uri));
 			return true;
 		} catch (RequestException e) {
-			if (e.getStatus() == HTTP_NOT_FOUND)
+			if (e.getStatus() == HTTP_NOT_FOUND) {
 				return false;
+			}
 			throw e;
 		}
 	}
@@ -224,14 +227,17 @@ public abstract class GitHubService {
 	 * @return non-null id
 	 */
 	protected String getId(IRepositoryIdProvider provider) {
-		if (provider == null)
+		if (provider == null) {
 			throw new IllegalArgumentException(
 					"Repository provider cannot be null"); //$NON-NLS-1$
+		}
 		final String id = provider.generateId();
-		if (id == null)
+		if (id == null) {
 			throw new IllegalArgumentException("Repository id cannot be null"); //$NON-NLS-1$
-		if (id.length() == 0)
+		}
+		if (id.length() == 0) {
 			throw new IllegalArgumentException("Repository id cannot be empty"); //$NON-NLS-1$
+		}
 		return id;
 	}
 
@@ -243,14 +249,18 @@ public abstract class GitHubService {
 	 * @return this service
 	 */
 	protected GitHubService verifyRepository(String user, String repository) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
-		if (repository == null)
+		}
+		if (repository == null) {
 			throw new IllegalArgumentException("Repository cannot be null"); //$NON-NLS-1$
-		if (repository.length() == 0)
+		}
+		if (repository.length() == 0) {
 			throw new IllegalArgumentException("Repository cannot be empty"); //$NON-NLS-1$
+		}
 		return this;
 	}
 }

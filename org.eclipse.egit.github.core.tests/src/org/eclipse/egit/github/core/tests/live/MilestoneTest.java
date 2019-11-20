@@ -53,11 +53,12 @@ public class MilestoneTest extends LiveTest {
 		List<Milestone> milestones = service.getMilestones(client.getUser(), writableRepo, m.getState());
 		Milestone fetched = null;
 		assertNotNull(milestones);
-		for (Milestone milestone : milestones)
+		for (Milestone milestone : milestones) {
 			if (created.getNumber() == milestone.getNumber()) {
 				fetched = milestone;
 				break;
 			}
+		}
 		assertNotNull(fetched);
 		assertEquals(created.getClosedIssues(), fetched.getClosedIssues());
 		assertEquals(created.getDescription(), fetched.getDescription());

@@ -91,9 +91,10 @@ public class MilestoneService extends GitHubService {
 		uri.append('/').append(id);
 		uri.append(SEGMENT_MILESTONES);
 		PagedRequest<Milestone> request = createPagedRequest();
-		if (state != null)
+		if (state != null) {
 			request.setParams(
 					Collections.singletonMap(IssueService.FILTER_STATE, state));
+		}
 		request.setUri(uri).setType(new TypeToken<List<Milestone>>() {
 			// make protected type visible
 		}.getType());
@@ -138,8 +139,9 @@ public class MilestoneService extends GitHubService {
 
 	private Milestone createMilestone(String id, Milestone milestone)
 			throws IOException {
-		if (milestone == null)
+		if (milestone == null) {
 			throw new IllegalArgumentException("Milestone cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -215,10 +217,12 @@ public class MilestoneService extends GitHubService {
 
 	private Milestone getMilestone(String id, String number)
 			throws IOException {
-		if (number == null)
+		if (number == null) {
 			throw new IllegalArgumentException("Milestone cannot be null"); //$NON-NLS-1$
-		if (number.length() == 0)
+		}
+		if (number.length() == 0) {
 			throw new IllegalArgumentException("Milestone cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -286,10 +290,12 @@ public class MilestoneService extends GitHubService {
 
 	private void deleteMilestone(String id, String milestone)
 			throws IOException {
-		if (milestone == null)
+		if (milestone == null) {
 			throw new IllegalArgumentException("Milestone cannot be null"); //$NON-NLS-1$
-		if (milestone.length() == 0)
+		}
+		if (milestone.length() == 0) {
 			throw new IllegalArgumentException("Milestone cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);
@@ -309,8 +315,9 @@ public class MilestoneService extends GitHubService {
 	public Milestone editMilestone(IRepositoryIdProvider repository,
 			Milestone milestone) throws IOException {
 		String repoId = getId(repository);
-		if (milestone == null)
+		if (milestone == null) {
 			throw new IllegalArgumentException("Milestone cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(repoId);

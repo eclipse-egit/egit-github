@@ -33,10 +33,12 @@ public class Label implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == this)
+		if (obj == this) {
 			return true;
-		if (!(obj instanceof Label))
+		}
+		if (!(obj instanceof Label)) {
 			return false;
+		}
 
 		final String name = this.name;
 		return name != null && name.equals(((Label) obj).name);

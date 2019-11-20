@@ -53,11 +53,13 @@ public abstract class RepositoryConnector extends AbstractRepositoryConnector {
 
 	@Override
 	public String getTaskIdFromTaskUrl(final String taskFullUrl) {
-		if (taskFullUrl == null || taskFullUrl.length() == 0)
+		if (taskFullUrl == null || taskFullUrl.length() == 0) {
 			return null;
+		}
 		int lastSlash = taskFullUrl.lastIndexOf('/');
-		if (lastSlash != -1 && lastSlash + 1 < taskFullUrl.length())
+		if (lastSlash != -1 && lastSlash + 1 < taskFullUrl.length()) {
 			return taskFullUrl.substring(lastSlash + 1);
+		}
 		return null;
 	}
 
@@ -69,9 +71,10 @@ public abstract class RepositoryConnector extends AbstractRepositoryConnector {
 	@Override
 	public void updateTaskFromTaskData(TaskRepository taskRepository,
 			ITask task, TaskData taskData) {
-		if (!taskData.isNew())
+		if (!taskData.isNew()) {
 			task.setUrl(
 					getTaskUrl(taskRepository.getUrl(), taskData.getTaskId()));
+		}
 		new TaskMapper(taskData).applyTo(task);
 	}
 }

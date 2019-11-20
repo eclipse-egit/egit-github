@@ -119,8 +119,9 @@ public class DeployKeyService extends GitHubService {
 	 */
 	public Key editKey(IRepositoryIdProvider repository, Key key)
 			throws IOException {
-		if (key == null)
+		if (key == null) {
 			throw new IllegalArgumentException("Key cannot be null"); //$NON-NLS-1$
+		}
 		String repoId = getId(repository);
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(repoId);

@@ -69,14 +69,18 @@ public class SearchRepository implements IRepositoryIdProvider, Serializable {
 	 * @param name
 	 */
 	public SearchRepository(String owner, String name) {
-		if (owner == null)
+		if (owner == null) {
 			throw new IllegalArgumentException("Owner cannot be null"); //$NON-NLS-1$
-		if (owner.length() == 0)
+		}
+		if (owner.length() == 0) {
 			throw new IllegalArgumentException("Owner cannot be empty"); //$NON-NLS-1$
-		if (name == null)
+		}
+		if (name == null) {
 			throw new IllegalArgumentException("Name cannot be null"); //$NON-NLS-1$
-		if (name.length() == 0)
+		}
+		if (name.length() == 0) {
 			throw new IllegalArgumentException("Name cannot be empty"); //$NON-NLS-1$
+		}
 
 		this.owner = owner;
 		this.name = name;
@@ -102,12 +106,13 @@ public class SearchRepository implements IRepositoryIdProvider, Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == this)
+		if (obj == this) {
 			return true;
-		else if (obj instanceof SearchRepository)
+		} else if (obj instanceof SearchRepository) {
 			return getId().equals(((SearchRepository) obj).getId());
-		else
+		} else {
 			return false;
+		}
 	}
 
 	/**
@@ -249,11 +254,13 @@ public class SearchRepository implements IRepositoryIdProvider, Serializable {
 	@Override
 	public String generateId() {
 		final String owner = this.owner;
-		if (owner == null || owner.length() == 0)
+		if (owner == null || owner.length() == 0) {
 			return null;
+		}
 		final String name = this.name;
-		if (name == null || name.length() == 0)
+		if (name == null || name.length() == 0) {
 			return null;
+		}
 		return owner + "/" + name; //$NON-NLS-1$
 	}
 }

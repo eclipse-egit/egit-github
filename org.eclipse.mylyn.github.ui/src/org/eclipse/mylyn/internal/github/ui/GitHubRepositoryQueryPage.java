@@ -45,8 +45,9 @@ public abstract class GitHubRepositoryQueryPage
 	public void setPageComplete(boolean complete) {
 		super.setPageComplete(complete);
 		// Forward completeness to search container if applicable
-		if (inSearchContainer())
+		if (inSearchContainer()) {
 			getSearchContainer().setPerformActionEnabled(complete);
+		}
 	}
 
 }

@@ -55,8 +55,9 @@ public class GistTaskEditorPage extends AbstractTaskEditorPage {
 	}
 
 	private void addCloneAction(IToolBarManager manager) {
-		if (TasksUiUtil.isOutgoingNewTask(getTask(), GistConnector.KIND))
+		if (TasksUiUtil.isOutgoingNewTask(getTask(), GistConnector.KIND)) {
 			return;
+		}
 		manager.prependToGroup("open", //$NON-NLS-1$
 				createCommandContributionItem(CloneGistHandler.ID));
 	}
@@ -83,8 +84,9 @@ public class GistTaskEditorPage extends AbstractTaskEditorPage {
 			String id = partDescriptor.getId();
 			if (id.equals(ID_PART_ATTRIBUTES) || id.equals(ID_PART_SUMMARY)
 					|| id.equals(ID_PART_ATTACHMENTS)
-					|| id.equals(ID_PART_ACTIONS))
+					|| id.equals(ID_PART_ACTIONS)) {
 				descriptorIt.remove();
+			}
 		}
 		if (!getModel().getTaskData().isNew()) {
 			partDescriptors.add(new TaskEditorPartDescriptor(ID_PART_SUMMARY) {

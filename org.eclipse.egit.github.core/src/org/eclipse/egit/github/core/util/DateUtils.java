@@ -30,8 +30,9 @@ public final class DateUtils {
 	 * @return copied date
 	 */
 	public static Date clone(final Date date) {
-		if (date == null)
+		if (date == null) {
 			return null;
+		}
 		return new Date(date.getTime());
 	}
 }

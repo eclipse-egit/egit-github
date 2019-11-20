@@ -65,9 +65,11 @@ public enum PullRequestOperation {
 	 *         operation
 	 */
 	public static PullRequestOperation fromId(final String opId) {
-		for (PullRequestOperation op : values())
-			if (op.getId().equals(opId))
+		for (PullRequestOperation op : values()) {
+			if (op.getId().equals(opId)) {
 				return op;
+			}
+		}
 		return null;
 	}
 

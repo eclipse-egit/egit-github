@@ -111,8 +111,9 @@ public class RepositorySearchWizardPage extends WizardPage
 				SWT.READ_ONLY | SWT.DROP_DOWN);
 		languageCombo.add(Messages.RepositorySearchWizardPage_AnyLanguage);
 
-		for (Language language : Language.values())
+		for (Language language : Language.values()) {
 			languageCombo.add(language.getValue());
+		}
 
 		languageCombo.select(0);
 
@@ -166,9 +167,10 @@ public class RepositorySearchWizardPage extends WizardPage
 						SearchRepository repo = (SearchRepository) element;
 						styled.append(repo.getOwner() + "/" + repo.getName()); //$NON-NLS-1$
 						String language = repo.getLanguage();
-						if (language != null && language.length() > 0)
+						if (language != null && language.length() > 0) {
 							styled.append(" (" + language + ")", //$NON-NLS-1$ //$NON-NLS-2$
 									StyledString.QUALIFIER_STYLER);
+						}
 
 						String counters = " " + MessageFormat.format( //$NON-NLS-1$
 								Messages.RepositorySearchWizardPage_counters,
@@ -207,8 +209,9 @@ public class RepositorySearchWizardPage extends WizardPage
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
 				String language = null;
-				if (languageCombo.getSelectionIndex() > 0)
+				if (languageCombo.getSelectionIndex() > 0) {
 					language = languageCombo.getText();
+				}
 				search(language, searchText.getText().trim(), repoListViewer);
 			}
 		});
@@ -229,8 +232,9 @@ public class RepositorySearchWizardPage extends WizardPage
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if (visible)
+		if (visible) {
 			searchText.setFocus();
+		}
 	}
 
 	private void search(final String language, final String text,
@@ -249,8 +253,9 @@ public class RepositorySearchWizardPage extends WizardPage
 						final List<SearchRepository> repositories = repositoryService
 								.searchRepositories(text.trim(), language);
 						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-							if (viewer.getControl().isDisposed())
+							if (viewer.getControl().isDisposed()) {
 								return;
+							}
 							setMessage(MessageFormat.format(
 									Messages.RepositorySearchWizardPage_Found,
 									Integer.valueOf(repositories.size())),
@@ -268,8 +273,9 @@ public class RepositorySearchWizardPage extends WizardPage
 		} catch (InvocationTargetException e) {
 			viewer.setInput(Collections.emptyList());
 			Throwable cause = e.getCause();
-			if (cause == null)
+			if (cause == null) {
 				cause = e;
+			}
 			setErrorMessage(MessageFormat.format(
 					Messages.RepositorySearchWizardPage_Error,
 					cause.getLocalizedMessage()));

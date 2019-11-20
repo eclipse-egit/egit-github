@@ -71,10 +71,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public User getUser(String login) throws IOException {
-		if (login == null)
+		if (login == null) {
 			throw new IllegalArgumentException("Login name cannot be null"); //$NON-NLS-1$
-		if (login.length() == 0)
+		}
+		if (login.length() == 0) {
 			throw new IllegalArgumentException("Login name cannot be empty"); //$NON-NLS-1$
+		}
 
 		GitHubRequest request = createRequest();
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);
@@ -105,8 +107,9 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public User editUser(User user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
+		}
 
 		return client.post(SEGMENT_USER, user, User.class);
 	}
@@ -122,9 +125,9 @@ public class UserService extends GitHubService {
 	protected PagedRequest<User> createFollowersRequest(int start, int size,
 			String user) {
 		PagedRequest<User> request = createPagedRequest(start, size);
-		if (user == null)
+		if (user == null) {
 			request.setUri(SEGMENT_USER + SEGMENT_FOLLOWERS);
-		else {
+		} else {
 			StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 			uri.append('/').append(user);
 			uri.append(SEGMENT_FOLLOWERS);
@@ -147,9 +150,9 @@ public class UserService extends GitHubService {
 	protected PagedRequest<User> createFollowingRequest(int start, int size,
 			String user) {
 		PagedRequest<User> request = createPagedRequest(start, size);
-		if (user == null)
+		if (user == null) {
 			request.setUri(SEGMENT_USER + SEGMENT_FOLLOWING);
-		else {
+		} else {
 			StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 			uri.append('/').append(user);
 			uri.append(SEGMENT_FOLLOWING);
@@ -244,10 +247,12 @@ public class UserService extends GitHubService {
 	 */
 	public PageIterator<User> pageFollowers(final String user, final int start,
 			final int size) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		PagedRequest<User> request = createFollowersRequest(start, size, user);
 		return createPageIterator(request);
@@ -336,10 +341,12 @@ public class UserService extends GitHubService {
 	 */
 	public PageIterator<User> pageFollowing(final String user, final int start,
 			final int size) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		PagedRequest<User> request = createFollowingRequest(start, size, user);
 		return createPageIterator(request);
@@ -353,10 +360,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public boolean isFollowing(final String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USER + SEGMENT_FOLLOWING);
 		uri.append('/').append(user);
@@ -370,10 +379,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void follow(final String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USER + SEGMENT_FOLLOWING);
 		uri.append('/').append(user);
@@ -387,10 +398,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void unfollow(final String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USER + SEGMENT_FOLLOWING);
 		uri.append('/').append(user);
@@ -420,10 +433,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void addEmail(String... emails) throws IOException {
-		if (emails == null)
+		if (emails == null) {
 			throw new IllegalArgumentException("Emails cannot be null"); //$NON-NLS-1$
-		if (emails.length == 0)
+		}
+		if (emails.length == 0) {
 			throw new IllegalArgumentException("Emails cannot be empty"); //$NON-NLS-1$
+		}
 
 		client.post(SEGMENT_USER + SEGMENT_EMAILS, emails, null);
 	}
@@ -436,10 +451,12 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void removeEmail(String... emails) throws IOException {
-		if (emails == null)
+		if (emails == null) {
 			throw new IllegalArgumentException("Emails cannot be null"); //$NON-NLS-1$
-		if (emails.length == 0)
+		}
+		if (emails.length == 0) {
 			throw new IllegalArgumentException("Emails cannot be empty"); //$NON-NLS-1$
+		}
 
 		client.delete(SEGMENT_USER + SEGMENT_EMAILS, emails);
 	}
@@ -494,8 +511,9 @@ public class UserService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Key editKey(Key key) throws IOException {
-		if (key == null)
+		if (key == null) {
 			throw new IllegalArgumentException("Key cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_USER + SEGMENT_KEYS);
 		uri.append('/').append(key.getId());

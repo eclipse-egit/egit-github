@@ -96,10 +96,12 @@ public class GistAttachmentPage extends WizardPage {
 		super.setVisible(visible);
 		if (visible) {
 			String current = mapper.getFileName();
-			if (current == null)
+			if (current == null) {
 				current = model.getSource().getName();
-			if (current != null)
+			}
+			if (current != null) {
 				nameText.setText(current);
+			}
 			nameText.selectAll();
 			nameText.setFocus();
 			updateFilename();

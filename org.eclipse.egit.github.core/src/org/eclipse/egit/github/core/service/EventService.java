@@ -459,8 +459,9 @@ public class EventService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 		uri.append('/').append(user);
 		uri.append(SEGMENT_RECEIVED_EVENTS);
-		if (isPublic)
+		if (isPublic) {
 			uri.append(SEGMENT_PUBLIC);
+		}
 		PagedRequest<Event> request = createPagedRequest(start, size);
 		request.setUri(uri).setType(new TypeToken<List<Event>>() {
 			// make protected type visible
@@ -485,8 +486,9 @@ public class EventService extends GitHubService {
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);
 		uri.append('/').append(user);
 		uri.append(SEGMENT_EVENTS);
-		if (isPublic)
+		if (isPublic) {
 			uri.append(SEGMENT_PUBLIC);
+		}
 		PagedRequest<Event> request = createPagedRequest(start, size);
 		request.setUri(uri).setType(new TypeToken<List<Event>>() {
 			// make protected type visible

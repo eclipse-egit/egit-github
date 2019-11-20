@@ -140,12 +140,13 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 			public void open(final OpenEvent event) {
 				PullRequest pr = request.getRequest();
 				Repository repo = PullRequestUtils.getRepository(pr);
-				if (repo != null)
+				if (repo != null) {
 					openCommits(repo,
 							((IStructuredSelection) event.getSelection())
 									.toArray());
-				else
+				} else {
 					PullRequestConnectorUi.showNoRepositoryDialog(pr);
+				}
 			}
 		});
 
@@ -167,10 +168,12 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 
 	private void openCommits(final Repository repository,
 			final Object[] elements) {
-		if (elements.length == 0)
+		if (elements.length == 0) {
 			return;
-		if (repository == null)
+		}
+		if (repository == null) {
 			return;
+		}
 		try (RevWalk walk = new RevWalk(repository)) {
 			for (Object element : elements) {
 				String id = ((PullRequestCommitAdapter) element).getCommit()
@@ -208,10 +211,12 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 	@Override
 	protected void fillToolBar(ToolBarManager toolBarManager) {
 		if (TasksUiUtil.isOutgoingNewTask(getTaskEditorPage().getTask(),
-				IssueConnector.KIND))
+				IssueConnector.KIND)) {
 			return;
-		if (request == null)
+		}
+		if (request == null) {
 			return;
+		}
 
 		// checkoutPr =
 		// createCommandContributionItem(CheckoutPullRequestHandler.ID);
@@ -245,9 +250,10 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 		try {
 			IEvaluationContext context = TaskDataHandler.createContext(
 					new StructuredSelection(getTaskData()), handlerService);
-			if (postHandler != null)
+			if (postHandler != null) {
 				context.addVariable(TaskDataHandler.POST_HANDLER_CALLBACK,
 						postHandler);
+			}
 			handlerService.executeCommandInContext(fetchCommits.getCommand(),
 					new Event(), context);
 		} catch (CommandException e) {

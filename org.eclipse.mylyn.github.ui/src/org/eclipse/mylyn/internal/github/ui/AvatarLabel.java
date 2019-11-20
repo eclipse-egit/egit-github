@@ -69,8 +69,9 @@ public class AvatarLabel implements IAvatarCallback {
 	 * @return this label
 	 */
 	public AvatarLabel setVisible(boolean visible) {
-		if (!displayArea.isDisposed())
+		if (!displayArea.isDisposed()) {
 			displayArea.setVisible(visible);
+		}
 		return this;
 	}
 
@@ -80,8 +81,9 @@ public class AvatarLabel implements IAvatarCallback {
 	 * @return this label
 	 */
 	public AvatarLabel layout() {
-		if (!displayArea.isDisposed())
+		if (!displayArea.isDisposed()) {
 			displayArea.getParent().getParent().layout(true, true);
+		}
 		return this;
 	}
 
@@ -110,8 +112,9 @@ public class AvatarLabel implements IAvatarCallback {
 		toolkit.adapt(displayArea, false, false);
 
 		avatarImage = new Composite(displayArea, SWT.NONE);
-		if (person != null)
+		if (person != null) {
 			avatarImage.setToolTipText(person.getPersonId());
+		}
 
 		GridDataFactory.swtDefaults().grab(false, false)
 				.align(SWT.CENTER, SWT.CENTER).hint(AVATAR_SIZE, AVATAR_SIZE)
@@ -123,9 +126,9 @@ public class AvatarLabel implements IAvatarCallback {
 		label.setToolTipText(avatarImage.getToolTipText());
 
 		ImageData data = store.getAvatar(attribute.getValue());
-		if (data != null)
+		if (data != null) {
 			setImage(store.getScaledImage(AVATAR_SIZE, data));
-		else {
+		} else {
 			store.loadAvatar(attribute.getValue(), this);
 			setVisible(false);
 		}

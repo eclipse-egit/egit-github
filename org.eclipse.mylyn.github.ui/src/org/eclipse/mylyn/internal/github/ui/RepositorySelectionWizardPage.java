@@ -101,10 +101,12 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		public StyledString getStyledText(Object element) {
 			// TODO Replace with use of IWorkbenchAdapter3 when 3.6 is no longer
 			// supported
-			if (element instanceof RepositoryAdapter)
+			if (element instanceof RepositoryAdapter) {
 				return ((RepositoryAdapter) element).getStyledText(element);
-			if (element instanceof OrganizationAdapter)
+			}
+			if (element instanceof OrganizationAdapter) {
 				return ((OrganizationAdapter) element).getStyledText(element);
+			}
 
 			return new StyledString(wrapped.getText(element));
 		}
@@ -169,8 +171,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 			this.org = org;
 			this.repos = new RepositoryAdapter[repos.size()];
 			final int length = this.repos.length;
-			for (int i = 0; i < length; i++)
+			for (int i = 0; i < length; i++) {
 				this.repos[i] = new RepositoryAdapter(repos.get(i));
+			}
 		}
 
 		@Override
@@ -241,8 +244,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		Object[] checked = tree.getCheckboxTreeViewer()
 				.getCheckedLeafElements();
 		Repository[] repos = new Repository[checked.length];
-		for (int i = 0; i < repos.length; i++)
+		for (int i = 0; i < repos.length; i++) {
 			repos[i] = ((RepositoryAdapter) checked[i]).repo;
+		}
 		return repos;
 	}
 
@@ -268,20 +272,24 @@ public class RepositorySelectionWizardPage extends WizardPage {
 
 			@Override
 			public int compare(Viewer viewer, Object e1, Object e2) {
-				if (e1 instanceof OrganizationAdapter)
-					if (e2 instanceof OrganizationAdapter)
+				if (e1 instanceof OrganizationAdapter) {
+					if (e2 instanceof OrganizationAdapter) {
 						return ((OrganizationAdapter) e1).getLabel(e1)
 								.compareToIgnoreCase(((OrganizationAdapter) e2)
 										.getLabel(e2));
-					else if (e2 instanceof RepositoryAdapter)
+					} else if (e2 instanceof RepositoryAdapter) {
 						return 1;
-				if (e1 instanceof RepositoryAdapter)
-					if (e2 instanceof RepositoryAdapter)
+					}
+				}
+				if (e1 instanceof RepositoryAdapter) {
+					if (e2 instanceof RepositoryAdapter) {
 						return ((RepositoryAdapter) e1).getLabel(e1)
 								.compareToIgnoreCase(
 										((RepositoryAdapter) e2).getLabel(e2));
-					else if (e2 instanceof OrganizationAdapter)
+					} else if (e2 instanceof OrganizationAdapter) {
 						return -1;
+					}
+				}
 				return super.compare(viewer, e1, e2);
 			}
 
@@ -307,8 +315,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 			public void widgetSelected(SelectionEvent e) {
 				tree.getCheckboxTreeViewer().setAllChecked(true);
 				for (Object leaf : tree.getCheckboxTreeViewer()
-						.getCheckedLeafElements())
+						.getCheckedLeafElements()) {
 					tree.getCheckboxTreeViewer().setChecked(leaf, true);
+				}
 				updateSelectionLabel();
 			}
 		});
@@ -360,8 +369,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 
 	private void validatePage() {
 		setPageComplete(getRepositories().length > 0 || createGistRepository());
-		if (isPageComplete())
+		if (isPageComplete()) {
 			setErrorMessage(null);
+		}
 	}
 
 	private void updateInput(final List<Object> repos) {
@@ -369,8 +379,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 
 			@Override
 			public void run() {
-				if (getControl().isDisposed())
+				if (getControl().isDisposed()) {
 					return;
+				}
 				tree.getCheckboxTreeViewer().setCheckedElements(new Object[0]);
 				tree.getViewer().setInput(new WorkbenchAdapter() {
 
@@ -389,8 +400,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		Iterator<Repository> iter = repos.iterator();
 		while (iter.hasNext()) {
 			String id = iter.next().generateId();
-			if (id == null || existing.contains(id))
+			if (id == null || existing.contains(id)) {
 				iter.remove();
+			}
 		}
 	}
 
@@ -398,8 +410,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		if (!visible)
+		if (!visible) {
 			return;
+		}
 		addGistRepoButton.setVisible(TasksUi.getRepositoryManager()
 				.getRepositories(GistConnector.KIND).isEmpty());
 		try {
@@ -421,8 +434,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 						String id = GitHub
 								.getRepository(repo.getRepositoryUrl())
 								.generateId();
-						if (id != null)
+						if (id != null) {
 							existing.add(id);
+						}
 					}
 					try {
 						monitor.beginTask("", 2); //$NON-NLS-1$
@@ -431,8 +445,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 						List<Repository> userRepos = service.getRepositories();
 						removeExisting(userRepos, existing);
 						repoCount += userRepos.size();
-						for (Repository repo : userRepos)
+						for (Repository repo : userRepos) {
 							repos.add(new RepositoryAdapter(repo));
+						}
 						monitor.worked(1);
 						monitor.setTaskName(
 								Messages.RepositorySelectionWizardPage_TaskFetchingOrganizationRepositories);
@@ -454,8 +469,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		} catch (InvocationTargetException e) {
 			updateInput(Collections.emptyList());
 			Throwable cause = e.getCause();
-			if (cause == null)
+			if (cause == null) {
 				cause = e;
+			}
 			setErrorMessage(MessageFormat.format(
 					Messages.RepositorySelectionWizardPage_ErrorLoading,
 					cause.getLocalizedMessage()));

@@ -102,8 +102,9 @@ public class OrganizationTest extends LiveTest {
 			assertNotNull(member);
 			assertNotNull(member.getLogin());
 			assertTrue(service.isMember(orgName, member.getLogin()));
-			if (client.getUser().equals(member.getLogin()))
+			if (client.getUser().equals(member.getLogin())) {
 				selfFound = true;
+			}
 		}
 		assertTrue(selfFound);
 	}

@@ -84,16 +84,19 @@ public class GitHubRequest {
 	 */
 	public String generateUri() {
 		final String baseUri = uri;
-		if (baseUri == null)
+		if (baseUri == null) {
 			return null;
-		if (baseUri.indexOf('?') != -1)
+		}
+		if (baseUri.indexOf('?') != -1) {
 			return baseUri;
+		}
 		final StringBuilder params = new StringBuilder();
 		addParams(params);
-		if (params.length() > 0)
+		if (params.length() > 0) {
 			return baseUri + '?' + params;
-		else
+		} else {
 			return baseUri;
+		}
 	}
 
 	/**
@@ -171,10 +174,12 @@ public class GitHubRequest {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (obj == this)
+		if (obj == this) {
 			return true;
-		if (!(obj instanceof GitHubRequest))
+		}
+		if (!(obj instanceof GitHubRequest)) {
 			return false;
+		}
 		final String fullUri = generateUri();
 		final String objUri = ((GitHubRequest) obj).generateUri();
 		return fullUri != null && objUri != null && fullUri.equals(objUri);

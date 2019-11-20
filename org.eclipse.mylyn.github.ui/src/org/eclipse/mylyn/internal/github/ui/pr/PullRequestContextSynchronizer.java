@@ -50,25 +50,30 @@ public class PullRequestContextSynchronizer extends TaskActivationAdapter {
 
 	@Override
 	public void taskActivated(ITask task) {
-		if (task == null)
+		if (task == null) {
 			return;
-		if (!PullRequestConnector.KIND.equals(task.getConnectorKind()))
+		}
+		if (!PullRequestConnector.KIND.equals(task.getConnectorKind())) {
 			return;
+		}
 		IInteractionContext context = ContextCore.getContextManager()
 				.getActiveContext();
-		if (context == null)
+		if (context == null) {
 			return;
+		}
 
 		try {
 			TaskData data = TasksUi.getTaskDataManager().getTaskData(task);
 			PullRequestComposite prComp = PullRequestConnector
 					.getPullRequest(data);
-			if (prComp == null)
+			if (prComp == null) {
 				return;
+			}
 			PullRequest request = prComp.getRequest();
 			Repository repository = PullRequestUtils.getRepository(request);
-			if (repository == null)
+			if (repository == null) {
 				return;
+			}
 			try (RevWalk walk = new RevWalk(repository);
 					TreeWalk diffs = new TreeWalk(walk.getObjectReader())) {
 				diffs.setFilter(TreeFilter.ANY_DIFF);
@@ -87,12 +92,14 @@ public class PullRequestContextSynchronizer extends TaskActivationAdapter {
 				while (diffs.next()) {
 					IFile file = root.getFileForLocation(
 							Path.fromOSString(base + diffs.getPathString()));
-					if (file != null)
+					if (file != null) {
 						resources.add(file);
+					}
 				}
-				if (!resources.isEmpty())
+				if (!resources.isEmpty()) {
 					ResourcesUi.addResourceToContext(resources,
 							InteractionEvent.Kind.SELECTION);
+				}
 			}
 		} catch (MissingObjectException ignored) {
 			// Ignored

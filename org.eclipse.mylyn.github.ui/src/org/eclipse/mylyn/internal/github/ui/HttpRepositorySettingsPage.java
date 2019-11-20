@@ -47,13 +47,14 @@ public abstract class HttpRepositorySettingsPage
 	@SuppressWarnings("unused")
 	@Override
 	protected boolean isValidUrl(final String url) {
-		if (url.startsWith("http://") || url.startsWith("https://")) //$NON-NLS-1$ //$NON-NLS-2$
+		if (url.startsWith("http://") || url.startsWith("https://")) { //$NON-NLS-1$ //$NON-NLS-2$
 			try {
 				new URL(url);
 				return GitHub.getRepository(url) != null;
 			} catch (IOException e) {
 				return false;
 			}
+		}
 		return false;
 	}
 

@@ -67,20 +67,22 @@ public abstract class TaskDataHandler extends AbstractHandler {
 	 */
 	protected TaskData getTaskData(ExecutionEvent event) {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
-		if (selection == null || selection.isEmpty())
+		if (selection == null || selection.isEmpty()) {
 			selection = HandlerUtil.getActiveMenuSelection(event);
+		}
 
 		if (selection instanceof IStructuredSelection && !selection.isEmpty()) {
 			Object first = ((IStructuredSelection) selection).getFirstElement();
-			if (first instanceof TaskData)
+			if (first instanceof TaskData) {
 				return (TaskData) first;
-			else if (first instanceof ITask)
+			} else if (first instanceof ITask) {
 				try {
 					return TasksUi.getTaskDataManager()
 							.getTaskData((ITask) first);
 				} catch (CoreException e) {
 					return null;
 				}
+			}
 		}
 		return null;
 	}
@@ -108,17 +110,19 @@ public abstract class TaskDataHandler extends AbstractHandler {
 		if (site == null) {
 			IWorkbenchPart part = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage().getActivePart();
-			if (part != null)
+			if (part != null) {
 				site = part.getSite();
+			}
 		}
 		IWorkbenchSiteProgressService progress = site != null
 				? (IWorkbenchSiteProgressService) site
 						.getService(IWorkbenchSiteProgressService.class)
 				: null;
-		if (progress != null)
+		if (progress != null) {
 			progress.schedule(job);
-		else
+		} else {
 			job.schedule();
+		}
 	}
 
 	/**
@@ -128,7 +132,8 @@ public abstract class TaskDataHandler extends AbstractHandler {
 	 */
 	protected void executeCallback(ExecutionEvent event) {
 		Object callback = HandlerUtil.getVariable(event, POST_HANDLER_CALLBACK);
-		if (callback instanceof Runnable)
+		if (callback instanceof Runnable) {
 			((Runnable) callback).run();
+		}
 	}
 }

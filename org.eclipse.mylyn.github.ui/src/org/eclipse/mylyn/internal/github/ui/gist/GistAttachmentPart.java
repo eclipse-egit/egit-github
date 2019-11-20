@@ -110,9 +110,9 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 
 		final Section section = createSection(parent, toolkit, hasIncoming);
 		section.setText(getPartName() + " (" + attachments.size() + ")"); //$NON-NLS-1$ //$NON-NLS-2$
-		if (hasIncoming)
+		if (hasIncoming) {
 			expandSection(toolkit, section);
-		else
+		} else {
 			section.addExpansionListener(new ExpansionAdapter() {
 				@Override
 				public void expansionStateChanged(ExpansionEvent event) {
@@ -122,6 +122,7 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 					}
 				}
 			});
+		}
 		setSection(toolkit, section);
 	}
 
@@ -132,9 +133,9 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 
 		getTaskEditorPage().registerDefaultDropListener(section);
 
-		if (attachments.size() > 0)
+		if (attachments.size() > 0) {
 			createAttachmentTable(toolkit, attachmentsComposite);
-		else {
+		} else {
 			Label label = toolkit.createLabel(attachmentsComposite,
 					org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_No_attachments);
 			getTaskEditorPage().registerDefaultDropListener(label);
@@ -151,8 +152,9 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	 */
 	@Override
 	public void dispose() {
-		if (menuManager != null)
+		if (menuManager != null) {
 			menuManager.dispose();
+		}
 		super.dispose();
 	}
 
@@ -207,15 +209,17 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 
 			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				if (columnIndex > 0)
+				if (columnIndex > 0) {
 					columnIndex++;
+				}
 				return super.getColumnText(element, columnIndex);
 			}
 
 			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
-				if (columnIndex > 0)
+				if (columnIndex > 0) {
 					columnIndex++;
+				}
 				return super.getColumnImage(element, columnIndex);
 			}
 
@@ -278,11 +282,12 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	private void initialize() {
 		attachments = getTaskData().getAttributeMapper().getAttributesByType(
 				getTaskData(), TaskAttribute.TYPE_ATTACHMENT);
-		for (TaskAttribute attachmentAttribute : attachments)
+		for (TaskAttribute attachmentAttribute : attachments) {
 			if (getModel().hasIncomingChanges(attachmentAttribute)) {
 				hasIncoming = true;
 				break;
 			}
+		}
 	}
 
 	/**
@@ -315,12 +320,15 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 				.getSelection();
 
 		List<?> items = selection.toList();
-		for (Object item : items)
-			if (item instanceof ITaskAttachment)
+		for (Object item : items) {
+			if (item instanceof ITaskAttachment) {
 				attachments.add((ITaskAttachment) item);
+			}
+		}
 
-		if (attachments.isEmpty())
+		if (attachments.isEmpty()) {
 			return;
+		}
 
 		IWorkbenchPage page = getTaskEditorPage().getSite().getWorkbenchWindow()
 				.getActivePage();
@@ -334,7 +342,7 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	@Override
 	public boolean setFormInput(Object input) {
 		if (input instanceof String) {
-			if (attachments != null)
+			if (attachments != null) {
 				for (TaskAttribute attachmentAttribute : attachments) {
 					if (input.equals(attachmentAttribute.getId())) {
 						CommonFormUtil.setExpanded(
@@ -342,6 +350,7 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 						return selectReveal(attachmentAttribute);
 					}
 				}
+			}
 		}
 		return super.setFormInput(input);
 	}
@@ -355,8 +364,9 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	 * @return whether an element was found and selected
 	 */
 	public boolean selectReveal(TaskAttribute attachmentAttribute) {
-		if (attachmentAttribute == null || attachmentsTable == null)
+		if (attachmentAttribute == null || attachmentsTable == null) {
 			return false;
+		}
 
 		TableItem[] attachments = attachmentsTable.getItems();
 		int index = 0;

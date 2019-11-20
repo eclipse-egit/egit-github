@@ -256,8 +256,9 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 
 	private void initialize() {
 		IRepositoryQuery query = getQuery();
-		if (query == null)
+		if (query == null) {
 			return;
+		}
 
 		String milestoneNumber = query
 				.getAttribute(IssueService.FILTER_MILESTONE);
@@ -282,17 +283,20 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		openButton.setSelection(status.contains(IssueService.STATE_OPEN));
 
 		String assignee = query.getAttribute(IssueService.FILTER_ASSIGNEE);
-		if (assignee != null)
+		if (assignee != null) {
 			assigneeText.setText(assignee);
+		}
 
 		String mentioning = query.getAttribute(IssueService.FILTER_MENTIONED);
-		if (mentioning != null)
+		if (mentioning != null) {
 			mentionText.setText(mentioning);
+		}
 	}
 
 	private boolean updateLabels() {
-		if (labelsViewer.getControl().isDisposed())
+		if (labelsViewer.getControl().isDisposed()) {
 			return false;
+		}
 
 		IssueConnector connector = IssueConnectorUi.getCoreConnector();
 		TaskRepository repository = getTaskRepository();
@@ -302,16 +306,18 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 					.getLabels(repository);
 			Collections.sort(labels, new LabelComparator());
 			List<String> labelNames = new ArrayList<>(labels.size());
-			for (org.eclipse.egit.github.core.Label label : labels)
+			for (org.eclipse.egit.github.core.Label label : labels) {
 				labelNames.add(label.getName());
+			}
 			labelsViewer.setInput(labelNames);
 		}
 		return hasLabels;
 	}
 
 	private boolean updateMilestones() {
-		if (milestoneCombo.isDisposed())
+		if (milestoneCombo.isDisposed()) {
 			return false;
+		}
 
 		IssueConnector connector = IssueConnectorUi.getCoreConnector();
 		TaskRepository repository = getTaskRepository();
@@ -322,8 +328,9 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			milestoneCombo.add(Messages.IssueRepositoryQueryPage_MilestoneNone);
 			Collections.sort(milestones, Comparator.comparing(
 					Milestone::getTitle, String.CASE_INSENSITIVE_ORDER));
-			for (Milestone milestone : milestones)
+			for (Milestone milestone : milestones) {
 				milestoneCombo.add(milestone.getTitle());
+			}
 
 			milestoneCombo.select(0);
 		}
@@ -365,11 +372,13 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 				}
 			};
 			IRunnableContext context = getContainer();
-			if (context == null)
-				if (inSearchContainer())
+			if (context == null) {
+				if (inSearchContainer()) {
 					context = getSearchContainer().getRunnableContext();
-				else
+				} else {
 					context = PlatformUI.getWorkbench().getProgressService();
+				}
+			}
 			CommonUiUtil.run(context, runnable);
 		} catch (CoreException e) {
 			IStatus status = e.getStatus();
@@ -382,8 +391,9 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 	private void loadRepository() {
 		boolean labelsLoaded = updateLabels();
 		boolean milestonesLoaded = updateMilestones();
-		if (!labelsLoaded || !milestonesLoaded)
+		if (!labelsLoaded || !milestonesLoaded) {
 			refreshRepository();
+		}
 	}
 
 	/**
@@ -394,8 +404,9 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		boolean complete = inSearchContainer() ? true : super.isPageComplete();
 		if (complete) {
 			String message = null;
-			if (!openButton.getSelection() && !closedButton.getSelection())
+			if (!openButton.getSelection() && !closedButton.getSelection()) {
 				message = Messages.IssueRepositoryQueryPage_ErrorStatus;
+			}
 
 			setErrorMessage(message);
 			complete = message == null;
@@ -419,34 +430,40 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		query.setSummary(getQueryTitle());
 
 		List<String> statuses = new LinkedList<>();
-		if (openButton.getSelection())
+		if (openButton.getSelection()) {
 			statuses.add(IssueService.STATE_OPEN);
-		if (closedButton.getSelection())
+		}
+		if (closedButton.getSelection()) {
 			statuses.add(IssueService.STATE_CLOSED);
+		}
 		QueryUtils.setAttribute(IssueService.FILTER_STATE, statuses, query);
 
 		String assignee = assigneeText.getText().trim();
-		if (assignee.length() > 0)
+		if (assignee.length() > 0) {
 			query.setAttribute(IssueService.FILTER_ASSIGNEE, assignee);
-		else
+		} else {
 			query.setAttribute(IssueService.FILTER_ASSIGNEE, null);
+		}
 
 		String mentions = mentionText.getText().trim();
-		if (mentions.length() > 0)
+		if (mentions.length() > 0) {
 			query.setAttribute(IssueService.FILTER_MENTIONED, mentions);
-		else
+		} else {
 			query.setAttribute(IssueService.FILTER_MENTIONED, null);
+		}
 
 		int milestoneSelected = milestoneCombo.getSelectionIndex() - 1;
-		if (milestoneSelected >= 0)
+		if (milestoneSelected >= 0) {
 			query.setAttribute(IssueService.FILTER_MILESTONE, Integer
 					.toString(milestones.get(milestoneSelected).getNumber()));
-		else
+		} else {
 			query.setAttribute(IssueService.FILTER_MILESTONE, null);
+		}
 
 		List<String> labels = new LinkedList<>();
-		for (Object label : labelsViewer.getCheckedElements())
+		for (Object label : labelsViewer.getCheckedElements()) {
 			labels.add(label.toString());
+		}
 		QueryUtils.setAttribute(IssueService.FILTER_LABELS, labels, query);
 	}
 }

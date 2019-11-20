@@ -79,10 +79,12 @@ public class DataService extends GitHubService {
 	public Blob getBlob(IRepositoryIdProvider repository, String sha)
 			throws IOException {
 		final String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -107,8 +109,9 @@ public class DataService extends GitHubService {
 	public String createBlob(IRepositoryIdProvider repository, Blob blob)
 			throws IOException {
 		final String id = getId(repository);
-		if (blob == null)
+		if (blob == null) {
 			throw new IllegalArgumentException("Blob cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -145,10 +148,12 @@ public class DataService extends GitHubService {
 	public Tree getTree(IRepositoryIdProvider repository, String sha,
 			boolean recursive) throws IOException {
 		final String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -159,8 +164,9 @@ public class DataService extends GitHubService {
 		GitHubRequest request = createRequest();
 		request.setType(Tree.class);
 		request.setUri(uri);
-		if (recursive)
+		if (recursive) {
 			request.setParams(Collections.singletonMap("recursive", "1")); //$NON-NLS-1$ //$NON-NLS-2$
+		}
 		return (Tree) client.get(request).getBody();
 	}
 
@@ -199,10 +205,12 @@ public class DataService extends GitHubService {
 		request.setType(Tree.class);
 		request.setUri(uri);
 		Map<String, Object> params = new HashMap<>();
-		if (entries != null)
+		if (entries != null) {
 			params.put("tree", entries.toArray()); //$NON-NLS-1$
-		if (baseTree != null)
+		}
+		if (baseTree != null) {
 			params.put("base_tree", baseTree); //$NON-NLS-1$
+		}
 		return client.post(uri.toString(), params, Tree.class);
 	}
 
@@ -217,17 +225,20 @@ public class DataService extends GitHubService {
 	public Reference getReference(IRepositoryIdProvider repository, String name)
 			throws IOException {
 		final String id = getId(repository);
-		if (name == null)
+		if (name == null) {
 			throw new IllegalArgumentException("Name cannot be null"); //$NON-NLS-1$
-		if (name.length() == 0)
+		}
+		if (name.length() == 0) {
 			throw new IllegalArgumentException("Name cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
 		uri.append('/').append(id);
 		uri.append(SEGMENT_GIT);
-		if (!name.startsWith("refs/")) //$NON-NLS-1$
+		if (!name.startsWith("refs/")) { //$NON-NLS-1$
 			uri.append(SEGMENT_REFS);
+		}
 		uri.append('/').append(name);
 		GitHubRequest request = createRequest();
 		request.setType(Reference.class);
@@ -269,12 +280,14 @@ public class DataService extends GitHubService {
 	public Reference createReference(IRepositoryIdProvider repository,
 			Reference reference) throws IOException {
 		final String id = getId(repository);
-		if (reference == null)
+		if (reference == null) {
 			throw new IllegalArgumentException("Reference cannot be null"); //$NON-NLS-1$
+		}
 		TypedResource object = reference.getObject();
-		if (object == null)
+		if (object == null) {
 			throw new IllegalArgumentException(
 					"Reference object cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -312,28 +325,34 @@ public class DataService extends GitHubService {
 	public Reference editReference(IRepositoryIdProvider repository,
 			Reference reference, boolean force) throws IOException {
 		final String id = getId(repository);
-		if (reference == null)
+		if (reference == null) {
 			throw new IllegalArgumentException("Reference cannot be null"); //$NON-NLS-1$
+		}
 		TypedResource object = reference.getObject();
-		if (object == null)
+		if (object == null) {
 			throw new IllegalArgumentException("Object cannot be null"); //$NON-NLS-1$
+		}
 		String ref = reference.getRef();
-		if (ref == null)
+		if (ref == null) {
 			throw new IllegalArgumentException("Ref cannot be null"); //$NON-NLS-1$
-		if (ref.length() == 0)
+		}
+		if (ref.length() == 0) {
 			throw new IllegalArgumentException("Ref cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
 		uri.append('/').append(id);
 		uri.append(SEGMENT_GIT);
-		if (!ref.startsWith("refs/")) //$NON-NLS-1$
+		if (!ref.startsWith("refs/")) { //$NON-NLS-1$
 			uri.append(SEGMENT_REFS);
+		}
 		uri.append('/').append(ref);
 		Map<String, Object> params = new HashMap<>();
 		params.put("sha", object.getSha()); //$NON-NLS-1$
-		if (force)
+		if (force) {
 			params.put("force", Boolean.TRUE); //$NON-NLS-1$
+		}
 		return client.post(uri.toString(), params, Reference.class);
 	}
 
@@ -348,10 +367,12 @@ public class DataService extends GitHubService {
 	public Commit getCommit(IRepositoryIdProvider repository, String sha)
 			throws IOException {
 		final String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -376,8 +397,9 @@ public class DataService extends GitHubService {
 	public Commit createCommit(IRepositoryIdProvider repository, Commit commit)
 			throws IOException {
 		final String id = getId(repository);
-		if (commit == null)
+		if (commit == null) {
 			throw new IllegalArgumentException("Commit cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -391,13 +413,15 @@ public class DataService extends GitHubService {
 		List<Commit> parents = commit.getParents();
 		if (parents != null && parents.size() > 0) {
 			List<String> parentIds = new ArrayList<>();
-			for (Commit parent : parents)
+			for (Commit parent : parents) {
 				parentIds.add(parent.getSha());
+			}
 			params.put("parents", parentIds); //$NON-NLS-1$
 		}
 		Tree tree = commit.getTree();
-		if (tree != null)
+		if (tree != null) {
 			params.put("tree", tree.getSha()); //$NON-NLS-1$
+		}
 		return client.post(uri.toString(), params, Commit.class);
 	}
 
@@ -412,10 +436,12 @@ public class DataService extends GitHubService {
 	public Tag getTag(IRepositoryIdProvider repository, String sha)
 			throws IOException {
 		final String id = getId(repository);
-		if (sha == null)
+		if (sha == null) {
 			throw new IllegalArgumentException("SHA-1 cannot be null"); //$NON-NLS-1$
-		if (sha.length() == 0)
+		}
+		if (sha.length() == 0) {
 			throw new IllegalArgumentException("SHA-1 cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);
@@ -466,8 +492,9 @@ public class DataService extends GitHubService {
 	public Tag createTag(IRepositoryIdProvider repository, Tag tag)
 			throws IOException {
 		final String id = getId(repository);
-		if (tag == null)
+		if (tag == null) {
 			throw new IllegalArgumentException("Tag cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder();
 		uri.append(SEGMENT_REPOS);

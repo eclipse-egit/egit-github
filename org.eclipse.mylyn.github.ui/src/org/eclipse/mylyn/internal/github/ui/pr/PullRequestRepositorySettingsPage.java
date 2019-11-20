@@ -72,9 +72,10 @@ public class PullRequestRepositorySettingsPage
 		if (syncLabel) {
 			String url = serverUrlCombo.getText();
 			RepositoryId repo = GitHub.getRepository(url);
-			if (repo != null)
+			if (repo != null) {
 				repositoryLabelEditor.setStringValue(
 						PullRequestConnector.getRepositoryLabel(repo));
+			}
 		}
 	}
 
@@ -111,16 +112,19 @@ public class PullRequestRepositorySettingsPage
 
 						@Override
 						public void modifyText(ModifyEvent e) {
-							if (!editingUrl)
+							if (!editingUrl) {
 								syncLabel = false;
+							}
 						}
 					});
-		} else
+		} else {
 			serverUrlCombo.setText(PullRequestConnector
 					.stripPulls(repository.getRepositoryUrl()));
+		}
 
-		if (getRepository() == null)
+		if (getRepository() == null) {
 			setAnonymous(false);
+		}
 	}
 
 	@Override

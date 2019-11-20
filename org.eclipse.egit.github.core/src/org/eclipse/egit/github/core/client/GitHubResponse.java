@@ -62,8 +62,9 @@ public class GitHubResponse {
 	 * @return links
 	 */
 	protected PageLinks getLinks() {
-		if (links == null)
+		if (links == null) {
 			links = new PageLinks(this);
+		}
 		return links;
 	}
 

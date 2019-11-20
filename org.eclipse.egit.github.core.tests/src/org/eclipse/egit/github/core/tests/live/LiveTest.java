@@ -61,8 +61,9 @@ public abstract class LiveTest {
 		if (url != null) {
 			URL parsed = new URL(url);
 			client = new GitHubClient(parsed.getHost(), parsed.getPort(), parsed.getProtocol());
-		} else
+		} else {
 			client = new GitHubClient();
+		}
 		return configure(client);
 	}
 

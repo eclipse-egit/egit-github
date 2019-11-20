@@ -54,8 +54,9 @@ public abstract class GsonUtils {
 		builder.registerTypeAdapter(Date.class, new DateFormatter());
 		builder.registerTypeAdapter(Event.class, new EventFormatter());
 		builder.setFieldNamingPolicy(LOWER_CASE_WITH_UNDERSCORES);
-		if (serializeNulls)
+		if (serializeNulls) {
 			builder.serializeNulls();
+		}
 		return builder.create();
 	}
 

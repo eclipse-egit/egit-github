@@ -72,8 +72,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 	public Object execute(final ExecutionEvent event)
 			throws ExecutionException {
 		final TaskData data = getTaskData(event);
-		if (data == null)
+		if (data == null) {
 			return null;
+		}
 
 		Job job = new Job(MessageFormat.format(
 				Messages.CheckoutPullRequestHandler_JobName,
@@ -85,12 +86,14 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 				try {
 					PullRequestComposite prComp = PullRequestConnector
 							.getPullRequest(data);
-					if (prComp == null)
+					if (prComp == null) {
 						return Status.CANCEL_STATUS;
+					}
 					PullRequest request = prComp.getRequest();
 					Repository repo = PullRequestUtils.getRepository(request);
-					if (repo == null)
+					if (repo == null) {
 						return Status.CANCEL_STATUS;
+					}
 
 					String branchName = PullRequestUtils.getBranchName(request);
 					Ref branchRef = repo.findRef(branchName);
@@ -124,8 +127,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 						new CreateLocalBranchOperation(repo, branchName,
 								getBase(repo, request)).execute(sub);
 						sub.done();
-					} else
+					} else {
 						monitor.worked(1);
+					}
 
 					// Checkout topic branch
 					if (!PullRequestUtils.isCurrentBranch(branchName, repo)) {
@@ -135,8 +139,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 								branchName));
 						BranchOperationUI.checkout(repo, branchName).run(sub);
 						sub.done();
-					} else
+					} else {
 						monitor.worked(1);
+					}
 
 					// Fetch from remote
 					sub = new SubProgressMonitor(monitor, 1);

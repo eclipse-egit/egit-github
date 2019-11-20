@@ -87,10 +87,12 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public List<Team> getTeams(String organization) throws IOException {
-		if (organization == null)
+		if (organization == null) {
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
-		if (organization.length() == 0)
+		}
+		if (organization.length() == 0) {
 			throw new IllegalArgumentException("Organization cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_ORGS);
 		uri.append('/').append(organization);
@@ -126,12 +128,15 @@ public class TeamService extends GitHubService {
 	 */
 	public Team createTeam(String organization, Team team,
 			List<String> repoNames) throws IOException {
-		if (organization == null)
+		if (organization == null) {
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
-		if (organization.length() == 0)
+		}
+		if (organization.length() == 0) {
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
-		if (team == null)
+		}
+		if (team == null) {
 			throw new IllegalArgumentException("Team cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_ORGS);
 		uri.append('/').append(organization);
@@ -140,8 +145,9 @@ public class TeamService extends GitHubService {
 		Map<String, Object> params = new HashMap<>();
 		params.put("name", team.getName()); //$NON-NLS-1$
 		params.put("permission", team.getPermission()); //$NON-NLS-1$
-		if (repoNames != null)
+		if (repoNames != null) {
 			params.put("repo_names", repoNames); //$NON-NLS-1$
+		}
 		return client.post(uri.toString(), params, Team.class);
 	}
 
@@ -153,8 +159,9 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public Team editTeam(Team team) throws IOException {
-		if (team == null)
+		if (team == null) {
 			throw new IllegalArgumentException("Team cannot be null"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(team.getId());
@@ -201,10 +208,12 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public boolean isMember(int id, String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
@@ -221,10 +230,12 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void addMember(int id, String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
@@ -241,10 +252,12 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public void removeMember(int id, String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
@@ -266,10 +279,12 @@ public class TeamService extends GitHubService {
 	 */
 	public TeamMembership getMembership(int id, String user)
 			throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
@@ -299,10 +314,12 @@ public class TeamService extends GitHubService {
 	 */
 	public TeamMembership addMembership(int id, String user)
 			throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);
@@ -322,10 +339,12 @@ public class TeamService extends GitHubService {
 	 *             on communication errors
 	 */
 	public void removeMembership(int id, String user) throws IOException {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_TEAMS);
 		uri.append('/').append(id);

@@ -82,12 +82,14 @@ public final class MultiPartUtils {
 				if (value instanceof InputStream) {
 					InputStream input = (InputStream) value;
 					int read;
-					while ((read = input.read(buffer)) != -1)
+					while ((read = input.read(buffer)) != -1) {
 						output.write(buffer, 0, read);
+					}
 					input.close();
-				} else
+				} else {
 					output.write(
 							part.getValue().toString().getBytes(CHARSET_UTF8));
+				}
 				output.write(newline);
 			}
 			output.write(("--" + boundary + "--\r\n").getBytes(CHARSET_UTF8)); //$NON-NLS-1$ //$NON-NLS-2$

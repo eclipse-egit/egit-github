@@ -63,8 +63,9 @@ class Base64 {
 		DEC = new byte[128];
 		Arrays.fill(DEC, INVALID_DEC);
 
-		for (int i = 0; i < 64; i++)
+		for (int i = 0; i < 64; i++) {
 			DEC[ENC[i]] = (byte) i;
+		}
 		DEC[EQUALS_SIGN] = EQUALS_SIGN_DEC;
 
 		DEC['\t'] = WHITE_SPACE_DEC;
@@ -173,8 +174,9 @@ class Base64 {
 		int e = 0;
 		int len2 = len - 2;
 
-		for (; d < len2; d += 3, e += 4)
+		for (; d < len2; d += 3, e += 4) {
 			encode3to4(source, d + off, 3, outBuff, e);
+		}
 
 		if (d < len) {
 			encode3to4(source, d + off, len - d, outBuff, e);
@@ -275,18 +277,21 @@ class Base64 {
 					b4Posn = 0;
 
 					// If that was the equals sign, break out of 'for' loop
-					if (sbiCrop == EQUALS_SIGN)
+					if (sbiCrop == EQUALS_SIGN) {
 						break;
+					}
 				}
 
-			} else if (sbiDecode != WHITE_SPACE_DEC)
+			} else if (sbiDecode != WHITE_SPACE_DEC) {
 				throw new IllegalArgumentException(MessageFormat.format(
 						"Bad Base64 input character at {0} : {1} (decimal)", //$NON-NLS-1$
 						Integer.valueOf(i), Integer.valueOf(source[i] & 0xff)));
+			}
 		}
 
-		if (outBuff.length == outBuffPosn)
+		if (outBuff.length == outBuffPosn) {
 			return outBuff;
+		}
 
 		byte[] out = new byte[outBuffPosn];
 		System.arraycopy(outBuff, 0, out, 0, outBuffPosn);

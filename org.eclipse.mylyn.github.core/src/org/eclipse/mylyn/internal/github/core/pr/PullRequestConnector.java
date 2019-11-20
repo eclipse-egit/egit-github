@@ -85,9 +85,10 @@ public class PullRequestConnector extends RepositoryConnector {
 		TaskRepository repository = new TaskRepository(KIND, url);
 		repository.setProperty(IRepositoryConstants.PROPERTY_LABEL,
 				getRepositoryLabel(repo));
-		if (username != null && password != null)
+		if (username != null && password != null) {
 			repository.setCredentials(AuthenticationType.REPOSITORY,
 					new AuthenticationCredentials(username, password), true);
+		}
 		repository.setProperty(IRepositoryConstants.PROPERTY_CATEGORY,
 				TaskRepository.CATEGORY_REVIEW);
 		return repository;
@@ -110,9 +111,10 @@ public class PullRequestConnector extends RepositoryConnector {
 	 * @return stripped string
 	 */
 	public static String stripPulls(String repoUrl) {
-		if (repoUrl.endsWith(IGitHubConstants.SEGMENT_PULLS))
+		if (repoUrl.endsWith(IGitHubConstants.SEGMENT_PULLS)) {
 			repoUrl = repoUrl.substring(0,
 					repoUrl.length() - IGitHubConstants.SEGMENT_PULLS.length());
+		}
 		return repoUrl;
 	}
 
@@ -123,11 +125,13 @@ public class PullRequestConnector extends RepositoryConnector {
 	 * @return pull request
 	 */
 	public static PullRequestComposite getPullRequest(TaskData data) {
-		if (data == null)
+		if (data == null) {
 			return null;
+		}
 		String value = PullRequestAttribute.MODEL.getMetadata().getValue(data);
-		if (value.length() == 0)
+		if (value.length() == 0) {
 			return null;
+		}
 		return GsonUtils.fromJson(value, PullRequestComposite.class);
 	}
 
@@ -205,13 +209,15 @@ public class PullRequestConnector extends RepositoryConnector {
 					PullRequestComposite prComp = new PullRequestComposite();
 					prComp.setRequest(pr);
 					List<Comment> comments = null;
-					if (pr.getComments() > 0)
+					if (pr.getComments() > 0) {
 						comments = commentService.getComments(repo.getOwner(),
 								repo.getName(),
 								Integer.toString(pr.getNumber()));
-					if (pr.getCommits() > 0)
+					}
+					if (pr.getCommits() > 0) {
 						prComp.setCommits(
 								service.getCommits(repo, pr.getNumber()));
+					}
 					TaskData taskData = taskDataHandler.createTaskData(
 							repository, monitor, repo, prComp, comments);
 					collector.accept(taskData);
@@ -240,11 +246,13 @@ public class PullRequestConnector extends RepositoryConnector {
 			prComp.setRequest(pr);
 			IssueService commentService = new IssueService(client);
 			List<Comment> comments = null;
-			if (pr.getComments() > 0)
+			if (pr.getComments() > 0) {
 				comments = commentService.getComments(repo.getOwner(),
 						repo.getName(), taskId);
-			if (pr.getCommits() > 0)
+			}
+			if (pr.getCommits() > 0) {
 				prComp.setCommits(service.getCommits(repo, pr.getNumber()));
+			}
 			return taskDataHandler.createTaskData(repository, monitor, repo,
 					prComp, comments);
 		} catch (IOException e) {
@@ -255,9 +263,10 @@ public class PullRequestConnector extends RepositoryConnector {
 	@Override
 	public String getRepositoryUrlFromTaskUrl(String taskFullUrl) {
 		int lastPull = taskFullUrl.lastIndexOf(SEGMENT_PULL);
-		if (lastPull != -1)
+		if (lastPull != -1) {
 			return taskFullUrl.substring(0, lastPull)
 					+ IGitHubConstants.SEGMENT_PULLS;
+		}
 		return null;
 	}
 

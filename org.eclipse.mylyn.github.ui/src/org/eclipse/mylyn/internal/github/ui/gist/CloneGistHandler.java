@@ -86,9 +86,10 @@ public class CloneGistHandler extends TaskDataHandler {
 	private File getParentDirectory() {
 		String destinationDir = RepositoryUtil.getDefaultRepositoryDir();
 		File parentDir = new File(destinationDir);
-		if (!parentDir.exists() || !parentDir.isDirectory())
+		if (!parentDir.exists() || !parentDir.isDirectory()) {
 			parentDir = ResourcesPlugin.getWorkspace().getRoot()
 					.getRawLocation().toFile();
+		}
 		return parentDir;
 	}
 
@@ -132,9 +133,10 @@ public class CloneGistHandler extends TaskDataHandler {
 		final File workDir = new File(getParentDirectory(), name);
 
 		if (getRepoUtil().getConfiguredRepositories().contains(
-				new File(workDir, Constants.DOT_GIT).getAbsolutePath()))
+				new File(workDir, Constants.DOT_GIT).getAbsolutePath())) {
 			throw new IOException(MessageFormat
 					.format(Messages.CloneGistHandler_ErrorRepoExists, name));
+		}
 
 		return new CloneOperation(uri, true, null, workDir,
 				Constants.R_HEADS + Constants.MASTER,
@@ -157,8 +159,9 @@ public class CloneGistHandler extends TaskDataHandler {
 						@Override
 						public void execute(Repository repository,
 								IProgressMonitor monitor) throws CoreException {
-							if (monitor.isCanceled())
+							if (monitor.isCanceled()) {
 								return;
+							}
 							monitor.setTaskName(
 									Messages.CloneGistHandler_TaskRegisteringRepository);
 							getRepoUtil().addConfiguredRepository(
@@ -176,8 +179,9 @@ public class CloneGistHandler extends TaskDataHandler {
 								@Override
 								public void run(IProgressMonitor monitor)
 										throws CoreException {
-									if (monitor.isCanceled())
+									if (monitor.isCanceled()) {
 										return;
+									}
 									createProject(
 											repository.getDirectory()
 													.getParentFile(),
@@ -226,8 +230,9 @@ public class CloneGistHandler extends TaskDataHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		TaskData data = getTaskData(event);
-		if (data != null)
+		if (data != null) {
 			schedule(createCloneJob(event, data), event);
+		}
 		return null;
 	}
 }

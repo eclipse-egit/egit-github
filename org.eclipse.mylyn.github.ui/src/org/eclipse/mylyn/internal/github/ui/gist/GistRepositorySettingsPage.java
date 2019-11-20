@@ -81,13 +81,14 @@ public class GistRepositorySettingsPage extends AbstractRepositorySettingsPage {
 	@SuppressWarnings("unused")
 	@Override
 	protected boolean isValidUrl(String url) {
-		if (url.startsWith("http://") || url.startsWith("https://")) //$NON-NLS-1$ //$NON-NLS-2$
+		if (url.startsWith("http://") || url.startsWith("https://")) { //$NON-NLS-1$ //$NON-NLS-2$
 			try {
 				new URL(url);
 				return true;
 			} catch (IOException e) {
 				return false;
 			}
+		}
 		return false;
 
 	}

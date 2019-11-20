@@ -140,10 +140,12 @@ public class StargazerService extends GitHubService {
 	 */
 	protected PagedRequest<Repository> createStarredRequest(String user,
 			int start, int size) {
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		PagedRequest<Repository> request = createPagedRequest(start, size);
 		StringBuilder uri = new StringBuilder(SEGMENT_USERS);

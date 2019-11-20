@@ -168,10 +168,12 @@ public class GitHubAttributeMetadata {
 	 */
 	public void setValue(TaskData data, String value) {
 		TaskAttribute root = data.getRoot();
-		if (value == null)
+		if (value == null) {
 			value = ""; //$NON-NLS-1$
+		}
 		TaskAttribute attribute = root.getAttribute(id);
-		if (attribute != null)
+		if (attribute != null) {
 			data.getAttributeMapper().setValue(attribute, value);
+		}
 	}
 }

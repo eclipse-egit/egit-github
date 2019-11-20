@@ -80,10 +80,12 @@ public class CollaboratorService extends GitHubService {
 	protected String createUpdateUri(IRepositoryIdProvider repository,
 			String user) {
 		String id = getId(repository);
-		if (user == null)
+		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
-		if (user.length() == 0)
+		}
+		if (user.length() == 0) {
 			throw new IllegalArgumentException("User cannot be empty"); //$NON-NLS-1$
+		}
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);

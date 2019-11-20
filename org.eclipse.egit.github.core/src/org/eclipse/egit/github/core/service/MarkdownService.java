@@ -66,8 +66,9 @@ public class MarkdownService extends GitHubService {
 			StringBuilder output = new StringBuilder();
 			char[] buffer = new char[8192];
 			int read;
-			while ((read = reader.read(buffer)) != -1)
+			while ((read = reader.read(buffer)) != -1) {
 				output.append(buffer, 0, read);
+			}
 			return output.toString();
 		} finally {
 			try {

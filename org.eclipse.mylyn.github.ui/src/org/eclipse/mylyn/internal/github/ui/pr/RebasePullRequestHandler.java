@@ -49,8 +49,9 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 	public Object execute(final ExecutionEvent event)
 			throws ExecutionException {
 		final TaskData data = getTaskData(event);
-		if (data == null)
+		if (data == null) {
 			return null;
+		}
 		Job job = new Job(MessageFormat.format(
 				Messages.RebasePullRequestHandler_RebaseJob,
 				data.getTaskId())) {
@@ -59,12 +60,14 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 			protected IStatus run(IProgressMonitor monitor) {
 				PullRequestComposite prComp = PullRequestConnector
 						.getPullRequest(data);
-				if (prComp == null)
+				if (prComp == null) {
 					return Status.CANCEL_STATUS;
+				}
 				PullRequest request = prComp.getRequest();
 				Repository repo = PullRequestUtils.getRepository(request);
-				if (repo == null)
+				if (repo == null) {
 					return Status.CANCEL_STATUS;
+				}
 				String branchName = PullRequestUtils.getBranchName(request);
 				try {
 					String target = request.getBase().getRef();

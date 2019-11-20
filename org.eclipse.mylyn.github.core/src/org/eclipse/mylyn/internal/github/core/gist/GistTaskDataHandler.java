@@ -96,8 +96,9 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 				.create(data);
 		description.getMetaData().setReadOnly(!isOwner);
 		String gistDescription = gist.getDescription();
-		if (gistDescription != null)
+		if (gistDescription != null) {
 			mapper.setValue(description, gistDescription);
+		}
 
 		TaskAttribute created = GistAttribute.CREATED.getMetadata()
 				.create(data);
@@ -112,10 +113,11 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 
 		TaskAttribute cloneUrl = GistAttribute.CLONE_URL.getMetadata()
 				.create(data);
-		if (isOwner)
+		if (isOwner) {
 			cloneUrl.setValue(gist.getGitPushUrl());
-		else
+		} else {
 			cloneUrl.setValue(gist.getGitPullUrl());
+		}
 
 		IRepositoryPerson reporterPerson = null;
 		User owner = gist.getOwner();
@@ -171,8 +173,9 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 		if (description != null && description.length() > 0) {
 			description = description.trim();
 			int firstLine = description.indexOf('\n');
-			if (firstLine != -1)
+			if (firstLine != -1) {
 				description = description.substring(0, firstLine).trim();
+			}
 			if (description.length() > SUMMARY_LENGTH) {
 				// Break on last whitespace if maximum length is in the middle
 				// of a word
@@ -180,42 +183,47 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 						&& !Character.isWhitespace(
 								description.charAt(SUMMARY_LENGTH - 1))) {
 					int lastWhitespace = description.lastIndexOf(' ');
-					if (lastWhitespace > 0)
+					if (lastWhitespace > 0) {
 						description = description.substring(0, lastWhitespace);
-					else
+					} else {
 						description = description.substring(0, SUMMARY_LENGTH);
-				} else
+					}
+				} else {
 					description = description.substring(0, SUMMARY_LENGTH);
+				}
 				description = description.trim();
 			}
-			if (description.length() > 0)
+			if (description.length() > 0) {
 				summaryText.append(description).append(' ');
+			}
 		}
-		if (files != 1)
+		if (files != 1) {
 			summaryText.append(MessageFormat.format(
 					Messages.GistTaskDataHandler_FilesMultiple,
 					Integer.valueOf(files)));
-		else
+		} else {
 			summaryText.append(Messages.GistTaskDataHandler_FilesSingle);
+		}
 		summaryText.append(',').append(' ').append(formatSize(size));
 		return summaryText.toString();
 	}
 
 	private String formatSize(long size) {
-		if (size == 1)
+		if (size == 1) {
 			return Messages.GistTaskDataHandler_SizeByte;
-		else if (size < 1024)
+		} else if (size < 1024) {
 			return new DecimalFormat(Messages.GistTaskDataHandler_SizeBytes)
 					.format(size);
-		else if (size >= 1024 && size <= 1048575)
+		} else if (size >= 1024 && size <= 1048575) {
 			return new DecimalFormat(Messages.GistTaskDataHandler_SizeKilobytes)
 					.format(size / 1024.0);
-		else if (size >= 1048576 && size <= 1073741823)
+		} else if (size >= 1048576 && size <= 1073741823) {
 			return new DecimalFormat(Messages.GistTaskDataHandler_SizeMegabytes)
 					.format(size / 1048576.0);
-		else
+		} else {
 			return new DecimalFormat(Messages.GistTaskDataHandler_SizeGigabytes)
 					.format(size / 1073741824.0);
+		}
 	}
 
 	/**
@@ -260,12 +268,14 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 						.getAttribute(
 								GistAttribute.COMMENT_NEW.getMetadata().getId())
 						.getValue();
-				if (newComment.length() > 0)
+				if (newComment.length() > 0) {
 					service.createComment(taskData.getTaskId(), newComment);
+				}
 				String author = GistAttribute.AUTHOR.getMetadata()
 						.getValue(taskData);
-				if (isOwner(repository, author))
+				if (isOwner(repository, author)) {
 					service.updateGist(gist);
+				}
 			} catch (IOException e) {
 				throw new CoreException(GitHub.createWrappedStatus(e));
 			}
@@ -304,8 +314,9 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 	 * @return true if owner, false otherwise
 	 */
 	protected boolean isOwner(TaskRepository repository, User author) {
-		if (author == null)
+		if (author == null) {
 			return false;
+		}
 		return isOwner(repository, author.getLogin());
 	}
 
@@ -320,8 +331,9 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 	protected boolean isOwner(TaskRepository repository, String author) {
 		AuthenticationCredentials creds = repository
 				.getCredentials(AuthenticationType.REPOSITORY);
-		if (creds == null)
+		if (creds == null) {
 			return false;
+		}
 		return author != null && author.length() > 0
 				&& author.equals(creds.getUserName());
 	}

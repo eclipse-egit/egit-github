@@ -77,9 +77,10 @@ public class GitHub {
 			TaskRepository repository) {
 		AuthenticationCredentials credentials = repository
 				.getCredentials(AuthenticationType.REPOSITORY);
-		if (credentials != null)
+		if (credentials != null) {
 			client.setCredentials(credentials.getUserName(),
 					credentials.getPassword());
+		}
 		return client;
 	}
 
