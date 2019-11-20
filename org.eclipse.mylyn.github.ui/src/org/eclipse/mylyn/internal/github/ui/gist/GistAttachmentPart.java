@@ -20,14 +20,11 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.IOpenListener;
 import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
@@ -224,23 +221,14 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 			}
 
 		});
-		attachmentsViewer.addOpenListener(new IOpenListener() {
-			@Override
-			public void open(OpenEvent event) {
-				openAttachments(event);
-			}
-		});
+		attachmentsViewer.addOpenListener(event -> openAttachments(event));
 		attachmentsViewer.addSelectionChangedListener(getTaskEditorPage());
 		attachmentsViewer.setInput(attachmentList.toArray());
 
 		menuManager = new MenuManager();
 		menuManager.setRemoveAllWhenShown(true);
-		menuManager.addMenuListener(new IMenuListener() {
-			@Override
-			public void menuAboutToShow(IMenuManager manager) {
-				TasksUiMenus.fillTaskAttachmentMenu(manager);
-			}
-		});
+		menuManager.addMenuListener(
+				manager -> TasksUiMenus.fillTaskAttachmentMenu(manager));
 		getTaskEditorPage().getEditorSite().registerContextMenu(ID_POPUP_MENU,
 				menuManager, attachmentsViewer, true);
 		Menu menu = menuManager.createContextMenu(attachmentsTable);

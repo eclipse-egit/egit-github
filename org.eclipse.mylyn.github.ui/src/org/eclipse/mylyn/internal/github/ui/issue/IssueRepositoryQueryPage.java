@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.egit.github.core.Milestone;
 import org.eclipse.egit.github.core.service.IssueService;
@@ -32,9 +31,7 @@ import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.mylyn.commons.core.ICoreRunnable;
 import org.eclipse.mylyn.commons.net.Policy;
 import org.eclipse.mylyn.commons.ui.CommonUiUtil;
@@ -46,10 +43,6 @@ import org.eclipse.mylyn.tasks.core.IRepositoryQuery;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.TasksUiImages;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -134,14 +127,8 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			}
 
 		});
-		labelsViewer
-				.addSelectionChangedListener(new ISelectionChangedListener() {
-
-					@Override
-					public void selectionChanged(SelectionChangedEvent event) {
-						setPageComplete(isPageComplete());
-					}
-				});
+		labelsViewer.addSelectionChangedListener(
+				event -> setPageComplete(isPageComplete()));
 	}
 
 	private void createOptionsArea(Composite parent) {
@@ -172,13 +159,7 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		ToolItem updateItem = new ToolItem(toolbar, SWT.PUSH);
 		final Image updateImage = TasksUiImages.REPOSITORY_UPDATE_CONFIGURATION
 				.createImage();
-		toolbar.addDisposeListener(new DisposeListener() {
-
-			@Override
-			public void widgetDisposed(DisposeEvent e) {
-				updateImage.dispose();
-			}
-		});
+		toolbar.addDisposeListener(e -> updateImage.dispose());
 		updateItem.setImage(updateImage);
 		updateItem.setToolTipText(
 				Messages.IssueRepositoryQueryPage_TooltipUpdateRepository);
@@ -235,13 +216,7 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 					.setText(Messages.IssueRepositoryQueryPage_TitleLabel);
 			titleText = new Text(titleArea, SWT.SINGLE | SWT.BORDER);
 			GridDataFactory.fillDefaults().grab(true, false).applyTo(titleText);
-			titleText.addModifyListener(new ModifyListener() {
-
-				@Override
-				public void modifyText(ModifyEvent e) {
-					setPageComplete(isPageComplete());
-				}
-			});
+			titleText.addModifyListener(e -> setPageComplete(isPageComplete()));
 		}
 
 		createOptionsArea(displayArea);
@@ -339,37 +314,27 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 
 	private void refreshRepository() {
 		try {
-			ICoreRunnable runnable = new ICoreRunnable() {
+			ICoreRunnable runnable = monitor -> {
+				Policy.monitorFor(monitor);
+				monitor.beginTask("", 2); //$NON-NLS-1$
+				IssueConnector connector = IssueConnectorUi.getCoreConnector();
+				TaskRepository repository = getTaskRepository();
 
-				@Override
-				public void run(IProgressMonitor monitor) throws CoreException {
-					Policy.monitorFor(monitor);
-					monitor.beginTask("", 2); //$NON-NLS-1$
-					IssueConnector connector = IssueConnectorUi
-							.getCoreConnector();
-					TaskRepository repository = getTaskRepository();
+				monitor.setTaskName(
+						Messages.IssueRepositoryQueryPage_TaskLoadingLabels);
+				connector.refreshLabels(repository);
+				monitor.worked(1);
 
-					monitor.setTaskName(
-							Messages.IssueRepositoryQueryPage_TaskLoadingLabels);
-					connector.refreshLabels(repository);
-					monitor.worked(1);
+				monitor.setTaskName(
+						Messages.IssueRepositoryQueryPage_TaskLoadingMilestones);
+				connector.refreshMilestones(repository);
+				monitor.done();
 
-					monitor.setTaskName(
-							Messages.IssueRepositoryQueryPage_TaskLoadingMilestones);
-					connector.refreshMilestones(repository);
-					monitor.done();
-
-					PlatformUI.getWorkbench().getDisplay()
-							.asyncExec(new Runnable() {
-
-								@Override
-								public void run() {
-									updateLabels();
-									updateMilestones();
-									initialize();
-								}
-							});
-				}
+				PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+					updateLabels();
+					updateMilestones();
+					initialize();
+				});
 			};
 			IRunnableContext context = getContainer();
 			if (context == null) {

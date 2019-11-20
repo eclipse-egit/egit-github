@@ -107,10 +107,8 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 				.getCredentials(AuthenticationType.REPOSITORY);
 		if (cred == null || cred.getUserName() == null
 				|| cred.getUserName().equals("")) { //$NON-NLS-1$
-			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					getTaskEditor().setMessage(
+			PlatformUI.getWorkbench().getDisplay()
+					.asyncExec(() -> getTaskEditor().setMessage(
 							Messages.IssueTaskEditorPage_MessageAnonymousCannotSubmit,
 							type, new HyperlinkAdapter() {
 								@Override
@@ -119,9 +117,7 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 											taskRepository);
 									refresh();
 								}
-							});
-				}
-			});
+							}));
 			return false;
 		}
 		return true;

@@ -47,16 +47,11 @@ public class PullRequestConnectorUi extends AbstractRepositoryConnectorUi {
 				+ remoteRepo.getName();
 		final String message = MessageFormat.format(
 				Messages.PullRequestConnectorUi_MessageRepositoryNotFound, id);
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-			@Override
-			public void run() {
-				MessageDialog.openInformation(
+		PlatformUI.getWorkbench().getDisplay()
+				.syncExec(() -> MessageDialog.openInformation(
 						PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 						Messages.PullRequestConnectorUi_TitleRepositoryNotFound,
-						message);
-			}
-		});
+						message));
 	}
 
 	@Override

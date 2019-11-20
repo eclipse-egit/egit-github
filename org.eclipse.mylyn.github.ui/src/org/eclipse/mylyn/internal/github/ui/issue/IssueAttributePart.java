@@ -40,8 +40,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -121,14 +119,11 @@ public class IssueAttributePart extends AbstractTaskEditorSection {
 	@Override
 	protected Control createContent(FormToolkit toolkit, Composite parent) {
 		attributesComposite = toolkit.createComposite(parent);
-		attributesComposite.addListener(SWT.MouseDown, new Listener() {
-			@Override
-			public void handleEvent(Event event) {
-				Control focus = event.display.getFocusControl();
-				if (focus instanceof Text
-						&& ((Text) focus).getEditable() == false) {
-					getManagedForm().getForm().setFocus();
-				}
+		attributesComposite.addListener(SWT.MouseDown, event -> {
+			Control focus = event.display.getFocusControl();
+			if (focus instanceof Text
+					&& ((Text) focus).getEditable() == false) {
+				getManagedForm().getForm().setFocus();
 			}
 		});
 

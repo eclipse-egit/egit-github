@@ -23,8 +23,6 @@ import org.eclipse.mylyn.internal.github.ui.GitHubRepositoryQueryPage;
 import org.eclipse.mylyn.tasks.core.IRepositoryQuery;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -120,13 +118,7 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 					Messages.PullRequestRepositoryQueryPage_LabelTitle);
 			titleText = new Text(titleArea, SWT.SINGLE | SWT.BORDER);
 			GridDataFactory.fillDefaults().grab(true, false).applyTo(titleText);
-			titleText.addModifyListener(new ModifyListener() {
-
-				@Override
-				public void modifyText(ModifyEvent e) {
-					setPageComplete(isPageComplete());
-				}
-			});
+			titleText.addModifyListener(e -> setPageComplete(isPageComplete()));
 		}
 
 		createOptionsArea(displayArea);

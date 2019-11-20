@@ -18,8 +18,6 @@ import org.eclipse.mylyn.internal.github.ui.AvatarStore.IAvatarCallback;
 import org.eclipse.mylyn.tasks.core.IRepositoryPerson;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
@@ -139,13 +137,7 @@ public class AvatarLabel implements IAvatarCallback {
 	private AvatarLabel setImage(final Image image) {
 		if (!avatarImage.isDisposed()) {
 			avatarImage.setBackgroundImage(image);
-			avatarImage.addDisposeListener(new DisposeListener() {
-
-				@Override
-				public void widgetDisposed(DisposeEvent e) {
-					image.dispose();
-				}
-			});
+			avatarImage.addDisposeListener(e -> image.dispose());
 		}
 		return this;
 	}
@@ -156,13 +148,9 @@ public class AvatarLabel implements IAvatarCallback {
 	 */
 	@Override
 	public void loaded(final ImageData data, final AvatarStore store) {
-		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-			@Override
-			public void run() {
-				Image image = store.getScaledImage(AVATAR_SIZE, data);
-				setImage(image).setVisible(true).layout();
-			}
+		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+			Image image = store.getScaledImage(AVATAR_SIZE, data);
+			setImage(image).setVisible(true).layout();
 		});
 	}
 

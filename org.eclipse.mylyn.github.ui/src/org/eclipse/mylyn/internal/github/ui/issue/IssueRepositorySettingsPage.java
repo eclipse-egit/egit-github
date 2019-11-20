@@ -34,8 +34,6 @@ import org.eclipse.mylyn.internal.github.ui.GitHubUi;
 import org.eclipse.mylyn.internal.tasks.core.IRepositoryConstants;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.ui.wizards.AbstractRepositorySettingsPage;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 
@@ -102,27 +100,19 @@ public class IssueRepositorySettingsPage
 
 			syncRepositoryLabel();
 
-			serverUrlCombo.addModifyListener(new ModifyListener() {
-
-				@Override
-				public void modifyText(ModifyEvent e) {
-					editingUrl = true;
-					try {
-						syncRepositoryLabel();
-					} finally {
-						editingUrl = false;
-					}
+			serverUrlCombo.addModifyListener(e -> {
+				editingUrl = true;
+				try {
+					syncRepositoryLabel();
+				} finally {
+					editingUrl = false;
 				}
 			});
 
 			repositoryLabelEditor.getTextControl(compositeContainer)
-					.addModifyListener(new ModifyListener() {
-
-						@Override
-						public void modifyText(ModifyEvent e) {
-							if (!editingUrl) {
-								syncLabel = false;
-							}
+					.addModifyListener(e -> {
+						if (!editingUrl) {
+							syncLabel = false;
 						}
 					});
 		}

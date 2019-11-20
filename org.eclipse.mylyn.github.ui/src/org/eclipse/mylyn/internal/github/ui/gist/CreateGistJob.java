@@ -74,15 +74,11 @@ public class CreateGistJob extends Job {
 			gist.setFiles(Collections.singletonMap(title, file));
 			final Gist created = service.createGist(gist);
 			final Display display = PlatformUI.getWorkbench().getDisplay();
-			display.asyncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					GistNotificationPopup popup = new GistNotificationPopup(
-							display, created, title, repository);
-					popup.create();
-					popup.open();
-				}
+			display.asyncExec(() -> {
+				GistNotificationPopup popup = new GistNotificationPopup(display,
+						created, title, repository);
+				popup.create();
+				popup.open();
 			});
 			TasksUiPlugin.getTaskJobFactory().createSynchronizeRepositoriesJob(
 					GistConnectorUi.getRepositories()).schedule();
