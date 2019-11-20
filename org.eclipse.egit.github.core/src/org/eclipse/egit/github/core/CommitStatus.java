@@ -152,12 +152,12 @@ public class CommitStatus implements Serializable {
 
 	/**
 	 * @param state
-	 * @return this status
-	 * throws {@link IllegalArgumentException} if state is invalid
+	 * @return this status throws {@link IllegalArgumentException} if state is
+	 *         invalid
 	 */
 	public CommitStatus setState(final String state) {
-		if (STATE_ERROR.equals(state) || STATE_FAILURE.equals(state) || STATE_PENDING.equals(state)
-				|| STATE_SUCCESS.equals(state)) {
+		if (STATE_ERROR.equals(state) || STATE_FAILURE.equals(state)
+				|| STATE_PENDING.equals(state) || STATE_SUCCESS.equals(state)) {
 			this.state = state;
 			return this;
 		}

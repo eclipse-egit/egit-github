@@ -60,14 +60,12 @@ public class RepositoryHookTest {
 		assertEquals(config, hook.setConfig(config).getConfig());
 		List<String> events = Arrays.asList("push", "pull_request");
 		assertEquals(events, hook.setEvents(events).getEvents());
-		assertEquals(new Date(1234), hook.setCreatedAt(new Date(1234))
-				.getCreatedAt());
+		assertEquals(new Date(1234), hook.setCreatedAt(new Date(1234)).getCreatedAt());
 		assertEquals(150, hook.setId(150).getId());
 		RepositoryHookResponse response = new RepositoryHookResponse();
 		assertEquals(response, hook.setLastResponse(response).getLastResponse());
 		assertEquals("cihook", hook.setName("cihook").getName());
-		assertEquals(new Date(4455), hook.setUpdatedAt(new Date(4455))
-				.getUpdatedAt());
+		assertEquals(new Date(4455), hook.setUpdatedAt(new Date(4455)).getUpdatedAt());
 		assertEquals("url", hook.setUrl("url").getUrl());
 	}
 }

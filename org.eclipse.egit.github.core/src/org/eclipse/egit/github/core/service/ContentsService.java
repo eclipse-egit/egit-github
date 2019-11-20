@@ -93,8 +93,8 @@ public class ContentsService extends GitHubService {
 	 * @return list of contents at root
 	 * @throws IOException
 	 */
-	public List<RepositoryContents> getContents(IRepositoryIdProvider repository)
-			throws IOException {
+	public List<RepositoryContents> getContents(
+			IRepositoryIdProvider repository) throws IOException {
 		return getContents(repository, null);
 	}
 

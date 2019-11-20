@@ -26,8 +26,8 @@ import org.eclipse.mylyn.tasks.core.data.TaskAttributeMapper;
  */
 public class GitHubTaskAttributeMapper extends TaskAttributeMapper {
 
-	private DateFormat format = DateFormat.getDateTimeInstance(
-			DateFormat.MEDIUM, DateFormat.SHORT);
+	private DateFormat format = DateFormat
+			.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT);
 
 	/**
 	 * @param taskRepository

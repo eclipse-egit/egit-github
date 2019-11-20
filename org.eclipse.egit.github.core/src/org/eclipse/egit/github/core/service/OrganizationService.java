@@ -43,6 +43,7 @@ public class OrganizationService extends GitHubService {
 
 	/**
 	 * Filter for roles a member can have
+	 * 
 	 * @since 4.2
 	 */
 	public static enum RoleFilter {
@@ -173,7 +174,7 @@ public class OrganizationService extends GitHubService {
 	 * Get members of organization
 	 *
 	 * @param organization
-	 *          the name of the organization
+	 *            the name of the organization
 	 * @return list of all organization members
 	 * @throws IOException
 	 */
@@ -185,19 +186,20 @@ public class OrganizationService extends GitHubService {
 	 * Get members of organization
 	 *
 	 * @param organization
-	 *          the name of the organization
+	 *            the name of the organization
 	 * @param roleFilter
-	 *          only return members matching the {@link RoleFilter}<br>
-	 *          To use this feature it is currently required to set the
-	 *          {@link org.eclipse.egit.github.core.service.GitHubService#ACCEPT_PREVIEW_IRONMAN
-	 *          application/vnd.github.ironman-preview+json} Accept header in the
-	 *          {@link GitHubClient#setHeaderAccept GitHubClient}
-	 * @return list of all organization members whose role matches the {@code roleFilter}
+	 *            only return members matching the {@link RoleFilter}<br>
+	 *            To use this feature it is currently required to set the
+	 *            {@link org.eclipse.egit.github.core.service.GitHubService#ACCEPT_PREVIEW_IRONMAN
+	 *            application/vnd.github.ironman-preview+json} Accept header in
+	 *            the {@link GitHubClient#setHeaderAccept GitHubClient}
+	 * @return list of all organization members whose role matches the
+	 *         {@code roleFilter}
 	 * @throws IOException
 	 * @since 4.2
 	 */
-	public List<User> getMembers(String organization, RoleFilter roleFilter) throws IOException
-	{
+	public List<User> getMembers(String organization, RoleFilter roleFilter)
+			throws IOException {
 		if (organization == null)
 			throw new IllegalArgumentException("Organization cannot be null"); //$NON-NLS-1$
 		if (organization.length() == 0)

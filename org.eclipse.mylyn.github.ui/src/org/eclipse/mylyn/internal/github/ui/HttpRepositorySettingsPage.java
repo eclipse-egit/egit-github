@@ -23,8 +23,8 @@ import org.eclipse.mylyn.tasks.ui.wizards.AbstractRepositorySettingsPage;
 /**
  * Base HTTP-based task repository settings page
  */
-public abstract class HttpRepositorySettingsPage extends
-		AbstractRepositorySettingsPage {
+public abstract class HttpRepositorySettingsPage
+		extends AbstractRepositorySettingsPage {
 
 	/**
 	 * Create repository settings page
@@ -62,7 +62,7 @@ public abstract class HttpRepositorySettingsPage extends
 	 */
 	@Override
 	public boolean canValidate() {
-		return isPageComplete()
-				&& (getMessage() == null || getMessageType() != IMessageProvider.ERROR);
+		return isPageComplete() && (getMessage() == null
+				|| getMessageType() != IMessageProvider.ERROR);
 	}
 }

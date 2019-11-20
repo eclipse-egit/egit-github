@@ -66,7 +66,8 @@ public class GitHubUi extends AbstractUIPlugin {
 	 * @param e
 	 * @return status
 	 */
-	public static IStatus createStatus(int severity, String message, Throwable e) {
+	public static IStatus createStatus(int severity, String message,
+			Throwable e) {
 		return new Status(severity, BUNDLE_ID, message, e);
 	}
 
@@ -174,7 +175,8 @@ public class GitHubUi extends AbstractUIPlugin {
 		if (file.exists()) {
 			ObjectInputStream stream = null;
 			try {
-				stream = new ObjectInputStream(Files.newInputStream(file.toPath()));
+				stream = new ObjectInputStream(
+						Files.newInputStream(file.toPath()));
 				store = (AvatarStore) stream.readObject();
 			} catch (IOException e) {
 				logError("Error reading avatar store", e); //$NON-NLS-1$
@@ -203,7 +205,8 @@ public class GitHubUi extends AbstractUIPlugin {
 		IPath location = Platform.getStateLocation(context.getBundle());
 		File file = location.append(STORE_NAME).toFile();
 
-		try (ObjectOutputStream stream = new ObjectOutputStream(Files.newOutputStream(file.toPath()))) {
+		try (ObjectOutputStream stream = new ObjectOutputStream(
+				Files.newOutputStream(file.toPath()))) {
 			stream.writeObject(this.store);
 		} catch (IOException e) {
 			logError("Error writing avatar store", e); //$NON-NLS-1$

@@ -75,7 +75,8 @@ public class PullRequestReviewCommentPayload extends EventPayload {
 	 * @return this PullRequestReviewCommentPayload
 	 * @since 4.1
 	 */
-	public PullRequestReviewCommentPayload setPullRequest(PullRequest pullRequest) {
+	public PullRequestReviewCommentPayload setPullRequest(
+			PullRequest pullRequest) {
 		this.pullRequest = pullRequest;
 		return this;
 	}

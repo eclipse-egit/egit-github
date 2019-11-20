@@ -52,14 +52,12 @@ public class CommitCommentTest {
 		CommitComment comment = new CommitComment();
 		assertEquals("a body", comment.setBody("a body").getBody());
 		assertEquals("123abc", comment.setCommitId("123abc").getCommitId());
-		assertEquals(new Date(8000), comment.setCreatedAt(new Date(8000))
-				.getCreatedAt());
+		assertEquals(new Date(8000), comment.setCreatedAt(new Date(8000)).getCreatedAt());
 		assertEquals(20, comment.setId(20).getId());
 		assertEquals(12, comment.setLine(12).getLine());
 		assertEquals("/a/path", comment.setPath("/a/path").getPath());
 		assertEquals(4, comment.setPosition(4).getPosition());
-		assertEquals(new Date(10000), comment.setUpdatedAt(new Date(10000))
-				.getUpdatedAt());
+		assertEquals(new Date(10000), comment.setUpdatedAt(new Date(10000)).getUpdatedAt());
 		assertEquals("http://url", comment.setUrl("http://url").getUrl());
 		User user = new User().setLogin("theuser");
 		assertEquals(user, comment.setUser(user).getUser());

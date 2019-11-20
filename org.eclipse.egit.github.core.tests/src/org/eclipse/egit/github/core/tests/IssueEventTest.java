@@ -62,8 +62,7 @@ public class IssueEventTest {
 		assertEquals(actor, event.setActor(actor).getActor());
 		assertEquals("a12b", event.setCommitId("a12b").getCommitId());
 		assertEquals(IssueEvent.TYPE_CLOSED, event.setEvent("closed").getEvent());
-		assertEquals(new Date(60000), event.setCreatedAt(new Date(60000))
-				.getCreatedAt());
+		assertEquals(new Date(60000), event.setCreatedAt(new Date(60000)).getCreatedAt());
 		Label label = new Label().setName("Lab El").setColor("563d7c");
 		assertEquals(label, event.setLabel(label).getLabel());
 		User assignee = new User().setName("Assig Nee");

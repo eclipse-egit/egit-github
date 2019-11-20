@@ -135,10 +135,8 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 		if (attachments.size() > 0)
 			createAttachmentTable(toolkit, attachmentsComposite);
 		else {
-			Label label = toolkit
-					.createLabel(
-							attachmentsComposite,
-							org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_No_attachments);
+			Label label = toolkit.createLabel(attachmentsComposite,
+					org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_No_attachments);
 			getTaskEditorPage().registerDefaultDropListener(label);
 		}
 
@@ -161,8 +159,8 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	@SuppressWarnings("unused")
 	private void createAttachmentTable(FormToolkit toolkit,
 			final Composite attachmentsComposite) {
-		attachmentsTable = toolkit.createTable(attachmentsComposite, SWT.MULTI
-				| SWT.FULL_SELECTION);
+		attachmentsTable = toolkit.createTable(attachmentsComposite,
+				SWT.MULTI | SWT.FULL_SELECTION);
 		attachmentsTable.setLinesVisible(true);
 		attachmentsTable.setHeaderVisible(true);
 		attachmentsTable.setLayout(new GridLayout());
@@ -196,10 +194,11 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 		List<ITaskAttachment> attachmentList = new ArrayList<>(
 				attachments.size());
 		for (TaskAttribute attribute : attachments) {
-			ITaskAttachment taskAttachment = new TaskAttachment(getModel()
-					.getTaskRepository(), getModel().getTask(), attribute);
-			getTaskData().getAttributeMapper().updateTaskAttachment(
-					taskAttachment, attribute);
+			ITaskAttachment taskAttachment = new TaskAttachment(
+					getModel().getTaskRepository(), getModel().getTask(),
+					attribute);
+			getTaskData().getAttributeMapper()
+					.updateTaskAttachment(taskAttachment, attribute);
 			attachmentList.add(taskAttachment);
 		}
 		attachmentsViewer.setContentProvider(new ArrayContentProvider());
@@ -247,8 +246,8 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 	}
 
 	private File getStateFile() {
-		IPath stateLocation = Platform.getStateLocation(TasksUiPlugin
-				.getDefault().getBundle());
+		IPath stateLocation = Platform
+				.getStateLocation(TasksUiPlugin.getDefault().getBundle());
 		return stateLocation.append("GistAttachmentPart.xml").toFile(); //$NON-NLS-1$
 	}
 
@@ -257,16 +256,15 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 		final Composite attachmentControlsComposite = toolkit
 				.createComposite(attachmentsComposite);
 		attachmentControlsComposite.setLayout(new GridLayout(2, false));
-		attachmentControlsComposite.setLayoutData(new GridData(
-				GridData.BEGINNING));
+		attachmentControlsComposite
+				.setLayoutData(new GridData(GridData.BEGINNING));
 
-		Button attachFileButton = toolkit
-				.createButton(
-						attachmentControlsComposite,
-						org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_Attach_,
-						SWT.PUSH);
-		attachFileButton.setImage(CommonImages
-				.getImage(CommonImages.FILE_PLAIN));
+		Button attachFileButton = toolkit.createButton(
+				attachmentControlsComposite,
+				org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_Attach_,
+				SWT.PUSH);
+		attachFileButton
+				.setImage(CommonImages.getImage(CommonImages.FILE_PLAIN));
 		attachFileButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -299,8 +297,8 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 						Mode.DEFAULT, null);
 			}
 		};
-		attachFileAction
-				.setToolTipText(org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_Attach_);
+		attachFileAction.setToolTipText(
+				org.eclipse.mylyn.internal.tasks.ui.editors.Messages.TaskEditorAttachmentPart_Attach_);
 		attachFileAction.setImageDescriptor(CommonImages.FILE_PLAIN_SMALL);
 		toolBarManager.add(attachFileAction);
 	}
@@ -324,8 +322,8 @@ public class GistAttachmentPart extends AbstractTaskEditorPart {
 		if (attachments.isEmpty())
 			return;
 
-		IWorkbenchPage page = getTaskEditorPage().getSite()
-				.getWorkbenchWindow().getActivePage();
+		IWorkbenchPage page = getTaskEditorPage().getSite().getWorkbenchWindow()
+				.getActivePage();
 		try {
 			OpenTaskAttachmentHandler.openAttachments(page, attachments);
 		} catch (OperationCanceledException e) {

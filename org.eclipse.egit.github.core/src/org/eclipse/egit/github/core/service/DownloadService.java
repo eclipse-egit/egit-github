@@ -168,7 +168,8 @@ public class DownloadService extends GitHubService {
 	 * @param repository
 	 * @return iterator over pages of downloads
 	 */
-	public PageIterator<Download> pageDownloads(IRepositoryIdProvider repository) {
+	public PageIterator<Download> pageDownloads(
+			IRepositoryIdProvider repository) {
 		return pageDownloads(repository, PAGE_SIZE);
 	}
 
@@ -312,7 +313,7 @@ public class DownloadService extends GitHubService {
 		if (file == null)
 			throw new IllegalArgumentException("File cannot be null"); //$NON-NLS-1$
 
-		return createDownload(repository, download, Files.newInputStream(file.toPath()),
-				file.length());
+		return createDownload(repository, download,
+				Files.newInputStream(file.toPath()), file.length());
 	}
 }

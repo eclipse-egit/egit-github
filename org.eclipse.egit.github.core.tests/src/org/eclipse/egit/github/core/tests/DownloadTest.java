@@ -45,11 +45,9 @@ public class DownloadTest {
 	@Test
 	public void updateFields() {
 		Download dl = new Download();
-		assertEquals("a download", dl.setDescription("a download")
-				.getDescription());
+		assertEquals("a download", dl.setDescription("a download").getDescription());
 		assertEquals(5, dl.setDownloadCount(5).getDownloadCount());
-		assertEquals("download.html", dl.setHtmlUrl("download.html")
-				.getHtmlUrl());
+		assertEquals("download.html", dl.setHtmlUrl("download.html").getHtmlUrl());
 		assertEquals(58, dl.setId(58).getId());
 		assertEquals("download.jar", dl.setName("download.jar").getName());
 		assertEquals(12345, dl.setSize(12345).getSize());

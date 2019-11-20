@@ -122,7 +122,8 @@ public class GistService extends GitHubService {
 	 *            starting page
 	 * @return gist page iterator
 	 */
-	public PageIterator<Gist> pageStarredGists(final int start, final int size) {
+	public PageIterator<Gist> pageStarredGists(final int start,
+			final int size) {
 		PagedRequest<Gist> request = createPagedRequest(start, size);
 		request.setUri(SEGMENT_GISTS + SEGMENT_STARRED);
 		request.setType(new TypeToken<List<Gist>>() {
@@ -303,8 +304,8 @@ public class GistService extends GitHubService {
 		uri.append('/').append(gistId);
 		uri.append(SEGMENT_COMMENTS);
 
-		Map<String, String> params = Collections.singletonMap(
-				IssueService.FIELD_BODY, comment);
+		Map<String, String> params = Collections
+				.singletonMap(IssueService.FIELD_BODY, comment);
 		return client.post(uri.toString(), params, Comment.class);
 	}
 

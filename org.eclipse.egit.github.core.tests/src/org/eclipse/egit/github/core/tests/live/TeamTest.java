@@ -141,8 +141,7 @@ public class TeamTest extends LiveTest {
 		assertNotNull(org.getLogin());
 		TeamService teamService = new TeamService(client);
 		boolean hasTeams = false;
-		for (Repository repo : new RepositoryService(client)
-				.getOrgRepositories(org.getLogin())) {
+		for (Repository repo : new RepositoryService(client).getOrgRepositories(org.getLogin())) {
 			List<Team> teams = teamService.getTeams(repo);
 			assertNotNull(teams);
 			for (Team team : teams) {

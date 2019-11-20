@@ -60,21 +60,15 @@ public class GistTest {
 	public void updateFields() {
 		Gist gist = new Gist();
 		assertEquals(3, gist.setComments(3).getComments());
-		assertEquals(new Date(5000), gist.setCreatedAt(new Date(5000))
-				.getCreatedAt());
+		assertEquals(new Date(5000), gist.setCreatedAt(new Date(5000)).getCreatedAt());
 		assertEquals("desc", gist.setDescription("desc").getDescription());
-		assertEquals(Collections.emptyMap(),
-				gist.setFiles(Collections.<String, GistFile> emptyMap())
-						.getFiles());
+		assertEquals(Collections.emptyMap(), gist.setFiles(Collections.<String, GistFile>emptyMap()).getFiles());
 		assertEquals("pull", gist.setGitPullUrl("pull").getGitPullUrl());
 		assertEquals("push", gist.setGitPushUrl("push").getGitPushUrl());
-		assertEquals(Collections.emptyList(),
-				gist.setHistory(Collections.<GistRevision> emptyList())
-						.getHistory());
+		assertEquals(Collections.emptyList(), gist.setHistory(Collections.<GistRevision>emptyList()).getHistory());
 		assertEquals("html", gist.setHtmlUrl("html").getHtmlUrl());
 		assertEquals("id", gist.setId("id").getId());
-		assertEquals(new Date(1000), gist.setUpdatedAt(new Date(1000))
-				.getUpdatedAt());
+		assertEquals(new Date(1000), gist.setUpdatedAt(new Date(1000)).getUpdatedAt());
 		assertEquals("url", gist.setUrl("url").getUrl());
 		User user = new User().setLogin("use");
 		assertEquals(user, gist.setOwner(user).getOwner());

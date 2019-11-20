@@ -50,7 +50,8 @@ public class CredentialsWizardPage extends WizardPage {
 		GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false)
 				.applyTo(displayArea);
 
-		new Label(displayArea, SWT.NONE).setText(Messages.CredentialsWizardPage_LabelUser);
+		new Label(displayArea, SWT.NONE)
+				.setText(Messages.CredentialsWizardPage_LabelUser);
 
 		userText = new Text(displayArea, SWT.BORDER | SWT.SINGLE);
 		userText.addModifyListener(new ModifyListener() {
@@ -62,9 +63,10 @@ public class CredentialsWizardPage extends WizardPage {
 		});
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(userText);
 
-		new Label(displayArea, SWT.NONE).setText(Messages.CredentialsWizardPage_LabelPassword);
-		passwordText = new Text(displayArea, SWT.BORDER | SWT.SINGLE
-				| SWT.PASSWORD);
+		new Label(displayArea, SWT.NONE)
+				.setText(Messages.CredentialsWizardPage_LabelPassword);
+		passwordText = new Text(displayArea,
+				SWT.BORDER | SWT.SINGLE | SWT.PASSWORD);
 		passwordText.addModifyListener(new ModifyListener() {
 
 			@Override

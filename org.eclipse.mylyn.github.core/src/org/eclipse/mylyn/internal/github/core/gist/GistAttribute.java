@@ -35,8 +35,7 @@ public enum GistAttribute {
 	/**
 	 * Gist author gravatar url
 	 */
-	AUTHOR_GRAVATAR(
-			"github.gist.reporter.avatar", //$NON-NLS-1$
+	AUTHOR_GRAVATAR("github.gist.reporter.avatar", //$NON-NLS-1$
 			Messages.GistAttribute_LabelAuthorGravatar, TaskAttribute.TYPE_URL,
 			true),
 
@@ -69,16 +68,14 @@ public enum GistAttribute {
 	/**
 	 * RAW_FILE_URL
 	 */
-	RAW_FILE_URL(
-			"github.gist.file.url", Messages.GistAttribute_LabelFileUrl, TaskAttribute.TYPE_URL, //$NON-NLS-1$
-			true),
+	RAW_FILE_URL("github.gist.file.url", Messages.GistAttribute_LabelFileUrl, //$NON-NLS-1$
+			TaskAttribute.TYPE_URL, true),
 
 	/**
 	 * CLONE_URL
 	 */
-	CLONE_URL(
-			"github.gist.cloneUrl", Messages.GistAttribute_LabelCloneUrl, TaskAttribute.TYPE_URL, //$NON-NLS-1$
-			true),
+	CLONE_URL("github.gist.cloneUrl", Messages.GistAttribute_LabelCloneUrl, //$NON-NLS-1$
+			TaskAttribute.TYPE_URL, true),
 
 	/**
 	 * SUMMARY
@@ -95,14 +92,15 @@ public enum GistAttribute {
 
 	private final GitHubAttributeMetadata attribute;
 
-	private GistAttribute(String id, String label, String type, boolean readOnly) {
+	private GistAttribute(String id, String label, String type,
+			boolean readOnly) {
 		attribute = new GitHubAttributeMetadata(id, label, type, readOnly);
 	}
 
 	private GistAttribute(String id, String label, String kind, String type,
 			boolean readOnly) {
-		attribute = new GitHubAttributeMetadata(id, label, kind, type,
-				readOnly, false);
+		attribute = new GitHubAttributeMetadata(id, label, kind, type, readOnly,
+				false);
 	}
 
 	/**

@@ -48,13 +48,14 @@ import org.eclipse.ui.PlatformUI;
  * version as of 2017).
  *
  * Used in GistAttachmentPart, which previously used the Mylyn-internal
- * AttachmentTableLabelProvider directly. Unfortunately, that class changed
- * in non-compatible ways with Mylyn Tasks 3.23.0.
+ * AttachmentTableLabelProvider directly. Unfortunately, that class changed in
+ * non-compatible ways with Mylyn Tasks 3.23.0.
  */
 @SuppressWarnings("restriction")
 public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 
-	private final AttachmentSizeFormatter sizeFormatter = AttachmentSizeFormatter.getInstance();
+	private final AttachmentSizeFormatter sizeFormatter = AttachmentSizeFormatter
+			.getInstance();
 
 	private final TaskDataModel model;
 
@@ -70,10 +71,12 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 	 * @param attributeEditorToolkit
 	 *            to use
 	 */
-	public GistAttachmentTableLabelProvider(TaskDataModel model, AttributeEditorToolkit attributeEditorToolkit) {
+	public GistAttachmentTableLabelProvider(TaskDataModel model,
+			AttributeEditorToolkit attributeEditorToolkit) {
 		this.model = model;
 		this.attributeEditorToolkit = attributeEditorToolkit;
-		this.imageManager = new LocalResourceManager(JFaceResources.getResources());
+		this.imageManager = new LocalResourceManager(
+				JFaceResources.getResources());
 	}
 
 	/**
@@ -92,12 +95,14 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 			if (AttachmentUtil.isContext(attachment)) {
 				return (Image) imageManager.get(TasksUiImages.CONTEXT_TRANSFER);
 			} else if (attachment.isPatch()) {
-				return (Image) imageManager.get(TasksUiImages.TASK_ATTACHMENT_PATCH);
+				return (Image) imageManager
+						.get(TasksUiImages.TASK_ATTACHMENT_PATCH);
 			} else {
 				return getFileImage(attachment.getFileName());
 			}
 		} else if (columnIndex == 3 && attachment.getAuthor() != null) {
-			return getAuthorImage(attachment.getAuthor(), attachment.getTaskRepository());
+			return getAuthorImage(attachment.getAuthor(),
+					attachment.getTaskRepository());
 		}
 		return null;
 	}
@@ -114,7 +119,8 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 	 * @return the image
 	 */
 	private Image getFileImage(String filename) {
-		return (Image) imageManager.get(PlatformUI.getWorkbench().getEditorRegistry().getImageDescriptor(filename));
+		return (Image) imageManager.get(PlatformUI.getWorkbench()
+				.getEditorRegistry().getImageDescriptor(filename));
 	}
 
 	/**
@@ -124,9 +130,12 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 	 * @param repository
 	 * @return author image
 	 */
-	protected Image getAuthorImage(IRepositoryPerson person, TaskRepository repository) {
-		// These two images have been copied from org.eclipse.mylyn.commons.ui; 3.23.0
-		if (repository != null && person != null && person.getPersonId().equals(repository.getUserName())) {
+	protected Image getAuthorImage(IRepositoryPerson person,
+			TaskRepository repository) {
+		// These two images have been copied from org.eclipse.mylyn.commons.ui;
+		// 3.23.0
+		if (repository != null && person != null
+				&& person.getPersonId().equals(repository.getUserName())) {
 			return (Image) imageManager.get(GitHubImages.DESC_PERSON_ME);
 		} else {
 			return (Image) imageManager.get(GitHubImages.DESC_PERSON);
@@ -163,11 +172,16 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 			}
 			return sizeFormatter.format(length);
 		case 3:
-			return (attachment.getAuthor() != null) ? attachment.getAuthor().toString() : ""; //$NON-NLS-1$
+			return (attachment.getAuthor() != null)
+					? attachment.getAuthor().toString()
+					: ""; //$NON-NLS-1$
 		case 4:
 			return (attachment.getCreationDate() != null)
-//					? EditorUtil.formatDateTime(attachment.getCreationDate())
-					? DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(attachment.getCreationDate())
+					// ? EditorUtil.formatDateTime(attachment.getCreationDate())
+					? DateFormat
+							.getDateTimeInstance(DateFormat.MEDIUM,
+									DateFormat.SHORT)
+							.format(attachment.getCreationDate())
 					: ""; //$NON-NLS-1$
 		case 5:
 			// FIXME add id to ITaskAttachment
@@ -208,35 +222,40 @@ public class GistAttachmentTableLabelProvider extends ColumnLabelProvider {
 		// ignore
 	}
 
-//	@Override
-//	public Color getForeground(Object element) {
-//		ITaskAttachment att = (ITaskAttachment) element;
-//		if (att.isDeprecated()) {
-//			IThemeManager themeManager = PlatformUI.getWorkbench().getThemeManager();
-//			return themeManager.getCurrentTheme().getColorRegistry().get(CommonThemes.COLOR_COMPLETED);
-//		}
-//		return super.getForeground(element);
-//	}
+	// @Override
+	// public Color getForeground(Object element) {
+	// ITaskAttachment att = (ITaskAttachment) element;
+	// if (att.isDeprecated()) {
+	// IThemeManager themeManager = PlatformUI.getWorkbench().getThemeManager();
+	// return
+	// themeManager.getCurrentTheme().getColorRegistry().get(CommonThemes.COLOR_COMPLETED);
+	// }
+	// return super.getForeground(element);
+	// }
 
 	@Override
 	public String getToolTipText(Object element) {
 		ITaskAttachment attachment = (ITaskAttachment) element;
 		StringBuilder sb = new StringBuilder();
-		sb.append(org.eclipse.mylyn.internal.tasks.ui.editors.Messages.AttachmentTableLabelProvider_File_);
+		sb.append(
+				org.eclipse.mylyn.internal.tasks.ui.editors.Messages.AttachmentTableLabelProvider_File_);
 		sb.append(attachment.getFileName());
 		if (attachment.getContentType() != null) {
 			sb.append("\n"); //$NON-NLS-1$
-			sb.append(org.eclipse.mylyn.internal.tasks.ui.editors.Messages.AttachmentTableLabelProvider_Type_);
+			sb.append(
+					org.eclipse.mylyn.internal.tasks.ui.editors.Messages.AttachmentTableLabelProvider_Type_);
 			sb.append(attachment.getContentType());
 		}
 		return sb.toString();
-		/*"\nFilename\t\t"  + attachment.getAttributeValue("filename")
-			  +"ID\t\t\t"        + attachment.getAttributeValue("attachid")
-		      + "\nDate\t\t\t"    + attachment.getAttributeValue("date")
-		      + "\nDescription\t" + attachment.getAttributeValue("desc")
-		      + "\nCreator\t\t"   + attachment.getCreator()
-		      + "\nType\t\t\t"    + attachment.getAttributeValue("type")
-		      + "\nURL\t\t\t"     + attachment.getAttributeValue("task.common.attachment.url");*/
+		/*
+		 * "\nFilename\t\t" + attachment.getAttributeValue("filename")
+		 * +"ID\t\t\t" + attachment.getAttributeValue("attachid") +
+		 * "\nDate\t\t\t" + attachment.getAttributeValue("date") +
+		 * "\nDescription\t" + attachment.getAttributeValue("desc") +
+		 * "\nCreator\t\t" + attachment.getCreator() + "\nType\t\t\t" +
+		 * attachment.getAttributeValue("type") + "\nURL\t\t\t" +
+		 * attachment.getAttributeValue("task.common.attachment.url");
+		 */
 	}
 
 	@Override

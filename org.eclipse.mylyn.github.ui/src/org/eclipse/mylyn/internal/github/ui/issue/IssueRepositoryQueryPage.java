@@ -70,12 +70,19 @@ import org.eclipse.ui.PlatformUI;
 public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 
 	private Button openButton;
+
 	private Button closedButton;
+
 	private Text titleText;
+
 	private Text assigneeText;
+
 	private Text mentionText;
+
 	private Combo milestoneCombo;
+
 	private CheckboxTableViewer labelsViewer;
+
 	private List<Milestone> milestones;
 
 	private SelectionListener completeListener = new SelectionAdapter() {
@@ -114,8 +121,8 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(labelsArea);
 		GridLayoutFactory.swtDefaults().applyTo(labelsArea);
 
-		labelsViewer = CheckboxTableViewer.newCheckList(labelsArea, SWT.BORDER
-				| SWT.V_SCROLL | SWT.H_SCROLL);
+		labelsViewer = CheckboxTableViewer.newCheckList(labelsArea,
+				SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
 		GridDataFactory.fillDefaults().grab(true, true).hint(100, 80)
 				.applyTo(labelsViewer.getControl());
 		labelsViewer.setContentProvider(ArrayContentProvider.getInstance());
@@ -173,8 +180,8 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			}
 		});
 		updateItem.setImage(updateImage);
-		updateItem
-				.setToolTipText(Messages.IssueRepositoryQueryPage_TooltipUpdateRepository);
+		updateItem.setToolTipText(
+				Messages.IssueRepositoryQueryPage_TooltipUpdateRepository);
 		GridDataFactory.fillDefaults().align(SWT.END, SWT.FILL)
 				.grab(true, false).applyTo(toolbar);
 		updateItem.addSelectionListener(new SelectionAdapter() {
@@ -258,8 +265,8 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			int index = 0;
 			for (Milestone milestone : milestones) {
 				index++;
-				if (milestoneNumber.equals(Integer.toString(milestone
-						.getNumber()))) {
+				if (milestoneNumber
+						.equals(Integer.toString(milestone.getNumber()))) {
 					milestoneCombo.select(index);
 					break;
 				}
@@ -267,10 +274,10 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 		}
 
 		titleText.setText(query.getSummary());
-		labelsViewer.setCheckedElements(QueryUtils.getAttributes(
-				IssueService.FILTER_LABELS, query).toArray());
-		List<String> status = QueryUtils.getAttributes(
-				IssueService.FILTER_STATE, query);
+		labelsViewer.setCheckedElements(QueryUtils
+				.getAttributes(IssueService.FILTER_LABELS, query).toArray());
+		List<String> status = QueryUtils
+				.getAttributes(IssueService.FILTER_STATE, query);
 		closedButton.setSelection(status.contains(IssueService.STATE_CLOSED));
 		openButton.setSelection(status.contains(IssueService.STATE_OPEN));
 
@@ -335,11 +342,13 @@ public class IssueRepositoryQueryPage extends GitHubRepositoryQueryPage {
 							.getCoreConnector();
 					TaskRepository repository = getTaskRepository();
 
-					monitor.setTaskName(Messages.IssueRepositoryQueryPage_TaskLoadingLabels);
+					monitor.setTaskName(
+							Messages.IssueRepositoryQueryPage_TaskLoadingLabels);
 					connector.refreshLabels(repository);
 					monitor.worked(1);
 
-					monitor.setTaskName(Messages.IssueRepositoryQueryPage_TaskLoadingMilestones);
+					monitor.setTaskName(
+							Messages.IssueRepositoryQueryPage_TaskLoadingMilestones);
 					connector.refreshMilestones(repository);
 					monitor.done();
 

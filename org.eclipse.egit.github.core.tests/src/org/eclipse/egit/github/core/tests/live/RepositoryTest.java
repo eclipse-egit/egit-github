@@ -102,8 +102,7 @@ public class RepositoryTest extends LiveTest {
 	@Test
 	public void fetchForks() throws IOException {
 		RepositoryService service = new RepositoryService(client);
-		List<Repository> repos = service.getForks(new RepositoryId("defunkt",
-				"resque"));
+		List<Repository> repos = service.getForks(new RepositoryId("defunkt", "resque"));
 		assertNotNull(repos);
 		assertFalse(repos.isEmpty());
 		for (Repository repo : repos) {
@@ -120,8 +119,7 @@ public class RepositoryTest extends LiveTest {
 	@Test
 	public void getLanguages() throws IOException {
 		RepositoryService service = new RepositoryService(client);
-		Map<String, Long> languages = service.getLanguages(new RepositoryId(
-				"defunkt", "resque"));
+		Map<String, Long> languages = service.getLanguages(new RepositoryId("defunkt", "resque"));
 		assertNotNull(languages);
 		assertFalse(languages.isEmpty());
 		for (Entry<String, Long> language : languages.entrySet()) {

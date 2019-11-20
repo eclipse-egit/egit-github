@@ -43,9 +43,11 @@ import org.eclipse.swt.widgets.Composite;
  * GitHub connector specific extensions.
  */
 @SuppressWarnings("restriction")
-public class IssueRepositorySettingsPage extends AbstractRepositorySettingsPage {
+public class IssueRepositorySettingsPage
+		extends AbstractRepositorySettingsPage {
 
 	private boolean syncLabel = true;
+
 	private boolean editingUrl = false;
 
 	/**
@@ -79,8 +81,8 @@ public class IssueRepositorySettingsPage extends AbstractRepositorySettingsPage 
 			String url = serverUrlCombo.getText();
 			RepositoryId repo = GitHub.getRepository(url);
 			if (repo != null)
-				repositoryLabelEditor.setStringValue(IssueConnector
-						.getRepositoryLabel(repo));
+				repositoryLabelEditor.setStringValue(
+						IssueConnector.getRepositoryLabel(repo));
 		}
 	}
 
@@ -94,8 +96,8 @@ public class IssueRepositorySettingsPage extends AbstractRepositorySettingsPage 
 			serverUrlCombo.setFocus();
 			// select the user/project part of the URL so that the user can just
 			// start typing to replace the text.
-			serverUrlCombo.setSelection(new Point(GitHub.HTTP_GITHUB_COM
-					.length() + 1, fullUrlText.length()));
+			serverUrlCombo.setSelection(new Point(
+					GitHub.HTTP_GITHUB_COM.length() + 1, fullUrlText.length()));
 
 			syncRepositoryLabel();
 
@@ -136,21 +138,22 @@ public class IssueRepositorySettingsPage extends AbstractRepositorySettingsPage 
 						Messages.IssueRepositorySettingsPage_TaskValidating,
 						100);
 				try {
-					monitor.subTask(Messages.IssueRepositorySettingsPage_TaskContactingServer);
+					monitor.subTask(
+							Messages.IssueRepositorySettingsPage_TaskContactingServer);
 					try {
 						GitHubClient client = IssueConnector
 								.createClient(repository);
 						IssueService service = new IssueService(client);
-						RepositoryId repo = GitHub.getRepository(repository
-								.getRepositoryUrl());
+						RepositoryId repo = GitHub
+								.getRepository(repository.getRepositoryUrl());
 						monitor.worked(50);
 						service.pageIssues(repo.getOwner(), repo.getName(),
 								null, 1).next();
 					} catch (NoSuchPageException e) {
-						String message = MessageFormat
-								.format(Messages.IssueRepositorySettingsPage_StatusError,
-										GitHubException.wrap(e.getCause())
-												.getLocalizedMessage());
+						String message = MessageFormat.format(
+								Messages.IssueRepositorySettingsPage_StatusError,
+								GitHubException.wrap(e.getCause())
+										.getLocalizedMessage());
 						setStatus(GitHubUi.createErrorStatus(message));
 						return;
 					} finally {
@@ -195,8 +198,8 @@ public class IssueRepositorySettingsPage extends AbstractRepositorySettingsPage 
 	 */
 	@Override
 	public boolean canValidate() {
-		return isPageComplete()
-				&& (getMessage() == null || getMessageType() != IMessageProvider.ERROR);
+		return isPageComplete() && (getMessage() == null
+				|| getMessageType() != IMessageProvider.ERROR);
 	}
 
 }

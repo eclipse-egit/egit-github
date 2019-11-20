@@ -106,8 +106,7 @@ public class GistTest extends LiveTest {
 		assertNotNull(created);
 		assertNotNull(created.getId());
 		try {
-			Comment comment = service.createComment(created.getId(),
-					"test comment");
+			Comment comment = service.createComment(created.getId(), "test comment");
 			assertNotNull(comment);
 			service.deleteComment(comment.getId());
 		} finally {

@@ -80,8 +80,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pagePublicEvents();
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -95,8 +94,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageEvents(repo);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/repos/user/repo/events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/repos/user/repo/events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -110,8 +108,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageNetworkEvents(repo);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/networks/user/repo/events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/networks/user/repo/events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -124,8 +121,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageOrgEvents("org");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/orgs/org/events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/orgs/org/events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -138,8 +134,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageUserReceivedEvents("user");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/received_events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/users/user/received_events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -152,8 +147,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageUserReceivedEvents("user", true);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/received_events/public"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/users/user/received_events/public"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -166,8 +160,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageUserEvents("user");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/events"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/users/user/events"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -180,8 +173,7 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageUserEvents("user", true);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/events/public"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/users/user/events/public"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -194,7 +186,6 @@ public class EventServiceTest {
 		PageIterator<Event> iterator = eventService.pageUserOrgEvents("user", "org");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/events/orgs/org"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/users/user/events/orgs/org"), iterator.getRequest().generateUri());
 	}
 }

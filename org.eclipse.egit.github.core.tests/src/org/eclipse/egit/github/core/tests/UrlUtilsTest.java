@@ -41,8 +41,7 @@ public class UrlUtilsTest {
 	@Test
 	public void generateHttpsUrl() {
 		RepositoryId repo = new RepositoryId("person", "project");
-		assertEquals("https://me@github.com/person/project.git",
-				UrlUtils.createRemoteHttpsUrl(repo, "me"));
+		assertEquals("https://me@github.com/person/project.git", UrlUtils.createRemoteHttpsUrl(repo, "me"));
 	}
 
 	/**
@@ -51,8 +50,7 @@ public class UrlUtilsTest {
 	@Test
 	public void generateSshUrl() {
 		RepositoryId repo = new RepositoryId("person", "project");
-		assertEquals("git@github.com:person/project.git",
-				UrlUtils.createRemoteSshUrl(repo));
+		assertEquals("git@github.com:person/project.git", UrlUtils.createRemoteSshUrl(repo));
 	}
 
 	/**
@@ -61,7 +59,6 @@ public class UrlUtilsTest {
 	@Test
 	public void generateReadOnlyUrl() {
 		RepositoryId repo = new RepositoryId("person", "project");
-		assertEquals("git://github.com/person/project.git",
-				UrlUtils.createRemoteReadOnlyUrl(repo));
+		assertEquals("git://github.com/person/project.git", UrlUtils.createRemoteReadOnlyUrl(repo));
 	}
 }

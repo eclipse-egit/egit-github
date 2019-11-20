@@ -168,8 +168,7 @@ public class TeamServiceTest {
 	 */
 	@Test
 	public void createTeamWithRepos() throws IOException {
-		service.createTeam("group", new Team().setName("pullers"),
-				Collections.singletonList("repo1"));
+		service.createTeam("group", new Team().setName("pullers"), Collections.singletonList("repo1"));
 		verify(client).post(eq("/orgs/group/teams"), any(), eq(Team.class));
 	}
 

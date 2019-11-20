@@ -42,8 +42,7 @@ public class GitHubClientTest {
 		PrefixClient client = new PrefixClient(IGitHubConstants.HOST_API);
 		assertEquals("/api/v3/repos/o/n", client.uri("/api/v3/repos/o/n"));
 		assertEquals("/repos/o/n", client.uri("/repos/o/n"));
-		assertEquals("/api/v2/json/repos/search/test",
-				client.uri("/api/v2/json/repos/search/test"));
+		assertEquals("/api/v2/json/repos/search/test", client.uri("/api/v2/json/repos/search/test"));
 	}
 
 	/**

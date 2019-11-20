@@ -93,8 +93,7 @@ public class CommitServiceTest {
 		RepositoryId repo = new RepositoryId("o", "n");
 		PageIterator<RepositoryCommit> iterator = service.pageCommits(repo);
 		assertNotNull(iterator);
-		assertEquals(Utils.page("/repos/o/n/commits"), iterator.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/repos/o/n/commits"), iterator.getRequest().generateUri());
 		assertTrue(iterator.hasNext());
 	}
 
@@ -306,8 +305,7 @@ public class CommitServiceTest {
 		RepositoryId repo = new RepositoryId("o", "n");
 		CommitComment comment = new CommitComment();
 		service.addComment(repo, "abcd", comment);
-		verify(client).post("/repos/o/n/commits/abcd/comments", comment,
-				CommitComment.class);
+		verify(client).post("/repos/o/n/commits/abcd/comments", comment, CommitComment.class);
 	}
 
 	/**
@@ -332,8 +330,7 @@ public class CommitServiceTest {
 		CommitComment comment = new CommitComment();
 		comment.setId(56);
 		service.editComment(repo, comment);
-		verify(client).post("/repos/o/n/comments/56", comment,
-				CommitComment.class);
+		verify(client).post("/repos/o/n/comments/56", comment, CommitComment.class);
 	}
 
 	/**
@@ -587,8 +584,7 @@ public class CommitServiceTest {
 		params.put("target_url", status.getTargetUrl());
 		params.put("state", status.getState());
 		params.put("context", status.getContext());
-		verify(client).post("/repos/o/n/statuses/123", params,
-				CommitStatus.class);
+		verify(client).post("/repos/o/n/statuses/123", params, CommitStatus.class);
 	}
 
 	/**

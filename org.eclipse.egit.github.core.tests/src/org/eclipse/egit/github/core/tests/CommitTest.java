@@ -53,10 +53,8 @@ public class CommitTest {
 		assertEquals(author, commit.setAuthor(author).getAuthor());
 		CommitUser committer = new CommitUser().setName("Comb Mitter");
 		assertEquals(committer, commit.setCommitter(committer).getCommitter());
-		assertEquals("commit message", commit.setMessage("commit message")
-				.getMessage());
-		assertEquals(new ArrayList<Commit>(),
-				commit.setParents(new ArrayList<Commit>()).getParents());
+		assertEquals("commit message", commit.setMessage("commit message").getMessage());
+		assertEquals(new ArrayList<Commit>(), commit.setParents(new ArrayList<Commit>()).getParents());
 		assertEquals("abcdef", commit.setSha("abcdef").getSha());
 		Tree tree = new Tree();
 		tree.setSha("12345");

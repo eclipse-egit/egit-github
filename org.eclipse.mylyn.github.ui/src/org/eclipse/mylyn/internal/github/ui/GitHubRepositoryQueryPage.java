@@ -19,8 +19,8 @@ import org.eclipse.mylyn.tasks.ui.wizards.AbstractRepositoryQueryPage;
 /**
  * Base repository query page
  */
-public abstract class GitHubRepositoryQueryPage extends
-		AbstractRepositoryQueryPage {
+public abstract class GitHubRepositoryQueryPage
+		extends AbstractRepositoryQueryPage {
 
 	/**
 	 * @param pageName

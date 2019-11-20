@@ -110,8 +110,8 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 		TaskAttribute url = GistAttribute.URL.getMetadata().create(data);
 		url.setValue(gist.getHtmlUrl());
 
-		TaskAttribute cloneUrl = GistAttribute.CLONE_URL.getMetadata().create(
-				data);
+		TaskAttribute cloneUrl = GistAttribute.CLONE_URL.getMetadata()
+				.create(data);
 		if (isOwner)
 			cloneUrl.setValue(gist.getGitPushUrl());
 		else
@@ -120,13 +120,13 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 		IRepositoryPerson reporterPerson = null;
 		User owner = gist.getOwner();
 		if (owner != null) {
-			TaskAttribute reporter = GistAttribute.AUTHOR.getMetadata().create(
-					data);
+			TaskAttribute reporter = GistAttribute.AUTHOR.getMetadata()
+					.create(data);
 			reporterPerson = createPerson(owner, repository);
 			mapper.setRepositoryPerson(reporter, reporterPerson);
 
-			TaskAttribute gravatar = GistAttribute.AUTHOR_GRAVATAR
-					.getMetadata().create(data);
+			TaskAttribute gravatar = GistAttribute.AUTHOR_GRAVATAR.getMetadata()
+					.create(data);
 			mapper.setValue(gravatar, owner.getAvatarUrl());
 		}
 
@@ -177,8 +177,8 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 				// Break on last whitespace if maximum length is in the middle
 				// of a word
 				if (!Character.isWhitespace(description.charAt(SUMMARY_LENGTH))
-						&& !Character.isWhitespace(description
-								.charAt(SUMMARY_LENGTH - 1))) {
+						&& !Character.isWhitespace(
+								description.charAt(SUMMARY_LENGTH - 1))) {
 					int lastWhitespace = description.lastIndexOf(' ');
 					if (lastWhitespace > 0)
 						description = description.substring(0, lastWhitespace);
@@ -242,8 +242,9 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 		GistService service = new GistService(client);
 		TaskAttribute root = taskData.getRoot();
 		gist.setId(taskData.getTaskId());
-		gist.setDescription(root.getAttribute(
-				GistAttribute.DESCRIPTION.getMetadata().getId()).getValue());
+		gist.setDescription(root
+				.getAttribute(GistAttribute.DESCRIPTION.getMetadata().getId())
+				.getValue());
 
 		if (taskData.isNew()) {
 			try {
@@ -255,13 +256,14 @@ public class GistTaskDataHandler extends GitHubTaskDataHandler {
 					gist.getId());
 		} else {
 			try {
-				String newComment = root.getAttribute(
-						GistAttribute.COMMENT_NEW.getMetadata().getId())
+				String newComment = root
+						.getAttribute(
+								GistAttribute.COMMENT_NEW.getMetadata().getId())
 						.getValue();
 				if (newComment.length() > 0)
 					service.createComment(taskData.getTaskId(), newComment);
-				String author = GistAttribute.AUTHOR.getMetadata().getValue(
-						taskData);
+				String author = GistAttribute.AUTHOR.getMetadata()
+						.getValue(taskData);
 				if (isOwner(repository, author))
 					service.updateGist(gist);
 			} catch (IOException e) {

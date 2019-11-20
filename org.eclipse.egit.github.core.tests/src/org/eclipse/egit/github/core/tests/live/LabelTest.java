@@ -56,8 +56,7 @@ public class LabelTest extends LiveTest {
 		assertNotNull(fetched);
 		assertEquals(created.getName(), fetched.getName());
 
-		fetched = service.getLabel(client.getUser(), writableRepo,
-				created.getName());
+		fetched = service.getLabel(client.getUser(), writableRepo, created.getName());
 		assertNotNull(fetched);
 		assertEquals(created.getName(), fetched.getName());
 

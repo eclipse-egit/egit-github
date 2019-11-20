@@ -260,7 +260,8 @@ public class GitHubClient {
 	 * @param request
 	 * @return configured request
 	 */
-	protected HttpURLConnection configureRequest(final HttpURLConnection request) {
+	protected HttpURLConnection configureRequest(
+			final HttpURLConnection request) {
 		if (credentials != null)
 			request.setRequestProperty(HEADER_AUTHORIZATION, credentials);
 		request.setRequestProperty(HEADER_USER_AGENT, userAgent);
@@ -288,7 +289,8 @@ public class GitHubClient {
 	 * @return connection
 	 * @throws IOException
 	 */
-	protected HttpURLConnection createConnection(String uri) throws IOException {
+	protected HttpURLConnection createConnection(String uri)
+			throws IOException {
 		URL url = new URL(createUri(uri));
 
 		if (proxy != null) {
@@ -364,7 +366,8 @@ public class GitHubClient {
 	 * @param password
 	 * @return this client
 	 */
-	public GitHubClient setCredentials(final String user, final String password) {
+	public GitHubClient setCredentials(final String user,
+			final String password) {
 		this.user = user;
 		if (user != null && user.length() > 0 && password != null
 				&& password.length() > 0)
@@ -453,7 +456,8 @@ public class GitHubClient {
 	 * @return parsed type
 	 * @throws IOException
 	 */
-	protected <V> V parseJson(InputStream stream, Type type) throws IOException {
+	protected <V> V parseJson(InputStream stream, Type type)
+			throws IOException {
 		return parseJson(stream, type, null);
 	}
 
@@ -469,8 +473,8 @@ public class GitHubClient {
 	 */
 	protected <V> V parseJson(InputStream stream, Type type, Type listType)
 			throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				stream, CHARSET_UTF8), bufferSize);
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(stream, CHARSET_UTF8), bufferSize);
 		if (listType == null)
 			try {
 				return gson.fromJson(reader, type);
@@ -660,8 +664,8 @@ public class GitHubClient {
 			throws IOException {
 		request.setDoOutput(true);
 		if (params != null) {
-			request.setRequestProperty(HEADER_CONTENT_TYPE, CONTENT_TYPE_JSON
-					+ "; charset=" + CHARSET_UTF8); //$NON-NLS-1$
+			request.setRequestProperty(HEADER_CONTENT_TYPE,
+					CONTENT_TYPE_JSON + "; charset=" + CHARSET_UTF8); //$NON-NLS-1$
 			byte[] data = toJson(params).getBytes(CHARSET_UTF8);
 			request.setFixedLengthStreamingMode(data.length);
 			BufferedOutputStream output = new BufferedOutputStream(
@@ -682,8 +686,8 @@ public class GitHubClient {
 		}
 	}
 
-	private <V> V sendJson(final HttpURLConnection request,
-			final Object params, final Type type) throws IOException {
+	private <V> V sendJson(final HttpURLConnection request, final Object params,
+			final Type type) throws IOException {
 		sendParams(request, params);
 		final int code = request.getResponseCode();
 		updateRateLimits(request);
@@ -792,8 +796,8 @@ public class GitHubClient {
 		final int code = httpRequest.getResponseCode();
 		updateRateLimits(httpRequest);
 		if (isOk(code))
-			return new GitHubResponse(httpRequest, getBody(request,
-					getStream(httpRequest)));
+			return new GitHubResponse(httpRequest,
+					getBody(request, getStream(httpRequest)));
 		if (isEmpty(code))
 			return new GitHubResponse(httpRequest, null);
 		throw createException(getStream(httpRequest), code,

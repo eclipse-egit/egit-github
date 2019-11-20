@@ -104,8 +104,7 @@ public class DownloadServiceTest {
 	public void createResource() throws IOException {
 		Download download = new Download().setName("dl.txt");
 		service.createResource(repo, download);
-		verify(client).post("/repos/o/n/downloads", download,
-				DownloadResource.class);
+		verify(client).post("/repos/o/n/downloads", download, DownloadResource.class);
 	}
 
 	/**

@@ -37,7 +37,8 @@ import org.eclipse.mylyn.tasks.core.data.TaskOperation;
 public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 
 	@Override
-	public TaskAttributeMapper getAttributeMapper(TaskRepository taskRepository) {
+	public TaskAttributeMapper getAttributeMapper(
+			TaskRepository taskRepository) {
 		return new GitHubTaskAttributeMapper(taskRepository);
 	}
 
@@ -80,8 +81,8 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 	 * @param date
 	 * @return task attribute
 	 */
-	protected TaskAttribute setDateValue(TaskData data,
-			TaskAttribute attribute, Date date) {
+	protected TaskAttribute setDateValue(TaskData data, TaskAttribute attribute,
+			Date date) {
 		if (date != null)
 			data.getAttributeMapper().setDateValue(attribute, date);
 		return attribute;
@@ -198,8 +199,8 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 	 * @return created attribute
 	 */
 	protected TaskAttribute createOperationAttribute(TaskData data) {
-		TaskAttribute attribute = data.getRoot().createAttribute(
-				TaskAttribute.OPERATION);
+		TaskAttribute attribute = data.getRoot()
+				.createAttribute(TaskAttribute.OPERATION);
 		attribute.getMetaData().setType(TaskAttribute.TYPE_OPERATION);
 		return attribute;
 	}
@@ -213,8 +214,8 @@ public abstract class GitHubTaskDataHandler extends AbstractTaskDataHandler {
 	 * @param isDefault
 	 * @return created task attribute
 	 */
-	protected TaskAttribute addOperation(TaskData data, String id,
-			String label, boolean isDefault) {
+	protected TaskAttribute addOperation(TaskData data, String id, String label,
+			boolean isDefault) {
 		final TaskAttribute root = data.getRoot();
 		TaskAttribute attribute = root
 				.createAttribute(TaskAttribute.PREFIX_OPERATION + id);

@@ -52,8 +52,7 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 
 	@Override
 	protected Set<TaskEditorPartDescriptor> createPartDescriptors() {
-		Set<TaskEditorPartDescriptor> partDescriptors = super
-				.createPartDescriptors();
+		Set<TaskEditorPartDescriptor> partDescriptors = super.createPartDescriptors();
 		Iterator<TaskEditorPartDescriptor> descriptorIt = partDescriptors
 				.iterator();
 		while (descriptorIt.hasNext()) {
@@ -66,8 +65,8 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 
 			@Override
 			public AbstractTaskEditorPart createPart() {
-				return new IssueSummaryPart(IssueAttribute.REPORTER_GRAVATAR
-						.getMetadata().getId(),
+				return new IssueSummaryPart(
+						IssueAttribute.REPORTER_GRAVATAR.getMetadata().getId(),
 						IssueAttribute.ASSIGNEE_GRAVATAR.getMetadata().getId());
 			}
 		}.setPath(PATH_HEADER));
@@ -102,16 +101,20 @@ public class IssueTaskEditorPage extends AbstractTaskEditorPage {
 
 	private boolean checkCanSubmit(final int type) {
 		final TaskRepository taskRepository = getModel().getTaskRepository();
-		AuthenticationCredentials cred = taskRepository.getCredentials(AuthenticationType.REPOSITORY);
-		if (cred == null || cred.getUserName() == null || cred.getUserName().equals("")) { //$NON-NLS-1$
+		AuthenticationCredentials cred = taskRepository
+				.getCredentials(AuthenticationType.REPOSITORY);
+		if (cred == null || cred.getUserName() == null
+				|| cred.getUserName().equals("")) { //$NON-NLS-1$
 			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 				@Override
 				public void run() {
-					getTaskEditor().setMessage(Messages.IssueTaskEditorPage_MessageAnonymousCannotSubmit, type,
-							new HyperlinkAdapter() {
+					getTaskEditor().setMessage(
+							Messages.IssueTaskEditorPage_MessageAnonymousCannotSubmit,
+							type, new HyperlinkAdapter() {
 								@Override
 								public void linkActivated(HyperlinkEvent e) {
-									TasksUiUtil.openEditRepositoryWizard(taskRepository);
+									TasksUiUtil.openEditRepositoryWizard(
+											taskRepository);
 									refresh();
 								}
 							});

@@ -160,8 +160,8 @@ public class IssueService extends GitHubService {
 	 */
 	public static final String SORT_COMMENTS = "comments"; //$NON-NLS-1$
 
-	private static class IssueContainer implements
-			IResourceProvider<SearchIssue> {
+	private static class IssueContainer
+			implements IResourceProvider<SearchIssue> {
 
 		private List<SearchIssue> issues;
 
@@ -593,7 +593,8 @@ public class IssueService extends GitHubService {
 	 * @param newIssue
 	 * @return map
 	 */
-	protected Map<Object, Object> createIssueMap(Issue issue, boolean newIssue) {
+	protected Map<Object, Object> createIssueMap(Issue issue,
+			boolean newIssue) {
 		Map<Object, Object> params = new HashMap<>();
 		if (issue != null) {
 			params.put(FIELD_BODY, issue.getBody());
@@ -771,7 +772,8 @@ public class IssueService extends GitHubService {
 	 */
 	public Comment createComment(IRepositoryIdProvider repository,
 			int issueNumber, String comment) throws IOException {
-		return createComment(repository, Integer.toString(issueNumber), comment);
+		return createComment(repository, Integer.toString(issueNumber),
+				comment);
 	}
 
 	/**
@@ -865,8 +867,8 @@ public class IssueService extends GitHubService {
 	 * @return edited comment
 	 * @throws IOException
 	 */
-	public Comment editComment(IRepositoryIdProvider repository, Comment comment)
-			throws IOException {
+	public Comment editComment(IRepositoryIdProvider repository,
+			Comment comment) throws IOException {
 		String repoId = getId(repository);
 		return editComment(repoId, comment);
 	}
@@ -939,8 +941,8 @@ public class IssueService extends GitHubService {
 	 * @param commentId
 	 * @throws IOException
 	 */
-	public void deleteComment(IRepositoryIdProvider repository, String commentId)
-			throws IOException {
+	public void deleteComment(IRepositoryIdProvider repository,
+			String commentId) throws IOException {
 		String repoId = getId(repository);
 		deleteComment(repoId, commentId);
 	}
@@ -1078,8 +1080,8 @@ public class IssueService extends GitHubService {
 	 * @return iterator over issue event pages
 	 * @throws IOException
 	 */
-	public IssueEvent getIssueEvent(String user, String repository, long eventId)
-			throws IOException {
+	public IssueEvent getIssueEvent(String user, String repository,
+			long eventId) throws IOException {
 		verifyRepository(user, repository);
 
 		GitHubRequest request = createRequest();
@@ -1115,8 +1117,8 @@ public class IssueService extends GitHubService {
 		if (query.length() == 0)
 			throw new IllegalArgumentException("Query cannot be empty"); //$NON-NLS-1$
 
-		StringBuilder uri = new StringBuilder(SEGMENT_LEGACY + SEGMENT_ISSUES
-				+ SEGMENT_SEARCH);
+		StringBuilder uri = new StringBuilder(
+				SEGMENT_LEGACY + SEGMENT_ISSUES + SEGMENT_SEARCH);
 		uri.append('/').append(id);
 		uri.append('/').append(state);
 		final String encodedQuery = URLEncoder.encode(query, CHARSET_UTF8)

@@ -36,6 +36,7 @@ import org.eclipse.swt.widgets.Text;
 public class GistRepositoryQueryPage extends AbstractRepositoryQueryPage {
 
 	private Text titleText;
+
 	private Text userText;
 
 	/**

@@ -104,19 +104,19 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 			toolkit.adapt(sourceLabel, false, false);
 			sourceLabel.setText(Messages.CommitAttributePart_LabelSource);
 			sourceLabel.setImage(branchIcon);
-			sourceLabel.setForeground(toolkit.getColors().getColor(
-					IFormColors.TITLE));
-			toolkit.createText(refArea, request.getRequest().getHead()
-					.getLabel(), SWT.READ_ONLY);
+			sourceLabel.setForeground(
+					toolkit.getColors().getColor(IFormColors.TITLE));
+			toolkit.createText(refArea,
+					request.getRequest().getHead().getLabel(), SWT.READ_ONLY);
 			CLabel destLabel = new CLabel(refArea, SWT.NONE);
 			toolkit.adapt(destLabel, false, false);
 			destLabel.setText(Messages.CommitAttributePart_LabelDestination);
 			destLabel.setImage(branchIcon);
-			destLabel.setForeground(toolkit.getColors().getColor(
-					IFormColors.TITLE));
+			destLabel.setForeground(
+					toolkit.getColors().getColor(IFormColors.TITLE));
 			GridDataFactory.swtDefaults().indent(15, 0).applyTo(destLabel);
-			toolkit.createText(refArea, request.getRequest().getBase()
-					.getLabel(), SWT.READ_ONLY);
+			toolkit.createText(refArea,
+					request.getRequest().getBase().getLabel(), SWT.READ_ONLY);
 		}
 
 		Composite treeArea = toolkit.createComposite(displayArea);
@@ -141,8 +141,9 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 				PullRequest pr = request.getRequest();
 				Repository repo = PullRequestUtils.getRepository(pr);
 				if (repo != null)
-					openCommits(repo, ((IStructuredSelection) event
-							.getSelection()).toArray());
+					openCommits(repo,
+							((IStructuredSelection) event.getSelection())
+									.toArray());
 				else
 					PullRequestConnectorUi.showNoRepositoryDialog(pr);
 			}
@@ -155,13 +156,12 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 			commitViewer.setInput(root);
 			Point treeSize = commitViewer.getControl().computeSize(SWT.DEFAULT,
 					SWT.DEFAULT);
-			((GridData) commitViewer.getControl().getLayoutData()).heightHint = Math
-					.min(treeSize.y, 200);
+			((GridData) commitViewer.getControl()
+					.getLayoutData()).heightHint = Math.min(treeSize.y, 200);
 		}
-		getSection().setText(
-				MessageFormat.format(
-						Messages.CommitAttributePart_SectionCommits,
-						Integer.valueOf(size)));
+		getSection().setText(MessageFormat.format(
+				Messages.CommitAttributePart_SectionCommits,
+				Integer.valueOf(size)));
 		return displayArea;
 	}
 
@@ -179,8 +179,8 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 					CommitEditor.openQuiet(new RepositoryCommit(repository,
 							walk.parseCommit(ObjectId.fromString(id))));
 				} catch (MissingObjectException ignored) {
-					boolean fetch = MessageDialog.openQuestion(getControl()
-							.getShell(),
+					boolean fetch = MessageDialog.openQuestion(
+							getControl().getShell(),
 							Messages.CommitAttributePart_TitleFetch,
 							Messages.CommitAttributePart_MessageFetch);
 					if (fetch) {
@@ -215,7 +215,8 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 
 		// checkoutPr =
 		// createCommandContributionItem(CheckoutPullRequestHandler.ID);
-		fetchCommits = createCommandContributionItem(FetchPullRequestHandler.ID);
+		fetchCommits = createCommandContributionItem(
+				FetchPullRequestHandler.ID);
 		// mergePr = createCommandContributionItem(MergePullRequestHandler.ID);
 		// rebasePr =
 		// createCommandContributionItem(RebasePullRequestHandler.ID);
@@ -239,8 +240,8 @@ public class CommitAttributePart extends AbstractTaskEditorSection {
 	}
 
 	private void fetchCommits(final Runnable postHandler) {
-		IHandlerService handlerService = getTaskEditorPage()
-				.getEditorSite().getService(IHandlerService.class);
+		IHandlerService handlerService = getTaskEditorPage().getEditorSite()
+				.getService(IHandlerService.class);
 		try {
 			IEvaluationContext context = TaskDataHandler.createContext(
 					new StructuredSelection(getTaskData()), handlerService);

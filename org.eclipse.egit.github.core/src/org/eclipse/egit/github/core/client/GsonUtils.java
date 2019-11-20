@@ -97,8 +97,8 @@ public abstract class GsonUtils {
 	 */
 	public static final String toJson(final Object object,
 			final boolean includeNulls) {
-		return includeNulls ? GSON.toJson(object) : GSON_NO_NULLS
-				.toJson(object);
+		return includeNulls ? GSON.toJson(object)
+				: GSON_NO_NULLS.toJson(object);
 	}
 
 	/**

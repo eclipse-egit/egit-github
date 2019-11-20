@@ -52,16 +52,13 @@ public class AuthorizationTest {
 		Authorization auth = new Authorization();
 		Application app = new Application();
 		assertEquals(app, auth.setApp(app).getApp());
-		assertEquals(new Date(2500), auth.setCreatedAt(new Date(2500))
-				.getCreatedAt());
+		assertEquals(new Date(2500), auth.setCreatedAt(new Date(2500)).getCreatedAt());
 		assertEquals(123, auth.setId(123).getId());
 		assertEquals("note", auth.setNote("note").getNote());
 		assertEquals("noteUrl", auth.setNoteUrl("noteUrl").getNoteUrl());
-		assertEquals(Collections.singletonList("repo"),
-				auth.setScopes(Collections.singletonList("repo")).getScopes());
+		assertEquals(Collections.singletonList("repo"), auth.setScopes(Collections.singletonList("repo")).getScopes());
 		assertEquals("token", auth.setToken("token").getToken());
-		assertEquals(new Date(8000), auth.setUpdatedAt(new Date(8000))
-				.getUpdatedAt());
+		assertEquals(new Date(8000), auth.setUpdatedAt(new Date(8000)).getUpdatedAt());
 		assertEquals("url", auth.setUrl("url").getUrl());
 	}
 }

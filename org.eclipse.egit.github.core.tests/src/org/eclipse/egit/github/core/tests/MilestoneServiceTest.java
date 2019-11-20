@@ -211,8 +211,7 @@ public class MilestoneServiceTest {
 	public void createMilestone() throws IOException {
 		Milestone milestone = new Milestone();
 		milestoneService.createMilestone("user", "repo", milestone);
-		verify(gitHubClient).post("/repos/user/repo/milestones", milestone,
-				Milestone.class);
+		verify(gitHubClient).post("/repos/user/repo/milestones", milestone, Milestone.class);
 	}
 
 	/**
@@ -225,8 +224,7 @@ public class MilestoneServiceTest {
 		RepositoryId id = new RepositoryId("user", "repo");
 		Milestone milestone = new Milestone();
 		milestoneService.createMilestone(id, milestone);
-		verify(gitHubClient).post("/repos/user/repo/milestones", milestone,
-				Milestone.class);
+		verify(gitHubClient).post("/repos/user/repo/milestones", milestone, Milestone.class);
 	}
 
 	/**
@@ -419,9 +417,7 @@ public class MilestoneServiceTest {
 		Milestone milestone = new Milestone();
 		milestone.setNumber(1234);
 		milestone.setTitle("a milestone");
-		milestoneService
-				.editMilestone(RepositoryId.create("a", "b"), milestone);
-		verify(gitHubClient).post("/repos/a/b/milestones/1234", milestone,
-				Milestone.class);
+		milestoneService.editMilestone(RepositoryId.create("a", "b"), milestone);
+		verify(gitHubClient).post("/repos/a/b/milestones/1234", milestone, Milestone.class);
 	}
 }

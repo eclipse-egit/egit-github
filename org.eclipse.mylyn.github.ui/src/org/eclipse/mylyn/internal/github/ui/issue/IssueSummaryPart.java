@@ -95,13 +95,14 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 	}
 
 	private boolean isAttribute(TaskAttribute attribute, String id) {
-		return attribute
-				.getId()
+		return attribute.getId()
 				.equals(attribute.getTaskData().getAttributeMapper()
-						.mapToRepositoryKey(attribute.getParentAttribute(), id));
+						.mapToRepositoryKey(attribute.getParentAttribute(),
+								id));
 	}
 
-	private void addSummaryText(Composite composite, final FormToolkit toolkit) {
+	private void addSummaryText(Composite composite,
+			final FormToolkit toolkit) {
 		TaskAttribute summaryAttrib = getTaskData().getRoot()
 				.getMappedAttribute(TaskAttribute.SUMMARY);
 		summaryEditor = createAttributeEditor(summaryAttrib);
@@ -170,9 +171,8 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 		if (reporter != null) {
 			IRepositoryPerson person = getTaskData().getAttributeMapper()
 					.getRepositoryPerson(reporter);
-			if (reporterAvatarId != null
-					&& addAvatarPart(composite, toolkit,
-							getAttribute(reporterAvatarId), person))
+			if (reporterAvatarId != null && addAvatarPart(composite, toolkit,
+					getAttribute(reporterAvatarId), person))
 				layout.numColumns++;
 		}
 		addSummaryText(composite, toolkit);
@@ -181,9 +181,8 @@ public class IssueSummaryPart extends AbstractTaskEditorPart {
 		if (assignee != null) {
 			IRepositoryPerson person = getTaskData().getAttributeMapper()
 					.getRepositoryPerson(assignee);
-			if (this.assigneeAvatarId != null
-					&& addAvatarPart(composite, toolkit,
-							getAttribute(this.assigneeAvatarId), person))
+			if (this.assigneeAvatarId != null && addAvatarPart(composite,
+					toolkit, getAttribute(this.assigneeAvatarId), person))
 				layout.numColumns++;
 		}
 

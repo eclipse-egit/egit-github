@@ -58,8 +58,8 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 	 */
 	public RepositoryImportWizard() {
 		setNeedsProgressMonitor(true);
-		setDefaultPageImageDescriptor(WorkbenchImages
-				.getImageDescriptor(IWorkbenchGraphicConstants.IMG_WIZBAN_IMPORT_WIZ));
+		setDefaultPageImageDescriptor(WorkbenchImages.getImageDescriptor(
+				IWorkbenchGraphicConstants.IMG_WIZBAN_IMPORT_WIZ));
 		setWindowTitle(Messages.RepositorySearchWizardPage_Title);
 	}
 
@@ -93,8 +93,9 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 
 		int timeout = store.getInt(UIPreferences.REMOTE_CONNECTION_TIMEOUT);
 
-		return new CloneOperation(uri, true, null, directory, Constants.R_HEADS
-				+ Constants.MASTER, Constants.DEFAULT_REMOTE_NAME, timeout);
+		return new CloneOperation(uri, true, null, directory,
+				Constants.R_HEADS + Constants.MASTER,
+				Constants.DEFAULT_REMOTE_NAME, timeout);
 	}
 
 	/**
@@ -119,22 +120,22 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 				for (SearchRepository repo : repositories)
 					try {
 						final String id = repo.getId();
-						monitor.setTaskName(MessageFormat
-								.format(Messages.RepositoryImportWizard_CreatingOperation,
-										id));
+						monitor.setTaskName(MessageFormat.format(
+								Messages.RepositoryImportWizard_CreatingOperation,
+								id));
 						CloneOperation op = createCloneOperation(repo, service);
 						monitor.worked(1);
 
 						monitor.setTaskName(MessageFormat.format(
 								Messages.RepositoryImportWizard_Cloning, id));
-						SubProgressMonitor sub = new SubProgressMonitor(
-								monitor, 1);
+						SubProgressMonitor sub = new SubProgressMonitor(monitor,
+								1);
 						op.run(sub);
 						sub.done();
 
-						monitor.setTaskName(MessageFormat
-								.format(Messages.RepositoryImportWizard_Registering,
-										id));
+						monitor.setTaskName(MessageFormat.format(
+								Messages.RepositoryImportWizard_Registering,
+								id));
 						repositoryUtil.addConfiguredRepository(op.getGitDir());
 						monitor.worked(1);
 					} catch (InvocationTargetException e) {
@@ -151,8 +152,8 @@ public class RepositoryImportWizard extends Wizard implements IImportWizard {
 				return Status.OK_STATUS;
 			}
 		};
-		IWorkbenchSiteProgressService progress = PlatformUI
-				.getWorkbench().getService(IWorkbenchSiteProgressService.class);
+		IWorkbenchSiteProgressService progress = PlatformUI.getWorkbench()
+				.getService(IWorkbenchSiteProgressService.class);
 		if (progress != null)
 			progress.schedule(job);
 		else

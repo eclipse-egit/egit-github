@@ -32,6 +32,7 @@ import org.eclipse.swt.widgets.Text;
 public class GistAttachmentPage extends WizardPage {
 
 	private TaskAttachmentMapper mapper;
+
 	private TaskAttachmentModel model;
 
 	private Text nameText;
@@ -60,7 +61,8 @@ public class GistAttachmentPage extends WizardPage {
 		GridLayoutFactory.swtDefaults().numColumns(2).applyTo(displayArea);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(displayArea);
 
-		new Label(displayArea, SWT.NONE).setText(Messages.GistAttachmentPage_LabelFile);
+		new Label(displayArea, SWT.NONE)
+				.setText(Messages.GistAttachmentPage_LabelFile);
 
 		nameText = new Text(displayArea, SWT.BORDER | SWT.SINGLE);
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(nameText);
@@ -73,8 +75,7 @@ public class GistAttachmentPage extends WizardPage {
 		});
 
 		Label binaryLabel = new Label(displayArea, SWT.WRAP);
-		binaryLabel
-				.setText(Messages.GistAttachmentPage_LabelBinaryWarning);
+		binaryLabel.setText(Messages.GistAttachmentPage_LabelBinaryWarning);
 		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
 				.applyTo(binaryLabel);
 

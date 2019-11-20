@@ -88,31 +88,25 @@ public class PullRequestTest {
 		assertEquals("<body>", request.setBodyHtml("<body>").getBodyHtml());
 		assertEquals("text", request.setBodyText("text").getBodyText());
 		assertEquals(20, request.setChangedFiles(20).getChangedFiles());
-		assertEquals(new Date(1000), request.setClosedAt(new Date(1000))
-				.getClosedAt());
+		assertEquals(new Date(1000), request.setClosedAt(new Date(1000)).getClosedAt());
 		assertEquals(30, request.setComments(30).getComments());
 		assertEquals(35, request.setReviewComments(35).getReviewComments());
 		assertEquals(40, request.setCommits(40).getCommits());
-		assertEquals(new Date(2000), request.setCreatedAt(new Date(2000))
-				.getCreatedAt());
+		assertEquals(new Date(2000), request.setCreatedAt(new Date(2000)).getCreatedAt());
 		assertEquals(50, request.setDeletions(50).getDeletions());
 		assertEquals("/diff/url", request.setDiffUrl("/diff/url").getDiffUrl());
 		PullRequestMarker head = new PullRequestMarker();
 		assertEquals(head, request.setHead(head).getHead());
 		assertEquals("/html/url", request.setHtmlUrl("/html/url").getHtmlUrl());
-		assertEquals("/issue/url", request.setIssueUrl("/issue/url")
-				.getIssueUrl());
-		assertEquals(new Date(3000), request.setMergedAt(new Date(3000))
-				.getMergedAt());
+		assertEquals("/issue/url", request.setIssueUrl("/issue/url").getIssueUrl());
+		assertEquals(new Date(3000), request.setMergedAt(new Date(3000)).getMergedAt());
 		User merge = new User().setLogin("merge user");
 		assertEquals(merge, request.setMergedBy(merge).getMergedBy());
 		assertEquals(60, request.setNumber(60).getNumber());
-		assertEquals("/patch/url", request.setPatchUrl("/patch/url")
-				.getPatchUrl());
+		assertEquals("/patch/url", request.setPatchUrl("/patch/url").getPatchUrl());
 		assertEquals("open", request.setState("open").getState());
 		assertEquals("pull title", request.setTitle("pull title").getTitle());
-		assertEquals(new Date(4000), request.setUpdatedAt(new Date(4000))
-				.getUpdatedAt());
+		assertEquals(new Date(4000), request.setUpdatedAt(new Date(4000)).getUpdatedAt());
 		assertEquals("/url", request.setUrl("/url").getUrl());
 		User user = new User().setLogin("cuser");
 		assertEquals(user, request.setUser(user).getUser());

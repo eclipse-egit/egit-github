@@ -38,8 +38,7 @@ public class CollaboratorTest extends LiveTest {
 		checkUser();
 
 		CollaboratorService service = new CollaboratorService(client);
-		List<User> collabs = service.getCollaborators(new RepositoryId(client
-				.getUser(), writableRepo));
+		List<User> collabs = service.getCollaborators(new RepositoryId(client.getUser(), writableRepo));
 		assertNotNull(collabs);
 		assertFalse(collabs.isEmpty());
 		for (User user : collabs) {

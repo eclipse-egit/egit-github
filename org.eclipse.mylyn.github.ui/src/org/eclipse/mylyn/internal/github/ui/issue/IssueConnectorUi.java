@@ -45,8 +45,8 @@ import org.eclipse.mylyn.tasks.ui.wizards.RepositoryQueryWizard;
  */
 public class IssueConnectorUi extends AbstractRepositoryConnectorUi {
 
-	private final Pattern issuePattern = Pattern
-			.compile("(?:([a-zA-Z0-9_\\.-]+)(?:/([a-zA-Z0-9_\\.-]+))?)?\\#(\\d+)"); //$NON-NLS-1$
+	private final Pattern issuePattern = Pattern.compile(
+			"(?:([a-zA-Z0-9_\\.-]+)(?:/([a-zA-Z0-9_\\.-]+))?)?\\#(\\d+)"); //$NON-NLS-1$
 
 	/**
 	 * Get core repository connector
@@ -111,7 +111,8 @@ public class IssueConnectorUi extends AbstractRepositoryConnectorUi {
 	@Override
 	public IWizard getQueryWizard(final TaskRepository taskRepository,
 			final IRepositoryQuery queryToEdit) {
-		RepositoryQueryWizard wizard = new RepositoryQueryWizard(taskRepository);
+		RepositoryQueryWizard wizard = new RepositoryQueryWizard(
+				taskRepository);
 		IssueRepositoryQueryPage queryPage = new IssueRepositoryQueryPage(
 				taskRepository, queryToEdit);
 		wizard.addPage(queryPage);
@@ -143,11 +144,11 @@ public class IssueConnectorUi extends AbstractRepositoryConnectorUi {
 				if (user == null && project == null) {
 					taskRepository = repository;
 				} else if (user != null && project != null) {
-					String repositoryUrl = GitHub
-							.createGitHubUrl(user, project);
-					taskRepository = TasksUi
-							.getRepositoryManager()
-							.getRepository(GitHub.CONNECTOR_KIND, repositoryUrl);
+					String repositoryUrl = GitHub.createGitHubUrl(user,
+							project);
+					taskRepository = TasksUi.getRepositoryManager()
+							.getRepository(GitHub.CONNECTOR_KIND,
+									repositoryUrl);
 					if (taskRepository == null) {
 						repositoryUrl = GitHub.createGitHubUrlAlternate(user,
 								project);
@@ -172,8 +173,8 @@ public class IssueConnectorUi extends AbstractRepositoryConnectorUi {
 	}
 
 	private Region createRegion(int textOffset, Matcher matcher) {
-		return new Region(matcher.start() + textOffset, matcher.end()
-				- matcher.start());
+		return new Region(matcher.start() + textOffset,
+				matcher.end() - matcher.start());
 	}
 
 	/**

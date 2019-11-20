@@ -134,8 +134,9 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 
 	private String createOperationLabel(PullRequest pr,
 			PullRequestOperation operation) {
-		return operation == PullRequestOperation.LEAVE ? operation.getLabel()
-				+ pr.getState() : operation.getLabel();
+		return operation == PullRequestOperation.LEAVE
+				? operation.getLabel() + pr.getState()
+				: operation.getLabel();
 	}
 
 	/**
@@ -189,8 +190,8 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 			IProgressMonitor monitor) throws CoreException {
 		String taskId = taskData.getTaskId();
 		PullRequest pr = createPullRequest(taskData);
-		RepositoryId repo = PullRequestConnector.getRepository(repository
-				.getRepositoryUrl());
+		RepositoryId repo = PullRequestConnector
+				.getRepository(repository.getRepositoryUrl());
 		try {
 			GitHubClient client = IssueConnector.createClient(repository);
 			boolean collaborator = isCollaborator(client, repo);
@@ -227,7 +228,8 @@ public class PullRequestTaskDataHandler extends GitHubTaskDataHandler {
 			}
 			return new RepositoryResponse(
 					taskData.isNew() ? ResponseKind.TASK_CREATED
-							: ResponseKind.TASK_UPDATED, taskId);
+							: ResponseKind.TASK_UPDATED,
+					taskId);
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createWrappedStatus(e));
 		}

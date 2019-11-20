@@ -39,9 +39,13 @@ public class AvatarLabel implements IAvatarCallback {
 	public static final int AVATAR_SIZE = 42;
 
 	private Composite displayArea;
+
 	private Composite avatarImage;
+
 	private AvatarStore store;
+
 	private IRepositoryPerson person;
+
 	private TaskAttribute attribute;
 
 	/**
@@ -113,8 +117,8 @@ public class AvatarLabel implements IAvatarCallback {
 				.align(SWT.CENTER, SWT.CENTER).hint(AVATAR_SIZE, AVATAR_SIZE)
 				.applyTo(avatarImage);
 
-		Label label = toolkit.createLabel(displayArea, attribute.getMetaData()
-				.getLabel());
+		Label label = toolkit.createLabel(displayArea,
+				attribute.getMetaData().getLabel());
 		label.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		label.setToolTipText(avatarImage.getToolTipText());
 

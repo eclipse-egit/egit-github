@@ -36,8 +36,8 @@ public enum PullRequestAttribute {
 	 * Pull request description
 	 */
 	BODY(Messages.PullRequestAttribute_LabelDescription,
-			TaskAttribute.DESCRIPTION, TaskAttribute.TYPE_LONG_RICH_TEXT,
-			false, true),
+			TaskAttribute.DESCRIPTION, TaskAttribute.TYPE_LONG_RICH_TEXT, false,
+			true),
 
 	/**
 	 * Pull request creation date
@@ -76,14 +76,15 @@ public enum PullRequestAttribute {
 	 * Pull request reporter
 	 */
 	REPORTER(Messages.PullRequestAttribute_LabelReporter,
-			TaskAttribute.USER_REPORTER, TaskAttribute.TYPE_PERSON, true, false),
+			TaskAttribute.USER_REPORTER, TaskAttribute.TYPE_PERSON, true,
+			false),
 
 	/**
 	 * Comment being added to pull request
 	 */
 	COMMENT_NEW(Messages.PullRequestAttribute_LabelComment,
-			TaskAttribute.COMMENT_NEW, TaskAttribute.TYPE_LONG_RICH_TEXT,
-			false, false),
+			TaskAttribute.COMMENT_NEW, TaskAttribute.TYPE_LONG_RICH_TEXT, false,
+			false),
 
 	/**
 	 * Pull request reporter gravatar

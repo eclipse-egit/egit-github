@@ -18,8 +18,8 @@ import java.io.Serializable;
 /**
  * Organization model class.
  *
- * Contains information about the GitHub organization that a particular
- * GitHub Team is associated with.
+ * Contains information about the GitHub organization that a particular GitHub
+ * Team is associated with.
  *
  * @see Team
  */

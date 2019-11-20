@@ -175,8 +175,7 @@ public class StargazerServiceTest {
 		PageIterator<User> iter = service.pageStargazers(repo);
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
-		assertEquals(Utils.page("/repos/o/n/stargazers"), iter.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/repos/o/n/stargazers"), iter.getRequest().generateUri());
 	}
 
 	/**
@@ -189,8 +188,7 @@ public class StargazerServiceTest {
 		PageIterator<Repository> iter = service.pageStarred();
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
-		assertEquals(Utils.page("/user/starred"), iter.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/user/starred"), iter.getRequest().generateUri());
 	}
 
 	/**
@@ -203,7 +201,6 @@ public class StargazerServiceTest {
 		PageIterator<Repository> iter = service.pageStarred("auser");
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
-		assertEquals(Utils.page("/users/auser/starred"), iter.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/users/auser/starred"), iter.getRequest().generateUri());
 	}
 }

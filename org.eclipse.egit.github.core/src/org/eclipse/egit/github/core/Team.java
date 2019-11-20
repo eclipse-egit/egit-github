@@ -142,7 +142,8 @@ public class Team implements Serializable {
 	}
 
 	/**
-	 * @param organization the organization to set
+	 * @param organization
+	 *            the organization to set
 	 */
 	public void setOrganization(Organization organization) {
 		this.organization = organization;

@@ -107,8 +107,8 @@ public class IssueConnector extends RepositoryConnector {
 	 * @return client
 	 */
 	public static GitHubClient createClient(TaskRepository repository) {
-		GitHubClient client = GitHubClient.createClient(repository
-				.getRepositoryUrl());
+		GitHubClient client = GitHubClient
+				.createClient(repository.getRepositoryUrl());
 		GitHub.addCredentials(client, repository);
 		return GitHub.configureClient(client);
 	}
@@ -283,13 +283,13 @@ public class IssueConnector extends RepositoryConnector {
 			IRepositoryQuery query, TaskDataCollector collector,
 			ISynchronizationSession session, IProgressMonitor monitor) {
 		IStatus result = Status.OK_STATUS;
-		List<String> statuses = QueryUtils.getAttributes(
-				IssueService.FILTER_STATE, query);
+		List<String> statuses = QueryUtils
+				.getAttributes(IssueService.FILTER_STATE, query);
 
 		monitor.beginTask(Messages.IssueConector_TaskQuerying, statuses.size());
 		try {
-			RepositoryId repo = GitHub.getRepository(repository
-					.getRepositoryUrl());
+			RepositoryId repo = GitHub
+					.getRepository(repository.getRepositoryUrl());
 
 			GitHubClient client = createClient(repository);
 			IssueService service = new IssueService(client);
@@ -308,8 +308,8 @@ public class IssueConnector extends RepositoryConnector {
 			if (milestone != null)
 				filterData.put(IssueService.FILTER_MILESTONE, milestone);
 
-			List<String> labels = QueryUtils.getAttributes(
-					IssueService.FILTER_LABELS, query);
+			List<String> labels = QueryUtils
+					.getAttributes(IssueService.FILTER_LABELS, query);
 			if (!labels.isEmpty()) {
 				StringBuilder labelsQuery = new StringBuilder();
 				for (String label : labels)
@@ -378,8 +378,8 @@ public class IssueConnector extends RepositoryConnector {
 	@Override
 	public String getRepositoryUrlFromTaskUrl(String taskFullUrl) {
 		if (taskFullUrl != null) {
-			Matcher matcher = Pattern.compile(
-					"(http://.+?)/issues/([^/]+)").matcher(taskFullUrl); //$NON-NLS-1$
+			Matcher matcher = Pattern.compile("(http://.+?)/issues/([^/]+)") //$NON-NLS-1$
+					.matcher(taskFullUrl);
 			if (matcher.matches())
 				return matcher.group(1);
 		}
@@ -389,8 +389,8 @@ public class IssueConnector extends RepositoryConnector {
 	@Override
 	public String getTaskIdFromTaskUrl(String taskFullUrl) {
 		if (taskFullUrl != null) {
-			Matcher matcher = Pattern
-					.compile(".+?/issues/([^/]+)").matcher(taskFullUrl); //$NON-NLS-1$
+			Matcher matcher = Pattern.compile(".+?/issues/([^/]+)") //$NON-NLS-1$
+					.matcher(taskFullUrl);
 			if (matcher.matches())
 				return matcher.group(1);
 		}

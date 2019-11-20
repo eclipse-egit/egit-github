@@ -75,8 +75,8 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 		public void run() {
 			InputDialog dialog = new InputDialog(getControl().getShell(),
 					Messages.IssueLabelAttributeEditor_TitleNewLabel,
-					Messages.IssueLabelAttributeEditor_DescriptionNewLabel,
-					"", new IInputValidator() { //$NON-NLS-1$
+					Messages.IssueLabelAttributeEditor_DescriptionNewLabel, "", //$NON-NLS-1$
+					new IInputValidator() {
 
 						@Override
 						public String isValid(String newText) {
@@ -85,9 +85,8 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 							return null;
 						}
 					});
-			if (Window.OK == dialog.open()
-					&& !getTaskAttribute().getValues().contains(
-							dialog.getValue())) {
+			if (Window.OK == dialog.open() && !getTaskAttribute().getValues()
+					.contains(dialog.getValue())) {
 				getTaskAttribute().addValue(dialog.getValue());
 				markLabelsChanged();
 				refreshLabels();
@@ -135,9 +134,13 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 	}
 
 	private Composite displayArea;
+
 	private boolean layout = false;
+
 	private Composite labelsArea;
+
 	private List<CLabel> labelControls = new LinkedList<>();
+
 	private FormToolkit toolkit;
 
 	/**
@@ -157,8 +160,7 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 
 		Image labelImage = GitHubImages
 				.get(GitHubImages.GITHUB_ISSUE_LABEL_OBJ);
-		List<String> labels = new LinkedList<>(getTaskAttribute()
-				.getValues());
+		List<String> labels = new LinkedList<>(getTaskAttribute().getValues());
 		Collections.sort(labels, String.CASE_INSENSITIVE_ORDER);
 		if (!labels.isEmpty())
 			for (final String label : labels) {
@@ -210,7 +212,8 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 		toolkit.adapt(toolbar, false, false);
 		final ToolItem addItem = new ToolItem(toolbar, SWT.DROP_DOWN);
 		addItem.setImage(GitHubImages.get(GitHubImages.GITHUB_ADD_OBJ));
-		addItem.setToolTipText(Messages.IssueLabelAttributeEditor_TooltipAddLabel);
+		addItem.setToolTipText(
+				Messages.IssueLabelAttributeEditor_TooltipAddLabel);
 
 		MenuManager manager = new MenuManager();
 		manager.setRemoveAllWhenShown(true);
@@ -220,8 +223,8 @@ public class IssueLabelAttributeEditor extends AbstractAttributeEditor {
 			public void menuAboutToShow(IMenuManager manager) {
 				manager.add(new NewLabelAction());
 				manager.add(new Separator());
-				List<String> labels = new LinkedList<>(getTaskAttribute()
-						.getOptions().values());
+				List<String> labels = new LinkedList<>(
+						getTaskAttribute().getOptions().values());
 				labels.removeAll(getTaskAttribute().getValues());
 				for (String label : labels)
 					manager.add(new LabelAction(label));

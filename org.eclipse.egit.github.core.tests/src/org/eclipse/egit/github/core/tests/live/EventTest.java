@@ -94,8 +94,7 @@ public class EventTest extends LiveTest {
 	public void pageCurrentUsersReceivedEvents() {
 		checkUser();
 		EventService service = new EventService(client);
-		Collection<Event> events = service.pageUserReceivedEvents(client.getUser(),
-				false, 1).next();
+		Collection<Event> events = service.pageUserReceivedEvents(client.getUser(), false, 1).next();
 		assertNotNull(events);
 		assertTrue(events.size() > 0);
 		assertNotNull(events.toArray()[0]);
@@ -108,8 +107,7 @@ public class EventTest extends LiveTest {
 	public void pageCurrentUsersPublicReceivedEvents() {
 		checkUser();
 		EventService service = new EventService(client);
-		Collection<Event> events = service.pageUserReceivedEvents(client.getUser(),
-				true, 1).next();
+		Collection<Event> events = service.pageUserReceivedEvents(client.getUser(), true, 1).next();
 		assertNotNull(events);
 		assertTrue(events.size() > 0);
 		for (Event event : events) {

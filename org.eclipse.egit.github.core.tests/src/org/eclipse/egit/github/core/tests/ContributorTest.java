@@ -49,8 +49,7 @@ public class ContributorTest {
 		assertEquals(4321, contributor.setId(4321).getId());
 		assertEquals("user", contributor.setLogin("user").getLogin());
 		assertEquals("U ser", contributor.setName("U ser").getName());
-		assertEquals(Contributor.TYPE_ANONYMOUS,
-				contributor.setType(Contributor.TYPE_ANONYMOUS).getType());
+		assertEquals(Contributor.TYPE_ANONYMOUS, contributor.setType(Contributor.TYPE_ANONYMOUS).getType());
 		assertEquals("url", contributor.setUrl("url").getUrl());
 	}
 

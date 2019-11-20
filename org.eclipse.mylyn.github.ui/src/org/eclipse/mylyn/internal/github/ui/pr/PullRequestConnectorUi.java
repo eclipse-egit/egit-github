@@ -51,12 +51,10 @@ public class PullRequestConnectorUi extends AbstractRepositoryConnectorUi {
 
 			@Override
 			public void run() {
-				MessageDialog
-						.openInformation(
-								PlatformUI.getWorkbench().getDisplay()
-										.getActiveShell(),
-								Messages.PullRequestConnectorUi_TitleRepositoryNotFound,
-								message);
+				MessageDialog.openInformation(
+						PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+						Messages.PullRequestConnectorUi_TitleRepositoryNotFound,
+						message);
 			}
 		});
 	}
@@ -74,7 +72,8 @@ public class PullRequestConnectorUi extends AbstractRepositoryConnectorUi {
 	@Override
 	public IWizard getQueryWizard(TaskRepository taskRepository,
 			IRepositoryQuery queryToEdit) {
-		RepositoryQueryWizard wizard = new RepositoryQueryWizard(taskRepository);
+		RepositoryQueryWizard wizard = new RepositoryQueryWizard(
+				taskRepository);
 		PullRequestRepositoryQueryPage queryPage = new PullRequestRepositoryQueryPage(
 				taskRepository, queryToEdit);
 		wizard.addPage(queryPage);

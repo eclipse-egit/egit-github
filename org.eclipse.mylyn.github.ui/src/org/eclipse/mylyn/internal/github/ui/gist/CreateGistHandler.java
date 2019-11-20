@@ -140,8 +140,7 @@ public class CreateGistHandler extends AbstractHandler {
 				}
 			} else if (part instanceof IWorkbenchPart2)
 				name = ((IWorkbenchPart2) part).getPartName().replace(" ", "") //$NON-NLS-1$ //$NON-NLS-2$
-						.toLowerCase(Locale.US)
-						+ ".txt"; //$NON-NLS-1$
+						.toLowerCase(Locale.US) + ".txt"; //$NON-NLS-1$
 			if (name == null)
 				name = DEFAULT_FILENAME;
 			createGistJob(event, name, text.getText(), isPublic);
@@ -152,8 +151,7 @@ public class CreateGistHandler extends AbstractHandler {
 			if (obj instanceof IResource)
 				file = (IResource) obj;
 			else if (obj instanceof IAdaptable) {
-				file = ((IAdaptable) obj)
-						.getAdapter(IResource.class);
+				file = ((IAdaptable) obj).getAdapter(IResource.class);
 				if (file == null)
 					file = ((IAdaptable) obj).getAdapter(IFile.class);
 			}

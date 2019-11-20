@@ -40,7 +40,6 @@ public class BlobTest {
 	public void updateFields() {
 		Blob blob = new Blob();
 		assertEquals("content123", blob.setContent("content123").getContent());
-		assertEquals(Blob.ENCODING_UTF8, blob.setEncoding(Blob.ENCODING_UTF8)
-				.getEncoding());
+		assertEquals(Blob.ENCODING_UTF8, blob.setEncoding(Blob.ENCODING_UTF8).getEncoding());
 	}
 }

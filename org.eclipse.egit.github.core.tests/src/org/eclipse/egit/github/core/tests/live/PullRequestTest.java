@@ -59,8 +59,7 @@ public class PullRequestTest extends LiveTest {
 	@Test
 	public void fetch() throws IOException {
 		PullRequestService service = new PullRequestService(client);
-		PullRequest request = service.getPullRequest(new SearchRepository(
-				"technoweenie", "faraday"), 15);
+		PullRequest request = service.getPullRequest(new SearchRepository("technoweenie", "faraday"), 15);
 		assertNotNull(request);
 		assertNotNull(request.getHtmlUrl());
 		assertNotNull(request.getDiffUrl());
@@ -77,8 +76,7 @@ public class PullRequestTest extends LiveTest {
 	@Test
 	public void fetchAll() throws IOException {
 		PullRequestService service = new PullRequestService(client);
-		List<PullRequest> requests = service.getPullRequests(
-				new SearchRepository("technoweenie", "faraday"),
+		List<PullRequest> requests = service.getPullRequests(new SearchRepository("technoweenie", "faraday"),
 				IssueService.STATE_CLOSED);
 		assertNotNull(requests);
 		assertFalse(requests.isEmpty());

@@ -61,8 +61,8 @@ import org.eclipse.ui.PlatformUI;
  * Search for GitHub repositories wizard page.
  */
 @SuppressWarnings("restriction")
-public class RepositorySearchWizardPage extends WizardPage implements
-		IRepositorySearchResult {
+public class RepositorySearchWizardPage extends WizardPage
+		implements IRepositorySearchResult {
 
 	private SearchRepository[] repositories = null;
 
@@ -74,7 +74,8 @@ public class RepositorySearchWizardPage extends WizardPage implements
 	 *
 	 */
 	public RepositorySearchWizardPage() {
-		super("repoSearchPage", Messages.RepositorySearchWizardPage_Title, null); //$NON-NLS-1$
+		super("repoSearchPage", Messages.RepositorySearchWizardPage_Title, //$NON-NLS-1$
+				null);
 		setDescription(Messages.RepositorySearchWizardPage_Description);
 		setPageComplete(false);
 
@@ -103,11 +104,11 @@ public class RepositorySearchWizardPage extends WizardPage implements
 		GridLayoutFactory.fillDefaults().numColumns(2).applyTo(rowOne);
 
 		Label searchForLabel = new Label(rowOne, SWT.NONE);
-		searchForLabel
-				.setText(Messages.RepositorySearchWizardPage_SearchForRepositories);
+		searchForLabel.setText(
+				Messages.RepositorySearchWizardPage_SearchForRepositories);
 
-		final Combo languageCombo = new Combo(rowOne, SWT.READ_ONLY
-				| SWT.DROP_DOWN);
+		final Combo languageCombo = new Combo(rowOne,
+				SWT.READ_ONLY | SWT.DROP_DOWN);
 		languageCombo.add(Messages.RepositorySearchWizardPage_AnyLanguage);
 
 		for (Language language : Language.values())
@@ -138,7 +139,8 @@ public class RepositorySearchWizardPage extends WizardPage implements
 					private Image repoImage = UIIcons.REPOSITORY.createImage();
 
 					@Override
-					public void removeListener(ILabelProviderListener listener) {
+					public void removeListener(
+							ILabelProviderListener listener) {
 						// empty
 					}
 
@@ -240,28 +242,25 @@ public class RepositorySearchWizardPage extends WizardPage implements
 				@Override
 				public void run(IProgressMonitor monitor)
 						throws InvocationTargetException, InterruptedException {
-					monitor.beginTask(
-							MessageFormat
-									.format(Messages.RepositorySearchWizardPage_Searching,
-											text), 10);
+					monitor.beginTask(MessageFormat.format(
+							Messages.RepositorySearchWizardPage_Searching,
+							text), 10);
 					try {
 						final List<SearchRepository> repositories = repositoryService
 								.searchRepositories(text.trim(), language);
 						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
 							if (viewer.getControl().isDisposed())
 								return;
-							setMessage(
-									MessageFormat.format(
-											Messages.RepositorySearchWizardPage_Found,
-											Integer.valueOf(
-													repositories.size())),
+							setMessage(MessageFormat.format(
+									Messages.RepositorySearchWizardPage_Found,
+									Integer.valueOf(repositories.size())),
 									INFORMATION);
 							viewer.setInput(repositories);
 							validate(viewer);
 						});
 					} catch (IOException e) {
-						throw new InvocationTargetException(GitHubException
-								.wrap(e));
+						throw new InvocationTargetException(
+								GitHubException.wrap(e));
 					}
 				}
 			});

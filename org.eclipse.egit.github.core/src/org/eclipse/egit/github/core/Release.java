@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Release model class
+ * 
  * @since 4.2
  */
 public class Release implements Serializable {

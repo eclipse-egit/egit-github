@@ -34,8 +34,7 @@ public class EventFormatterTest {
 	 */
 	@Test
 	public void followPayload() {
-		Event event = GsonUtils.fromJson("{\"type\":\"" + TYPE_FOLLOW
-				+ "\",\"payload\":{}}", Event.class);
+		Event event = GsonUtils.fromJson("{\"type\":\"" + TYPE_FOLLOW + "\",\"payload\":{}}", Event.class);
 		assertNotNull(event);
 		assertNotNull(event.getPayload());
 		assertEquals(FollowPayload.class, event.getPayload().getClass());
@@ -46,8 +45,7 @@ public class EventFormatterTest {
 	 */
 	@Test
 	public void unknownPayload() {
-		Event event = GsonUtils.fromJson(
-				"{\"type\":\"NotAnEventType\",\"payload\":{}}", Event.class);
+		Event event = GsonUtils.fromJson("{\"type\":\"NotAnEventType\",\"payload\":{}}", Event.class);
 		assertNotNull(event);
 		assertNotNull(event.getPayload());
 		assertEquals(EventPayload.class, event.getPayload().getClass());

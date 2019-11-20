@@ -52,7 +52,10 @@ public class Repository implements IRepositoryIdProvider, Serializable {
 
 	private int size;
 
-	/** Legacy field, kept for backwards compatibility. It's actually the stargazersCount. */
+	/**
+	 * Legacy field, kept for backwards compatibility. It's actually the
+	 * stargazersCount.
+	 */
 	private int watchers;
 
 	private int stargazersCount;

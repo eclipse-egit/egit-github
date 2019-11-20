@@ -64,8 +64,7 @@ public class IssueTest extends LiveTest {
 	@Test
 	public void getIssueEvents() throws IOException {
 		IssueService service = new IssueService(client);
-		PageIterator<IssueEvent> iter = service.pageIssueEvents("schacon",
-				"showoff", 1);
+		PageIterator<IssueEvent> iter = service.pageIssueEvents("schacon", "showoff", 1);
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
 		for (Collection<IssueEvent> page : iter) {
@@ -80,13 +79,11 @@ public class IssueTest extends LiveTest {
 				assertNotNull(event.getCreatedAt());
 				assertNotNull(event.getEvent());
 				assertNotNull(event.getUrl());
-				IssueEvent fetched = service.getIssueEvent("schacon",
-						"showoff", event.getId());
+				IssueEvent fetched = service.getIssueEvent("schacon", "showoff", event.getId());
 				assertNotNull(fetched);
 				assertEquals(event.getId(), fetched.getId());
 				assertNotNull(fetched.getActor());
-				assertEquals(event.getActor().getLogin(), fetched.getActor()
-						.getLogin());
+				assertEquals(event.getActor().getLogin(), fetched.getActor().getLogin());
 				if (event.getCommitId() != null)
 					assertEquals(event.getCommitId(), fetched.getCommitId());
 				assertEquals(event.getCreatedAt(), fetched.getCreatedAt());
@@ -104,8 +101,7 @@ public class IssueTest extends LiveTest {
 	@Test
 	public void pageAllIssueEvents() throws IOException {
 		IssueService service = new IssueService(client);
-		PageIterator<IssueEvent> iter = service.pageEvents("schacon",
-				"showoff", 10);
+		PageIterator<IssueEvent> iter = service.pageEvents("schacon", "showoff", 10);
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
 		Collection<IssueEvent> firstPage = iter.next();
@@ -130,8 +126,7 @@ public class IssueTest extends LiveTest {
 	public void fetchAllIssues() throws IOException {
 		IssueService service = new IssueService(client);
 		List<Issue> issues = service.getIssues("schacon", "showoff",
-				Collections.singletonMap(IssueService.FILTER_STATE,
-						IssueService.STATE_OPEN));
+				Collections.singletonMap(IssueService.FILTER_STATE, IssueService.STATE_OPEN));
 		assertFalse(issues.isEmpty());
 		for (Issue issue : issues)
 			assertNotNull(issue);
@@ -147,8 +142,7 @@ public class IssueTest extends LiveTest {
 		IssueService service = new IssueService(client);
 		Map<String, String> params = new HashMap<>();
 		params.put(IssueService.FILTER_STATE, IssueService.STATE_CLOSED);
-		PageIterator<Issue> iterator = service.pageIssues("schacon", "showoff",
-				params, 1);
+		PageIterator<Issue> iterator = service.pageIssues("schacon", "showoff", params, 1);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
 		Collection<Issue> page = iterator.next();

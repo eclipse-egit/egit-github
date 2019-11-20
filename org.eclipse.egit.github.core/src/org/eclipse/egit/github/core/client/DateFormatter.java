@@ -34,8 +34,8 @@ import java.util.TimeZone;
 /**
  * Formatter for date formats present in the GitHub v2 and v3 API.
  */
-public class DateFormatter implements JsonDeserializer<Date>,
-		JsonSerializer<Date> {
+public class DateFormatter
+		implements JsonDeserializer<Date>, JsonSerializer<Date> {
 
 	private final DateFormat[] formats;
 

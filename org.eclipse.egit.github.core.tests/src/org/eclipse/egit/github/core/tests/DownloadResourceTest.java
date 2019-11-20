@@ -60,16 +60,12 @@ public class DownloadResourceTest {
 		DownloadResource resource = new DownloadResource();
 		assertEquals("abc", resource.setAccesskeyid("abc").getAccesskeyid());
 		assertEquals("group", resource.setAcl("group").getAcl());
-		assertEquals("a download", resource.setDescription("a download")
-				.getDescription());
+		assertEquals("a download", resource.setDescription("a download").getDescription());
 		assertEquals(5, resource.setDownloadCount(5).getDownloadCount());
-		assertEquals(new Date(2500), resource.setExpirationdate(new Date(2500))
-				.getExpirationdate());
-		assertEquals("download.html", resource.setHtmlUrl("download.html")
-				.getHtmlUrl());
+		assertEquals(new Date(2500), resource.setExpirationdate(new Date(2500)).getExpirationdate());
+		assertEquals("download.html", resource.setHtmlUrl("download.html").getHtmlUrl());
 		assertEquals(58, resource.setId(58).getId());
-		assertEquals("text/plain", resource.setMimeType("text/plain")
-				.getMimeType());
+		assertEquals("text/plain", resource.setMimeType("text/plain").getMimeType());
 		assertEquals("download.jar", resource.setName("download.jar").getName());
 		assertEquals("/a/b", resource.setPath("/a/b").getPath());
 		assertEquals("ro", resource.setPolicy("ro").getPolicy());

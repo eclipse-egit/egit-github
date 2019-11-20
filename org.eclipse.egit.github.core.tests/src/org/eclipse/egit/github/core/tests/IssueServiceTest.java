@@ -400,8 +400,8 @@ public class IssueServiceTest {
 	@Test
 	public void createIssueNullIssue() throws IOException {
 		issueService.createIssue("test_user", "test_repository", null);
-		verify(gitHubClient).post("/repos/test_user/test_repository/issues",
-				new HashMap<String, String>(), Issue.class);
+		verify(gitHubClient).post("/repos/test_user/test_repository/issues", new HashMap<String, String>(),
+				Issue.class);
 	}
 
 	/**
@@ -413,8 +413,7 @@ public class IssueServiceTest {
 	public void createIssueNullIssueWithRepositoryId() throws IOException {
 		RepositoryId id = new RepositoryId("tu", "tr");
 		issueService.createIssue(id, null);
-		verify(gitHubClient).post("/repos/tu/tr/issues",
-				new HashMap<String, String>(), Issue.class);
+		verify(gitHubClient).post("/repos/tu/tr/issues", new HashMap<String, String>(), Issue.class);
 	}
 
 	/**
@@ -485,8 +484,7 @@ public class IssueServiceTest {
 		params.put(IssueService.FIELD_TITLE, "test_title");
 		params.put(IssueService.FIELD_BODY, "test_body");
 		params.put(IssueService.FILTER_STATE, "test_state");
-		verify(gitHubClient).post("/repos/test_user/test_repository/issues/1",
-				params, Issue.class);
+		verify(gitHubClient).post("/repos/test_user/test_repository/issues/1", params, Issue.class);
 	}
 
 	/**
@@ -578,14 +576,11 @@ public class IssueServiceTest {
 	 */
 	@Test
 	public void createComment() throws IOException {
-		issueService.createComment("test_user", "test_repository", 1,
-				"test_comment");
+		issueService.createComment("test_user", "test_repository", 1, "test_comment");
 
 		Map<String, String> params = new HashMap<>();
 		params.put(IssueService.FIELD_BODY, "test_comment");
-		verify(gitHubClient).post(
-				"/repos/test_user/test_repository/issues/1/comments", params,
-				Comment.class);
+		verify(gitHubClient).post("/repos/test_user/test_repository/issues/1/comments", params, Comment.class);
 	}
 
 	/**
@@ -600,8 +595,7 @@ public class IssueServiceTest {
 
 		Map<String, String> params = new HashMap<>();
 		params.put(IssueService.FIELD_BODY, "test_comment");
-		verify(gitHubClient).post("/repos/tu/tr/issues/1/comments", params,
-				Comment.class);
+		verify(gitHubClient).post("/repos/tu/tr/issues/1/comments", params, Comment.class);
 	}
 
 	/**
@@ -710,8 +704,7 @@ public class IssueServiceTest {
 		PageIterator<Issue> iterator = issueService.pageIssues("user", "repo");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/repos/user/repo/issues"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/repos/user/repo/issues"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -725,8 +718,7 @@ public class IssueServiceTest {
 		PageIterator<Issue> iterator = issueService.pageIssues(id);
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/repos/user/repo/issues"), iterator
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/repos/user/repo/issues"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -751,8 +743,7 @@ public class IssueServiceTest {
 		PageIterator<IssueEvent> iter = issueService.pageEvents("user", "repo");
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
-		assertEquals(Utils.page("/repos/user/repo/issues/events"), iter
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/repos/user/repo/issues/events"), iter.getRequest().generateUri());
 	}
 
 	/**
@@ -762,12 +753,10 @@ public class IssueServiceTest {
 	 */
 	@Test
 	public void pageIssueEvents() throws IOException {
-		PageIterator<IssueEvent> iter = issueService.pageIssueEvents("user",
-				"repo", 16);
+		PageIterator<IssueEvent> iter = issueService.pageIssueEvents("user", "repo", 16);
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
-		assertEquals(Utils.page("/repos/user/repo/issues/16/events"), iter
-				.getRequest().generateUri());
+		assertEquals(Utils.page("/repos/user/repo/issues/16/events"), iter.getRequest().generateUri());
 	}
 
 	/**
@@ -815,8 +804,7 @@ public class IssueServiceTest {
 	public void editIssueComment() throws IOException {
 		Comment comment = new Comment().setId(29).setBody("new body");
 		issueService.editComment("user", "repo", comment);
-		verify(gitHubClient).post("/repos/user/repo/issues/comments/29",
-				comment, Comment.class);
+		verify(gitHubClient).post("/repos/user/repo/issues/comments/29", comment, Comment.class);
 	}
 
 	/**
@@ -829,8 +817,7 @@ public class IssueServiceTest {
 		RepositoryId id = new RepositoryId("user", "repo");
 		Comment comment = new Comment().setId(44).setBody("new body");
 		issueService.editComment(id, comment);
-		verify(gitHubClient).post("/repos/user/repo/issues/comments/44",
-				comment, Comment.class);
+		verify(gitHubClient).post("/repos/user/repo/issues/comments/44", comment, Comment.class);
 	}
 
 	/**
@@ -897,8 +884,7 @@ public class IssueServiceTest {
 		RepositoryId id = new RepositoryId("user", "repo");
 		issueService.searchIssues(id, "closed", "test");
 		GitHubRequest request = new GitHubRequest();
-		request.setUri(Utils
-				.page("/legacy/issues/search/user/repo/closed/test"));
+		request.setUri(Utils.page("/legacy/issues/search/user/repo/closed/test"));
 		verify(gitHubClient).get(request);
 	}
 
@@ -912,8 +898,7 @@ public class IssueServiceTest {
 		RepositoryId id = new RepositoryId("user", "repo");
 		issueService.searchIssues(id, "open", "a and a.");
 		GitHubRequest request = new GitHubRequest();
-		request.setUri(Utils
-				.page("/legacy/issues/search/user/repo/open/a%20and%20a%2E"));
+		request.setUri(Utils.page("/legacy/issues/search/user/repo/open/a%20and%20a%2E"));
 		verify(gitHubClient).get(request);
 	}
 }

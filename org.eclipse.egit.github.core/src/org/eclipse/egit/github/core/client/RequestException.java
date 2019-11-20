@@ -44,6 +44,7 @@ public class RequestException extends IOException {
 	private static final long serialVersionUID = 1197051396535284852L;
 
 	private final RequestError error;
+
 	private final int status;
 
 	/**

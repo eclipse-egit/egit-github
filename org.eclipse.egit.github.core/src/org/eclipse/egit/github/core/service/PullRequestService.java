@@ -134,8 +134,8 @@ public class PullRequestService extends GitHubService {
 		PagedRequest<PullRequest> request = createPagedRequest(start, size);
 		request.setUri(uri);
 		if (state != null)
-			request.setParams(Collections.singletonMap(
-					IssueService.FILTER_STATE, state));
+			request.setParams(
+					Collections.singletonMap(IssueService.FILTER_STATE, state));
 		request.setType(new TypeToken<List<PullRequest>>() {
 			// make protected type visible
 		}.getType());
@@ -190,7 +190,8 @@ public class PullRequestService extends GitHubService {
 	 * @return iterator over pages of pull requests
 	 */
 	public PageIterator<PullRequest> pagePullRequests(
-			IRepositoryIdProvider repository, String state, int start, int size) {
+			IRepositoryIdProvider repository, String state, int start,
+			int size) {
 		PagedRequest<PullRequest> request = createPullsRequest(repository,
 				state, start, size);
 		return createPageIterator(request);
@@ -482,8 +483,8 @@ public class PullRequestService extends GitHubService {
 	 * @return created commit comment
 	 * @throws IOException
 	 */
-	public CommitComment createComment(IRepositoryIdProvider repository,
-			int id, CommitComment comment) throws IOException {
+	public CommitComment createComment(IRepositoryIdProvider repository, int id,
+			CommitComment comment) throws IOException {
 		String repoId = getId(repository);
 
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);

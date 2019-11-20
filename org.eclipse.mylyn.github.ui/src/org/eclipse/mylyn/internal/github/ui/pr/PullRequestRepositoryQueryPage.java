@@ -39,7 +39,9 @@ import org.eclipse.swt.widgets.Text;
 public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 
 	private Button openButton;
+
 	private Button closedButton;
+
 	private Text titleText;
 
 	private SelectionListener completeListener = new SelectionAdapter() {
@@ -114,8 +116,8 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
 					.applyTo(titleArea);
 
-			new Label(titleArea, SWT.NONE)
-					.setText(Messages.PullRequestRepositoryQueryPage_LabelTitle);
+			new Label(titleArea, SWT.NONE).setText(
+					Messages.PullRequestRepositoryQueryPage_LabelTitle);
 			titleText = new Text(titleArea, SWT.SINGLE | SWT.BORDER);
 			GridDataFactory.fillDefaults().grab(true, false).applyTo(titleText);
 			titleText.addModifyListener(new ModifyListener() {
@@ -139,8 +141,8 @@ public class PullRequestRepositoryQueryPage extends GitHubRepositoryQueryPage {
 			return;
 
 		titleText.setText(query.getSummary());
-		List<String> status = QueryUtils.getAttributes(
-				IssueService.FILTER_STATE, query);
+		List<String> status = QueryUtils
+				.getAttributes(IssueService.FILTER_STATE, query);
 		closedButton.setSelection(status.contains(IssueService.STATE_CLOSED));
 		openButton.setSelection(status.contains(IssueService.STATE_OPEN));
 	}

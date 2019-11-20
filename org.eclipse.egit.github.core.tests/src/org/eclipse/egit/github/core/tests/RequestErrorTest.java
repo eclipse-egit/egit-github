@@ -34,8 +34,7 @@ public class RequestErrorTest {
 	@Test
 	public void requestErrorWithErrorField() throws Exception {
 		Gson gson = new Gson();
-		RequestError error = gson.fromJson("{\"error\":\"not authorized\"}",
-				RequestError.class);
+		RequestError error = gson.fromJson("{\"error\":\"not authorized\"}", RequestError.class);
 		assertNotNull(error);
 		assertEquals("not authorized", error.getMessage());
 		assertNull(error.getErrors());
@@ -49,24 +48,21 @@ public class RequestErrorTest {
 	@Test
 	public void requestErrorWithMessageField() throws Exception {
 		Gson gson = new Gson();
-		RequestError error = gson.fromJson("{\"message\":\"not authorized\"}",
-				RequestError.class);
+		RequestError error = gson.fromJson("{\"message\":\"not authorized\"}", RequestError.class);
 		assertNotNull(error);
 		assertEquals("not authorized", error.getMessage());
 		assertNull(error.getErrors());
 	}
 
 	/**
-	 * Get request error message for JSON that contains error and message
-	 * property
+	 * Get request error message for JSON that contains error and message property
 	 *
 	 * @throws Exception
 	 */
 	@Test
 	public void requestErrorWithErrorAndMessageField() throws Exception {
 		Gson gson = new Gson();
-		RequestError error = gson.fromJson(
-				"{\"message\":\"not authorized\",\"error\":\"bad username\"}",
+		RequestError error = gson.fromJson("{\"message\":\"not authorized\",\"error\":\"bad username\"}",
 				RequestError.class);
 		assertNotNull(error);
 		assertEquals("not authorized", error.getMessage());

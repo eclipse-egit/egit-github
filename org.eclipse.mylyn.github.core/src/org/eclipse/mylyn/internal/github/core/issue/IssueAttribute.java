@@ -70,15 +70,14 @@ public enum IssueAttribute {
 	/**
 	 * Issue reporter
 	 */
-	REPORTER(Messages.IssueAttribute_LabelReporter,
-			TaskAttribute.USER_REPORTER, TaskAttribute.TYPE_PERSON, true, false),
+	REPORTER(Messages.IssueAttribute_LabelReporter, TaskAttribute.USER_REPORTER,
+			TaskAttribute.TYPE_PERSON, true, false),
 
 	/**
 	 * Comment being added to issue
 	 */
-	COMMENT_NEW(Messages.IssueAttribute_LabelComment,
-			TaskAttribute.COMMENT_NEW, TaskAttribute.TYPE_LONG_RICH_TEXT,
-			false, false),
+	COMMENT_NEW(Messages.IssueAttribute_LabelComment, TaskAttribute.COMMENT_NEW,
+			TaskAttribute.TYPE_LONG_RICH_TEXT, false, false),
 
 	/**
 	 * Labels applied to issue
@@ -89,15 +88,14 @@ public enum IssueAttribute {
 	/**
 	 * Issue assignee
 	 */
-	ASSIGNEE(Messages.IssueAttribute_LabelAssignee,
-			TaskAttribute.USER_ASSIGNED, TaskAttribute.TYPE_PERSON, false, true),
+	ASSIGNEE(Messages.IssueAttribute_LabelAssignee, TaskAttribute.USER_ASSIGNED,
+			TaskAttribute.TYPE_PERSON, false, true),
 
 	/**
 	 * Issue milestone
 	 */
-	MILESTONE(Messages.IssueAttribute_LabelMilestone,
-			"github.issue.milestone", TaskAttribute.TYPE_SINGLE_SELECT, //$NON-NLS-1$
-			false, true),
+	MILESTONE(Messages.IssueAttribute_LabelMilestone, "github.issue.milestone", //$NON-NLS-1$
+			TaskAttribute.TYPE_SINGLE_SELECT, false, true),
 
 	/**
 	 * Issue assignee gravatar

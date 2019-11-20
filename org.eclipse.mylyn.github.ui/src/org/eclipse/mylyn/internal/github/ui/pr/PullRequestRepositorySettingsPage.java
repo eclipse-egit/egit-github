@@ -40,10 +40,11 @@ import org.eclipse.swt.widgets.Composite;
  * Pull request task repository settings page.
  */
 @SuppressWarnings("restriction")
-public class PullRequestRepositorySettingsPage extends
-		HttpRepositorySettingsPage {
+public class PullRequestRepositorySettingsPage
+		extends HttpRepositorySettingsPage {
 
 	private boolean syncLabel = true;
+
 	private boolean editingUrl = false;
 
 	/**
@@ -51,7 +52,8 @@ public class PullRequestRepositorySettingsPage extends
 	 *
 	 * @param taskRepository
 	 */
-	public PullRequestRepositorySettingsPage(final TaskRepository taskRepository) {
+	public PullRequestRepositorySettingsPage(
+			final TaskRepository taskRepository) {
 		super(Messages.PullRequestRepositorySettingsPage_Title,
 				Messages.PullRequestRepositorySettingsPage_Description,
 				taskRepository);
@@ -71,8 +73,8 @@ public class PullRequestRepositorySettingsPage extends
 			String url = serverUrlCombo.getText();
 			RepositoryId repo = GitHub.getRepository(url);
 			if (repo != null)
-				repositoryLabelEditor.setStringValue(PullRequestConnector
-						.getRepositoryLabel(repo));
+				repositoryLabelEditor.setStringValue(
+						PullRequestConnector.getRepositoryLabel(repo));
 		}
 	}
 
@@ -86,8 +88,8 @@ public class PullRequestRepositorySettingsPage extends
 			serverUrlCombo.setFocus();
 			// select the user/project part of the URL so that the user can just
 			// start typing to replace the text.
-			serverUrlCombo.setSelection(new Point(GitHub.HTTP_GITHUB_COM
-					.length() + 1, fullUrlText.length()));
+			serverUrlCombo.setSelection(new Point(
+					GitHub.HTTP_GITHUB_COM.length() + 1, fullUrlText.length()));
 
 			syncRepositoryLabel();
 
@@ -114,8 +116,8 @@ public class PullRequestRepositorySettingsPage extends
 						}
 					});
 		} else
-			serverUrlCombo.setText(PullRequestConnector.stripPulls(repository
-					.getRepositoryUrl()));
+			serverUrlCombo.setText(PullRequestConnector
+					.stripPulls(repository.getRepositoryUrl()));
 
 		if (getRepository() == null)
 			setAnonymous(false);
@@ -129,30 +131,29 @@ public class PullRequestRepositorySettingsPage extends
 				monitor.beginTask(
 						Messages.PullRequestRepositorySettingsPage_TaskValidating,
 						100);
-				monitor.subTask(Messages.PullRequestRepositorySettingsPage_TaskContacting);
+				monitor.subTask(
+						Messages.PullRequestRepositorySettingsPage_TaskContacting);
 				try {
 					GitHubClient client = IssueConnector
 							.createClient(repository);
 					PullRequestService service = new PullRequestService(client);
-					RepositoryId repo = GitHub.getRepository(repository
-							.getRepositoryUrl());
+					RepositoryId repo = GitHub
+							.getRepository(repository.getRepositoryUrl());
 					monitor.worked(50);
 					service.pagePullRequests(repo, IssueService.STATE_OPEN, 1)
 							.next();
 				} catch (NoSuchPageException e) {
-					String message = MessageFormat
-							.format(Messages.PullRequestRepositorySettingsPage_ValidateError,
-									GitHubException.wrap(e.getCause())
-											.getLocalizedMessage());
+					String message = MessageFormat.format(
+							Messages.PullRequestRepositorySettingsPage_ValidateError,
+							GitHubException.wrap(e.getCause())
+									.getLocalizedMessage());
 					setStatus(GitHubUi.createErrorStatus(message));
 					return;
 				} finally {
 					monitor.done();
 				}
 
-				setStatus(new Status(
-						IStatus.OK,
-						GitHubUi.BUNDLE_ID,
+				setStatus(new Status(IStatus.OK, GitHubUi.BUNDLE_ID,
 						Messages.PullRequestRepositorySettingsPage_ValidateSuccess));
 			}
 		};

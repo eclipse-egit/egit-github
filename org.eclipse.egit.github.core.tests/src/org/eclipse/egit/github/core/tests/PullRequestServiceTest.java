@@ -216,8 +216,7 @@ public class PullRequestServiceTest {
 	@Test
 	public void merge() throws IOException {
 		pullRequestService.merge(repo, 8, "merge");
-		verify(gitHubClient).put(eq("/repos/o/n/pulls/8/merge"), any(),
-				eq(MergeStatus.class));
+		verify(gitHubClient).put(eq("/repos/o/n/pulls/8/merge"), any(), eq(MergeStatus.class));
 	}
 
 	/**
@@ -230,8 +229,7 @@ public class PullRequestServiceTest {
 		CommitComment comment = new CommitComment();
 		comment.setBody("looks good");
 		pullRequestService.createComment(repo, 3, comment);
-		verify(gitHubClient).post("/repos/o/n/pulls/3/comments", comment,
-				CommitComment.class);
+		verify(gitHubClient).post("/repos/o/n/pulls/3/comments", comment, CommitComment.class);
 	}
 
 	/**
@@ -242,8 +240,7 @@ public class PullRequestServiceTest {
 	@Test
 	public void replyToComment() throws IOException {
 		pullRequestService.replyToComment(repo, 5, 10, "reply");
-		verify(gitHubClient).post(eq("/repos/o/n/pulls/5/comments"), notNull(),
-				eq(CommitComment.class));
+		verify(gitHubClient).post(eq("/repos/o/n/pulls/5/comments"), notNull(), eq(CommitComment.class));
 	}
 
 	/**
@@ -259,8 +256,7 @@ public class PullRequestServiceTest {
 		request.setHead(new PullRequestMarker().setRef("master"));
 		request.setBase(new PullRequestMarker().setRef("b1"));
 		pullRequestService.createPullRequest(repo, request);
-		verify(gitHubClient).post(eq("/repos/o/n/pulls"), notNull(),
-				eq(PullRequest.class));
+		verify(gitHubClient).post(eq("/repos/o/n/pulls"), notNull(), eq(PullRequest.class));
 	}
 
 	/**
@@ -271,8 +267,7 @@ public class PullRequestServiceTest {
 	@Test
 	public void createPullRequestFromIssue() throws IOException {
 		pullRequestService.createPullRequest(repo, 49, "master", "v1");
-		verify(gitHubClient).post(eq("/repos/o/n/pulls"), notNull(),
-				eq(PullRequest.class));
+		verify(gitHubClient).post(eq("/repos/o/n/pulls"), notNull(), eq(PullRequest.class));
 	}
 
 	/**
@@ -297,8 +292,7 @@ public class PullRequestServiceTest {
 		request.setTitle("new title");
 		request.setState("merged");
 		pullRequestService.editPullRequest(repo, request);
-		verify(gitHubClient).post(eq("/repos/o/n/pulls/33"), notNull(),
-				eq(PullRequest.class));
+		verify(gitHubClient).post(eq("/repos/o/n/pulls/33"), notNull(), eq(PullRequest.class));
 	}
 
 	/**
@@ -332,7 +326,6 @@ public class PullRequestServiceTest {
 		CommitComment comment = new CommitComment();
 		comment.setId(78).setBody("a newer body");
 		pullRequestService.editComment(repo, comment);
-		verify(gitHubClient).post("/repos/o/n/pulls/comments/78", comment,
-				CommitComment.class);
+		verify(gitHubClient).post("/repos/o/n/pulls/comments/78", comment, CommitComment.class);
 	}
 }

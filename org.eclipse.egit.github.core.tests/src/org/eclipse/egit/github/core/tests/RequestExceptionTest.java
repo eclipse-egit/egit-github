@@ -30,8 +30,7 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void invalidField() {
-		RequestError error = GsonUtils.fromJson(
-				"{\"errors\":[{\"code\":\"invalid\", \"field\":\"page\"}]}",
+		RequestError error = GsonUtils.fromJson("{\"errors\":[{\"code\":\"invalid\", \"field\":\"page\"}]}",
 				RequestError.class);
 		RequestException e = new RequestException(error, 400);
 		String formatted = e.formatErrors();
@@ -44,10 +43,8 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void invalidFieldValue() {
-		RequestError error = GsonUtils
-				.fromJson(
-						"{\"errors\":[{\"code\":\"invalid\", \"field\":\"name\", \"value\":\"100\"}]}",
-						RequestError.class);
+		RequestError error = GsonUtils.fromJson(
+				"{\"errors\":[{\"code\":\"invalid\", \"field\":\"name\", \"value\":\"100\"}]}", RequestError.class);
 		RequestException e = new RequestException(error, 401);
 		String formatted = e.formatErrors();
 		assertNotNull(formatted);
@@ -59,10 +56,8 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void missingField() {
-		RequestError error = GsonUtils
-				.fromJson(
-						"{\"errors\":[{\"code\":\"missing_field\", \"field\":\"due\"}]}",
-						RequestError.class);
+		RequestError error = GsonUtils.fromJson("{\"errors\":[{\"code\":\"missing_field\", \"field\":\"due\"}]}",
+				RequestError.class);
 		RequestException e = new RequestException(error, 422);
 		String formatted = e.formatErrors();
 		assertNotNull(formatted);
@@ -74,16 +69,13 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void existentField() {
-		RequestError error = GsonUtils
-				.fromJson(
-						"{\"errors\":[{\"code\":\"already_exists\", \"field\":\"severity\",  \"resource\":\"Issue\"}]}",
-						RequestError.class);
+		RequestError error = GsonUtils.fromJson(
+				"{\"errors\":[{\"code\":\"already_exists\", \"field\":\"severity\",  \"resource\":\"Issue\"}]}",
+				RequestError.class);
 		RequestException e = new RequestException(error, 500);
 		String formatted = e.formatErrors();
 		assertNotNull(formatted);
-		assertEquals(
-				"500: Issue resource with 'severity' field already exists",
-				formatted);
+		assertEquals("500: Issue resource with 'severity' field already exists", formatted);
 	}
 
 	/**
@@ -91,15 +83,12 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void errorField() {
-		RequestError error = GsonUtils
-				.fromJson(
-						"{\"errors\":[{\"field\":\"priority\", \"resource\":\"Gist\"}]}",
-						RequestError.class);
+		RequestError error = GsonUtils.fromJson("{\"errors\":[{\"field\":\"priority\", \"resource\":\"Gist\"}]}",
+				RequestError.class);
 		RequestException e = new RequestException(error, 400);
 		String formatted = e.formatErrors();
 		assertNotNull(formatted);
-		assertEquals("400: Error with 'priority' field in Gist resource",
-				formatted);
+		assertEquals("400: Error with 'priority' field in Gist resource", formatted);
 	}
 
 	/**
@@ -107,10 +96,8 @@ public class RequestExceptionTest {
 	 */
 	@Test
 	public void customCode() {
-		RequestError error = GsonUtils
-				.fromJson(
-						"{\"errors\":[{\"code\":\"custom\", \"message\":\"Integer instead of String\"}]}",
-						RequestError.class);
+		RequestError error = GsonUtils.fromJson(
+				"{\"errors\":[{\"code\":\"custom\", \"message\":\"Integer instead of String\"}]}", RequestError.class);
 		RequestException e = new RequestException(error, 400);
 		String formatted = e.formatErrors();
 		assertNotNull(formatted);

@@ -20,7 +20,8 @@ import org.eclipse.egit.github.core.Milestone;
 /**
  * Milestone comparator using case-insensitive name comparisons.
  */
-public class MilestoneComparator implements Comparator<Milestone>, Serializable {
+public class MilestoneComparator
+		implements Comparator<Milestone>, Serializable {
 
 	/**
 	 * serialVersionUID

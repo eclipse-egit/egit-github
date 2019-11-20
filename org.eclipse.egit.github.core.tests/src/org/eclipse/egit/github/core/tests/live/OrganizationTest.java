@@ -79,8 +79,8 @@ public class OrganizationTest extends LiveTest {
 	}
 
 	/**
-	 * Test fetching members of first org that the currently authenticated user
-	 * is in.
+	 * Test fetching members of first org that the currently authenticated user is
+	 * in.
 	 * 
 	 * @throws Exception
 	 */
@@ -124,9 +124,7 @@ public class OrganizationTest extends LiveTest {
 		String orgName = orgs.get(0).getLogin();
 		assertNotNull(orgName);
 		assertTrue(service.isMember(orgName, client.getUser()));
-		assertFalse(service.isMember(orgName,
-				"notarealuserintheorg" + System.nanoTime()));
-		assertFalse(service.isPublicMember(orgName, "notarealuserintheorg"
-				+ System.nanoTime()));
+		assertFalse(service.isMember(orgName, "notarealuserintheorg" + System.nanoTime()));
+		assertFalse(service.isPublicMember(orgName, "notarealuserintheorg" + System.nanoTime()));
 	}
 }

@@ -63,11 +63,11 @@ public class GistNotificationPopup extends AbstractNotificationPopup {
 	protected void createContentArea(Composite composite) {
 		composite.setLayout(new GridLayout(1, true));
 		Label label = new Label(composite, SWT.NONE);
-		label.setText(MessageFormat.format(
-				Messages.GistNotificationPopup_GistTitle, title));
+		label.setText(MessageFormat
+				.format(Messages.GistNotificationPopup_GistTitle, title));
 		Link link = new Link(composite, SWT.WRAP);
-		link.setText(MessageFormat.format(
-				Messages.GistNotificationPopup_GistLink, gist.getId()));
+		link.setText(MessageFormat
+				.format(Messages.GistNotificationPopup_GistLink, gist.getId()));
 		link.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		link.setBackground(composite.getBackground());
 		link.addSelectionListener(new SelectionAdapter() {

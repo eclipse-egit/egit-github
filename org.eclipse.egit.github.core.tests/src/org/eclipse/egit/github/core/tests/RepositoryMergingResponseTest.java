@@ -60,10 +60,8 @@ public class RepositoryMergingResponseTest {
 		assertEquals(committer, response.setCommitter(committer).getCommitter());
 		assertEquals("url", response.setUrl("url").getUrl());
 		assertEquals("htmlUrl", response.setHtmlUrl("htmlUrl").getHtmlUrl());
-		assertEquals("commentsUrl",
-				response.setCommentsUrl("commentsUrl").getCommentsUrl());
-		assertEquals(new ArrayList<Commit>(),
-				response.setParents(new ArrayList<Commit>()).getParents());
+		assertEquals("commentsUrl", response.setCommentsUrl("commentsUrl").getCommentsUrl());
+		assertEquals(new ArrayList<Commit>(), response.setParents(new ArrayList<Commit>()).getParents());
 
 	}
 }

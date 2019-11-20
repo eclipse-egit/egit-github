@@ -71,14 +71,11 @@ public class IssueTest {
 		assertEquals("body", issue.setBody("body").getBody());
 		assertEquals("<body>", issue.setBodyHtml("<body>").getBodyHtml());
 		assertEquals("text", issue.setBodyText("text").getBodyText());
-		assertEquals(new Date(1000), issue.setClosedAt(new Date(1000))
-				.getClosedAt());
+		assertEquals(new Date(1000), issue.setClosedAt(new Date(1000)).getClosedAt());
 		assertEquals(5, issue.setComments(5).getComments());
-		assertEquals(new Date(2000), issue.setCreatedAt(new Date(2000))
-				.getCreatedAt());
+		assertEquals(new Date(2000), issue.setCreatedAt(new Date(2000)).getCreatedAt());
 		assertEquals("html", issue.setHtmlUrl("html").getHtmlUrl());
-		assertEquals(new ArrayList<Label>(),
-				issue.setLabels(new ArrayList<Label>()).getLabels());
+		assertEquals(new ArrayList<Label>(), issue.setLabels(new ArrayList<Label>()).getLabels());
 		Milestone milestone = new Milestone().setNumber(50);
 		assertEquals(milestone, issue.setMilestone(milestone).getMilestone());
 		assertEquals(123, issue.setNumber(123).getNumber());
@@ -86,8 +83,7 @@ public class IssueTest {
 		assertEquals(pr, issue.setPullRequest(pr).getPullRequest());
 		assertEquals("state", issue.setState("state").getState());
 		assertEquals("title", issue.setTitle("title").getTitle());
-		assertEquals(new Date(3000), issue.setUpdatedAt(new Date(3000))
-				.getUpdatedAt());
+		assertEquals(new Date(3000), issue.setUpdatedAt(new Date(3000)).getUpdatedAt());
 		assertEquals("url", issue.setUrl("url").getUrl());
 		User user = new User().setLogin("user");
 		assertEquals(user, issue.setUser(user).getUser());

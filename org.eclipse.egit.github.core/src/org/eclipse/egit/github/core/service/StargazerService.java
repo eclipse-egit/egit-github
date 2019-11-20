@@ -35,8 +35,8 @@ import org.eclipse.egit.github.core.client.PagedRequest;
 /**
  * Service class for dealing with users starring GitHub repositories.
  *
- * @see <a href="https://developer.github.com/v3/activity/starring/">GitHub stargazer
- *      API documentation</a>
+ * @see <a href="https://developer.github.com/v3/activity/starring/">GitHub
+ *      stargazer API documentation</a>
  * @since 4.2
  */
 public class StargazerService extends GitHubService {
@@ -163,7 +163,8 @@ public class StargazerService extends GitHubService {
 	 * @param size
 	 * @return request
 	 */
-	protected PagedRequest<Repository> createStarredRequest(int start, int size) {
+	protected PagedRequest<Repository> createStarredRequest(int start,
+			int size) {
 		PagedRequest<Repository> request = createPagedRequest(start, size);
 		request.setUri(SEGMENT_USER + SEGMENT_STARRED);
 		request.setType(new TypeToken<List<Repository>>() {
@@ -192,7 +193,8 @@ public class StargazerService extends GitHubService {
 	 * @return page iterator
 	 * @throws IOException
 	 */
-	public PageIterator<Repository> pageStarred(String user) throws IOException {
+	public PageIterator<Repository> pageStarred(String user)
+			throws IOException {
 		return pageStarred(user, PAGE_SIZE);
 	}
 
@@ -218,8 +220,8 @@ public class StargazerService extends GitHubService {
 	 * @return page iterator
 	 * @throws IOException
 	 */
-	public PageIterator<Repository> pageStarred(String user, int start, int size)
-			throws IOException {
+	public PageIterator<Repository> pageStarred(String user, int start,
+			int size) throws IOException {
 		PagedRequest<Repository> request = createStarredRequest(user, start,
 				size);
 		return createPageIterator(request);
@@ -303,7 +305,8 @@ public class StargazerService extends GitHubService {
 	}
 
 	/**
-	 * Remove currently authenticated user as a stargazer of the given repository
+	 * Remove currently authenticated user as a stargazer of the given
+	 * repository
 	 *
 	 * @param repository
 	 * @throws IOException

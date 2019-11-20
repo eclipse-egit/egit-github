@@ -59,14 +59,12 @@ public class RepositoryCommitTest {
 		assertEquals(gitCommit, commit.setCommit(gitCommit).getCommit());
 		User committer = new User().setLogin("committer");
 		assertEquals(committer, commit.setCommitter(committer).getCommitter());
-		assertEquals(new ArrayList<Commit>(),
-				commit.setParents(new ArrayList<Commit>()).getParents());
+		assertEquals(new ArrayList<Commit>(), commit.setParents(new ArrayList<Commit>()).getParents());
 		assertEquals("0a0", commit.setSha("0a0").getSha());
 		assertEquals("url", commit.setUrl("url").getUrl());
 		CommitStats stats = new CommitStats();
 		assertEquals(stats, commit.setStats(stats).getStats());
-		List<CommitFile> files = Arrays.asList(new CommitFile()
-				.setFilename("test.txt"));
+		List<CommitFile> files = Arrays.asList(new CommitFile().setFilename("test.txt"));
 		assertEquals(files, commit.setFiles(files).getFiles());
 	}
 }

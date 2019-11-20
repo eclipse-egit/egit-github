@@ -38,7 +38,8 @@ import org.eclipse.ui.internal.WorkbenchImages;
  * @author Kevin Sawicki (kevin@github.com)
  */
 @SuppressWarnings("restriction")
-public class TaskRepositoryImportWizard extends Wizard implements IImportWizard {
+public class TaskRepositoryImportWizard extends Wizard
+		implements IImportWizard {
 
 	private CredentialsWizardPage credentialsPage;
 
@@ -49,9 +50,10 @@ public class TaskRepositoryImportWizard extends Wizard implements IImportWizard 
 	 */
 	public TaskRepositoryImportWizard() {
 		setNeedsProgressMonitor(true);
-		setDefaultPageImageDescriptor(WorkbenchImages
-				.getImageDescriptor(IWorkbenchGraphicConstants.IMG_WIZBAN_IMPORT_WIZ));
-		setWindowTitle(org.eclipse.mylyn.internal.github.ui.Messages.TaskRepositoryImportWizard_Title);
+		setDefaultPageImageDescriptor(WorkbenchImages.getImageDescriptor(
+				IWorkbenchGraphicConstants.IMG_WIZBAN_IMPORT_WIZ));
+		setWindowTitle(
+				org.eclipse.mylyn.internal.github.ui.Messages.TaskRepositoryImportWizard_Title);
 	}
 
 	/**
@@ -96,10 +98,10 @@ public class TaskRepositoryImportWizard extends Wizard implements IImportWizard 
 		String password = credentialsPage.getPassword();
 		final IRepositoryManager manager = TasksUi.getRepositoryManager();
 		for (Repository repo : reposPage.getRepositories()) {
-			manager.addRepository(IssueConnector.createTaskRepository(repo,
-					user, password));
-			manager.addRepository(PullRequestConnector.createTaskRepository(
-					repo, user, password));
+			manager.addRepository(
+					IssueConnector.createTaskRepository(repo, user, password));
+			manager.addRepository(PullRequestConnector
+					.createTaskRepository(repo, user, password));
 		}
 		if (reposPage.createGistRepository()) {
 			AuthenticationCredentials credentials = new AuthenticationCredentials(

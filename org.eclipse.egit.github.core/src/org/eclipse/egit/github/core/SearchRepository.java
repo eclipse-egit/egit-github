@@ -28,25 +28,38 @@ public class SearchRepository implements IRepositoryIdProvider, Serializable {
 	private static final long serialVersionUID = 978627174722864632L;
 
 	private boolean fork;
+
 	private boolean hasDownloads;
+
 	private boolean hasIssues;
+
 	private boolean hasWiki;
+
 	@SerializedName("private")
 	private boolean isPrivate;
 
 	private Date createdAt;
+
 	private Date pushedAt;
 
 	private String description;
+
 	private String homepage;
+
 	private String language;
+
 	private String name;
+
 	private String owner;
+
 	private String url;
 
 	private int forks;
+
 	private int openIssues;
+
 	private int size;
+
 	private int watchers;
 
 	/**

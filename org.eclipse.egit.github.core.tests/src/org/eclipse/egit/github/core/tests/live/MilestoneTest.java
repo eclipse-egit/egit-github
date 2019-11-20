@@ -45,14 +45,12 @@ public class MilestoneTest extends LiveTest {
 		m.setTitle("Title " + System.currentTimeMillis());
 		m.setDueOn(new Date((System.currentTimeMillis() / 1000) * 1000));
 		MilestoneService service = new MilestoneService(client);
-		Milestone created = service.createMilestone(client.getUser(),
-				writableRepo, m);
+		Milestone created = service.createMilestone(client.getUser(), writableRepo, m);
 		assertNotNull(created);
 		assertEquals(m.getDescription(), created.getDescription());
 		assertEquals(m.getTitle(), created.getTitle());
 		assertEquals(m.getDueOn().getTime(), created.getDueOn().getTime());
-		List<Milestone> milestones = service.getMilestones(client.getUser(),
-				writableRepo, m.getState());
+		List<Milestone> milestones = service.getMilestones(client.getUser(), writableRepo, m.getState());
 		Milestone fetched = null;
 		assertNotNull(milestones);
 		for (Milestone milestone : milestones)
@@ -70,11 +68,9 @@ public class MilestoneTest extends LiveTest {
 		assertEquals(created.getUrl(), fetched.getUrl());
 		assertEquals(created.getCreatedAt(), fetched.getCreatedAt());
 		assertEquals(created.getDueOn(), fetched.getDueOn());
-		assertEquals(created.getCreator().getLogin(), fetched.getCreator()
-				.getLogin());
+		assertEquals(created.getCreator().getLogin(), fetched.getCreator().getLogin());
 
-		fetched = service.getMilestone(client.getUser(), writableRepo,
-				Integer.toString(created.getNumber()));
+		fetched = service.getMilestone(client.getUser(), writableRepo, Integer.toString(created.getNumber()));
 		assertNotNull(fetched);
 		assertEquals(created.getClosedIssues(), fetched.getClosedIssues());
 		assertEquals(created.getDescription(), fetched.getDescription());
@@ -85,14 +81,11 @@ public class MilestoneTest extends LiveTest {
 		assertEquals(created.getUrl(), fetched.getUrl());
 		assertEquals(created.getCreatedAt(), fetched.getCreatedAt());
 		assertEquals(created.getDueOn(), fetched.getDueOn());
-		assertEquals(created.getCreator().getLogin(), fetched.getCreator()
-				.getLogin());
+		assertEquals(created.getCreator().getLogin(), fetched.getCreator().getLogin());
 
-		service.deleteMilestone(client.getUser(), writableRepo,
-				Integer.toString(created.getNumber()));
+		service.deleteMilestone(client.getUser(), writableRepo, Integer.toString(created.getNumber()));
 		try {
-			service.getMilestone(client.getUser(), writableRepo,
-					Integer.toString(created.getNumber()));
+			service.getMilestone(client.getUser(), writableRepo, Integer.toString(created.getNumber()));
 			fail("Fetch did not throw exception");
 		} catch (RequestException e) {
 			assertEquals(HTTP_NOT_FOUND, e.getStatus());

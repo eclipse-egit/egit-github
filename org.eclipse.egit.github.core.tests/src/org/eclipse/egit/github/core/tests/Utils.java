@@ -30,7 +30,6 @@ public abstract class Utils {
 	 */
 	public static String page(String uri) {
 		String separator = uri.indexOf('?') == -1 ? "?" : "&";
-		return uri + separator + PARAM_PER_PAGE + "=" + PAGE_SIZE + "&"
-				+ PARAM_PAGE + "=" + PAGE_FIRST;
+		return uri + separator + PARAM_PER_PAGE + "=" + PAGE_SIZE + "&" + PARAM_PAGE + "=" + PAGE_FIRST;
 	}
 }

@@ -64,10 +64,8 @@ public class RepositoryCommitCompareTest {
 		List<CommitFile> files = Arrays.asList(new CommitFile());
 		assertEquals(files, compare.setFiles(files).getFiles());
 		assertEquals("html-url", compare.setHtmlUrl("html-url").getHtmlUrl());
-		assertEquals("patch-url", compare.setPatchUrl("patch-url")
-				.getPatchUrl());
-		assertEquals("link-url", compare.setPermalinkUrl("link-url")
-				.getPermalinkUrl());
+		assertEquals("patch-url", compare.setPatchUrl("patch-url").getPatchUrl());
+		assertEquals("link-url", compare.setPermalinkUrl("link-url").getPermalinkUrl());
 		assertEquals("behind", compare.setStatus("behind").getStatus());
 		assertEquals(400, compare.setTotalCommits(400).getTotalCommits());
 		assertEquals("url", compare.setUrl("url").getUrl());

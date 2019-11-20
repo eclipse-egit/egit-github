@@ -44,7 +44,6 @@ public class CreatePayloadTest {
 		assertEquals("branch", payload.setRefType("branch").getRefType());
 		assertEquals("ref", payload.setRef("ref").getRef());
 		assertEquals("master", payload.setMasterBranch("master").getMasterBranch());
-		assertEquals("description",
-				payload.setDescription("description").getDescription());
+		assertEquals("description", payload.setDescription("description").getDescription());
 	}
 }

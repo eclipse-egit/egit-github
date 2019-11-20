@@ -51,8 +51,8 @@ public class GistConnectorUi extends AbstractRepositoryConnectorUi {
 	 * @return possibly empty set of Gist task repositories
 	 */
 	public static Set<TaskRepository> getRepositories() {
-		return TasksUi.getRepositoryManager().getRepositories(
-				GistConnector.KIND);
+		return TasksUi.getRepositoryManager()
+				.getRepositories(GistConnector.KIND);
 	}
 
 	/**
@@ -86,8 +86,10 @@ public class GistConnectorUi extends AbstractRepositoryConnectorUi {
 	@Override
 	public IWizard getQueryWizard(TaskRepository taskRepository,
 			IRepositoryQuery queryToEdit) {
-		RepositoryQueryWizard wizard = new RepositoryQueryWizard(taskRepository);
-		wizard.addPage(new GistRepositoryQueryPage(taskRepository, queryToEdit));
+		RepositoryQueryWizard wizard = new RepositoryQueryWizard(
+				taskRepository);
+		wizard.addPage(
+				new GistRepositoryQueryPage(taskRepository, queryToEdit));
 		return wizard;
 	}
 

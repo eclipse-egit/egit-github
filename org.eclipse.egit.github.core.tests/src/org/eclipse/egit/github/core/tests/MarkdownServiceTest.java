@@ -53,10 +53,8 @@ public class MarkdownServiceTest {
 	@Before
 	public void before() throws IOException {
 		content = "<p>content</p>";
-		ByteArrayInputStream stream = new ByteArrayInputStream(
-				content.getBytes(CHARSET_UTF8));
-		doReturn(stream).when(client).postStream(any(String.class),
-				any(Object.class));
+		ByteArrayInputStream stream = new ByteArrayInputStream(content.getBytes(CHARSET_UTF8));
+		doReturn(stream).when(client).postStream(any(String.class), any(Object.class));
 		service = new MarkdownService(client);
 		repo = new RepositoryId("o", "n");
 	}

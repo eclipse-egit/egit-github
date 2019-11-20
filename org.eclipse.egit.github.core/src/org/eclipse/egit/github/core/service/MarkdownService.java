@@ -60,8 +60,8 @@ public class MarkdownService extends GitHubService {
 	}
 
 	private String readStream(final InputStream stream) throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				stream, CHARSET_UTF8));
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(stream, CHARSET_UTF8));
 		try {
 			StringBuilder output = new StringBuilder();
 			char[] buffer = new char[8192];

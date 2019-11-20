@@ -80,8 +80,8 @@ public class PullRequestConnector extends RepositoryConnector {
 	 */
 	public static TaskRepository createTaskRepository(Repository repo,
 			String username, String password) {
-		String url = PullRequestConnector.appendPulls(GitHub.createGitHubUrl(
-				repo.getOwner().getLogin(), repo.getName()));
+		String url = PullRequestConnector.appendPulls(GitHub
+				.createGitHubUrl(repo.getOwner().getLogin(), repo.getName()));
 		TaskRepository repository = new TaskRepository(KIND, url);
 		repository.setProperty(IRepositoryConstants.PROPERTY_LABEL,
 				getRepositoryLabel(repo));
@@ -111,8 +111,8 @@ public class PullRequestConnector extends RepositoryConnector {
 	 */
 	public static String stripPulls(String repoUrl) {
 		if (repoUrl.endsWith(IGitHubConstants.SEGMENT_PULLS))
-			repoUrl = repoUrl.substring(0, repoUrl.length()
-					- IGitHubConstants.SEGMENT_PULLS.length());
+			repoUrl = repoUrl.substring(0,
+					repoUrl.length() - IGitHubConstants.SEGMENT_PULLS.length());
 		return repoUrl;
 	}
 
@@ -184,8 +184,8 @@ public class PullRequestConnector extends RepositoryConnector {
 			IRepositoryQuery query, TaskDataCollector collector,
 			ISynchronizationSession session, IProgressMonitor monitor) {
 		IStatus result = Status.OK_STATUS;
-		List<String> statuses = QueryUtils.getAttributes(
-				IssueService.FILTER_STATE, query);
+		List<String> statuses = QueryUtils
+				.getAttributes(IssueService.FILTER_STATE, query);
 
 		monitor.beginTask(Messages.PullRequestConnector_TaskFetching,
 				statuses.size());
@@ -210,8 +210,8 @@ public class PullRequestConnector extends RepositoryConnector {
 								repo.getName(),
 								Integer.toString(pr.getNumber()));
 					if (pr.getCommits() > 0)
-						prComp.setCommits(service.getCommits(repo,
-								pr.getNumber()));
+						prComp.setCommits(
+								service.getCommits(repo, pr.getNumber()));
 					TaskData taskData = taskDataHandler.createTaskData(
 							repository, monitor, repo, prComp, comments);
 					collector.accept(taskData);

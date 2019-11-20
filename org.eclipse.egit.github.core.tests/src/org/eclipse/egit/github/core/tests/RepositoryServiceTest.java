@@ -498,8 +498,7 @@ public class RepositoryServiceTest {
 	 */
 	@Test
 	public void getPublicRepositories() throws IOException {
-		service.getRepositories(Collections.singletonMap(
-				RepositoryService.FILTER_TYPE, RepositoryService.TYPE_PUBLIC));
+		service.getRepositories(Collections.singletonMap(RepositoryService.FILTER_TYPE, RepositoryService.TYPE_PUBLIC));
 		GitHubRequest request = new GitHubRequest();
 		request.setUri(Utils.page("/user/repos?type=public"));
 		verify(client).get(request);
@@ -512,8 +511,8 @@ public class RepositoryServiceTest {
 	 */
 	@Test
 	public void getPrivateOrgRepositories() throws IOException {
-		service.getOrgRepositories("org1", Collections.singletonMap(
-				RepositoryService.FILTER_TYPE, RepositoryService.TYPE_PRIVATE));
+		service.getOrgRepositories("org1",
+				Collections.singletonMap(RepositoryService.FILTER_TYPE, RepositoryService.TYPE_PRIVATE));
 		GitHubRequest request = new GitHubRequest();
 		request.setUri(Utils.page("/orgs/org1/repos?type=private"));
 		verify(client).get(request);
@@ -640,7 +639,6 @@ public class RepositoryServiceTest {
 		merge.setHead("master");
 		merge.setCommitMessage("Test Merge");
 		service.mergingBranches(repo, merge);
-		verify(client).post("/repos/o/n/merges", merge,
-				RepositoryMergingResponse.class);
+		verify(client).post("/repos/o/n/merges", merge, RepositoryMergingResponse.class);
 	}
 }

@@ -124,8 +124,8 @@ public class CollaboratorService extends GitHubService {
 	 * @param user
 	 * @throws IOException
 	 */
-	public void removeCollaborator(IRepositoryIdProvider repository, String user)
-			throws IOException {
+	public void removeCollaborator(IRepositoryIdProvider repository,
+			String user) throws IOException {
 		client.delete(createUpdateUri(repository, user));
 	}
 }

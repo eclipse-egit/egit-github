@@ -52,11 +52,9 @@ public class CommentTest {
 		assertEquals("body", comment.setBody("body").getBody());
 		assertEquals("<body>", comment.setBodyHtml("<body>").getBodyHtml());
 		assertEquals("text", comment.setBodyText("text").getBodyText());
-		assertEquals(new Date(1234), comment.setCreatedAt(new Date(1234))
-				.getCreatedAt());
+		assertEquals(new Date(1234), comment.setCreatedAt(new Date(1234)).getCreatedAt());
 		assertEquals(100, comment.setId(100).getId());
-		assertEquals(new Date(2345), comment.setUpdatedAt(new Date(2345))
-				.getUpdatedAt());
+		assertEquals(new Date(2345), comment.setUpdatedAt(new Date(2345)).getUpdatedAt());
 		assertEquals("http", comment.setUrl("http").getUrl());
 		User user = new User().setLogin("auser");
 		assertEquals(user, comment.setUser(user).getUser());

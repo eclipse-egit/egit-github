@@ -99,8 +99,8 @@ public abstract class PullRequestUtils {
 	 * @param request
 	 * @throws IOException
 	 */
-	public static void configureTopicBranch(Repository repo, PullRequest request)
-			throws IOException {
+	public static void configureTopicBranch(Repository repo,
+			PullRequest request) throws IOException {
 		String branch = getBranchName(request);
 		String remote = request.getHead().getRepo().getOwner().getLogin();
 		StoredConfig config = repo.getConfig();
@@ -169,8 +169,8 @@ public abstract class PullRequestUtils {
 	 */
 	public static RemoteConfig getRemoteConfig(Repository repo, String name)
 			throws URISyntaxException {
-		for (RemoteConfig candidate : RemoteConfig.getAllRemoteConfigs(repo
-				.getConfig()))
+		for (RemoteConfig candidate : RemoteConfig
+				.getAllRemoteConfigs(repo.getConfig()))
 			if (name.equals(candidate.getName()))
 				return candidate;
 		return null;
@@ -200,8 +200,8 @@ public abstract class PullRequestUtils {
 		else
 			remote.addURI(new URIish(UrlUtils.createRemoteReadOnlyUrl(head)));
 
-		remote.addFetchRefSpec(new RefSpec(HEAD_SOURCE
-				+ ":" + getDesintationRef(remote))); //$NON-NLS-1$
+		remote.addFetchRefSpec(
+				new RefSpec(HEAD_SOURCE + ":" + getDesintationRef(remote))); //$NON-NLS-1$
 		remote.update(config);
 		config.save();
 		return remote;

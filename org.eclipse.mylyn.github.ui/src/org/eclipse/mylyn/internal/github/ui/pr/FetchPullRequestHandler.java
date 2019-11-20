@@ -54,7 +54,8 @@ public class FetchPullRequestHandler extends TaskDataHandler {
 	}
 
 	@Override
-	public Object execute(final ExecutionEvent event) throws ExecutionException {
+	public Object execute(final ExecutionEvent event)
+			throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
 			return null;
@@ -77,9 +78,9 @@ public class FetchPullRequestHandler extends TaskDataHandler {
 					}
 					RemoteConfig remote = PullRequestUtils.addRemote(repo,
 							request);
-					new FetchOperationUI(repo, remote, Activator.getDefault()
-							.getPreferenceStore()
-							.getInt(UIPreferences.REMOTE_CONNECTION_TIMEOUT),
+					new FetchOperationUI(repo, remote,
+							Activator.getDefault().getPreferenceStore().getInt(
+									UIPreferences.REMOTE_CONNECTION_TIMEOUT),
 							false).execute(monitor);
 					executeCallback(event);
 				} catch (IOException e) {

@@ -49,8 +49,7 @@ public class GistRevisionTest {
 		GistRevision revision = new GistRevision();
 		GistChangeStatus status = new GistChangeStatus();
 		assertEquals(status, revision.setChangeStatus(status).getChangeStatus());
-		assertEquals(new Date(5000), revision.setCommittedAt(new Date(5000))
-				.getCommittedAt());
+		assertEquals(new Date(5000), revision.setCommittedAt(new Date(5000)).getCommittedAt());
 		assertEquals("url", revision.setUrl("url").getUrl());
 		User user = new User().setLogin("testuser");
 		assertEquals(user, revision.setUser(user).getUser());

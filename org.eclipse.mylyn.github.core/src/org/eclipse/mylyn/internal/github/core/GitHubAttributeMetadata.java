@@ -21,10 +21,15 @@ import org.eclipse.mylyn.tasks.core.data.TaskData;
 public class GitHubAttributeMetadata {
 
 	private String id;
+
 	private String label;
+
 	private String type;
+
 	private String kind;
+
 	private boolean readOnly;
+
 	private boolean initTask;
 
 	/**
@@ -150,8 +155,8 @@ public class GitHubAttributeMetadata {
 	public String getValue(TaskData data) {
 		TaskAttribute root = data.getRoot();
 		TaskAttribute attribute = root.getAttribute(id);
-		return attribute != null ? data.getAttributeMapper()
-				.getValue(attribute) : ""; //$NON-NLS-1$
+		return attribute != null ? data.getAttributeMapper().getValue(attribute)
+				: ""; //$NON-NLS-1$
 	}
 
 	/**

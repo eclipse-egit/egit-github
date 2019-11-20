@@ -135,7 +135,8 @@ public class CommitService extends GitHubService {
 	 * @return page iterator
 	 */
 	public PageIterator<RepositoryCommit> pageCommits(
-			IRepositoryIdProvider repository, String sha, String path, int size) {
+			IRepositoryIdProvider repository, String sha, String path,
+			int size) {
 		String id = getId(repository);
 		StringBuilder uri = new StringBuilder(SEGMENT_REPOS);
 		uri.append('/').append(id);

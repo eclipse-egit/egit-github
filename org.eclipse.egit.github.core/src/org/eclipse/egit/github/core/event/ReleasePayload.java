@@ -16,6 +16,7 @@ import org.eclipse.egit.github.core.Release;
 
 /**
  * ReleaseEvent payload model class.
+ * 
  * @since 4.2
  */
 public class ReleasePayload extends EventPayload {

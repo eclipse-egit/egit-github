@@ -70,8 +70,7 @@ public class UserTest {
 		assertEquals("blog", user.setBlog("blog").getBlog());
 		assertEquals(50, user.setCollaborators(50).getCollaborators());
 		assertEquals("inc.", user.setCompany("inc.").getCompany());
-		assertEquals(new Date(6000), user.setCreatedAt(new Date(6000))
-				.getCreatedAt());
+		assertEquals(new Date(6000), user.setCreatedAt(new Date(6000)).getCreatedAt());
 		assertEquals(500, user.setDiskUsage(500).getDiskUsage());
 		assertEquals("e@mai.l", user.setEmail("e@mai.l").getEmail());
 		assertEquals(1, user.setFollowers(1).getFollowers());

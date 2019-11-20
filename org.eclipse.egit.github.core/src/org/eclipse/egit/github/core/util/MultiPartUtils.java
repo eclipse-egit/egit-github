@@ -86,8 +86,8 @@ public final class MultiPartUtils {
 						output.write(buffer, 0, read);
 					input.close();
 				} else
-					output.write(part.getValue().toString()
-							.getBytes(CHARSET_UTF8));
+					output.write(
+							part.getValue().toString().getBytes(CHARSET_UTF8));
 				output.write(newline);
 			}
 			output.write(("--" + boundary + "--\r\n").getBytes(CHARSET_UTF8)); //$NON-NLS-1$ //$NON-NLS-2$

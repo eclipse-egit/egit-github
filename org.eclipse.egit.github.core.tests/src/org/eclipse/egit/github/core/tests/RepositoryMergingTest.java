@@ -42,7 +42,6 @@ public class RepositoryMergingTest {
 		RepositoryMerging merging = new RepositoryMerging();
 		assertEquals("baseMerging", merging.setBase("baseMerging").getBase());
 		assertEquals("headMerging", merging.setHead("headMerging").getHead());
-		assertEquals("messageMerging",
-				merging.setCommitMessage("messageMerging").getCommitMessage());
+		assertEquals("messageMerging", merging.setCommitMessage("messageMerging").getCommitMessage());
 	}
 }

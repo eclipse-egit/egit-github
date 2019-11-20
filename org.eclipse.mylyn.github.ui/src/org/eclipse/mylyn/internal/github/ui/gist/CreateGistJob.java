@@ -36,9 +36,13 @@ import org.eclipse.ui.PlatformUI;
 public class CreateGistJob extends Job {
 
 	private String title;
+
 	private String content;
+
 	private GistService service;
+
 	private boolean isPublic;
+
 	private TaskRepository repository;
 
 	/**
@@ -80,10 +84,8 @@ public class CreateGistJob extends Job {
 					popup.open();
 				}
 			});
-			TasksUiPlugin
-					.getTaskJobFactory()
-					.createSynchronizeRepositoriesJob(
-							GistConnectorUi.getRepositories()).schedule();
+			TasksUiPlugin.getTaskJobFactory().createSynchronizeRepositoriesJob(
+					GistConnectorUi.getRepositories()).schedule();
 		} catch (IOException e) {
 			GitHubUi.logError(GitHubException.wrap(e));
 		}

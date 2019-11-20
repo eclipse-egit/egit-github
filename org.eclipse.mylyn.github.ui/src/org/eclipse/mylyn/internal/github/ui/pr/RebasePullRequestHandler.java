@@ -46,12 +46,14 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 	public static final String ID = "org.eclipse.mylyn.github.ui.command.rebasePullRequest"; //$NON-NLS-1$
 
 	@Override
-	public Object execute(final ExecutionEvent event) throws ExecutionException {
+	public Object execute(final ExecutionEvent event)
+			throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
 			return null;
 		Job job = new Job(MessageFormat.format(
-				Messages.RebasePullRequestHandler_RebaseJob, data.getTaskId())) {
+				Messages.RebasePullRequestHandler_RebaseJob,
+				data.getTaskId())) {
 
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -68,12 +70,13 @@ public class RebasePullRequestHandler extends TaskDataHandler {
 					String target = request.getBase().getRef();
 					Ref targetRef = repo.findRef(request.getBase().getRef());
 					if (targetRef != null) {
-						if (!PullRequestUtils.isCurrentBranch(branchName, repo)) {
-							monitor.setTaskName(MessageFormat
-									.format(Messages.RebasePullRequestHandler_TaskCheckout,
-											branchName));
-							BranchOperationUI.checkout(repo, branchName).run(
-									new SubProgressMonitor(monitor, 1));
+						if (!PullRequestUtils.isCurrentBranch(branchName,
+								repo)) {
+							monitor.setTaskName(MessageFormat.format(
+									Messages.RebasePullRequestHandler_TaskCheckout,
+									branchName));
+							BranchOperationUI.checkout(repo, branchName)
+									.run(new SubProgressMonitor(monitor, 1));
 						}
 						monitor.setTaskName(MessageFormat.format(
 								Messages.RebasePullRequestHandler_TaskRebase,

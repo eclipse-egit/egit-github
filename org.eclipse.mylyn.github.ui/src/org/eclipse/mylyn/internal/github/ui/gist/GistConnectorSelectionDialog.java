@@ -60,8 +60,8 @@ public class GistConnectorSelectionDialog extends SelectionDialog {
 
 		createMessageArea(c);
 
-		TableViewer viewer = new TableViewer(c, SWT.SINGLE | SWT.FULL_SELECTION
-				| SWT.V_SCROLL | SWT.H_SCROLL);
+		TableViewer viewer = new TableViewer(c,
+				SWT.SINGLE | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.H_SCROLL);
 		GridDataFactory.fillDefaults().grab(true, true)
 				.applyTo(viewer.getControl());
 		viewer.setContentProvider(ArrayContentProvider.getInstance());

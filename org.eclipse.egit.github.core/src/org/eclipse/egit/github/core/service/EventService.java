@@ -87,7 +87,8 @@ public class EventService extends GitHubService {
 	 *            size of page
 	 * @return events page iterator
 	 */
-	public PageIterator<Event> pagePublicEvents(final int start, final int size) {
+	public PageIterator<Event> pagePublicEvents(final int start,
+			final int size) {
 		PagedRequest<Event> request = createPagedRequest(start, size);
 		request.setUri(SEGMENT_EVENTS);
 		request.setType(new TypeToken<List<Event>>() {

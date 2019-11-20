@@ -26,8 +26,8 @@ import org.eclipse.ui.forms.editor.IFormPage;
 /**
  * Pull request task editor page factory class.
  */
-public class PullRequestTaskEditorPageFactory extends
-		AbstractTaskEditorPageFactory {
+public class PullRequestTaskEditorPageFactory
+		extends AbstractTaskEditorPageFactory {
 
 	@Override
 	public boolean canCreatePageFor(TaskEditorInput input) {

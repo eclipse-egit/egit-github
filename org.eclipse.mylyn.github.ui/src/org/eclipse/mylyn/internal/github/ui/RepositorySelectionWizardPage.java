@@ -68,8 +68,8 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
  */
 public class RepositorySelectionWizardPage extends WizardPage {
 
-	private static class RepositoryStyledLabelProvider implements
-			IStyledLabelProvider, ILabelProvider {
+	private static class RepositoryStyledLabelProvider
+			implements IStyledLabelProvider, ILabelProvider {
 		private final WorkbenchLabelProvider wrapped = new WorkbenchLabelProvider();
 
 		@Override
@@ -186,9 +186,8 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		@Override
 		public StyledString getStyledText(Object object) {
 			StyledString styled = new StyledString(getLabel(object));
-			styled.append(
-					MessageFormat.format(" ({0})", //$NON-NLS-1$
-							Integer.valueOf(repos.length)),
+			styled.append(MessageFormat.format(" ({0})", //$NON-NLS-1$
+					Integer.valueOf(repos.length)),
 					StyledString.COUNTER_STYLER);
 			return styled;
 		}
@@ -201,18 +200,23 @@ public class RepositorySelectionWizardPage extends WizardPage {
 	}
 
 	private Button addGistRepoButton;
+
 	private Label selectedLabel;
+
 	private FilteredCheckboxTree tree;
+
 	private int repoCount = 0;
+
 	private String user;
+
 	private String password;
 
 	/**
 	 * Create repository selection wizard page
 	 */
 	public RepositorySelectionWizardPage() {
-		super(
-				"repositoriesPage", Messages.RepositorySelectionWizardPage_Title, null); //$NON-NLS-1$
+		super("repositoriesPage", Messages.RepositorySelectionWizardPage_Title, //$NON-NLS-1$
+				null);
 		setDescription(Messages.RepositorySelectionWizardPage_Description);
 	}
 
@@ -242,7 +246,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		return repos;
 	}
 
-	/** @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite) */
+	/**
+	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createControl(Composite parent) {
 		Composite displayArea = new Composite(parent, SWT.NONE);
@@ -253,8 +259,8 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
 				.applyTo(repoLabel);
 
-		tree = new FilteredCheckboxTree(displayArea, null, SWT.V_SCROLL
-				| SWT.H_SCROLL | SWT.BORDER, new PatternFilter());
+		tree = new FilteredCheckboxTree(displayArea, null,
+				SWT.V_SCROLL | SWT.H_SCROLL | SWT.BORDER, new PatternFilter());
 		CheckboxTreeViewer viewer = tree.getCheckboxTreeViewer();
 		viewer.setContentProvider(new WorkbenchContentProvider());
 		viewer.setLabelProvider(new RepositoryLabelProvider());
@@ -264,10 +270,9 @@ public class RepositorySelectionWizardPage extends WizardPage {
 			public int compare(Viewer viewer, Object e1, Object e2) {
 				if (e1 instanceof OrganizationAdapter)
 					if (e2 instanceof OrganizationAdapter)
-						return ((OrganizationAdapter) e1)
-								.getLabel(e1)
-								.compareToIgnoreCase(
-										((OrganizationAdapter) e2).getLabel(e2));
+						return ((OrganizationAdapter) e1).getLabel(e1)
+								.compareToIgnoreCase(((OrganizationAdapter) e2)
+										.getLabel(e2));
 					else if (e2 instanceof RepositoryAdapter)
 						return 1;
 				if (e1 instanceof RepositoryAdapter)
@@ -294,8 +299,8 @@ public class RepositorySelectionWizardPage extends WizardPage {
 		GridDataFactory.fillDefaults().grab(false, true).applyTo(toolbar);
 		ToolItem checkItem = new ToolItem(toolbar, SWT.PUSH);
 		checkItem.setImage(GitHubImages.get(GitHubImages.GITHUB_CHECKALL_OBJ));
-		checkItem
-				.setToolTipText(Messages.RepositorySelectionWizardPage_TooltipCheckAll);
+		checkItem.setToolTipText(
+				Messages.RepositorySelectionWizardPage_TooltipCheckAll);
 		checkItem.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -308,10 +313,10 @@ public class RepositorySelectionWizardPage extends WizardPage {
 			}
 		});
 		ToolItem uncheckItem = new ToolItem(toolbar, SWT.PUSH);
-		uncheckItem.setImage(GitHubImages
-				.get(GitHubImages.GITHUB_UNCHECKALL_OBJ));
 		uncheckItem
-				.setToolTipText(Messages.RepositorySelectionWizardPage_TooltipUncheckAll);
+				.setImage(GitHubImages.get(GitHubImages.GITHUB_UNCHECKALL_OBJ));
+		uncheckItem.setToolTipText(
+				Messages.RepositorySelectionWizardPage_TooltipUncheckAll);
 		uncheckItem.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -413,21 +418,24 @@ public class RepositorySelectionWizardPage extends WizardPage {
 					List<String> existing = new ArrayList<>();
 					for (TaskRepository repo : TasksUi.getRepositoryManager()
 							.getRepositories(GitHub.CONNECTOR_KIND)) {
-						String id = GitHub.getRepository(
-								repo.getRepositoryUrl()).generateId();
+						String id = GitHub
+								.getRepository(repo.getRepositoryUrl())
+								.generateId();
 						if (id != null)
 							existing.add(id);
 					}
 					try {
 						monitor.beginTask("", 2); //$NON-NLS-1$
-						monitor.setTaskName(Messages.RepositorySelectionWizardPage_TaskFetchingRepositories);
+						monitor.setTaskName(
+								Messages.RepositorySelectionWizardPage_TaskFetchingRepositories);
 						List<Repository> userRepos = service.getRepositories();
 						removeExisting(userRepos, existing);
 						repoCount += userRepos.size();
 						for (Repository repo : userRepos)
 							repos.add(new RepositoryAdapter(repo));
 						monitor.worked(1);
-						monitor.setTaskName(Messages.RepositorySelectionWizardPage_TaskFetchingOrganizationRepositories);
+						monitor.setTaskName(
+								Messages.RepositorySelectionWizardPage_TaskFetchingOrganizationRepositories);
 						for (User org : orgs.getOrganizations()) {
 							List<Repository> orgRepos = service
 									.getOrgRepositories(org.getLogin());
@@ -437,8 +445,8 @@ public class RepositorySelectionWizardPage extends WizardPage {
 						}
 						updateInput(repos);
 					} catch (IOException e) {
-						throw new InvocationTargetException(GitHubException
-								.wrap(e));
+						throw new InvocationTargetException(
+								GitHubException.wrap(e));
 					}
 				}
 			});

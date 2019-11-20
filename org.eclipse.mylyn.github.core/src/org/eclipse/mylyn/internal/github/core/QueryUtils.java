@@ -60,7 +60,8 @@ public abstract class QueryUtils {
 	 * @param query
 	 * @return non-null but possibly empty list
 	 */
-	public static List<String> getAttributes(String key, IRepositoryQuery query) {
+	public static List<String> getAttributes(String key,
+			IRepositoryQuery query) {
 		if (key == null || query == null)
 			return Collections.emptyList();
 

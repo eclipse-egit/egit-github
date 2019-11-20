@@ -92,8 +92,8 @@ public class MilestoneService extends GitHubService {
 		uri.append(SEGMENT_MILESTONES);
 		PagedRequest<Milestone> request = createPagedRequest();
 		if (state != null)
-			request.setParams(Collections.singletonMap(
-					IssueService.FILTER_STATE, state));
+			request.setParams(
+					Collections.singletonMap(IssueService.FILTER_STATE, state));
 		request.setUri(uri).setType(new TypeToken<List<Milestone>>() {
 			// make protected type visible
 		}.getType());
@@ -213,7 +213,8 @@ public class MilestoneService extends GitHubService {
 		return getMilestone(repoId, number);
 	}
 
-	private Milestone getMilestone(String id, String number) throws IOException {
+	private Milestone getMilestone(String id, String number)
+			throws IOException {
 		if (number == null)
 			throw new IllegalArgumentException("Milestone cannot be null"); //$NON-NLS-1$
 		if (number.length() == 0)
@@ -275,8 +276,8 @@ public class MilestoneService extends GitHubService {
 	 * @param milestone
 	 * @throws IOException
 	 */
-	public void deleteMilestone(String user, String repository, String milestone)
-			throws IOException {
+	public void deleteMilestone(String user, String repository,
+			String milestone) throws IOException {
 		verifyRepository(user, repository);
 
 		String repoId = user + '/' + repository;

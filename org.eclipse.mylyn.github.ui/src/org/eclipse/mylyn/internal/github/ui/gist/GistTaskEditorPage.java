@@ -57,8 +57,8 @@ public class GistTaskEditorPage extends AbstractTaskEditorPage {
 	private void addCloneAction(IToolBarManager manager) {
 		if (TasksUiUtil.isOutgoingNewTask(getTask(), GistConnector.KIND))
 			return;
-		manager.prependToGroup(
-				"open", createCommandContributionItem(CloneGistHandler.ID)); //$NON-NLS-1$
+		manager.prependToGroup("open", //$NON-NLS-1$
+				createCommandContributionItem(CloneGistHandler.ID));
 	}
 
 	/**
@@ -75,8 +75,7 @@ public class GistTaskEditorPage extends AbstractTaskEditorPage {
 	 */
 	@Override
 	protected Set<TaskEditorPartDescriptor> createPartDescriptors() {
-		Set<TaskEditorPartDescriptor> partDescriptors = super
-				.createPartDescriptors();
+		Set<TaskEditorPartDescriptor> partDescriptors = super.createPartDescriptors();
 		Iterator<TaskEditorPartDescriptor> descriptorIt = partDescriptors
 				.iterator();
 		while (descriptorIt.hasNext()) {
@@ -92,18 +91,19 @@ public class GistTaskEditorPage extends AbstractTaskEditorPage {
 
 				@Override
 				public AbstractTaskEditorPart createPart() {
-					return new IssueSummaryPart(GistAttribute.AUTHOR_GRAVATAR
-							.getMetadata().getId(), null);
+					return new IssueSummaryPart(
+							GistAttribute.AUTHOR_GRAVATAR.getMetadata().getId(),
+							null);
 				}
 			}.setPath(PATH_HEADER));
-			partDescriptors.add(new TaskEditorPartDescriptor(
-					ID_PART_ATTACHMENTS) {
+			partDescriptors
+					.add(new TaskEditorPartDescriptor(ID_PART_ATTACHMENTS) {
 
-				@Override
-				public AbstractTaskEditorPart createPart() {
-					return new GistAttachmentPart();
-				}
-			}.setPath(PATH_ATTACHMENTS));
+						@Override
+						public AbstractTaskEditorPart createPart() {
+							return new GistAttachmentPart();
+						}
+					}.setPath(PATH_ATTACHMENTS));
 		}
 		partDescriptors.add(new TaskEditorPartDescriptor(ID_PART_ACTIONS) {
 

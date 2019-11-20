@@ -50,18 +50,15 @@ public class CommitStatusTest {
 	@Test
 	public void updateFields() {
 		CommitStatus status = new CommitStatus();
-		assertEquals(new Date(1234), status.setCreatedAt(new Date(1234))
-				.getCreatedAt());
+		assertEquals(new Date(1234), status.setCreatedAt(new Date(1234)).getCreatedAt());
 		User creator = new User().setId(1);
 		assertEquals(creator, status.setCreator(creator).getCreator());
 		assertEquals("con/text", status.setContext("con/text").getContext());
 		assertEquals("desc", status.setDescription("desc").getDescription());
 		assertEquals(40, status.setId(40).getId());
 		assertEquals("success", status.setState("success").getState());
-		assertEquals("targetUrl", status.setTargetUrl("targetUrl")
-				.getTargetUrl());
-		assertEquals(new Date(5678), status.setUpdatedAt(new Date(5678))
-				.getUpdatedAt());
+		assertEquals("targetUrl", status.setTargetUrl("targetUrl").getTargetUrl());
+		assertEquals(new Date(5678), status.setUpdatedAt(new Date(5678)).getUpdatedAt());
 		assertEquals("url", status.setUrl("url").getUrl());
 		assertEquals("context", status.setContext("context").getContext());
 	}

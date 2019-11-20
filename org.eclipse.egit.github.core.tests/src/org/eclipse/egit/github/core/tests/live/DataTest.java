@@ -56,8 +56,7 @@ public class DataTest extends LiveTest {
 		Blob fetch = service.getBlob(repo, sha);
 		assertNotNull(fetch);
 		assertEquals(blob.getContent(),
-				new String(EncodingUtils.fromBase64(fetch.getContent()),
-						IGitHubConstants.CHARSET_UTF8));
+				new String(EncodingUtils.fromBase64(fetch.getContent()), IGitHubConstants.CHARSET_UTF8));
 		assertEquals(Blob.ENCODING_BASE64, fetch.getEncoding());
 	}
 
@@ -107,8 +106,7 @@ public class DataTest extends LiveTest {
 		DataService service = new DataService(client);
 		Commit commit = new Commit();
 		commit.setMessage("commit message");
-		commit.setTree(new Tree()
-				.setSha("0000000000000000000000000000000000000000"));
+		commit.setTree(new Tree().setSha("0000000000000000000000000000000000000000"));
 		Commit created = service.createCommit(repo, commit);
 		assertNotNull(created);
 		assertNotNull(created.getSha());

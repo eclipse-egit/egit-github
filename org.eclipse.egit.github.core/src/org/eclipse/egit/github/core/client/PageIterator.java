@@ -41,8 +41,8 @@ import org.eclipse.egit.github.core.util.UrlUtils;
  * @param <V>
  *            type of resource being iterated over
  */
-public class PageIterator<V> implements Iterator<Collection<V>>,
-		Iterable<Collection<V>> {
+public class PageIterator<V>
+		implements Iterator<Collection<V>>, Iterable<Collection<V>> {
 
 	/**
 	 * Request

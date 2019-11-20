@@ -70,8 +70,8 @@ public abstract class RepositoryConnector extends AbstractRepositoryConnector {
 	public void updateTaskFromTaskData(TaskRepository taskRepository,
 			ITask task, TaskData taskData) {
 		if (!taskData.isNew())
-			task.setUrl(getTaskUrl(taskRepository.getUrl(),
-					taskData.getTaskId()));
+			task.setUrl(
+					getTaskUrl(taskRepository.getUrl(), taskData.getTaskId()));
 		new TaskMapper(taskData).applyTo(task);
 	}
 }

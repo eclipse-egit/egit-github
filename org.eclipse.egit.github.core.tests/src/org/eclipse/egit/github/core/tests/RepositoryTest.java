@@ -78,8 +78,7 @@ public class RepositoryTest {
 	public void updateFields() {
 		Repository repo = new Repository();
 		assertEquals("clone://", repo.setCloneUrl("clone://").getCloneUrl());
-		assertEquals(new Date(2500), repo.setCreatedAt(new Date(2500))
-				.getCreatedAt());
+		assertEquals(new Date(2500), repo.setCreatedAt(new Date(2500)).getCreatedAt());
 		assertEquals("a repo", repo.setDescription("a repo").getDescription());
 		assertEquals(10, repo.setForks(10).getForks());
 		assertEquals("git://", repo.setGitUrl("git://").getGitUrl());
@@ -93,8 +92,7 @@ public class RepositoryTest {
 		assertEquals(owner, repo.setOwner(owner).getOwner());
 		Repository parent = new Repository().setName("parent");
 		assertEquals(parent, repo.setParent(parent).getParent());
-		assertEquals(new Date(3000), repo.setPushedAt(new Date(3000))
-				.getPushedAt());
+		assertEquals(new Date(3000), repo.setPushedAt(new Date(3000)).getPushedAt());
 		assertEquals(100, repo.setSize(100).getSize());
 		Repository source = new Repository().setName("source");
 		assertEquals(source, repo.setSource(source).getSource());
@@ -110,8 +108,7 @@ public class RepositoryTest {
 		assertTrue(repo.setPrivate(true).isPrivate());
 		assertEquals("mirror", repo.setMirrorUrl("mirror").getMirrorUrl());
 		assertEquals(14, repo.setId(14).getId());
-		assertEquals(new Date(50000), repo.setUpdatedAt(new Date(50000))
-				.getUpdatedAt());
+		assertEquals(new Date(50000), repo.setUpdatedAt(new Date(50000)).getUpdatedAt());
 	}
 
 	/**
@@ -181,11 +178,10 @@ public class RepositoryTest {
 
 	@Test
 	public void fromJson() throws IOException {
-		try (Reader r = new BufferedReader(new InputStreamReader (
-				this.getClass().getResourceAsStream("test_repo.json"),
-				StandardCharsets.UTF_8))) {
+		try (Reader r = new BufferedReader(
+				new InputStreamReader(this.getClass().getResourceAsStream("test_repo.json"), StandardCharsets.UTF_8))) {
 			Repository repo = GsonUtils.fromJson(r, Repository.class);
-			assertEquals(9,repo.getWatchers());
+			assertEquals(9, repo.getWatchers());
 			assertEquals(21, repo.getStars());
 		}
 	}

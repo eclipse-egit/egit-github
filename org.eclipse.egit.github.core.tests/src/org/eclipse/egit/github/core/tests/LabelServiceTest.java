@@ -130,8 +130,7 @@ public class LabelServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setLabelsNullUser() throws IOException {
-		labelService.setLabels(null, "not null", "not null",
-				new LinkedList<Label>());
+		labelService.setLabels(null, "not null", "not null", new LinkedList<Label>());
 	}
 
 	/**
@@ -141,8 +140,7 @@ public class LabelServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setLabelsNullRepositoryName() throws IOException {
-		labelService.setLabels("not null", null, "not null",
-				new LinkedList<Label>());
+		labelService.setLabels("not null", null, "not null", new LinkedList<Label>());
 	}
 
 	/**
@@ -152,8 +150,7 @@ public class LabelServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setLabelsNullIssueId() throws IOException {
-		labelService.setLabels("not null", "not null", null,
-				new LinkedList<Label>());
+		labelService.setLabels("not null", "not null", null, new LinkedList<Label>());
 	}
 
 	/**
@@ -163,8 +160,7 @@ public class LabelServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void setLabelsEmptyIssueId() throws IOException {
-		labelService.setLabels("not null", "not null", "",
-				new LinkedList<Label>());
+		labelService.setLabels("not null", "not null", "", new LinkedList<Label>());
 	}
 
 	/**
@@ -177,9 +173,7 @@ public class LabelServiceTest {
 		labelService.setLabels("test_user", "test_repository", "1", null);
 		TypeToken<List<Label>> labelsToken = new TypeToken<List<Label>>() {
 		};
-		verify(gitHubClient).put(
-				"/repos/test_user/test_repository/issues/1/labels", null,
-				labelsToken.getType());
+		verify(gitHubClient).put("/repos/test_user/test_repository/issues/1/labels", null, labelsToken.getType());
 	}
 
 	/**
@@ -193,9 +187,7 @@ public class LabelServiceTest {
 		labelService.setLabels("test_user", "test_repository", "1", labels);
 		TypeToken<List<Label>> labelsToken = new TypeToken<List<Label>>() {
 		};
-		verify(gitHubClient).put(
-				"/repos/test_user/test_repository/issues/1/labels", labels,
-				labelsToken.getType());
+		verify(gitHubClient).put("/repos/test_user/test_repository/issues/1/labels", labels, labelsToken.getType());
 	}
 
 	/**
@@ -210,9 +202,7 @@ public class LabelServiceTest {
 		labelService.setLabels(repo, "1", labels);
 		TypeToken<List<Label>> labelsToken = new TypeToken<List<Label>>() {
 		};
-		verify(gitHubClient).put(
-				"/repos/test_user/test_repository/issues/1/labels", labels,
-				labelsToken.getType());
+		verify(gitHubClient).put("/repos/test_user/test_repository/issues/1/labels", labels, labelsToken.getType());
 	}
 
 	/**
@@ -254,8 +244,7 @@ public class LabelServiceTest {
 	public void createLabel() throws IOException {
 		Label label = new Label();
 		labelService.createLabel("test_user", "test_repository", label);
-		verify(gitHubClient).post("/repos/test_user/test_repository/labels",
-				label, Label.class);
+		verify(gitHubClient).post("/repos/test_user/test_repository/labels", label, Label.class);
 	}
 
 	/**
@@ -268,8 +257,7 @@ public class LabelServiceTest {
 		RepositoryId repo = new RepositoryId("test_user", "test_repository");
 		Label label = new Label();
 		labelService.createLabel(repo, label);
-		verify(gitHubClient).post("/repos/test_user/test_repository/labels",
-				label, Label.class);
+		verify(gitHubClient).post("/repos/test_user/test_repository/labels", label, Label.class);
 	}
 
 	/**
@@ -469,8 +457,7 @@ public class LabelServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void editLabelEmptyLabelName() throws IOException {
-		labelService.editLabel(RepositoryId.create("a", "b"),
-				new Label().setName(""));
+		labelService.editLabel(RepositoryId.create("a", "b"), new Label().setName(""));
 	}
 
 	/**

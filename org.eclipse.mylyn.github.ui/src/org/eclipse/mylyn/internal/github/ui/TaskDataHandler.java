@@ -52,7 +52,8 @@ public abstract class TaskDataHandler extends AbstractHandler {
 	public static IEvaluationContext createContext(
 			IStructuredSelection selection, IHandlerService handlerService) {
 		IEvaluationContext context = new EvaluationContext(
-				handlerService.createContextSnapshot(false), selection.toList());
+				handlerService.createContextSnapshot(false),
+				selection.toList());
 		context.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, selection);
 		context.removeVariable(ISources.ACTIVE_MENU_SELECTION_NAME);
 		return context;
@@ -75,8 +76,8 @@ public abstract class TaskDataHandler extends AbstractHandler {
 				return (TaskData) first;
 			else if (first instanceof ITask)
 				try {
-					return TasksUi.getTaskDataManager().getTaskData(
-							(ITask) first);
+					return TasksUi.getTaskDataManager()
+							.getTaskData((ITask) first);
 				} catch (CoreException e) {
 					return null;
 				}
@@ -110,8 +111,10 @@ public abstract class TaskDataHandler extends AbstractHandler {
 			if (part != null)
 				site = part.getSite();
 		}
-		IWorkbenchSiteProgressService progress = site != null ? (IWorkbenchSiteProgressService) site
-				.getService(IWorkbenchSiteProgressService.class) : null;
+		IWorkbenchSiteProgressService progress = site != null
+				? (IWorkbenchSiteProgressService) site
+						.getService(IWorkbenchSiteProgressService.class)
+				: null;
 		if (progress != null)
 			progress.schedule(job);
 		else

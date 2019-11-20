@@ -28,8 +28,7 @@ import com.google.gson.GsonBuilder;
  */
 public class SearchRepositoryTest {
 
-	private static final Gson gson = new GsonBuilder().setDateFormat(
-			"yyyy-MM-dd").create();
+	private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
 	/**
 	 * Test default state of search repository
@@ -114,8 +113,7 @@ public class SearchRepositoryTest {
 	public void noGeneratedId() {
 		SearchRepository repo = gson.fromJson("{}", SearchRepository.class);
 		assertNull(repo.generateId());
-		repo = gson.fromJson("{name:\"\", owner:\"use\"}",
-				SearchRepository.class);
+		repo = gson.fromJson("{name:\"\", owner:\"use\"}", SearchRepository.class);
 		assertNull(repo.generateId());
 		repo = gson.fromJson("{owner:\"\"}", SearchRepository.class);
 		assertNull(repo.generateId());
@@ -126,8 +124,7 @@ public class SearchRepositoryTest {
 	 */
 	@Test
 	public void getCreatedAtReferenceMutableObject() {
-		SearchRepository repository = gson.fromJson(
-				"{createdAt : '2003-10-10'}", SearchRepository.class);
+		SearchRepository repository = gson.fromJson("{createdAt : '2003-10-10'}", SearchRepository.class);
 		repository.getCreatedAt().setTime(0);
 		assertTrue(repository.getCreatedAt().getTime() != 0);
 	}
@@ -137,8 +134,7 @@ public class SearchRepositoryTest {
 	 */
 	@Test
 	public void getPushedAtReferenceMutableObject() {
-		SearchRepository repository = gson.fromJson(
-				"{pushedAt : '2003-10-10'}", SearchRepository.class);
+		SearchRepository repository = gson.fromJson("{pushedAt : '2003-10-10'}", SearchRepository.class);
 		repository.getPushedAt().setTime(0);
 		assertTrue(repository.getPushedAt().getTime() != 0);
 	}

@@ -73,16 +73,20 @@ public class PullRequestContextSynchronizer extends TaskActivationAdapter {
 					TreeWalk diffs = new TreeWalk(walk.getObjectReader())) {
 				diffs.setFilter(TreeFilter.ANY_DIFF);
 				diffs.setRecursive(true);
-				diffs.addTree(walk.parseCommit(
-						ObjectId.fromString(request.getHead().getSha())).getTree());
-				diffs.addTree(walk.parseCommit(
-						ObjectId.fromString(request.getBase().getSha())).getTree());
+				diffs.addTree(walk
+						.parseCommit(
+								ObjectId.fromString(request.getHead().getSha()))
+						.getTree());
+				diffs.addTree(walk
+						.parseCommit(
+								ObjectId.fromString(request.getBase().getSha()))
+						.getTree());
 				Set<IResource> resources = new HashSet<>();
 				IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 				String base = repository.getWorkTree().getAbsolutePath() + "/"; //$NON-NLS-1$
 				while (diffs.next()) {
-					IFile file = root.getFileForLocation(Path.fromOSString(base
-							+ diffs.getPathString()));
+					IFile file = root.getFileForLocation(
+							Path.fromOSString(base + diffs.getPathString()));
 					if (file != null)
 						resources.add(file);
 				}

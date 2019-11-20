@@ -102,7 +102,8 @@ public class GitHub {
 	 * @param e
 	 * @return status
 	 */
-	public static IStatus createStatus(int severity, String message, Throwable e) {
+	public static IStatus createStatus(int severity, String message,
+			Throwable e) {
 		return new Status(severity, BUNDLE_ID, message, e);
 	}
 

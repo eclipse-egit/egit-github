@@ -176,7 +176,7 @@ public class CommitTest extends LiveTest {
 		try (final Scanner sc = new Scanner(inStream)) {
 			sc.useDelimiter("\\n");
 			for (; i > 0; i--) {
-			    sc.next();
+				sc.next();
 			}
 			return sc.next();
 		}

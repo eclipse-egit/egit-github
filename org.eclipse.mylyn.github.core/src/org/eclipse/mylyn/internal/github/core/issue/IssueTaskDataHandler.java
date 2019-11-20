@@ -46,7 +46,9 @@ import org.eclipse.mylyn.tasks.core.data.TaskData;
 public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 
 	private static final String DATA_VERSION = "1"; //$NON-NLS-1$
+
 	private static final String MILESTONE_NONE_KEY = "0"; //$NON-NLS-1$
+
 	private final IssueConnector connector;
 
 	/**
@@ -69,7 +71,8 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 	 * @return task data
 	 */
 	public TaskData createTaskData(TaskRepository repository,
-			IProgressMonitor monitor, String user, String project, Issue issue) {
+			IProgressMonitor monitor, String user, String project,
+			Issue issue) {
 
 		String key = Integer.toString(issue.getNumber());
 		TaskData data = new TaskData(getAttributeMapper(repository),
@@ -181,8 +184,9 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 	}
 
 	private String createOperationLabel(Issue issue, IssueOperation operation) {
-		return operation == IssueOperation.LEAVE ? operation.getLabel()
-				+ issue.getState() : operation.getLabel();
+		return operation == IssueOperation.LEAVE
+				? operation.getLabel() + issue.getState()
+				: operation.getLabel();
 	}
 
 	/**
@@ -213,8 +217,8 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 		if (!taskData.isNew())
 			issue.setNumber(Integer.parseInt(taskData.getTaskId()));
 
-		issue.setBody(getAttributeValue(taskData,
-				IssueAttribute.BODY.getMetadata()));
+		issue.setBody(
+				getAttributeValue(taskData, IssueAttribute.BODY.getMetadata()));
 		issue.setTitle(getAttributeValue(taskData,
 				IssueAttribute.TITLE.getMetadata()));
 
@@ -279,8 +283,8 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 	protected void updateLabels(String user, String repo, GitHubClient client,
 			TaskRepository repository, TaskData data,
 			Set<TaskAttribute> oldAttributes, Issue issue) {
-		TaskAttribute labelsAttribute = data.getRoot().getAttribute(
-				IssueAttribute.LABELS.getMetadata().getId());
+		TaskAttribute labelsAttribute = data.getRoot()
+				.getAttribute(IssueAttribute.LABELS.getMetadata().getId());
 		if (oldAttributes.contains(labelsAttribute) || data.isNew()) {
 			LabelService labelService = new LabelService(client);
 
@@ -362,7 +366,8 @@ public class IssueTaskDataHandler extends GitHubTaskDataHandler {
 			}
 			return new RepositoryResponse(
 					taskData.isNew() ? ResponseKind.TASK_CREATED
-							: ResponseKind.TASK_UPDATED, taskId);
+							: ResponseKind.TASK_UPDATED,
+					taskId);
 		} catch (IOException e) {
 			throw new CoreException(GitHub.createWrappedStatus(e));
 		}

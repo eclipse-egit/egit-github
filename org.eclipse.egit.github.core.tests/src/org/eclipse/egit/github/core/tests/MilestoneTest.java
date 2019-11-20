@@ -52,13 +52,11 @@ public class MilestoneTest {
 	public void updateFields() {
 		Milestone milestone = new Milestone();
 		assertEquals(1, milestone.setClosedIssues(1).getClosedIssues());
-		assertEquals(new Date(10000), milestone.setCreatedAt(new Date(10000))
-				.getCreatedAt());
+		assertEquals(new Date(10000), milestone.setCreatedAt(new Date(10000)).getCreatedAt());
 		User creator = new User().setLogin("creator");
 		assertEquals(creator, milestone.setCreator(creator).getCreator());
 		assertEquals("desc", milestone.setDescription("desc").getDescription());
-		assertEquals(new Date(20000), milestone.setDueOn(new Date(20000))
-				.getDueOn());
+		assertEquals(new Date(20000), milestone.setDueOn(new Date(20000)).getDueOn());
 		assertEquals(4, milestone.setNumber(4).getNumber());
 		assertEquals(10, milestone.setOpenIssues(10).getOpenIssues());
 		assertEquals("state", milestone.setState("state").getState());

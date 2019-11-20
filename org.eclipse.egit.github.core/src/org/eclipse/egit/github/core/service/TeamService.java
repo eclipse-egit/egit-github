@@ -264,7 +264,8 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 *             if the user is not a member of the team
 	 */
-	public TeamMembership getMembership(int id, String user) throws IOException {
+	public TeamMembership getMembership(int id, String user)
+			throws IOException {
 		if (user == null)
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
 		if (user.length() == 0)
@@ -296,7 +297,8 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 *             if the user cannot be added
 	 */
-	public TeamMembership addMembership(int id, String user) throws IOException {
+	public TeamMembership addMembership(int id, String user)
+			throws IOException {
 		if (user == null)
 			throw new IllegalArgumentException("User cannot be null"); //$NON-NLS-1$
 		if (user.length() == 0)
@@ -431,7 +433,8 @@ public class TeamService extends GitHubService {
 	 * @throws IOException
 	 */
 	public List<Team> getTeams() throws IOException {
-		StringBuilder uri = new StringBuilder(SEGMENT_USER).append(SEGMENT_TEAMS);
+		StringBuilder uri = new StringBuilder(SEGMENT_USER)
+				.append(SEGMENT_TEAMS);
 		PagedRequest<Team> request = createPagedRequest();
 		request.setUri(uri);
 		request.setType(new TypeToken<List<Team>>() {

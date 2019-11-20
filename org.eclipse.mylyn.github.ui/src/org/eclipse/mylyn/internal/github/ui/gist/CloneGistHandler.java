@@ -99,13 +99,12 @@ public class CloneGistHandler extends TaskDataHandler {
 		String projectName = null;
 		File projectFile = new File(workDir, ".project"); //$NON-NLS-1$
 		if (projectFile.exists()) {
-			description = ResourcesPlugin.getWorkspace()
-					.loadProjectDescription(
-							Path.fromOSString(projectFile.getAbsolutePath()));
+			description = ResourcesPlugin.getWorkspace().loadProjectDescription(
+					Path.fromOSString(projectFile.getAbsolutePath()));
 			projectName = description.getName();
 		} else {
-			description = ResourcesPlugin.getWorkspace().newProjectDescription(
-					name);
+			description = ResourcesPlugin.getWorkspace()
+					.newProjectDescription(name);
 			description
 					.setLocation(Path.fromOSString(workDir.getAbsolutePath()));
 			projectName = name;
@@ -134,14 +133,16 @@ public class CloneGistHandler extends TaskDataHandler {
 
 		if (getRepoUtil().getConfiguredRepositories().contains(
 				new File(workDir, Constants.DOT_GIT).getAbsolutePath()))
-			throw new IOException(MessageFormat.format(
-					Messages.CloneGistHandler_ErrorRepoExists, name));
+			throw new IOException(MessageFormat
+					.format(Messages.CloneGistHandler_ErrorRepoExists, name));
 
-		return new CloneOperation(uri, true, null, workDir, Constants.R_HEADS
-				+ Constants.MASTER, Constants.DEFAULT_REMOTE_NAME, timeout);
+		return new CloneOperation(uri, true, null, workDir,
+				Constants.R_HEADS + Constants.MASTER,
+				Constants.DEFAULT_REMOTE_NAME, timeout);
 	}
 
-	private Job createCloneJob(final ExecutionEvent event, final TaskData data) {
+	private Job createCloneJob(final ExecutionEvent event,
+			final TaskData data) {
 		Job job = new Job(Messages.CloneGistHandler_TaskCloning) {
 
 			@Override
@@ -158,7 +159,8 @@ public class CloneGistHandler extends TaskDataHandler {
 								IProgressMonitor monitor) throws CoreException {
 							if (monitor.isCanceled())
 								return;
-							monitor.setTaskName(Messages.CloneGistHandler_TaskRegisteringRepository);
+							monitor.setTaskName(
+									Messages.CloneGistHandler_TaskRegisteringRepository);
 							getRepoUtil().addConfiguredRepository(
 									repository.getDirectory());
 						}
@@ -176,9 +178,10 @@ public class CloneGistHandler extends TaskDataHandler {
 										throws CoreException {
 									if (monitor.isCanceled())
 										return;
-									createProject(repository.getDirectory()
-											.getParentFile(), name, repository,
-											monitor);
+									createProject(
+											repository.getDirectory()
+													.getParentFile(),
+											name, repository, monitor);
 								}
 							};
 							ResourcesPlugin.getWorkspace().run(runnable,
@@ -201,17 +204,18 @@ public class CloneGistHandler extends TaskDataHandler {
 	}
 
 	private void displayError(final ExecutionEvent event, Exception exception) {
-		final Throwable cause = exception.getCause() != null ? exception
-				.getCause() : exception;
+		final Throwable cause = exception.getCause() != null
+				? exception.getCause()
+				: exception;
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			@Override
 			public void run() {
 				ErrorDialog.openError(HandlerUtil.getActiveShell(event),
 						Messages.CloneGistHandler_ErrorTitle,
-						Messages.CloneGistHandler_ErrorMessage, Activator
-								.createErrorStatus(cause.getLocalizedMessage(),
-										cause));
+						Messages.CloneGistHandler_ErrorMessage,
+						Activator.createErrorStatus(cause.getLocalizedMessage(),
+								cause));
 			}
 		});
 	}

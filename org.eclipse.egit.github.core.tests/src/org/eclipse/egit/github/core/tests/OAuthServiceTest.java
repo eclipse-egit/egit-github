@@ -132,9 +132,7 @@ public class OAuthServiceTest {
 	public void addScopes() throws IOException {
 		Collection<String> scopes = Arrays.asList("repo");
 		service.addScopes(300, scopes);
-		verify(client).post("/authorizations/300",
-				Collections.singletonMap("add_scopes", scopes),
-				Authorization.class);
+		verify(client).post("/authorizations/300", Collections.singletonMap("add_scopes", scopes), Authorization.class);
 	}
 
 	/**
@@ -146,8 +144,7 @@ public class OAuthServiceTest {
 	public void removeScopes() throws IOException {
 		Collection<String> scopes = Arrays.asList("user");
 		service.removeScopes(400, scopes);
-		verify(client).post("/authorizations/400",
-				Collections.singletonMap("remove_scopes", scopes),
+		verify(client).post("/authorizations/400", Collections.singletonMap("remove_scopes", scopes),
 				Authorization.class);
 	}
 
@@ -160,9 +157,6 @@ public class OAuthServiceTest {
 	public void setScopes() throws IOException {
 		Collection<String> scopes = Arrays.asList("gist");
 		service.setScopes(500, scopes);
-		verify(client)
-				.post("/authorizations/500",
-						Collections.singletonMap("scopes", scopes),
-						Authorization.class);
+		verify(client).post("/authorizations/500", Collections.singletonMap("scopes", scopes), Authorization.class);
 	}
 }

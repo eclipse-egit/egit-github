@@ -129,8 +129,7 @@ public class RepositoryIdTest {
 	 */
 	@Test
 	public void createFromStringUrl() throws MalformedURLException {
-		RepositoryId id = RepositoryId
-				.createFromUrl("http://github.com/user/project");
+		RepositoryId id = RepositoryId.createFromUrl("http://github.com/user/project");
 		assertNotNull(id);
 		assertEquals("user", id.getOwner());
 		assertEquals("project", id.getName());
@@ -143,8 +142,7 @@ public class RepositoryIdTest {
 	 */
 	@Test
 	public void createFromUrl() throws MalformedURLException {
-		RepositoryId id = RepositoryId.createFromUrl(new URL(
-				"http://github.com/user/project"));
+		RepositoryId id = RepositoryId.createFromUrl(new URL("http://github.com/user/project"));
 		assertNotNull(id);
 		assertEquals("user", id.getOwner());
 		assertEquals("project", id.getName());

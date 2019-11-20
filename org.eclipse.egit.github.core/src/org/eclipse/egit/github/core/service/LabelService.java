@@ -118,8 +118,8 @@ public class LabelService extends GitHubService {
 	 * @return list of labels
 	 * @throws IOException
 	 */
-	public List<Label> setLabels(String user, String repository,
-			String issueId, List<Label> labels) throws IOException {
+	public List<Label> setLabels(String user, String repository, String issueId,
+			List<Label> labels) throws IOException {
 		verifyRepository(user, repository);
 
 		String repoId = user + '/' + repository;

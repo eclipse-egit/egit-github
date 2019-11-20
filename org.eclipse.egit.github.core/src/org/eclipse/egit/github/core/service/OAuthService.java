@@ -119,8 +119,8 @@ public class OAuthService extends GitHubService {
 			throws IOException {
 		StringBuilder uri = new StringBuilder(SEGMENT_AUTHORIZATIONS);
 		uri.append('/').append(id);
-		Map<String, Collection<String>> params = Collections.singletonMap(
-				"add_scopes", scopes); //$NON-NLS-1$
+		Map<String, Collection<String>> params = Collections
+				.singletonMap("add_scopes", scopes); //$NON-NLS-1$
 		return client.post(uri.toString(), params, Authorization.class);
 	}
 
@@ -136,8 +136,8 @@ public class OAuthService extends GitHubService {
 			throws IOException {
 		StringBuilder uri = new StringBuilder(SEGMENT_AUTHORIZATIONS);
 		uri.append('/').append(id);
-		Map<String, Collection<String>> params = Collections.singletonMap(
-				"remove_scopes", scopes); //$NON-NLS-1$
+		Map<String, Collection<String>> params = Collections
+				.singletonMap("remove_scopes", scopes); //$NON-NLS-1$
 		return client.post(uri.toString(), params, Authorization.class);
 	}
 
@@ -153,8 +153,8 @@ public class OAuthService extends GitHubService {
 			throws IOException {
 		StringBuilder uri = new StringBuilder(SEGMENT_AUTHORIZATIONS);
 		uri.append('/').append(id);
-		Map<String, Collection<String>> params = Collections.singletonMap(
-				"scopes", scopes); //$NON-NLS-1$
+		Map<String, Collection<String>> params = Collections
+				.singletonMap("scopes", scopes); //$NON-NLS-1$
 		return client.post(uri.toString(), params, Authorization.class);
 	}
 }

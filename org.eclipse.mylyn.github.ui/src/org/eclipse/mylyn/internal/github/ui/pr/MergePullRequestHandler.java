@@ -46,7 +46,8 @@ public class MergePullRequestHandler extends TaskDataHandler {
 	public static final String ID = "org.eclipse.mylyn.github.ui.command.mergePullRequest"; //$NON-NLS-1$
 
 	@Override
-	public Object execute(final ExecutionEvent event) throws ExecutionException {
+	public Object execute(final ExecutionEvent event)
+			throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
 			return null;
@@ -69,11 +70,11 @@ public class MergePullRequestHandler extends TaskDataHandler {
 					Ref sourceRef = repo.findRef(branchName);
 					if (sourceRef != null) {
 						if (!PullRequestUtils.isCurrentBranch(target, repo)) {
-							monitor.setTaskName(MessageFormat
-									.format(Messages.MergePullRequestHandler_TaskCheckout,
-											target));
-							BranchOperationUI.checkout(repo, target).run(
-									new SubProgressMonitor(monitor, 1));
+							monitor.setTaskName(MessageFormat.format(
+									Messages.MergePullRequestHandler_TaskCheckout,
+									target));
+							BranchOperationUI.checkout(repo, target)
+									.run(new SubProgressMonitor(monitor, 1));
 						}
 						monitor.setTaskName(MessageFormat.format(
 								Messages.MergePullRequestHandler_TaskMerge,

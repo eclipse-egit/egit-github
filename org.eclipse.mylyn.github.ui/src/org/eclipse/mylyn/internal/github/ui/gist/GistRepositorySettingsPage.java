@@ -50,7 +50,8 @@ public class GistRepositorySettingsPage extends AbstractRepositorySettingsPage {
 	 */
 	public GistRepositorySettingsPage(TaskRepository taskRepository) {
 		super(Messages.GistRepositorySettingsPage_Title,
-				Messages.GistRepositorySettingsPage_Description, taskRepository);
+				Messages.GistRepositorySettingsPage_Description,
+				taskRepository);
 		setNeedsAnonymousLogin(false);
 	}
 
@@ -69,8 +70,8 @@ public class GistRepositorySettingsPage extends AbstractRepositorySettingsPage {
 	protected void createAdditionalControls(Composite parent) {
 		if (repository == null) {
 			setUrl(URL);
-			repositoryLabelEditor
-					.setStringValue(Messages.GistRepositorySettingsPage_RepositoryLabelDefault);
+			repositoryLabelEditor.setStringValue(
+					Messages.GistRepositorySettingsPage_RepositoryLabelDefault);
 		}
 	}
 
@@ -101,22 +102,25 @@ public class GistRepositorySettingsPage extends AbstractRepositorySettingsPage {
 			@Override
 			public void run(IProgressMonitor monitor) throws CoreException {
 				monitor.beginTask(
-						Messages.GistRepositorySettingsPage_TaskValidating, 100);
+						Messages.GistRepositorySettingsPage_TaskValidating,
+						100);
 				try {
-					monitor.subTask(Messages.GistRepositorySettingsPage_TaskContacting);
+					monitor.subTask(
+							Messages.GistRepositorySettingsPage_TaskContacting);
 					try {
 						GitHubClient client = GistConnector
 								.createClient(repository);
 						GistService service = new GistService(client);
-						String user = repository.getCredentials(
-								AuthenticationType.REPOSITORY).getUserName();
+						String user = repository
+								.getCredentials(AuthenticationType.REPOSITORY)
+								.getUserName();
 						monitor.worked(20);
 						service.getGists(user);
 					} catch (IOException e) {
 						e = GitHubException.wrap(e);
-						String message = MessageFormat
-								.format(Messages.GistRepositorySettingsPage_StatusError,
-										e.getLocalizedMessage());
+						String message = MessageFormat.format(
+								Messages.GistRepositorySettingsPage_StatusError,
+								e.getLocalizedMessage());
 						setStatus(GitHubUi.createErrorStatus(message));
 						return;
 					} finally {
@@ -146,8 +150,8 @@ public class GistRepositorySettingsPage extends AbstractRepositorySettingsPage {
 	 */
 	@Override
 	public boolean canValidate() {
-		return isPageComplete()
-				&& (getMessage() == null || getMessageType() != IMessageProvider.ERROR);
+		return isPageComplete() && (getMessage() == null
+				|| getMessageType() != IMessageProvider.ERROR);
 	}
 
 }

@@ -55,10 +55,8 @@ public class SearchIssueTest {
 	public void updateFields() {
 		SearchIssue issue = new SearchIssue();
 		assertEquals("body", issue.setBody("body").getBody());
-		assertEquals(new Date(1234), issue.setCreatedAt(new Date(1234))
-				.getCreatedAt());
-		assertEquals("gravatar", issue.setGravatarId("gravatar")
-				.getGravatarId());
+		assertEquals(new Date(1234), issue.setCreatedAt(new Date(1234)).getCreatedAt());
+		assertEquals("gravatar", issue.setGravatarId("gravatar").getGravatarId());
 		assertEquals("html", issue.setHtmlUrl("html").getHtmlUrl());
 		List<String> labels = Arrays.asList("a", "b");
 		assertEquals(labels, issue.setLabels(labels).getLabels());
@@ -66,8 +64,7 @@ public class SearchIssueTest {
 		assertEquals(6, issue.setPosition(6).getPosition());
 		assertEquals("open", issue.setState("open").getState());
 		assertEquals("title", issue.setTitle("title").getTitle());
-		assertEquals(new Date(2345), issue.setUpdatedAt(new Date(2345))
-				.getUpdatedAt());
+		assertEquals(new Date(2345), issue.setUpdatedAt(new Date(2345)).getUpdatedAt());
 		assertEquals("defunkt", issue.setUser("defunkt").getUser());
 		assertEquals(10, issue.setVotes(10).getVotes());
 		assertEquals(500, issue.setNumber(500).getNumber());

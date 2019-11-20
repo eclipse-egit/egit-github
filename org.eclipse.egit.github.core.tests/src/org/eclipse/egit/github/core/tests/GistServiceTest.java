@@ -338,8 +338,7 @@ public class GistServiceTest {
 		PageIterator<Gist> iterator = gistService.pageStarredGists();
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/gists/starred"), iterator.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/gists/starred"), iterator.getRequest().generateUri());
 	}
 
 	/**
@@ -520,8 +519,7 @@ public class GistServiceTest {
 		PageIterator<Gist> iterator = gistService.pageGists("user");
 		assertNotNull(iterator);
 		assertTrue(iterator.hasNext());
-		assertEquals(Utils.page("/users/user/gists"), iterator.getRequest()
-				.generateUri());
+		assertEquals(Utils.page("/users/user/gists"), iterator.getRequest().generateUri());
 	}
 
 	/**

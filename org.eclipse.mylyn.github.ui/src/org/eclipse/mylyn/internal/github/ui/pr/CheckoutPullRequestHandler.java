@@ -69,13 +69,15 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 	}
 
 	@Override
-	public Object execute(final ExecutionEvent event) throws ExecutionException {
+	public Object execute(final ExecutionEvent event)
+			throws ExecutionException {
 		final TaskData data = getTaskData(event);
 		if (data == null)
 			return null;
 
 		Job job = new Job(MessageFormat.format(
-				Messages.CheckoutPullRequestHandler_JobName, data.getTaskId())) {
+				Messages.CheckoutPullRequestHandler_JobName,
+				data.getTaskId())) {
 
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -99,10 +101,10 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 
 					// Add remote
 					if (!PullRequestUtils.isFromSameRepository(request)) {
-						monitor.subTask(MessageFormat
-								.format(Messages.CheckoutPullRequestHandler_TaskAddRemote,
-										request.getHead().getRepo().getOwner()
-												.getLogin()));
+						monitor.subTask(MessageFormat.format(
+								Messages.CheckoutPullRequestHandler_TaskAddRemote,
+								request.getHead().getRepo().getOwner()
+										.getLogin()));
 						remote = PullRequestUtils.addRemote(repo, request);
 						headBranch = PullRequestUtils.getHeadBranch(request);
 					} else {
@@ -115,9 +117,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 					// Create topic branch starting at SHA-1 of base
 					if (branchRef == null) {
 						sub = new SubProgressMonitor(monitor, 1);
-						sub.subTask(MessageFormat
-								.format(Messages.CheckoutPullRequestHandler_TaskCreateBranch,
-										branchName));
+						sub.subTask(MessageFormat.format(
+								Messages.CheckoutPullRequestHandler_TaskCreateBranch,
+								branchName));
 						PullRequestUtils.configureTopicBranch(repo, request);
 						new CreateLocalBranchOperation(repo, branchName,
 								getBase(repo, request)).execute(sub);
@@ -128,9 +130,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 					// Checkout topic branch
 					if (!PullRequestUtils.isCurrentBranch(branchName, repo)) {
 						sub = new SubProgressMonitor(monitor, 1);
-						sub.subTask(MessageFormat
-								.format(Messages.CheckoutPullRequestHandler_TaskCheckoutBranch,
-										branchName));
+						sub.subTask(MessageFormat.format(
+								Messages.CheckoutPullRequestHandler_TaskCheckoutBranch,
+								branchName));
 						BranchOperationUI.checkout(repo, branchName).run(sub);
 						sub.done();
 					} else
@@ -141,9 +143,9 @@ public class CheckoutPullRequestHandler extends TaskDataHandler {
 					sub.subTask(MessageFormat.format(
 							Messages.CheckoutPullRequestHandler_TaskFetching,
 							remote.getName()));
-					new FetchOperation(repo, remote, Activator.getDefault()
-							.getPreferenceStore()
-							.getInt(UIPreferences.REMOTE_CONNECTION_TIMEOUT),
+					new FetchOperation(repo, remote,
+							Activator.getDefault().getPreferenceStore().getInt(
+									UIPreferences.REMOTE_CONNECTION_TIMEOUT),
 							false).run(sub);
 					sub.done();
 

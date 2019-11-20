@@ -61,8 +61,7 @@ public class EventTest {
 		assertEquals(actor, event.setActor(actor).getActor());
 		User org = new User().setLogin("org");
 		assertEquals(org, event.setOrg(org).getOrg());
-		assertEquals(new Date(5000), event.setCreatedAt(new Date(5000))
-				.getCreatedAt());
+		assertEquals(new Date(5000), event.setCreatedAt(new Date(5000)).getCreatedAt());
 		assertTrue(event.setPublic(true).isPublic());
 		assertEquals("123", event.setId("123").getId());
 	}

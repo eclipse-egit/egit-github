@@ -172,8 +172,7 @@ public class DataServiceTest {
 	@Test
 	public void createTree() throws IOException {
 		service.createTree(repo, null);
-		verify(client).post("/repos/o/n/git/trees",
-				new HashMap<>(), Tree.class);
+		verify(client).post("/repos/o/n/git/trees", new HashMap<>(), Tree.class);
 	}
 
 	/**
@@ -255,8 +254,7 @@ public class DataServiceTest {
 		object.setSha("abcdef");
 		ref.setObject(object);
 		service.createReference(repo, ref);
-		verify(client).post(eq("/repos/o/n/git/refs"), any(),
-				eq(Reference.class));
+		verify(client).post(eq("/repos/o/n/git/refs"), any(), eq(Reference.class));
 	}
 
 	/**
@@ -286,8 +284,7 @@ public class DataServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void editReferenceNullName() throws IOException {
-		service.editReference(repo,
-				new Reference().setObject(new TypedResource()));
+		service.editReference(repo, new Reference().setObject(new TypedResource()));
 	}
 
 	/**
@@ -297,8 +294,7 @@ public class DataServiceTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void editReferenceEmptyName() throws IOException {
-		service.editReference(repo,
-				new Reference().setObject(new TypedResource()).setRef(""));
+		service.editReference(repo, new Reference().setObject(new TypedResource()).setRef(""));
 	}
 
 	/**
@@ -314,8 +310,7 @@ public class DataServiceTest {
 		object.setSha("00aa");
 		ref.setObject(object);
 		service.editReference(repo, ref);
-		verify(client).post(eq("/repos/o/n/git/refs/heads/master"), any(),
-				eq(Reference.class));
+		verify(client).post(eq("/repos/o/n/git/refs/heads/master"), any(), eq(Reference.class));
 	}
 
 	/**
@@ -372,8 +367,7 @@ public class DataServiceTest {
 		commit.setParents(Collections.singletonList(new Commit().setSha("abcd")));
 		commit.setTree(new Tree().setSha("aaa"));
 		service.createCommit(repo, commit);
-		verify(client).post(eq("/repos/o/n/git/commits"), any(),
-				eq(Commit.class));
+		verify(client).post(eq("/repos/o/n/git/commits"), any(), eq(Commit.class));
 	}
 
 	/**

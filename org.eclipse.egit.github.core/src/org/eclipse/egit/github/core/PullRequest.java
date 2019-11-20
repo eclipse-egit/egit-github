@@ -244,17 +244,16 @@ public class PullRequest implements Serializable {
 	/**
 	 * @return number of inline comments on the diff in the pull request
 	 */
-	public int getReviewComments()
-	{
+	public int getReviewComments() {
 		return reviewComments;
 	}
 
 	/**
-	 * @param reviewComments {@link #getReviewComments()}
+	 * @param reviewComments
+	 *            {@link #getReviewComments()}
 	 * @return this pull request
 	 */
-	public PullRequest setReviewComments(int reviewComments)
-	{
+	public PullRequest setReviewComments(int reviewComments) {
 		this.reviewComments = reviewComments;
 		return this;
 	}
