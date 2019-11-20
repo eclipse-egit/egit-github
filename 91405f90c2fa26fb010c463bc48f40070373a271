@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8631b2b8_40d524a6",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/IssueServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-11-20T15:10:54Z",
+      "side": 1,
+      "message": "If the point was to combine lines, this one was missed and is still on two lines.",
+      "revId": "91405f90c2fa26fb010c463bc48f40070373a271",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ca8669e_89987087",
+        "filename": "org.eclipse.egit.github.core.tests/src/org/eclipse/egit/github/core/tests/RepositoryServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-11-20T15:10:54Z",
+      "side": 1,
+      "message": "This also is still two lines.",
+      "revId": "91405f90c2fa26fb010c463bc48f40070373a271",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e2c6f85_e884bf1f",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/CommitStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-11-20T15:10:54Z",
+      "side": 1,
+      "message": "This bungles the javadoc comment",
+      "revId": "91405f90c2fa26fb010c463bc48f40070373a271",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86ca1ff_a07336c8",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/PullRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-11-20T15:10:54Z",
+      "side": 1,
+      "message": "Not sure why this Javadoc comment was split.",
+      "revId": "91405f90c2fa26fb010c463bc48f40070373a271",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10480391_79fdd3b3",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/util/MultiPartUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 249575
+      },
+      "writtenOn": "2019-11-20T15:10:54Z",
+      "side": 1,
+      "message": "Seems like the line should be brought up",
+      "revId": "91405f90c2fa26fb010c463bc48f40070373a271",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
