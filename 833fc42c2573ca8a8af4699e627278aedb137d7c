@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdaa33b3_58016fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-01-03T22:10:49Z",
+      "side": 1,
+      "message": "don\u0027t do several mass changes in the same commit. Any change that was implemented by an automated refactoring or automated cleanup should be done in a separate commit.",
+      "revId": "833fc42c2573ca8a8af4699e627278aedb137d7c",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
