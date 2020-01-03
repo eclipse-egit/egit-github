@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0e8ec16_1b21d5f1",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/AvatarLabel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-01-03T22:19:46Z",
+      "side": 1,
+      "message": "ok, go ahead and use better lambda argument names in this change",
+      "parentUuid": "2d494e78_f67cb98c",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ccb23eb_238cbede",
         "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
         "patchSetId": 2
@@ -41,6 +65,53 @@
         "startChar": 28,
         "endLine": 414,
         "endChar": 29
+      },
+      "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17f14507_2f27229c",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/RepositorySelectionWizardPage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-01-03T22:19:46Z",
+      "side": 1,
+      "message": "I\u0027d try to avoid such changes",
+      "parentUuid": "3ccb23eb_238cbede",
+      "range": {
+        "startLine": 414,
+        "startChar": 28,
+        "endLine": 414,
+        "endChar": 29
+      },
+      "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59daedf6_009df1d7",
+        "filename": "org.eclipse.mylyn.github.ui/src/org/eclipse/mylyn/internal/github/ui/gist/CloneGistHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-01-03T22:19:46Z",
+      "side": 1,
+      "message": "can we avoid such renaming appending numbers which aren\u0027t helpful for the human observer ?",
+      "range": {
+        "startLine": 156,
+        "startChar": 45,
+        "endLine": 156,
+        "endChar": 53
       },
       "revId": "5412396d10c98db1443be7328ab4273bbde1d3e3",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
