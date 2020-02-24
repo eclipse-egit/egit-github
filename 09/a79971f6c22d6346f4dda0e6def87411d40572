@@ -1,0 +1,7 @@
+Code-Review+2: Matthias Sohn <matthias.sohn@sap.com>
+Verified+1: EGit Bot <egit-bot@eclipse.org>
+Submitted-by: Matthias Sohn <matthias.sohn@sap.com>
+Submitted-at: Mon, 24 Feb 2020 15:55:35 -0500
+Reviewed-on: https://git.eclipse.org/r/158260
+Project: egit/egit-github
+Branch: refs/heads/stable-5.7
