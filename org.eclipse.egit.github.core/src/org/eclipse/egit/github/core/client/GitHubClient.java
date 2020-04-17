@@ -44,10 +44,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
 
 import org.eclipse.egit.github.core.RequestError;
 import org.eclipse.egit.github.core.util.EncodingUtils;
@@ -102,6 +108,11 @@ public class GitHubClient {
 	 * METHOD_GET
 	 */
 	protected static final String METHOD_GET = "GET"; //$NON-NLS-1$
+
+	/**
+	 * METHOD_PATCH
+	 */
+	protected static final String METHOD_PATCH = "PATCH"; //$NON-NLS-1$
 
 	/**
 	 * METHOD_PUT
@@ -309,8 +320,40 @@ public class GitHubClient {
 	protected HttpURLConnection createConnection(String uri, String method)
 			throws IOException {
 		HttpURLConnection connection = createConnection(uri);
+
+		if (Objects.equals("PATCH", method)) { //$NON-NLS-1$
+			allowMethods("PATCH"); //$NON-NLS-1$
+		}
+
 		connection.setRequestMethod(method);
+
 		return configureRequest(connection);
+	}
+
+	private void allowMethods(String... methods) {
+		try {
+			Field methodsField = HttpURLConnection.class
+					.getDeclaredField("methods"); //$NON-NLS-1$
+
+			Field modifiersField = Field.class.getDeclaredField("modifiers"); //$NON-NLS-1$
+			modifiersField.setAccessible(true);
+			modifiersField.setInt(methodsField,
+					methodsField.getModifiers() & ~Modifier.FINAL);
+
+			methodsField.setAccessible(true);
+
+			String[] existingMethods = (String[]) methodsField.get(null);
+			Set<String> methodsSet = new LinkedHashSet<>(
+					Arrays.asList(existingMethods));
+			Set<String> methodsToAdd = new LinkedHashSet<>();
+			Arrays.stream(methods).filter(m -> !methodsSet.contains(m))
+					.forEach(methodsToAdd::add);
+			methodsSet.addAll(methodsToAdd);
+
+			methodsField.set(null, methodsSet.toArray(new String[0]));
+		} catch (NoSuchFieldException | IllegalAccessException e) {
+			throw new IllegalStateException(e);
+		}
 	}
 
 	/**
@@ -344,6 +387,17 @@ public class GitHubClient {
 	 */
 	protected HttpURLConnection createPut(String uri) throws IOException {
 		return createConnection(uri, METHOD_PUT);
+	}
+
+	/**
+	 * Create a PATCH request connection to the URI
+	 *
+	 * @param uri
+	 * @return connection
+	 * @throws IOException
+	 */
+	protected HttpURLConnection createPatch(String uri) throws IOException {
+		return createConnection(uri, METHOD_PATCH);
 	}
 
 	/**
@@ -639,6 +693,16 @@ public class GitHubClient {
 	}
 
 	/**
+	 * Patch to URI
+	 *
+	 * @param uri
+	 * @throws IOException
+	 */
+	public void patch(String uri) throws IOException {
+		patch(uri, null, null);
+	}
+
+	/**
 	 * Delete resource at URI. This method will throw an {@link IOException}
 	 * when the response status is not a 204 (No Content).
 	 *
@@ -829,6 +893,22 @@ public class GitHubClient {
 	public <V> V put(final String uri, final Object params, final Type type)
 			throws IOException {
 		HttpURLConnection request = createPut(uri);
+		return sendJson(request, params, type);
+	}
+
+	/**
+	 * Patch data to URI
+	 *
+	 * @param <V>
+	 * @param uri
+	 * @param params
+	 * @param type
+	 * @return response
+	 * @throws IOException
+	 */
+	public <V> V patch(final String uri, final Object params, final Type type)
+			throws IOException {
+		HttpURLConnection request = createPatch(uri);
 		return sendJson(request, params, type);
 	}
 

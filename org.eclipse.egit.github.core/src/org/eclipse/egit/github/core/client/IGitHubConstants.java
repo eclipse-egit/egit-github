@@ -119,6 +119,8 @@ public interface IGitHubConstants {
 	/** */
 	String SEGMENT_HOOKS = "/hooks"; //$NON-NLS-1$
 	/** */
+	String SEGMENT_INVITATIONS = "/invitations"; //$NON-NLS-1$
+	/** */
 	String SEGMENT_ISSUES = "/issues"; //$NON-NLS-1$
 	/** */
 	String SEGMENT_KEYS = "/keys"; //$NON-NLS-1$
@@ -162,6 +164,8 @@ public interface IGitHubConstants {
 	String SEGMENT_REPOS = "/repos"; //$NON-NLS-1$
 	/** */
 	String SEGMENT_REPOSITORIES = "/repositories"; //$NON-NLS-1$
+	/** */
+	String SEGMENT_REPOSITORY_INVITATIONS = "/repository_invitations"; //$NON-NLS-1$
 	/** */
 	String SEGMENT_SEARCH = "/search"; //$NON-NLS-1$
 	/** */
