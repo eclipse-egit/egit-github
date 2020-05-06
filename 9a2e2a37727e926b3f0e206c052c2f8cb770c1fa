@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e19f73b_46f86d11",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/RepositoryInvitation.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 129
+      },
+      "writtenOn": "2020-05-06T22:33:15Z",
+      "side": 1,
+      "message": "Yes, thanks for the catch.",
+      "parentUuid": "0c790457_829b476d",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 34
+      },
+      "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2976ab8d_f4dc2f2d",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d712c682_1df0d11a",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 129
+      },
+      "writtenOn": "2020-05-06T22:33:15Z",
+      "side": 1,
+      "message": "Habit, I can switch that.",
+      "parentUuid": "2976ab8d_f4dc2f2d",
+      "range": {
+        "startLine": 324,
+        "startChar": 6,
+        "endLine": 324,
+        "endChar": 37
+      },
+      "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e376465a_76329561",
         "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2020-04-25T16:41:09Z",
       "side": 1,
       "message": "Hacking the internals of JDK... according to https://stackoverflow.com/questions/25163131/httpurlconnection-invalid-http-method-patch this may not work not newer Java (someone mentioned Java 12), and whether it works on an IBM JDK is also unknown.\n\nDo Github servers support the X-HTTP-Method-Override header? If so, that would be a much cleaner solution.\n\nOtherwise, switching to Apache httpclient would be another solution, but may incur quite a bit of work.\n\nBut according to https://developer.github.com/v3/#http-verbs , PATCH endpoints also accept POST, so just use POST, and if you want, add the X-HTTP-Method-Override header for good measure.",
+      "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c1ab351_e1104a0e",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 129
+      },
+      "writtenOn": "2020-05-06T22:33:15Z",
+      "side": 1,
+      "message": "I will try POST and see.  I did try X-HTTP-Method-Override but didn\u0027t have much luck.  I will try again.  \n\nRegarding httpclient, according to git log I think this library used to use httpclient, but it was removed.",
+      "parentUuid": "e376465a_76329561",
       "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
