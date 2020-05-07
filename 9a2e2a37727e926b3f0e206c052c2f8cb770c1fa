@@ -146,6 +146,24 @@
       "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1753776e_48769e36",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2020-05-07T15:11:46Z",
+      "side": 1,
+      "message": "This is annoying. Doesn\u0027t sound like an attractive alternative either. Java 11 has HttpRequest, with that PATCH requests should also be possible.[1] But that requires bumping the BREE to Java 11 :-(\n\n[1] https://bugs.openjdk.java.net/browse/JDK-8207840",
+      "parentUuid": "fd044478_628d311c",
+      "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
