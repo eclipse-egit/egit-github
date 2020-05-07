@@ -128,6 +128,24 @@
       "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd044478_628d311c",
+        "filename": "org.eclipse.egit.github.core/src/org/eclipse/egit/github/core/client/GitHubClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 129
+      },
+      "writtenOn": "2020-05-07T14:11:26Z",
+      "side": 1,
+      "message": "I reconfirmed, X-HTTP-Method-Override along with POST doesn\u0027t seem to work.  Also, I\u0027ve tried to use the POST with json data and with URL with query parameters, with no avail. \n\nThe only thing I can think of now is opening a direct socket and manually writing out the request char by char.",
+      "parentUuid": "5c1ab351_e1104a0e",
+      "revId": "9a2e2a37727e926b3f0e206c052c2f8cb770c1fa",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
