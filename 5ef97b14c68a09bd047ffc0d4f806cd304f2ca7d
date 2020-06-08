@@ -22,6 +22,30 @@
       "revId": "5ef97b14c68a09bd047ffc0d4f806cd304f2ca7d",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bb9562_feeddb95",
+        "filename": "org.eclipse.mylyn.github-site/category.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2020-06-08T08:57:36Z",
+      "side": 1,
+      "message": "\u003e (1 comment)\n\nthis was the form editor :-( it seems you have to use the source tab for editing the url\n\nalso happened in the other change for egit",
+      "parentUuid": "49c871da_f8ef5550",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "5ef97b14c68a09bd047ffc0d4f806cd304f2ca7d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
     }
   ]
 }
