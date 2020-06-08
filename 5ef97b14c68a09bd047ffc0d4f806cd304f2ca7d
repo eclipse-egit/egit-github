@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49c871da_f8ef5550",
+        "filename": "org.eclipse.mylyn.github-site/category.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2020-06-08T08:49:37Z",
+      "side": 1,
+      "message": "Double scheme.",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "5ef97b14c68a09bd047ffc0d4f806cd304f2ca7d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": false
+    }
+  ]
+}
