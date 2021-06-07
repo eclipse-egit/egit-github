@@ -16,6 +16,24 @@
       "revId": "9b3c7f3202e3e55d6517fca04f165bb9c37a658d",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3755b4c_9aa838da",
+        "filename": "DEPENDENCIES",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2021-06-07T07:21:04Z",
+      "side": 1,
+      "message": "this was based on an inconsistent local build, I repeated the license check with a clean local build",
+      "parentUuid": "7f80aae5_79284a01",
+      "revId": "9b3c7f3202e3e55d6517fca04f165bb9c37a658d",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31",
+      "unresolved": true
     }
   ]
 }
