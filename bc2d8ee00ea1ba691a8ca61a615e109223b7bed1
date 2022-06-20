@@ -52,6 +52,24 @@
       "parentUuid": "ab16df3f_0d6b31b0",
       "revId": "bc2d8ee00ea1ba691a8ca61a615e109223b7bed1",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16df0b71_27f804af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2022-06-20T10:53:49Z",
+      "side": 1,
+      "message": "fix for the build: https://git.eclipse.org/r/c/egit/egit-pipelines/+/194303",
+      "parentUuid": "bb42388c_af68c7ca",
+      "revId": "bc2d8ee00ea1ba691a8ca61a615e109223b7bed1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31"
     }
   ]
 }
