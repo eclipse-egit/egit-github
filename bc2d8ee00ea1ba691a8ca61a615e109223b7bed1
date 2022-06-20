@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdab0319_3b2817e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 44628
+      },
+      "writtenOn": "2022-06-20T09:11:56Z",
+      "side": 1,
+      "message": "The build fails because you deleted the feature. Now there\u0027s nothing left to include in the p2 repo, so tycho silently doesn\u0027t build a p2 repo.\n",
+      "revId": "bc2d8ee00ea1ba691a8ca61a615e109223b7bed1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31"
+    }
+  ]
+}
