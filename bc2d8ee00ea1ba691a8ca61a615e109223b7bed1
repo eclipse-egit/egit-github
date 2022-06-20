@@ -16,6 +16,24 @@
       "message": "The build fails because you deleted the feature. Now there\u0027s nothing left to include in the p2 repo, so tycho silently doesn\u0027t build a p2 repo.\n",
       "revId": "bc2d8ee00ea1ba691a8ca61a615e109223b7bed1",
       "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab16df3f_0d6b31b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2022-06-20T09:15:29Z",
+      "side": 1,
+      "message": "I added the bundle directly to the p2 repo:\nhttps://git.eclipse.org/r/c/egit/egit-github/+/194298/1/org.eclipse.egit.github.repository/category.xml\n\nlocal build succeeds and the p2 repo it creates contains the bundle\n\nOr did I miss something and having a feature is mandatory ?",
+      "parentUuid": "cdab0319_3b2817e2",
+      "revId": "bc2d8ee00ea1ba691a8ca61a615e109223b7bed1",
+      "serverId": "97ee7c02-f12f-4043-b43e-dea463d88b31"
     }
   ]
 }
