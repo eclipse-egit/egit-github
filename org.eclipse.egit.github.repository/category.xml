@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="EGit.GitHub" label="EGit GitHub">
+      <description>
+         Integration with GitHub
+      </description>
+   </category-def>
+   <bundle id="org.eclipse.egit.github.core">
+      <category name="EGit.GitHub"/>
+   </bundle>
+</site>

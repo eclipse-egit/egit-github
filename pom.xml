@@ -16,12 +16,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.eclipse.mylyn.github</groupId>
+  <groupId>org.eclipse.egit.github</groupId>
   <artifactId>github-parent</artifactId>
   <version>6.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Eclipse EGit Mylyn GitHub Connector Parent</name>
+  <name>Eclipse EGit GitHub Parent</name>
 
   <mailingLists>
     <mailingList>
@@ -61,7 +61,6 @@
     <tycho-version>2.7.0</tycho-version>
     <tycho-extras-version>${tycho-version}</tycho-extras-version>
     <spotbugs-maven-plugin-version>4.4.1</spotbugs-maven-plugin-version>
-    <egit-site>file:/${basedir}/../../egit/org.eclipse.egit.repository/target/repository</egit-site>
     <download-publish-path>/home/data/httpd/download.eclipse.org/egit/github/updates-nightly</download-publish-path>
     <license-site>http://download.eclipse.org/cbi/updates/license</license-site>
   </properties>
@@ -152,15 +151,10 @@
   </profiles>
 
   <modules>
-    <module>org.eclipse.mylyn.github.target</module>
+    <module>org.eclipse.egit.github.target</module>
     <module>org.eclipse.egit.github.core</module>
-    <module>org.eclipse.mylyn.github.core</module>
-    <module>org.eclipse.mylyn.github.ui</module>
-    <module>org.eclipse.mylyn.github-feature</module>
     <module>org.eclipse.egit.github.core.tests</module>
-    <module>org.eclipse.mylyn.github.tests</module>
-    <module>org.eclipse.mylyn.github-site</module>
-    <module>org.eclipse.mylyn.github.doc</module>
+    <module>org.eclipse.egit.github.repository</module>
   </modules>
 
   <pluginRepositories>
@@ -183,11 +177,6 @@
   </pluginRepositories>
 
   <repositories>
-    <repository>
-      <id>egit</id>
-      <layout>p2</layout>
-      <url>${egit-site}</url>
-    </repository>
     <repository>
       <id>eclipse.license</id>
       <layout>p2</layout>
@@ -227,8 +216,8 @@
         <configuration>
           <target>
             <artifact>
-              <groupId>org.eclipse.mylyn.github</groupId>
-              <artifactId>org.eclipse.mylyn.github.target</artifactId>
+              <groupId>org.eclipse.egit.github</groupId>
+              <artifactId>org.eclipse.egit.github.target</artifactId>
               <version>${egit-github-version}</version>
               <classifier>github</classifier>
             </artifact>

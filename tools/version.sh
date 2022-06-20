@@ -100,28 +100,7 @@ perl -pi~ -e '
 	s/^(Bundle-Version:\s*).*$/${1}'"$OSGI_V"'/;
 	s/(org.eclipse.egit.github.*;version=")[^"[(]*(")/${1}'"$GITHUB_V"'${2}/;
 	s/(org.eclipse.egit.github.*;version="\[)[^"]*(\)")/${1}'"$GITHUB_V,$GITHUB_N"'${2}/;
-	s/(org.eclipse.mylyn.internal.github.*;version=")[^"[(]*(")/${1}'"$GITHUB_V"'${2}/;
-	s/(org.eclipse.mylyn.internal.github.*;version="\[)[^"]*(\)")/${1}'"$GITHUB_V,$GITHUB_N"'${2}/;
-	s/(org.eclipse.jgit.*;version="\[)[^"]*(\)")/${1}'"$GITHUB_V,$GITHUB_N"'${2}/;
-	s/(org.eclipse.egit.core.*;version="\[)[^"]*(\)")/${1}'"$GITHUB_V,$GITHUB_N"'${2}/;
-	s/(org.eclipse.egit.ui.*;version="\[)[^"]*(\)")/${1}'"$GITHUB_V,$GITHUB_N"'${2}/;
 	' $(git ls-files | egrep "META-INF/MANIFEST.MF|META-INF/SOURCE-MANIFEST.MF")
-
-perl -pi~ -e '
-	if ($ARGV ne $old_argv) {
-		$seen_version = 0;
-		$old_argv = $ARGV;
-	}
-	if (!$seen_version) {
-		$seen_version = 1 if (!/<\?xml/ &&
-		s/(version=")[^"]*(")/${1}'"$OSGI_V"'${2}/);
-	}
-	s/(feature="org.eclipse.egit" version=")[^"]*(")/${1}'"$GITHUB_V"'${2}/;
-	' org.eclipse.mylyn.github-feature/feature.xml
-
-perl -pi~ -e '
-	s{<(version)>[^<\$]*</\1>}{<${1}>'"$POM_V"'</${1}>};
-	' org.eclipse.mylyn.github-feature/pom.xml
 
 perl -pi~ -e '
 	if ($ARGV ne $old_argv) {
@@ -144,7 +123,7 @@ perl -pi~ -e '
 		$seen_version++ if
 		s{<(version)>[^<\$]*</\1>}{<${1}>'"$POM_V"'</${1}>};
 	}
-	' org.eclipse.mylyn.github-site/pom.xml
+	' org.eclipse.egit.github.repository/pom.xml
 
 perl -pi~ -e '
 	if ($ARGV ne $old_argv) {

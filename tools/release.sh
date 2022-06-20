@@ -32,7 +32,7 @@ then
     exit
 fi
 
-MSG="EGit Mylyn Github Connector $1"
+MSG="EGit Github Client $1"
 
 # tag release
 git tag -s -m "$MSG" $1

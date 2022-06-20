@@ -1,9 +1,7 @@
-# Eclipse EGit GitHub Connector
+# Eclipse EGit GitHub Client
 
-_EGit GitHub Connector_ is an Eclipse plugin for working with Git repositories
-hosted on Github. It is based on the _JGit_ library, which is a Git implementation
-in pure Java, and integrates with EGit, which is the Eclipse Git Team Provider, and
-uses the Mylyn framework.
+_EGit GitHub Client_ is an Eclipse plugin for working with the Github REST API.
+It is a Java client for the GitHub REST API.
 
 This package is licensed under the _EPL 2.0_ . Please refer to the `LICENSE` file
 for the complete license.
@@ -21,18 +19,13 @@ for the complete license.
 
 ## Installation
 
-Install the EGit GitHub Connector into Eclipse from the official update sites:
+Install the EGit GitHub Client into Eclipse from the official update sites:
 
 * [Latest released version](https://download.eclipse.org/egit/github/updates)
 * [Nightly build](https://download.eclipse.org/egit/github/updates-nightly)
   (requires the [EGit Nightly build](https://download.eclipse.org/egit/updates-nightly), too)
 
 See also the [EGit Downloads](https://www.eclipse.org/egit/download/) web page.
-
-## Documentation
-
-[On-line documentation](https://wiki.eclipse.org/EGit/GitHub/User_Guide)
-is available, and is also available in the Eclipse Help when the feature is installed.
 
 ## Support
 
